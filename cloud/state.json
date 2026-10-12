@@ -1,7 +1,63 @@
 {
- "updated": "2026-10-12T06:45:40.730Z",
- "appVersion": "2.5.81-rpcfix",
- "sessions": [],
+ "updated": "2026-10-12T07:58:58.155Z",
+ "appVersion": "2.5.82-cloudfix",
+ "sessions": [
+  {
+   "id": "mv4yma6kkcrof",
+   "projectId": "mv4ym2pwnwu10",
+   "title": "随便聊个天…",
+   "mode": "chat",
+   "createdAt": 1791791873805,
+   "ts": 1791791903480,
+   "msgs": [
+    {
+     "role": "user",
+     "content": "随便聊个天",
+     "ts": 1791791873892
+    },
+    {
+     "role": "ai",
+     "content": "好的，那我们来聊聊科技发展的话题。随着科技的不断进步，人工智能已经渗透到我们生活的方方面面。比如，现在很多智能手机都配备了人工智能助手，它们可以帮助我们处理日常事务，比如设置提醒、查询信息等。你对人工智能在生活中的应用有什么看法呢？",
+     "ts": 1791791877331
+    },
+    {
+     "role": "user",
+     "content": "今天是哪一年哪一月哪一日？",
+     "ts": 1791791901395
+    },
+    {
+     "role": "ai",
+     "content": "\n\n· 智谱GLM失败，自动切换 开箱保底…",
+     "ts": 1791791903331
+    },
+    {
+     "role": "ai",
+     "content": "GitHub Actions 免费算力执行中…（status: queued）",
+     "ts": 1791791903480
+    }
+   ]
+  },
+  {
+   "id": "mv4yl8yyntd1e",
+   "projectId": "mv4ykvczjo6u0",
+   "title": "随便聊个天…",
+   "mode": "cloud",
+   "createdAt": 1791791825578,
+   "ts": 1791791825666,
+   "msgs": [
+    {
+     "role": "user",
+     "content": "随便聊个天",
+     "ts": 1791791825665
+    },
+    {
+     "role": "ai",
+     "content": "GitHub Actions 免费算力执行中…（status: queued）",
+     "ts": 1791791825666
+    }
+   ]
+  }
+ ],
  "alarms": [],
  "plugins": {
   "enabled": {},
