@@ -157,6 +157,7 @@ jobs:
           git add tests/*.cjs app/res/drawable/*.png 2>/dev/null || true # 🧬 v2.5.32-allin：免疫考卷+像素脸进化回仓（v2.5.33-heal 精确 pathspec：正身入仓，.bak 备份不入仓防膨胀）
           git add cloud/heard.json 2>/dev/null || true # 👂 v2.5.36-hear：听觉记忆回仓（耳朵听到的不能丢——越听越懂主人）
           git add cloud/evolve_report.json 2>/dev/null || true # 📰 v2.5.91-evolve：进化战报回仓（EVOLVE_OK/EVOLVE_REJECTED 双路）——App cloudPulse 拉取公告，小神的成长主人看得见
+          git add cloud/proactive.json 2>/dev/null || true # 🧬 v2.5.92-hub：统一主动中枢战报流回仓（晨课/巡天/情报/体检全员主动战果）
           git add cloud/evolve_wants.json 2>/dev/null || true # ⚡ v2.5.46-omnipotent：GENE9 未满足需求清单回仓（App 端拉取感知欠主人什么；销账进展双端同步）
           git add .github/workflows 2>/dev/null || true # 🧬 v2.5.28-omni：工作流 yml 血管神经进化回仓（用户新授权，无变更自动跳过）
           git commit -m "cloud-evolve: engine self-evolution of run ${{ github.run_id }} (+mind sync)" || echo "nothing to commit"
