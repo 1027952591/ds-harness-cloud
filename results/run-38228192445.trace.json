@@ -1,0 +1,15 @@
+{
+ "think": false,
+ "tools": {
+  "web": true,
+  "code": true
+ },
+ "steps": [
+  {
+   "step": 1,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "好的，今天天气不错，阳光明媚。你最近过得怎么样？有没有什么新鲜事想要和我分享的呢？"
+  }
+ ]
+}
