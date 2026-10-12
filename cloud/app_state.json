@@ -1,10 +1,11 @@
 {
- "updated": "2026-10-12T06:45:06.834Z",
+ "updated": "2026-10-12T07:16:49.728Z",
  "action": "state",
  "appVersion": "2.5.81-rpcfix",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
+  "zhipu",
   "pollinations"
  ],
  "phoneToolN": 0,
@@ -34,7 +35,11 @@
  "vulnBad": [
   "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
  ],
- "chanHealth": [],
+ "chanHealth": [
+  "raw.githubusercontent:ok0/p100",
+  "jsDelivr CDN:ok0/p100",
+  "GitHub API:ok0/p100"
+ ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
