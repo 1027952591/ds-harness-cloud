@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.95-rolefix",
- "md5": "414acc525dca702549a032af005bf4ea",
+ "appVersion": "2.5.96-datefix",
+ "md5": "afea6af838bc874da39cd909d7195e6c",
  "bundleVer": 89,
- "ts": "2026-10-12T13:15:00Z",
- "size": 571185,
- "note": "v2.5.95-rolefix 热更清单（四重闸门可过）"
+ "ts": "2026-10-12T13:31:00Z",
+ "size": 572453,
+ "note": "v2.5.96-datefix 热更清单（四重闸门可过）"
 }
