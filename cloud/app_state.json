@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-12T07:57:00.904Z",
- "action": "state",
+ "updated": "2026-10-12T07:59:47.041Z",
+ "action": "chat",
  "appVersion": "2.5.82-cloudfix",
  "mode": "cloud",
  "prefProv": "",
@@ -26,18 +26,25 @@
   "openrouter": "inclusionai/ling-3.1-flash"
  },
  "deadLogCount": 0,
- "probeOk": 6,
+ "probeOk": 1,
  "liveN": 4,
  "repoN": 4,
  "vulnOk": 9,
  "vulnN": 11,
- "memN": 10,
- "pbN": 22,
+ "memN": 12,
+ "pbN": 23,
  "vulnBad": [
-  "mind:云端落后于本机：记忆 7/10 · 手册 3/22（存在未同步改动） → 🔧推送后云端仍落后（Token 权限或网络问题）：7/10 3/22",
-  "cloudvuln:云端 vuln.yml 同拍自检失败（cancelled），报告已回仓待下一拍回收"
+  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
+  "cloudvuln:云端同拍触发失败 HTTP 0（vuln.yml 缺失→重新部署可修）"
  ],
- "chanHealth": [],
+ "chanHealth": [
+  "scout:fastly.jsdelivr.net:ok0/p100",
+  "scout:gcore.jsdelivr.net:ok0/p100",
+  "scout:testingcf.jsdelivr.net:ok0/p100",
+  "scout:ghproxy.net:ok0/p100",
+  "scout:gh-proxy.com:ok0/p100",
+  "scout:ghfast.top:ok0/p100"
+ ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
