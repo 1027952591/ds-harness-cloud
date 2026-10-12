@@ -1,0 +1,182 @@
+{
+ "sources": {
+  "nvidia": [
+   "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+   "meta/llama-3.2-90b-vision-instruct",
+   "meta/codellama-70b",
+   "meta/llama2-70b",
+   "nvidia/llama-3.1-nemotron-70b-instruct",
+   "nvidia/llama-3.1-nemotron-51b-instruct",
+   "ibm/granite-34b-code-instruct",
+   "google/gemma-4-31b-it",
+   "nvidia/ising-calibration-1.5-31b",
+   "meta/muse-glimmer-30b",
+   "google/diffusiongemma-26b-a4b-it",
+   "mistralai/codestral-22b-instruct-v0.1",
+   "mistralai/mixtral-8x22b-v0.1",
+   "google/gemma-3-12b-it",
+   "nv-mistralai/mistral-nemo-12b-instruct",
+   "meta/llama-3.2-11b-vision-instruct",
+   "ibm/granite-3.0-8b-instruct",
+   "ibm/granite-8b-code-instruct",
+   "nvidia/cosmos-reason2-8b",
+   "mistralai/mistral-7b-instruct-v0.3",
+   "google/codegemma-1.1-7b",
+   "google/codegemma-7b",
+   "deepseek-ai/deepseek-coder-6.7b-instruct",
+   "01-ai/yi-large",
+   "ai21labs/jamba-1.5-large-instruct",
+   "mistralai/mistral-large",
+   "mistralai/mistral-large-2-instruct",
+   "deepseek-ai/deepseek-v4.1-flash",
+   "google/gemma-3-4b-it",
+   "ibm/granite-3.0-3b-a800m-instruct",
+   "google/gemma-2b",
+   "google/recurrentgemma-2b",
+   "databricks/dbrx-instruct",
+   "google/deplot",
+   "microsoft/kosmos-2",
+   "microsoft/phi-3-vision-128k-instruct",
+   "microsoft/phi-3.5-moe-instruct",
+   "moonshotai/kimi-k2.6",
+   "moonshotai/kimi-k3",
+   "nvidia/ai-synthetic-video-detector"
+  ],
+  "modelscope": [
+   "OpenGVLab/InternVL3_5-241B-A28B",
+   "PaddlePaddle/ERNIE-4.5-300B-A47B-PT",
+   "Qwen/Qwen3.5-397B-A17B",
+   "Qwen/Qwen3.5-122B-A10B",
+   "Qwen/Qwen3.5-35B-A3B",
+   "opencompass/CompassJudger-1-32B-Instruct",
+   "XGenerationLab/XiYanSQL-QwenCoder-32B-2412",
+   "XGenerationLab/XiYanSQL-QwenCoder-32B-2504",
+   "early-access/EA-29B-A4B",
+   "PaddlePaddle/ERNIE-4.5-VL-28B-A3B-PT",
+   "Qwen/Qwen3.5-27B",
+   "Qwen/Qwen3.8-27B",
+   "PaddlePaddle/ERNIE-4.5-21B-A3B-PT",
+   "deepseek-ai/DeepSeek-V4-Pro",
+   "deepseek-ai/DeepSeek-V4-Pro-0813",
+   "mistralai/Mistral-Large-Instruct-2407",
+   "nex-agi/Nex-N2.5-Pro",
+   "deepseek-ai/DeepSeek-V4.1-Flash",
+   "deepseek-ai/DeepSeek-V4-Flash-0731",
+   "MiniMax/MiniMax-M1-80k",
+   "MiniMax/MiniMax-M3",
+   "PaddlePaddle/ERNIE-4.5-0.3B-PT",
+   "MedAIBase/AntAngelMed",
+   "Shanghai_AI_Laboratory/Intern-S1",
+   "Shanghai_AI_Laboratory/Intern-S2-Preview",
+   "ZhipuAI/GLM-5.2",
+   "meituan-longcat/LongCat-Flash-Lite",
+   "nex-agi/Nex-N2.5-mini",
+   "Qwen/Qwen3.8-Flash-Next",
+   "Shanghai_AI_Laboratory/Intern-S1-mini",
+   "stepfun-ai/Step-3.5-Flash",
+   "stepfun-ai/Step-3.7-Flash",
+   "ZhipuAI/GLM-4.7-Flash"
+  ],
+  "openrouter": [
+   "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "nvidia/nemotron-3-super-120b-a12b:free",
+   "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+   "google/gemma-4-31b-it:free",
+   "google/gemma-4-26b-a4b-it:free",
+   "thinkingmachines/inkling:free",
+   "thinkingmachines/inkling-small:free",
+   "google/lyria-3-pro-preview",
+   "liquid/lfm-2.5-2.6b:free",
+   "dots-studio/dots-3-note-preview:free",
+   "nvidia/nemotron-3.5-lightning:free",
+   "poolside/laguna-s-2.1:free",
+   "poolside/laguna-xs-2.1:free",
+   "google/lyria-3-clip-preview",
+   "openrouter/free",
+   "inclusionai/ling-3.1-flash",
+   "apodex/apodex-1.1-mini:free",
+   "cohere/north-mini-code:free",
+   "nvidia/nemotron-3.5-content-safety:free"
+  ],
+  "pollinations": [
+   "openai-fast"
+  ]
+ },
+ "probe": {
+  "zhipu": {
+   "ok": 0,
+   "n": 0,
+   "status": 401,
+   "why": "empty after clean"
+  },
+  "nvidia": {
+   "ok": 1,
+   "n": 40,
+   "status": 200
+  },
+  "modelscope": {
+   "ok": 1,
+   "n": 33,
+   "status": 200
+  },
+  "siliconflow": {
+   "ok": 0,
+   "n": 0,
+   "status": 401,
+   "why": "empty after clean"
+  },
+  "openrouter": {
+   "ok": 1,
+   "n": 19,
+   "status": 200
+  },
+  "groq": {
+   "ok": 0,
+   "n": 0,
+   "status": 403,
+   "why": "empty after clean"
+  },
+  "cerebras": {
+   "ok": 0,
+   "n": 0,
+   "status": 403,
+   "why": "empty after clean"
+  },
+  "mistral": {
+   "ok": 0,
+   "n": 0,
+   "status": 401,
+   "why": "empty after clean"
+  },
+  "pollinations": {
+   "ok": 1,
+   "n": 1,
+   "status": 200
+  },
+  "gemma": {
+   "ok": 0,
+   "n": 0,
+   "status": 404,
+   "why": "empty after clean"
+  },
+  "cloudflare": {
+   "ok": 0,
+   "n": 0,
+   "status": 0,
+   "why": "missing account id"
+  }
+ },
+ "eol": {},
+ "audit": {
+  "probed": 11,
+  "registered": 11,
+  "ok_sources": 4,
+  "eol_total": 0,
+  "directive": "每次动态拉取/更新/淘汰：强制深彻·全方位·无死角全球探查，事无巨细，仔细再仔细",
+  "directive2": "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力",
+  "directive3": "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新",
+  "directive4": "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检",
+  "strongest_first": true
+ },
+ "updated": "2026-10-12T07:33:41.202756Z"
+}
