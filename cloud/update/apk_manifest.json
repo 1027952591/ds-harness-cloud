@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.97-vulnfix",
- "versionCode": 115,
- "md5": "30f3922057deb58a173f5dbc1313e548",
- "size": 5643053,
+ "versionName": "2.5.98-wxfix",
+ "versionCode": 116,
+ "md5": "a5c178c63d55308a96c3f73e54988f9b",
+ "size": 5651245,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38257895663)",
- "builtAt": "2026-10-12T13:46:23Z"
+ "reason": "evolve build (run 38260063587)",
+ "builtAt": "2026-10-12T14:04:02Z"
 }
