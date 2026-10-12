@@ -73,6 +73,9 @@ jobs:
         if: always()
         run: python3 cloud/watchdog.py  # 🧯 看门狗：agent.py 编译/自检不过→自动从 .bak 回滚（进化坏补丁拦截）
 
+      - name: Install office deps
+        run: pip install --user openpyxl python-docx python-pptx  # 🏢 v2.5.102-omni 118 轮：办公三件工坊依赖（xlsx/docx/pptx 生成——本地已实弹验证，runner 每次现装约 10s，防 runner 缓存漂移）
+
       - name: Run DS Harness Agent
         id: agent
         continue-on-error: true  # 失败不阻断：Commit/Evolve 步骤仍执行（evolve 拿失败 trace 做自修养料）
