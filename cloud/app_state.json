@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-12T13:03:13.850Z",
+ "updated": "2026-10-12T13:24:56.274Z",
  "action": "state",
- "appVersion": "2.5.94-permfix",
- "mode": "cloud",
+ "appVersion": "2.5.95-rolefix",
+ "mode": "chat",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -31,8 +31,8 @@
  "repoN": 0,
  "vulnOk": 7,
  "vulnN": 11,
- "memN": 24,
- "pbN": 59,
+ "memN": 26,
+ "pbN": 78,
  "vulnBad": [
   "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter",
   "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
