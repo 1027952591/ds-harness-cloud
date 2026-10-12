@@ -169,7 +169,7 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
   <header>
     <button class="hbtn" id="hLeft">☰</button>
     <div class="pawlogo" ondblclick="go('#/settings')" title="双击直达设置">🐾</div>
-    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 · DS Harness</b><span id="hSub">v2.5.87-triple · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
+    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 · DS Harness</b><span id="hSub">v2.5.88-pollfix · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
     <div class="balpill" id="balPill" onclick="refreshBalance(true)"><span>💰</span><small>—</small></div>
     <button class="hbtn" onclick="go('#/settings')">⚙️</button>
   </header>
@@ -276,7 +276,7 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
 /* 旧版单源配置迁移到多源结构 */
 // 🐾 v2.5.59-paw 67 轮：boot 即渲染模式分段器激活态——旧版漏调，全新安装首屏三丸全灰（看似按钮死）
 // 🛡️ v2.5.53-audit 62 轮：全工程唯一裸 parse——桥异常/非 JSON 回执不再炸上层调用链
-// 🛰️ v2.5.87-triple 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
+// 🛰️ v2.5.88-pollfix 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
 // UTF-8 safe base64
 // base64→bytes
 // bytes→base64
@@ -579,7 +579,7 @@ function apiJson(url, method, body, headers) {
   return r;
 }
 function rpcJson(url, method, body, headers) {
-  // 🛰️ v2.5.87-triple 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
+  // 🛰️ v2.5.88-pollfix 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
   if (!window.__dsbRpc || !window.__dsbCallCache) return Promise.resolve(apiJson(url, method, body, headers));
   return new Promise(function (res) {
     var a = [url, method || "GET", JSON.stringify(headers || {}), body || ""];
@@ -1335,7 +1335,7 @@ function _pullMindCloud() {
                 }
               }, _callee16, null, [[1, 2]]);
             }));
-            function get(_x45) {
+            function get(_x46) {
               return _get.apply(this, arguments);
             }
             return get;
@@ -1787,7 +1787,7 @@ function cloudRefreshRepoThrottled() {
   }
 }
 var BUNDLE_VER = 89;
-var APP_VER = "2.5.87-triple";
+var APP_VER = "2.5.88-pollfix";
 var UPD_DAILY_MS = 86400000;
 var EVO_CFG_DEF = {
   failN: 3,
@@ -4074,7 +4074,7 @@ var VULN_CHECKS = [{
 // 🧬新源入口铁律：注册指引走端点域名自动兜底的源（入口已自动配好，此处留痕可见）
 // ⚖️ 最高指令执行留痕面板数据
 /* 云端 cron 每日维护的 models.json（公共仓 raw 免 Key 可读；私有仓走 contents API） */
-/* 🖐️ v2.5.87-triple 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
+/* 🖐️ v2.5.88-pollfix 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
 /*#__PURE__*/
 // 6h 节流（与全仓心跳对齐：云端每日情报更新后挂机也会自动到达）
 // 私有仓回退
@@ -5338,7 +5338,7 @@ function renderRoute() {
     return chat ? go("#/tasks") : uiDrawer();
   }; // 🐾 68c：非对话页 ☰ 开抽屉（CatDesk 同款侧边栏）；对话页 ← 返回任务列表
   $("#hSub").textContent = chat ? findSession(arg) ? findSession(arg).title || "新任务" : "任务" : {
-    tasks: "v2.5.87-triple · JS 运行中",
+    tasks: "v2.5.88-pollfix · JS 运行中",
     skills: "技能 · 内置+自定义 · 输入 / 唤起",
     alarms: "定时任务 · 本地真调度",
     projects: "项目 · 任务分组",
@@ -5495,11 +5495,11 @@ var streamSeq = 0;
 // 🐾 68c：技能详情页（CatDesk 同款次次级页面）
 // 🐾 68c：输入 / 唤起技能选择面板（CatDesk 同款入口；＋按钮第四来源与 chips 均可直达）
 /* ---- 💻☁️ 68c：模式弹层（CatDesk 同款「模式选择 + Lite/Pro/Max 三档」） ---- */
-// 🖐️ v2.5.87-triple 101 轮：弹层新开才记原 mode（联动重开不覆盖）
+// 🖐️ v2.5.88-pollfix 101 轮：弹层新开才记原 mode（联动重开不覆盖）
 // ☁️ 云端含 cloudOnly 源（Cloudflare/Gemma 反而云端更全）
 // 🖐️ 101 轮：弹层内联动（切端/切档/切源）——先把当前下拉选择暂存再重绘弹层（模型列表随源刷新）
 // 🔬/⚡ 档位接线：think 插件即档位本体（选型链读 pluginOn("think")）；✋ 自主指定不动 think（用户可单独开深度思考）
-// 🖐️ v2.5.87-triple 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
+// 🖐️ v2.5.88-pollfix 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
 // 🐾 68c：模式徽标对拍（端图标+档位名；路由/模式/档位变动后一律重绘）
 /* ---- 📜 68c：运行日志页（版本/设备/启动异常/存档体检/体积说明——CatDesk 设置页「版本查看」深度版） ---- */
 // 🕵️ 79 轮：启动轨迹卡数据——黑匣子 bootLog + 看门狗 bootFailLog + WebView 内核版本，按钮全死再也不是无字天书
@@ -5860,7 +5860,7 @@ function uiModePop() {
     window.__mpOldMode = S.settings.mode;
     window.__mpSrcSel = "";
     window.__mpTierSel = "";
-  } // 🖐️ v2.5.87-triple 101 轮：弹层新开才记原 mode（联动重开不覆盖）
+  } // 🖐️ v2.5.88-pollfix 101 轮：弹层新开才记原 mode（联动重开不覆盖）
   var custom = t === "custom";
   var srcs = chainList(m === "cloud"); // ☁️ 云端含 cloudOnly 源（Cloudflare/Gemma 反而云端更全）
   var curSrc = window.__mpSrcSel && srcs.includes(window.__mpSrcSel) ? window.__mpSrcSel : prefOf() && srcs.includes(prefOf()) ? prefOf() : srcs[0] || "";
@@ -5916,7 +5916,7 @@ function uiModeApply() {
   save("plugins");
   setTier(t);
   if (t === "custom") {
-    // 🖐️ v2.5.87-triple 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
+    // 🖐️ v2.5.88-pollfix 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
     var src = $("#mpSrc") ? $("#mpSrc").value : curProv();
     var mdl = $("#mpModel") ? $("#mpModel").value : "";
     if (src) setPref(src);
@@ -6739,7 +6739,7 @@ function speakToggle() {
 // ⚡ 68c：Lite 档闪电阈值放宽至 180 字｜🖐️ 101 轮：自主指定档跳过快源插队（用户主权>闪电，指定的源就是链首）
 /*#__PURE__*/
 // 👁️ v2.5.34-vision：带图消息自动切免费视觉模型（glm-4v-flash/gemma-3/NIM vision——纯文本模型对 image_url 会 4xx）
-// 🩺 v2.5.87-triple 100 轮：本源最近一次失败的真实 HTTP 码
+// 🩺 v2.5.88-pollfix 100 轮：本源最近一次失败的真实 HTTP 码
 // 🗣️ 切源铁律文案=大白话（技术码只进括号小字）
 /*#__PURE__*/
 // 钥匙问题：不换会死循环，但要把修法说人话
@@ -6753,7 +6753,7 @@ function speakToggle() {
 // 📴 端侧离线：推理在手机本地 llama.cpp，复用同一 SSE 回调协议（Java 推合成行）
 // 桥异常（旧APK等）：立即失败交上层切下一源，绝不悬挂
 // 无 Key（保底源）不发空 Bearer
-// 🩺 v2.5.87-triple 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
+// 🩺 v2.5.88-pollfix 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
 // 模型停服：拉黑+剔除+重拉清单
 // 本源失败（4xx/网络），交由上层切下一源
 // 🛡️ 62 轮：会话/流归属校验——非归属会话的 chunk 直接丢弃不写
@@ -6771,6 +6771,7 @@ function speakToggle() {
 // 3 秒后找 runId（结果轮询入口；国内网络抖动时持续抓取最多 12 次，不轻易放弃）
 /*#__PURE__*/
 /*#__PURE__*/
+// 🔧 v2.5.88-pollfix 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
 /*#__PURE__*/
 /*#__PURE__*/
 /* ================= 🇨🇳 云端 CN 多通道（借鉴热更多通道思想·第十九轮）=================
@@ -6784,7 +6785,7 @@ function speakToggle() {
 // 通道①②融合：dispatch POST 自动重试（网络波动退避重试，鉴权类错误立即返回；Promise 化不卡 UI 线程）
 /* 结果取回后自动清理：删 Actions 运行记录 + 删 results 文件（静默失败，不影响展示） */
 /*#__PURE__*/
-// 通道③：jsDelivr 国内 CDN 取 latest.md（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化：api 同步壳单发在 rpcfull 桩下首调必占位→CDN 通道恒死，换异步真值血管
+// 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.88-pollfix 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
 // 97b：rpcJson 化（api 同步壳单发在桩下必占位→清理恒空跑，现走异步真值，静默失败不影响主链）
 /*#__PURE__*/
 function aiSpeak(txt) {
@@ -7266,7 +7267,7 @@ function sendStream(text, aiIdx, imgs) {
                     ok = _context13.v;
                     stOf = function stOf() {
                       return window.__lastStreamStatus && window.__lastStreamStatus.pk === pk ? window.__lastStreamStatus.status || 0 : 0;
-                    }; // 🩺 v2.5.87-triple 100 轮：本源最近一次失败的真实 HTTP 码
+                    }; // 🩺 v2.5.88-pollfix 100 轮：本源最近一次失败的真实 HTTP 码
                     nxtName = chain[ci + 1] ? PROV[chain[ci + 1]].name : "其他免费源";
                     say = function say(txt) {
                       cur.msgs[aiIdx].content += "\n\n· " + txt;
@@ -7536,7 +7537,7 @@ function streamOnce(pk, model, text, aiIdx, imgs) {
             pk: pk,
             status: status,
             ts: now()
-          }; // 🩺 v2.5.87-triple 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
+          }; // 🩺 v2.5.88-pollfix 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
           if (status === 404 || status === 410) markDead(pk, model); // 模型停服：拉黑+剔除+重拉清单
           resolve(false);
           return;
@@ -7727,9 +7728,10 @@ function _sendCloud() {
                     return _context44.a(2);
                   case 1:
                     _context44.n = 2;
-                    return rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/runs?per_page=5`, "GET", null, ghHeaders());
+                    return rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/runs?per_page=5&_=${Date.now()}`, "GET", null, ghHeaders());
                   case 2:
                     runs = _context44.v;
+                    // 🔧 v2.5.88-pollfix 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
                     if (runs.ok && runs.json && runs.json.workflow_runs && runs.json.workflow_runs.length) {
                       run = runs.json.workflow_runs[0];
                       m.cloud.runId = run.id;
@@ -7891,17 +7893,18 @@ function _ghPostRetry() {
   }));
   return _ghPostRetry.apply(this, arguments);
 }
-function cloudCdnFetch(_x37, _x38) {
+function cloudCdnFetch(_x37, _x38, _x39) {
   return _cloudCdnFetch.apply(this, arguments);
 }
 function _cloudCdnFetch() {
-  _cloudCdnFetch = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(runId, dispatchTs) {
+  _cloudCdnFetch = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(runId, dispatchTs, file) {
     var repo, f, runMatch, _t50;
     return _regenerator().w(function (_context48) {
       while (1) switch (_context48.p = _context48.n) {
         case 0:
-          // 通道③：jsDelivr 国内 CDN 取 latest.md（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化：api 同步壳单发在 rpcfull 桩下首调必占位→CDN 通道恒死，换异步真值血管
+          // 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.88-pollfix 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
           repo = S.settings.cloudRepo;
+          file = file || "latest.md";
           if (!(!repo || S.settings.repoVisibility === "private")) {
             _context48.n = 1;
             break;
@@ -7910,10 +7913,10 @@ function _cloudCdnFetch() {
         case 1:
           _context48.p = 1;
           _context48.n = 2;
-          return rpcJson("https://purge.jsdelivr.net/gh/" + repo + "@main/results/latest.md", "GET", null, {});
+          return rpcJson("https://purge.jsdelivr.net/gh/" + repo + "@main/results/" + file, "GET", null, {});
         case 2:
           _context48.n = 3;
-          return rpcJson("https://cdn.jsdelivr.net/gh/" + repo + "@main/results/latest.md", "GET", null, {});
+          return rpcJson("https://cdn.jsdelivr.net/gh/" + repo + "@main/results/" + file + "?_=" + Date.now(), "GET", null, {});
         case 3:
           f = _context48.v;
           if (!(!f.ok || !f.text)) {
@@ -7994,7 +7997,7 @@ function cleanupRun(runId) {
     }, _callee12, null, [[0, 4]]);
   }))();
 }
-function pollRun(_x39, _x40, _x41, _x42) {
+function pollRun(_x40, _x41, _x42, _x43) {
   return _pollRun.apply(this, arguments);
 }
 ;try{(window.__chunkOK=window.__chunkOK||[]).push(6)}catch(e){}</script>
@@ -8005,7 +8008,8 @@ function pollRun(_x39, _x40, _x41, _x42) {
 // 步数从结果文件头部读，失败时留空
 // 结果已取回：自动删 run+结果文件，公开仓不留痕迹
 // 🧖 GEN3：云端 Agent 刚学完（learn_memory/手册归档已 commit 回仓），App 端当场拉取并集合并——云端→App 同拍自动同步
-// 🇨🇳 API 取文件不通→CDN 通道兜底再试一次
+// 🇨🇳 API 取文件不通→CDN 通道兜底再试一次（104 轮：先试本 run 专属文件，latest.md 可能已被更新一轮覆盖）
+// 🔧 v2.5.88-pollfix 104 轮：执行时长上屏+超时大白话指引
 // 🗂️ on=启用中 off=已暂停 tpl=模板（CatDesk 同款三 tab）
 // 📋 内置模板库（实打实可用：点"使用模板"预填创建）
 /* 👨‍🏫 专家注册表（第八注册表，CatPaw 同款「专家下拉」）：定时任务可选专家人设，执行时注入 system prompt（本地链/端侧链/云端链三路全生效）；
@@ -8097,7 +8101,7 @@ function pollRun(_x39, _x40, _x41, _x42) {
 /*#__PURE__*/
 function _pollRun() {
   _pollRun = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(sid, aiIdx, runId, manual) {
-    var s, m, cdnTxt, stepMatch2, r, mirror, r2, run2, run, f, body, stepMatch, cdnTxt2, stepMatch3;
+    var s, m, cdnTxt, stepMatch2, r, mirror, r2, run2, run, f, body, stepMatch, cdnTxt2, stepMatch3, elMin, _t51;
     return _regenerator().w(function (_context49) {
       while (1) switch (_context49.n) {
         case 0:
@@ -8144,7 +8148,7 @@ function _pollRun() {
           return _context49.a(2);
         case 4:
           _context49.n = 5;
-          return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/actions/runs/${runId}`, "GET", null, ghHeaders());
+          return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/actions/runs/${runId}?_=${Date.now()}`, "GET", null, ghHeaders());
         case 5:
           r = _context49.v;
           if (r.ok) {
@@ -8182,11 +8186,11 @@ function _pollRun() {
           m.cloud.status = run.status === "completed" ? run.conclusion === "success" ? "success" : run.conclusion : run.status;
           // 步数从结果文件头部读，失败时留空
           if (!(m.cloud.status === "success")) {
-            _context49.n = 13;
+            _context49.n = 15;
             break;
           }
           _context49.n = 9;
-          return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/contents/results/run-${runId}.md`, "GET", null, _objectSpread(_objectSpread({}, ghHeaders()), {}, {
+          return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/contents/results/run-${runId}.md?_=${Date.now()}`, "GET", null, _objectSpread(_objectSpread({}, ghHeaders()), {}, {
             Accept: "application/vnd.github.raw"
           }));
         case 9:
@@ -8206,14 +8210,24 @@ function _pollRun() {
           try {
             pullMindCloud(true);
           } catch (e) {} // 🧖 GEN3：云端 Agent 刚学完（learn_memory/手册归档已 commit 回仓），App 端当场拉取并集合并——云端→App 同拍自动同步
-          _context49.n = 12;
+          _context49.n = 14;
           break;
         case 10:
           _context49.n = 11;
-          return cloudCdnFetch(runId, m.cloud.dispatchTs);
+          return cloudCdnFetch(runId, m.cloud.dispatchTs, "run-" + runId + ".md");
         case 11:
-          cdnTxt2 = _context49.v;
-          // 🇨🇳 API 取文件不通→CDN 通道兜底再试一次
+          _t51 = _context49.v;
+          if (_t51) {
+            _context49.n = 13;
+            break;
+          }
+          _context49.n = 12;
+          return cloudCdnFetch(runId, m.cloud.dispatchTs);
+        case 12:
+          _t51 = _context49.v;
+        case 13:
+          cdnTxt2 = _t51;
+          // 🇨🇳 API 取文件不通→CDN 通道兜底再试一次（104 轮：先试本 run 专属文件，latest.md 可能已被更新一轮覆盖）
           if (cdnTxt2) {
             stepMatch3 = cdnTxt2.match(/^<!-- steps:(\d+) -->/);
             if (stepMatch3) m.cloud.steps = +stepMatch3[1];
@@ -8226,25 +8240,26 @@ function _pollRun() {
             m.cloud.done = true;
             save("sessions");
           }
-        case 12:
-          _context49.n = 14;
+        case 14:
+          _context49.n = 16;
           break;
-        case 13:
+        case 15:
           if (m.cloud.status === "failure" || m.cloud.status === "cancelled") {
             m.content = "❌ 云端执行结束：" + (run.conclusion || run.status) + "。可到 GitHub 仓库 Actions 页查看日志排错。";
             m.cloud.done = true;
             save("sessions");
             cleanupRun(runId);
           } else {
-            m.content = "GitHub Actions 免费算力执行中…（status: " + (run.status || "queued") + "）";
-            if (manual) toast("仍在执行: " + (run.status || "queued"));
+            elMin = Math.max(0, Math.round((now() - (m.cloud.dispatchTs || now())) / 60000)); // 🔧 v2.5.88-pollfix 104 轮：执行时长上屏+超时大白话指引
+            m.content = "GitHub Actions 免费算力执行中…（status: " + (run.status || "queued") + "，已运行 " + elMin + " 分钟）" + (elMin >= 5 ? "\n\n· 免费服务器偶尔排队拥堵：再等等或过会儿再点「刷新状态」；结果一出会自动取回，不用盯着。" : "");
+            if (manual) toast(elMin >= 5 ? "已运行 " + elMin + " 分钟（免费服务器偶尔排队拥堵，稍后再刷新即可）" : "仍在执行: " + (run.status || "queued") + "（已运行 " + elMin + " 分钟）");
           }
-        case 14:
+        case 16:
           if (cur && cur.id === sid) {
             cur = findSession(sid);
             repaintBubble(aiIdx, false);
           }
-        case 15:
+        case 17:
           return _context49.a(2);
       }
     }, _callee44);
@@ -8934,7 +8949,7 @@ function vulnReportRecover() {
 }
 function _vulnReportRecover() {
   _vulnReportRecover = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46() {
-    var st, repo, r, j, rs, bad, prevBad, _t51;
+    var st, repo, r, j, rs, bad, prevBad, _t52;
     return _regenerator().w(function (_context51) {
       while (1) switch (_context51.p = _context51.n) {
         case 0:
@@ -9005,7 +9020,7 @@ function _vulnReportRecover() {
           return _context51.a(2, bad.length > 0);
         case 4:
           _context51.p = 4;
-          _t51 = _context51.v;
+          _t52 = _context51.v;
           return _context51.a(2, false);
       }
     }, _callee46, null, [[3, 4]]);
@@ -9313,7 +9328,7 @@ function syncStateCloud(force) {
     }, _callee13, null, [[1, 3]]);
   })), force ? 0 : 1000);
 }
-function pullStateCloud(_x43) {
+function pullStateCloud(_x44) {
   return _pullStateCloud.apply(this, arguments);
 }
 ;try{(window.__chunkOK=window.__chunkOK||[]).push(7)}catch(e){}</script>
@@ -9362,7 +9377,7 @@ function pullStateCloud(_x43) {
 // rawB64 项内容已是 base64（二进制资产），去空白后直传
 function _pullStateCloud() {
   _pullStateCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee48(force) {
-    var repo, st, r, j, sTs, ch, ch2, _cur2, ch3, cur4, ch4, cfg, ch5, _cur3, sr, sj, sm, _t52;
+    var repo, st, r, j, sTs, ch, ch2, _cur2, ch3, cur4, ch4, cfg, ch5, _cur3, sr, sj, sm, _t53;
     return _regenerator().w(function (_context53) {
       while (1) switch (_context53.p = _context53.n) {
         case 0:
@@ -9397,7 +9412,7 @@ function _pullStateCloud() {
           break;
         case 4:
           _context53.p = 4;
-          _t52 = _context53.v;
+          _t53 = _context53.v;
           return _context53.a(2, false);
         case 5:
           st.statePullTs = now();
@@ -10023,7 +10038,7 @@ function pageSettings() {
     <div class="row" style="margin-top:6px">
       <div class="grow"><p style="font-size:12.5px;color:var(--sub)">重排全部定时任务（开机兜底）</p></div>
       <button class="btn gray sm" onclick="DSB.rescheduleAll();toast('已重排')">重排</button></div>
-    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.87-triple · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
+    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.88-pollfix · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
   </div>`;
 }
 function saveSettings() {
@@ -10307,7 +10322,7 @@ function _deployCloud() {
   }));
   return _deployCloud.apply(this, arguments);
 }
-function putSecrets(_x44) {
+function putSecrets(_x45) {
   return _putSecrets.apply(this, arguments);
 }
 ;try{(window.__chunkOK=window.__chunkOK||[]).push(8)}catch(e){}</script>
@@ -10352,7 +10367,7 @@ function putSecrets(_x44) {
 // 🚑 v2.5.60-whale 68 轮：启动总保险——同步段任何一环炸断都进降级页，绝不无声黑屏
 function _putSecrets() {
   _putSecrets = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52(repo) {
-    var keys, gk, pkB, _gk, ok, fail, fp, extras, _i3, _Object$entries, _Object$entries$_i, name, val, sealed, put, acct, _sealed, _put, _t53;
+    var keys, gk, pkB, _gk, ok, fail, fp, extras, _i3, _Object$entries, _Object$entries$_i, name, val, sealed, put, acct, _sealed, _put, _t54;
     return _regenerator().w(function (_context57) {
       while (1) switch (_context57.p = _context57.n) {
         case 0:
@@ -10393,7 +10408,7 @@ function _putSecrets() {
           break;
         case 5:
           _context57.p = 5;
-          _t53 = _context57.v;
+          _t54 = _context57.v;
           return _context57.a(2, "✗ 仓库公钥格式异常（既非 32 字节 hex 也非 base64）");
         case 6:
           if (!(!pkB || pkB.length !== 32)) {
@@ -10539,7 +10554,7 @@ function bootFail(e) {
     bLog("FAIL:" + (e && e.stack || e && e.message || e));
   } catch (_e2) {} // 79 轮：崩点也进黑匣子轨迹
   try {
-    document.body.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#0B0E14;color:#e5e9f0;font-family:monospace;padding:36px 22px;overflow:auto;z-index:99999">' + '<div style="font-size:42px;text-align:center;margin-bottom:12px">🐾</div>' + '<div style="font-size:19px;font-weight:bold;text-align:center;margin-bottom:18px">小神启动受挫了</div>' + '<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.87-triple · 内核 ' + (navigator ? String(navigator.userAgent).slice(0, 120) : "?") + '<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>' + '<pre id="bootErrBox" style="font-size:10px;white-space:pre-wrap;color:#f87171;background:#141926;border:1px solid #252E42;border-radius:10px;padding:12px;max-height:38vh;overflow:auto"></pre>' + '<button onclick="window.__bootRetry()" style="display:block;width:100%;margin-top:18px;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#16A34A,#4ADE80);color:#fff;font-size:15px">🔄 仅重试</button>' + '<button onclick="window.__bootCopyDiag()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">📋 复制诊断信息（反馈给开发者）</button>' + '<button onclick="window.__bootSafeReset()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">🚑 安全模式重启（清本机存档，记忆已在云端会自动回同步）</button>' + '</div>';
+    document.body.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#0B0E14;color:#e5e9f0;font-family:monospace;padding:36px 22px;overflow:auto;z-index:99999">' + '<div style="font-size:42px;text-align:center;margin-bottom:12px">🐾</div>' + '<div style="font-size:19px;font-weight:bold;text-align:center;margin-bottom:18px">小神启动受挫了</div>' + '<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.88-pollfix · 内核 ' + (navigator ? String(navigator.userAgent).slice(0, 120) : "?") + '<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>' + '<pre id="bootErrBox" style="font-size:10px;white-space:pre-wrap;color:#f87171;background:#141926;border:1px solid #252E42;border-radius:10px;padding:12px;max-height:38vh;overflow:auto"></pre>' + '<button onclick="window.__bootRetry()" style="display:block;width:100%;margin-top:18px;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#16A34A,#4ADE80);color:#fff;font-size:15px">🔄 仅重试</button>' + '<button onclick="window.__bootCopyDiag()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">📋 复制诊断信息（反馈给开发者）</button>' + '<button onclick="window.__bootSafeReset()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">🚑 安全模式重启（清本机存档，记忆已在云端会自动回同步）</button>' + '</div>';
     var _b = document.getElementById("bootErrBox");
     if (_b) _b.textContent = String(e && e.stack || e && e.message || e);
   } catch (_e) {}
