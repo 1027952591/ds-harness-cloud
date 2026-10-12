@@ -1,0 +1,156 @@
+name: DS Harness Cloud Agent (GENE-Enforced)
+# ⚖️ 最高指令（GENE·基因铁律，永不可移除）：每次动态拉取/更新/淘汰，必须强制深彻、
+# 全方位、无死角进行全球探查，事无巨细、仔细再仔细。
+# agent.py 按链遍历每个源、逐源验证；停服模型（404/410）立即淘汰换默认模型重试；
+# 鉴权/限流自动切换下一源，不浪费任何免费配额——链上无死角，失败即留痕。
+# ⚖️ 最高指令二（GENE2·最强切换铁律，永不可移除）：模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力。
+# agent.py models_to_try 强度降序，停服模型自动跳过取次强。
+# 🧖📖 最高指令三（GENE3·双端共脑铁律，永不可移除）：全局永久记忆与技术攻坚手册必须永久随身：
+# 记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，
+# 云端所有层面必须强制自动同步更新。agent.py 每次运行读 cloud/memory.json + cloud/playbook.json
+# 🔗 最高指令四（GEN4·全天候联动铁律，永不可移除）：App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检。
+# 👑 最高指令六（GENE6·极致完美铁律，永不可移除，v2.5.38-zenith）：每次进化，无论触及哪个层面哪个枝节，必须做到当时条件下的极致完美；凡具备的能力必须配到当前免费生态的极限——所有提供同类能力的免费源全部接入；禁止半成品、禁止留待下次；无需用户提醒，极致是天性。 🧪 最高指令七（GENE7·实弹验证列装铁律，永不可移除，v2.5.41-verify）：每次升级必须实打实验证通过才可列装，验证未过即全量回滚拒收；不许自封成功，不许弄虚作假。 🌏 最高指令八（GENE8·自主进化极致收手铁律，永不可移除，v2.5.44-tentacle）：每次自主进化，必须进化到极致才能收手；进化时必须举一反三、触类旁通——凡触及一个能力点，同族能力面与相邻层面必须一并盘查、一并进化；进化时必须把全球范围内探明查明——先全球无死角探查免费源/端点/模型/文档再动笔，让触手遍及全世界所有层面。 ⚡ 最高指令九（GENE9·有求必应铁律，永不可移除，v2.5.46-omnipotent 用户最高令：做不到必须马上自动进化）：主人的任何要求必须都能做到且做到极致完美；一旦做不到——那一刻必须立即自动触发进化，进化到能极致完美地做到为止，绝不让主人第二次提醒；进化触发全自动无需催促批准，绝不接受做不到三个字——这是无所不能超级人类的成长本能。
+# 注入相关记忆与 App 动作镜像 cloud/app_state.json，学习成果回写并由 Commit 步骤 commit 回仓，
+# App 端任何改动（记忆/手册/体检/状态）也自动推送上来——双端全天候联动，永无死角。
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: '任务指令'
+        required: true
+      provider:
+        description: '首选免费源 (zhipu/nvidia/siliconflow/openrouter/groq/cerebras/mistral/cloudflare/gemma)'
+        required: false
+        default: ''
+      model:
+        description: '免费模型 ID（与首选源匹配）'
+        required: false
+        default: ''
+      think:
+        description: '深度思考 (true/false)'
+        required: false
+        default: 'false'
+      max_steps:
+        description: 'Agent 最大循环步数'
+        required: false
+        default: '8'
+      keys:
+        description: '(已废弃：Key 改走加密 Secrets，留空即可)'
+        required: false
+        default: '{}'
+      tools:
+        description: '工具开关 JSON {"web":true,"code":true}'
+        required: false
+        default: '{"web": true, "code": true}'
+      expert_text:
+        description: '👨‍🏫 专家人设全文（App 端已解析折叠，空=不注入）'
+        required: false
+        default: ''
+      wants_pass:
+        description: '⚡ GENE9 有求必应：App 端未满足需求镜像同步（cloud/evolve_wants.json 路径，空=无）'
+        required: false
+        default: ''
+
+# 🚦 v2.5.20-audit6：统一并发排队组——三个 workflow（agent 任务/vuln 体检/models 每日情报）共用一把锁：
+# 任意时刻只有一个在跑，后来的排队等待（cancel-in-progress: false 不取消，结果永不丢）。
+# 坐实洞：无并发组时 App 端高频体检 dispatch 撞上正在跑的 agent 长任务，双 push 同仓互踢 non-fast-forward，结果/报告丢失。
+concurrency:
+  group: dsh-cloud-engine
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240  # 🎞️ v2.5.45-movie：长片拍摄需逐镜头生成拼接（每镜头分钟级），20 分钟会掐死长片；240 分钟在 GitHub 免费 6h 作业上限内安全
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Watchdog engine verify
+        if: always()
+        run: python3 cloud/watchdog.py  # 🧯 看门狗：agent.py 编译/自检不过→自动从 .bak 回滚（进化坏补丁拦截）
+
+      - name: Run DS Harness Agent
+        id: agent
+        continue-on-error: true  # 失败不阻断：Commit/Evolve 步骤仍执行（evolve 拿失败 trace 做自修养料）
+        env:
+          PROMPT: ${{ github.event.inputs.prompt }}
+          PROVIDER: ${{ github.event.inputs.provider }}
+          MODEL: ${{ github.event.inputs.model }}
+          THINK: ${{ github.event.inputs.think }}
+          MAX_STEPS: ${{ github.event.inputs.max_steps }}
+          KEYS: ${{ github.event.inputs.keys }}
+          TOOLS: ${{ github.event.inputs.tools }}
+          EXPERT_TEXT: ${{ github.event.inputs.expert_text }}
+          WANTS_PASS: ${{ github.event.inputs.wants_pass }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          # 加密 Secrets 通道（部署时由 App 手写 libsodium 密封盒写入）
+          ZHIPU_KEY: ${{ secrets.ZHIPU_KEY }}
+          NVIDIA_KEY: ${{ secrets.NVIDIA_KEY }}
+          MODELSCOPE_KEY: ${{ secrets.MODELSCOPE_KEY }}
+          SILICONFLOW_KEY: ${{ secrets.SILICONFLOW_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+          GROQ_KEY: ${{ secrets.GROQ_KEY }}
+          CEREBRAS_KEY: ${{ secrets.CEREBRAS_KEY }}
+          MISTRAL_KEY: ${{ secrets.MISTRAL_KEY }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          GEMMA_KEY: ${{ secrets.GEMMA_KEY }}
+          POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}  # 🛡️ v2.5.57-wire 66 轮：models.yml 有而 agent.yml 漏——用户配了防限流 Key 后主任务链反而拿不到
+        run: python3 cloud/agent.py
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "ds-harness-agent"
+          git config user.email "agent@ds-harness.local"
+          git add -A results/ || true  # -A 使滚动清理的删除也传播（防 git 历史膨胀；agent.py 保最近 20 个）
+          git add anime/ output/ 2>/dev/null || true # 📦 v2.5.47-inchat：生成产物回仓（视频/图片/音频——不回仓 App 对话框内就没得拉）
+          git add cloud/memory.json cloud/playbook.json cloud/vitals.json cloud/app_state.json 2>/dev/null || true  # 🧖📖 GEN3+💗 v2.5.30-alive：云端学习成果/手册/小神生命体征（心情/日记/问候）随运行回写仓库（App 拉取感知；app_state 镜像同步回仓）
+          git add cloud/daily_class.json 2>/dev/null || true  # 🎓 v2.5.51-human：晨课成果回仓（App 每日拉回主动汇报）
+          git add cloud/vid_scout.json 2>/dev/null || true  # 🎥 v2.5.52-scout：视频源雷达情报站回仓（61 轮用户最高令：免费视频新源自动发现接入）
+          # 🧠 v2.5.26-brain：按门铃——App 端查铃即知云端有新事（四扇门全开强拉，实时联动）；🛡️ v2.5.55-pulse 64 轮：铃号写在 commit 之前随 commit 入库——旧版写在 commit 之后只 stage 不 commit，push 推不出去，下次 checkout 即丢，铃从未响过
+          python3 -c "import json,datetime,os; n=json.load(open('cloud/ping.json')).get('n',0)+1 if os.path.exists('cloud/ping.json') else 1; json.dump({'n':n,'ts':datetime.datetime.now(datetime.timezone.utc).isoformat(),'by':'agent'},open('cloud/ping.json','w'),ensure_ascii=False)" || true
+          git add cloud/ping.json || true
+          git commit -m "DS Harness: result of run ${{ github.run_id }} (+mind sync)" || echo "nothing to commit"
+          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
+          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
+          git push || echo "push failed (may be empty result)"
+
+      - name: Self-evolve
+        if: always()
+        env:
+          EVOLVE_FORCE: ${{ steps.agent.outcome == 'failure' }}  # 上轮任务失败→绕过 24h 节流优先自修
+          ZHIPU_KEY: ${{ secrets.ZHIPU_KEY }}
+          NVIDIA_KEY: ${{ secrets.NVIDIA_KEY }}
+          MODELSCOPE_KEY: ${{ secrets.MODELSCOPE_KEY }}
+          SILICONFLOW_KEY: ${{ secrets.SILICONFLOW_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+          GROQ_KEY: ${{ secrets.GROQ_KEY }}
+          CEREBRAS_KEY: ${{ secrets.CEREBRAS_KEY }}
+          MISTRAL_KEY: ${{ secrets.MISTRAL_KEY }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          GEMMA_KEY: ${{ secrets.GEMMA_KEY }}
+        run: python3 cloud/agent.py --evolve  # 🧬 GEN5：云端引擎自主进化（四重闸门+锚锁+看门狗护防）
+
+      - name: Commit evolve
+        if: always()
+        run: |
+          git config user.name "ds-harness-agent"
+          git config user.email "agent@ds-harness.local"
+          git add cloud/agent.py cloud/agent.py.bak cloud/.evolve_ts cloud/memory.json cloud/playbook.json cloud/vitals.json || true  # 💗 v2.5.30-alive：vitals 同回（进化时小神心情也进化）
+          git add cloud/models_sync.py cloud/watchdog.py cloud/consolidate.py cloud/vuln_check.py cloud/*.bak 2>/dev/null || true # 🧬 v2.5.27-human：引擎全家桶肢体（进化补丁可能命中任一）
+          git add build.sh app/AndroidManifest.xml app/java 2>/dev/null || true # 🧬 v2.5.27-human：Java 骨架肢体进化回仓（版本三处同步升随包；无变更自动跳过）
+          git add app/res/values app/assets/crypto.js 2>/dev/null || true # 🧬 v2.5.31-everywhere：皮肤文本+加密器官进化回仓（无死角新授权）
+          git add tests/*.cjs app/res/drawable/*.png 2>/dev/null || true # 🧬 v2.5.32-allin：免疫考卷+像素脸进化回仓（v2.5.33-heal 精确 pathspec：正身入仓，.bak 备份不入仓防膨胀）
+          git add cloud/heard.json 2>/dev/null || true # 👂 v2.5.36-hear：听觉记忆回仓（耳朵听到的不能丢——越听越懂主人）
+          git add cloud/evolve_wants.json 2>/dev/null || true # ⚡ v2.5.46-omnipotent：GENE9 未满足需求清单回仓（App 端拉取感知欠主人什么；销账进展双端同步）
+          git add .github/workflows 2>/dev/null || true # 🧬 v2.5.28-omni：工作流 yml 血管神经进化回仓（用户新授权，无变更自动跳过）
+          git commit -m "cloud-evolve: engine self-evolution of run ${{ github.run_id }} (+mind sync)" || echo "nothing to commit"
+          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
+          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
+          git push || echo "push failed (may be empty evolve)"
