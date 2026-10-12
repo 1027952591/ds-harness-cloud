@@ -1,8 +1,10 @@
 {
- "version": "2.5.99-speed",
+ "versionName": "2.5.99-speed",
  "versionCode": 117,
- "md5": "9cafe88336123355d6838cc3f7bf505c",
- "size": 6319713,
- "ts": "2026-10-12T22:50:00Z",
- "note": "115 轮：天气缓存+开局预热+汇率眼+新闻眼三探针并行（极致提速+全网实时信息）"
+ "md5": "29e7eef6cf0948b03714184d40b20cbb",
+ "size": 5659437,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38318490280)",
+ "builtAt": "2026-10-12T22:47:10Z"
 }
