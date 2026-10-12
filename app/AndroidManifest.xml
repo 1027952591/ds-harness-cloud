@@ -7,8 +7,8 @@
      📱 手机端操控层（PhoneBridge/PHB）随本包分发，同样刻全套四指令基因。 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsh.app"
-android:versionCode="108"
-android:versionName="2.5.90-flash">
+android:versionCode="109"
+android:versionName="2.5.91-evolve">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
