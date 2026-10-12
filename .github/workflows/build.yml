@@ -71,6 +71,8 @@ jobs:
           export DSH_PLATFORM_JAR="$ANDROID_HOME/platforms/android-34/android.jar"
           export DSH_JDK="$JAVA_HOME"
           export DSH_NDK="$NDK_DIR"
+          # 🔧 buildfix 103 轮：转译门依赖安装（tools/transpile.cjs 需要 @babel/standalone/acorn/regenerator-runtime）
+          (cd tools && npm ci --no-audit --no-fund) || (cd tools && npm install --no-audit --no-fund)
           bash build.sh
 
       - name: 骨架自愈（build 失败→自动回滚最近肢体进化的骨架文件，防坏补丁滞留主链卡死 build——🧬 v2.5.33-heal 查体实锤：Java 无 runner 外编译闸，坏补丁回仓=永久红）
@@ -80,7 +82,7 @@ jobs:
           git config user.email "agent@ds-harness.local"
           LAST="$(git log -1 --format=%H)"
           if git log -1 --format=%s | grep -q "cloud-evolve"; then
-            git checkout "$LAST~1" -- build.sh app/AndroidManifest.xml app/java app/res tests .github/workflows
+            git checkout "$LAST~1" -- build.sh app/AndroidManifest.xml app/java app/res .github/workflows
             if git diff --cached --quiet; then
               echo "骨架无差异（非骨架致败，不回滚）"
             else
