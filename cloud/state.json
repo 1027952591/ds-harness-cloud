@@ -1,77 +1,7 @@
 {
- "updated": "2026-10-12T09:13:31.356Z",
+ "updated": "2026-10-12T09:32:07.836Z",
  "appVersion": "2.5.87-triple",
  "sessions": [
-  {
-   "id": "mv517sswlza98",
-   "projectId": "mv517gs7im5go",
-   "title": "随便聊个天…",
-   "mode": "cloud",
-   "createdAt": 1791796236944,
-   "ts": 1791796293387,
-   "msgs": [
-    {
-     "role": "user",
-     "content": "随便聊个天",
-     "ts": 1791796237054
-    },
-    {
-     "role": "ai",
-     "content": "GitHub Actions 免费算力执行中…（status: in_progress）",
-     "ts": 1791796237055
-    },
-    {
-     "role": "user",
-     "content": "今天是哪一天",
-     "ts": 1791796293387
-    },
-    {
-     "role": "ai",
-     "content": "GitHub Actions 免费算力执行中…（status: in_progress）",
-     "ts": 1791796293387
-    }
-   ]
-  },
-  {
-   "id": "mv50cf8umitm9",
-   "projectId": "mv50c4m9slc7b",
-   "title": "随便聊个天…",
-   "mode": "cloud",
-   "createdAt": 1791794773038,
-   "ts": 1791794773125,
-   "msgs": [
-    {
-     "role": "user",
-     "content": "随便聊个天",
-     "ts": 1791794773125
-    },
-    {
-     "role": "ai",
-     "content": "GitHub Actions 免费算力执行中…（status: in_progress）",
-     "ts": 1791794773125
-    }
-   ]
-  },
-  {
-   "id": "mv4ys2a42qige",
-   "projectId": "mv4yr48ajc2sz",
-   "title": "随便聊个天…",
-   "mode": "cloud",
-   "createdAt": 1791792143500,
-   "ts": 1791792143589,
-   "msgs": [
-    {
-     "role": "user",
-     "content": "随便聊个天",
-     "ts": 1791792143589
-    },
-    {
-     "role": "ai",
-     "content": "<!-- provs:zhipu -->\n<!-- run:38220878659 -->\n很抱歉，我目前无法提供确切的日期信息。我的能力还不足以自动获取当前的日期。不过，您可以通过查看电子设备或询问智能助手来获取今天的日期。如果您有其他问题或需要帮助，请告诉我。",
-     "ts": 1791792143589
-    }
-   ]
-  },
   {
    "id": "mv4yma6kkcrof",
    "projectId": "mv4ym2pwnwu10",
