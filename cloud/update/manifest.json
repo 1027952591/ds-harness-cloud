@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.93-notifail",
- "md5": "3cb667686032e51c32b47beb6413f8ac",
+ "appVersion": "2.5.94-permfix",
+ "md5": "2de59256b0020a168868a6ad201290e4",
  "bundleVer": 89,
- "ts": "2026-10-12T12:01:01Z",
- "size": 568938,
- "note": "v2.5.93-notifail 热更清单（四重闸门可过）"
+ "ts": "2026-10-12T12:41:09Z",
+ "size": 570032,
+ "note": "v2.5.94-permfix 热更清单（四重闸门可过）"
 }
