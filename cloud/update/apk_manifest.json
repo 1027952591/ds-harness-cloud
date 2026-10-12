@@ -1,10 +1,10 @@
 {
  "versionName": "2.5.94-permfix",
  "versionCode": 112,
- "md5": "2cde848c92b6fc03ad7c7545d9dfbe87",
+ "md5": "ee65f1e03c303f658053bcf3f43e293c",
  "size": 5638957,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "v2.5.94-permfix/112 进化方向分诊（PERM 不派云端+卡片 24h 节流+云端分诊铁律+销账闭环+109 轮 Java 三方法真补齐，110 轮）",
- "builtAt": "2026-10-12T12:43:23Z"
+ "reason": "evolve build (run 38253242348)",
+ "builtAt": "2026-10-12T13:06:22Z"
 }
