@@ -1,0 +1,44 @@
+{
+ "updated": "2026-10-12T06:45:06.834Z",
+ "action": "state",
+ "appVersion": "2.5.81-rpcfix",
+ "mode": "cloud",
+ "prefProv": "",
+ "chainOn": [
+  "pollinations"
+ ],
+ "phoneToolN": 0,
+ "phoneToolLast": "",
+ "phoneApps": 0,
+ "selModels": {
+  "zhipu": "glm-4-flash",
+  "nvidia": "deepseek-ai/deepseek-v4.1-flash",
+  "modelscope": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
+  "gemma": "gemma-3-12b-it",
+  "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
+  "groq": "llama-3.3-70b-versatile",
+  "cerebras": "llama-3.3-70b",
+  "mistral": "mistral-small-latest",
+  "pollinations": "openai-fast",
+  "ondevice": "qwen2.5-0.5b"
+ },
+ "deadLogCount": 0,
+ "probeOk": 1,
+ "liveN": 0,
+ "repoN": 0,
+ "vulnOk": 5,
+ "vulnN": 6,
+ "memN": 7,
+ "pbN": 17,
+ "vulnBad": [
+  "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
+ ],
+ "chanHealth": [],
+ "scoutOK": 0,
+ "scoutPool": [],
+ "provOK": 0,
+ "provPool": [],
+ "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
+ "plugins": {}
+}
