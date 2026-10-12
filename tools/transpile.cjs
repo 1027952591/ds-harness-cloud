@@ -6,7 +6,17 @@
 // 用法：node transpile.cjs [chromeVersion]   （默认 44；产物就地写入 app/assets/index.html）
 const fs = require("fs");
 const path = require("path");
-const Babel = require("@babel/standalone");
+// 🔧 buildfix 103 轮：vendor 兜底——云端 runner npm 环境崩（Exit handler never called）也能转译：
+//    优先走 node_modules（本地开发态），缺失时回退 tools/vendor/ 单文件自带（babel/acorn/regenerator 三件套随仓分发，云端零 npm 依赖）
+function reqOrVendor(moduleName, vendorFile) {
+  try { return require(moduleName); }
+  catch (e) {
+    const vp = path.join(__dirname, "vendor", vendorFile);
+    if (!fs.existsSync(vp)) throw e;
+    return require(vp);
+  }
+}
+const Babel = reqOrVendor("@babel/standalone", "babel.min.js");
 const ROOT = path.join(__dirname, "..");
 const SRC = path.join(ROOT, "app/assets/index.src.html");
 const DST = path.join(ROOT, "app/assets/index.html");
@@ -32,8 +42,8 @@ const main = blocks.reduce((a, b) => (b.code.length > a.code.length ? b : a));
 // —— 🔬 v2.5.63-probe 81 轮：手写块 ES5 硬门——黑匣子/polyfill 块不经 babel（人写 ES5），
 //    必须逐块过 acorn ecmaVersion:5 解析（任何 ES6+ 语法当场构建失败）——语法层死亡在构建期即被物理排除
 let acorn;
-try { acorn = require("acorn"); }
-catch (e) { console.error("FATAL: acorn not installed (npm i acorn in tools/)"); process.exit(1); }
+try { acorn = reqOrVendor("acorn", "acorn.dist.js"); }
+catch (e) { console.error("FATAL: acorn not installed (npm i acorn in tools/ or vendor/acorn.dist.js missing)"); process.exit(1); }
 blocks.forEach(function (b, i) {
   if (b === main) return; // 主块走 babel chrome44（保模板字面量等 Chrome41+ 语法），不用 ES5 门
   try { acorn.parse(b.code, { ecmaVersion: 5 }); console.log("[transpile] hand-written block #" + i + " (" + b.code.length + "B) ES5 OK"); }
@@ -44,7 +54,13 @@ console.log("[transpile] main block: " + main.code.length + " chars @ offset " +
 
 // —— regeneratorRuntime（async/await→ES5 状态机必需；仅在产物用到时前拼一次）——
 let regenCode = "";
-try { regenCode = fs.readFileSync(require.resolve("regenerator-runtime/runtime.js", { paths: [__dirname] }), "utf8"); }
+try {
+  let regenPath;
+  try { regenPath = require.resolve("regenerator-runtime/runtime.js", { paths: [__dirname] }); }
+  catch (e) { regenPath = path.join(__dirname, "vendor", "regenerator-runtime.js"); }
+  if (!fs.existsSync(regenPath)) throw new Error("regenerator runtime file not found: " + regenPath);
+  regenCode = fs.readFileSync(regenPath, "utf8");
+}
 catch (e) { console.error("FATAL: regenerator-runtime not found: " + e.message); process.exit(1); }
 
 // —— 黑匣子插入：主块头部 s1 打点已在源码里；此处把 s0 阶段后置校验注释压进产物（无功能）——
