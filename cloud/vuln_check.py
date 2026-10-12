@@ -262,7 +262,7 @@ def main():
             # 云端侧锚（本地布局：cloud/* 或模拟仓 app/assets/cloud/*；runner 上：cloud/*）
             cp = "cloud/consolidate.py" if os.path.exists("cloud/consolidate.py") else ("app/assets/cloud/consolidate.py" if os.path.exists("app/assets/cloud/consolidate.py") else None)
             anchors10.append(("睡眠整理工序（合并/压缩/强化/淡忘+seed 永不淡忘）", cp is not None and all(x in open(cp, encoding="utf-8").read() for x in ("SIM_MERGE", "seed-", 'rpt["faded"]', "sleep_report.json"))))
-            sy = "cloud/sleep.yml" if os.path.exists("cloud/sleep.yml") else ("app/assets/cloud/sleep.yml" if os.path.exists("app/assets/cloud/sleep.yml") else None)
+            sy = ".github/workflows/sleep.yml" if os.path.exists(".github/workflows/sleep.yml") else ("cloud/sleep.yml" if os.path.exists("cloud/sleep.yml") else ("app/assets/cloud/sleep.yml" if os.path.exists("app/assets/cloud/sleep.yml") else None))
             anchors10.append(("睡眠整理定时工序（sleep.yml 每日运行 consolidate.py）", sy is not None and all(x in open(sy, encoding="utf-8").read() for x in ("consolidate.py", "cron"))))
             ping_ok = 0
             for wf in ("agent", "models", "vuln", "sleep", "build"):
