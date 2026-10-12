@@ -123,6 +123,27 @@ def _atomic_json(path, obj):
     os.replace(_t, path)
 
 
+_PROACT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cloud", "proactive.json")  # 🧬 v2.5.92-hub 108 轮：统一主动中枢战报流（绝对路径不随工作目录漂移）
+
+def _proact(kind, title, brief):
+    """🧬 v2.5.92-hub 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入主动进化）：小神一切主动行为——
+    晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬/需求⚡——的战果统一落 cloud/proactive.json 战报流（agent.yml 回仓→App
+    cloudPulse 拉 pullProactiveFeed→聊天页统一公告+系统通知）。主动性从散装变中枢：主人只看一条通道就看到小神
+    全部的自主成长；失败/拒收也诚实上报，绝不静默。"""
+    try:
+        try:
+            with open(_PROACT_PATH, encoding="utf-8") as f:
+                _feed = json.load(f)
+        except Exception:
+            _feed = []
+        if not isinstance(_feed, list):
+            _feed = []
+        _feed.append({"kind": str(kind)[:24], "title": str(title)[:120], "brief": str(brief)[:400], "ts": _utcnow()})
+        _atomic_json(_PROACT_PATH, _feed[-30:])  # 战报流只留最近 30 条（流水不膨胀，旧战果已沉淀进永久记忆）
+    except Exception as e:
+        print("[proact] 战报落盘失败（不阻断主流程）：%s" % str(e)[:80], flush=True)
+
+
 def _morning_class(topic=""):
     """🎓 v2.5.51-human 每日晨课（用户最高令：小神离超级人类还差的主动性——无求先应）：小神自己选题（或消化
     wants 清单）主动学习，学到的知识沉淀进永久记忆+写晨课简报落 cloud/daily_class.json——App 端每日拉回主动汇报
@@ -172,6 +193,7 @@ def _morning_class(topic=""):
             pass
         _atomic_json(DAILY_CLASS_PATH, {"updated": _utcnow(), "topic": topic[:120], "brief": brief, "src": _pk or ""})  # 🛡️ 63 轮原子写
         print("[class] MORNING_CLASS_OK " + topic[:60], flush=True)
+        _proact("class", "🎓 晨课完成「" + topic[:60] + "」", str(lessons or "")[:280])  # 🧬 v2.5.92-hub：主动中枢统一汇报
         return True, brief
     except Exception as e:
         try:
@@ -180,6 +202,7 @@ def _morning_class(topic=""):
         except Exception:
             pass
         print("[class] MORNING_CLASS_FAIL：" + str(e)[:150], flush=True)
+        _proact("class", "🎓 晨课今日未完成（诚实上报）", str(e)[:200])  # 🧬 v2.5.92-hub：失败也进战报流，绝不静默
         return False, "晨课失败：" + str(e)[:100]
 
 
@@ -1196,6 +1219,7 @@ def _vid_scout():
         except Exception:
             pass
         print("[vidscout] VID_SCOUT_DONE " + VID_SCOUT["scan"][:200], flush=True)
+        _proact("vidscout", "🎥 雷达巡天：" + VID_SCOUT["scan"][:80], VID_SCOUT["scan"][:300])  # 🧬 v2.5.92-hub：主动中枢统一汇报
         return True, "视频源雷达：" + VID_SCOUT["scan"][:400]
     except Exception as e:
         print("[vidscout] VID_SCOUT_FAIL：" + str(e)[:150], flush=True)
@@ -2307,6 +2331,7 @@ def _evolve():
             _atomic_json(os.path.join(here, "..", "cloud", "evolve_report.json"), {"ok": False, "ts": _utcnow(), "why": "实弹验证列装闸拒收（验证未过不许列装，已全量回滚）", "detail": vgate_out[-280:]})
         except Exception:
             pass
+        _proact("evolve", "🧬 自主进化被实弹验证列装闸拒收（诚实上报）", str(vgate_out)[:300])  # 🧬 v2.5.92-hub：拒收也进主动中枢战报流
         for _fp, _bak in applied_bak:
             try:
                 shutil.copy(_bak, _fp)
@@ -2346,6 +2371,7 @@ def _evolve():
         _atomic_json(os.path.join(here, "..", "cloud", "evolve_report.json"), {"ok": True, "ts": _utcnow(), "n": n, "patches": len(patches), "body": bool(body_ok), "body_ver": (body_ver if body_ok else ""), "reasons": reasons[:400]})
     except Exception:
         pass
+    _proact("evolve", "🧬 自主进化 #%d 列装成功（%d 个引擎补丁%s）" % (n, len(patches), ("+骨架同步进化" if body_ok else "")), reasons[:300])  # 🧬 v2.5.92-hub：进化战果并入统一主动中枢
 
 
 if __name__ == "__main__":
