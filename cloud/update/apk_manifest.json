@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.94-permfix",
- "versionCode": 112,
- "md5": "ee65f1e03c303f658053bcf3f43e293c",
+ "versionName": "2.5.95-rolefix",
+ "versionCode": 113,
+ "md5": "0dfabf0f36e2e5f81ad3f2b1ba25ce71",
  "size": 5638957,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38253242348)",
- "builtAt": "2026-10-12T13:06:22Z"
+ "reason": "evolve build (run 38254298753)",
+ "builtAt": "2026-10-12T13:15:20Z"
 }
