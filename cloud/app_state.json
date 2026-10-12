@@ -1,11 +1,10 @@
 {
- "updated": "2026-10-12T10:45:24.764Z",
- "action": "chat",
- "appVersion": "2.5.88-pollfix",
+ "updated": "2026-10-12T12:12:23.209Z",
+ "action": "state",
+ "appVersion": "2.5.93-notifail",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
-  "zhipu",
   "pollinations"
  ],
  "phoneToolN": 0,
@@ -30,8 +29,8 @@
  "repoN": 0,
  "vulnOk": 5,
  "vulnN": 6,
- "memN": 7,
- "pbN": 17,
+ "memN": 22,
+ "pbN": 40,
  "vulnBad": [
   "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
  ],
