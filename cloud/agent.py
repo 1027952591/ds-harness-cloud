@@ -14,9 +14,9 @@ Agent 循环内单源失败/限流自动切换下一个源，全程 0 元。
 """
 import json, os, re, sys, time, urllib.request, urllib.error, subprocess, tempfile
 
-GENE_DIRECTIVE = "每次动态拉取/更新/淘汰：强制深彻、全方位、无死角全球探查，事无巨细，仔细再仔细；模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力" "每次动态拉取/更新/淘汰：强制深彻·全方位·无死角全球探查，事无巨细，仔细再仔细"  # ⚖️最高指令一，永不可移除
-GENE_DIRECTIVE2 = "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力" "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力"  # ⚖️最高指令二，永不可移除
-GENE_DIRECTIVE3 = "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新" "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新"  # 🧖📖最高指令三（双端共脑），永不可移除
+GENE_DIRECTIVE = "每次动态拉取/更新/淘汰：强制深彻·全方位·无死角全球探查，事无巨细，仔细再仔细"  # ⚖️最高指令一，永不可移除
+GENE_DIRECTIVE2 = "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力"  # ⚖️最高指令二，永不可移除
+GENE_DIRECTIVE3 = "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新"  # 🧖📖最高指令三（双端共脑），永不可移除
 GENE_DIRECTIVE4 = "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检"  # 🔗最高指令四（全天候联动：App 所有动作→云端），永不可移除
 GENE_DIRECTIVE6 = "每次进化，无论触及哪个层面哪个枝节，必须做到当时条件下的极致完美；凡具备的能力必须配到当前免费生态的极限——所有提供同类能力的免费源全部接入；禁止半成品、禁止留待下次；无需用户提醒，极致是天性"  # 👑最高指令六（GENE6·极致完美铁律，v2.5.38-zenith），永不可移除
 GENE_DIRECTIVE7 = "每次升级必须实打实验证通过才可列装：实弹验证列装闸对真实文件跑全仓 vuln_check，任一红项即全量回滚拒列装；不许自封成功，不许弄虚作假"  # 🧪最高指令七（GENE7·实弹验证列装铁律，v2.5.41-verify 用户最高令），永不可移除
@@ -1982,11 +1982,20 @@ def _evolve():
     ts_path = os.path.join(here, ".evolve_ts")
     force = os.environ.get("EVOLVE_FORCE", "").strip().lower() == "true"
     # ── 节流：24h 内已进化过则跳过；上轮任务失败（EVOLVE_FORCE）绕过节流优先自修 ──
+    # ⚡ v2.5.91-evolve 107 轮（GENE9 有求必应补全·用户实弹三问：进化在不在位/为什么从没主动进化过）：
+    # 未满足需求清单非空时节流 24h→1h——"做不到的那一刻必须马上进化"不该被日历拦住；无待办时维持 24h 省配额
     if not force and os.path.exists(ts_path):
         try:
             age_h = (time.time() - os.path.getmtime(ts_path)) / 3600.0
-            if age_h < 24.0:
-                print("[evolve] 距上次进化 %.1fh < 24h，跳过（EVOLVE_FORCE 可绕过）" % age_h, flush=True)
+            _want_n = 0
+            try:
+                with open(WANTS_PATH, encoding="utf-8") as _wf:
+                    _want_n = len([_x for _x in ((json.load(_wf) or {}).get("wants") or []) if not _x.get("done")])
+            except Exception:
+                _want_n = 0
+            _gate_h = 1.0 if _want_n > 0 else 24.0
+            if age_h < _gate_h:
+                print("[evolve] 距上次进化 %.1fh < %.0fh，跳过（%s）" % (age_h, _gate_h, ("⚡GENE9 未满足需求 %d 条：节流已降至 1h，到点即进化" % _want_n) if _want_n else "EVOLVE_FORCE 可绕过"), flush=True)
                 return
         except Exception:
             pass
@@ -2293,6 +2302,10 @@ def _evolve():
         vgate_ok, vgate_out = False, "实弹验证列装闸执行异常（异常=未过，宁可拒绝不可虚装）：" + str(e)[:120]
     if not vgate_ok:
         print("[evolve] EVOLVE_REJECTED 实弹验证列装闸拒收（验证未过不许列装，已全量回滚）：" + vgate_out[-500:], flush=True)
+        try:  # 📰 v2.5.91-evolve：拒收也是战报——诚实告知主人"试过但被真实验证拦了"，绝不虚装绝不静默
+            _atomic_json(os.path.join(here, "..", "cloud", "evolve_report.json"), {"ok": False, "ts": _utcnow(), "why": "实弹验证列装闸拒收（验证未过不许列装，已全量回滚）", "detail": vgate_out[-280:]})
+        except Exception:
+            pass
         for _fp, _bak in applied_bak:
             try:
                 shutil.copy(_bak, _fp)
@@ -2327,6 +2340,11 @@ def _evolve():
     except Exception:
         pass
     print("[evolve] EVOLVE_OK 进化 #%d 应用（%d 引擎补丁%s）已过 26 检实弹验证列装：%s" % (n, len(patches), ("+%d 骨架补丁" % len(body)) if body_ok else "", reasons[:160]), flush=True)
+    # 📰 v2.5.91-evolve：进化战报上屏链第一环——落 cloud/evolve_report.json（agent.yml 回仓→App cloudPulse 拉取→聊天页公告：小神的成长主人看得见）
+    try:
+        _atomic_json(os.path.join(here, "..", "cloud", "evolve_report.json"), {"ok": True, "ts": _utcnow(), "n": n, "patches": len(patches), "body": bool(body_ok), "body_ver": (body_ver if body_ok else ""), "reasons": reasons[:400]})
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
