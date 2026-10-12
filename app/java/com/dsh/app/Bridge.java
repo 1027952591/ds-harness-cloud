@@ -34,6 +34,7 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.provider.Settings; // 🔔 v2.5.94-permfix 109/110 轮：openNotifSettings 一键拉起系统通知设置页
 import android.provider.OpenableColumns;
 import android.webkit.MimeTypeMap;
 import android.database.Cursor;
@@ -473,6 +474,78 @@ public class Bridge {
                     == android.content.pm.PackageManager.PERMISSION_GRANTED ? "1" : "0";
         } catch (Exception e) {
             return "1";
+        }
+    }
+
+    // ---------- 🔔 v2.5.94-permfix 109 轮用户最高令：通知任何失败必须自动触发进化——带回执通知链 Java 侧三方法 ----------
+
+    /** 🔔 带回执通知：PERM/ERR: 原因/OK 如实回 JS——失败原因就是进化养料，不许静默吞掉。
+     *  内部双探针：POST_NOTIFICATIONS 运行时权限+NotificationManager.areNotificationsEnabled 渠道总闸，
+     *  任一未开即报 PERM（Android 硬性闸：授权只能主人亲手点，App 不许代点）。 */
+    @android.webkit.JavascriptInterface
+    public String notifyUserEx(String title, String text) {
+        try {
+            NotificationManager nm = (NotificationManager) act.getSystemService(Context.NOTIFICATION_SERVICE);
+            if (nm == null) return "ERR:no_notification_service";
+            if (Build.VERSION.SDK_INT >= 33 &&
+                    act.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                            != android.content.pm.PackageManager.PERMISSION_GRANTED) return "PERM";
+            try { if (!nm.areNotificationsEnabled()) return "PERM"; } catch (Exception ignored) { }
+            Intent i = new Intent(act, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent pi = PendingIntent.getActivity(act, 0, i,
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            Notification.Builder b;
+            if (Build.VERSION.SDK_INT >= 26) {
+                b = new Notification.Builder(act, MainActivity.CHANNEL_TASKS);
+            } else {
+                @SuppressWarnings("deprecation")
+                Notification.Builder bOld = new Notification.Builder(act);
+                b = bOld;
+            }
+            b.setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentTitle(safe(title))
+                    .setContentText(safe(text))
+                    .setStyle(new Notification.BigTextStyle().bigText(safe(text)))
+                    .setContentIntent(pi)
+                    .setAutoCancel(true);
+            nm.notify((int) System.currentTimeMillis(), b.build());
+            return "OK";
+        } catch (Exception e) {
+            return "ERR:" + String.valueOf(e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage()).substring(0, Math.min(80, String.valueOf(e.getMessage() == null ? e.getClass().getSimpleName() : e.getMessage()).length()));
+        }
+    }
+
+    /** 🔔 全态探针：权限+渠道+服务三态一次报全——进化诊断养料，设置页可见。 */
+    @android.webkit.JavascriptInterface
+    public String notifState() {
+        try {
+            NotificationManager nm = (NotificationManager) act.getSystemService(Context.NOTIFICATION_SERVICE);
+            boolean perm = Build.VERSION.SDK_INT < 33 ||
+                    act.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                            == android.content.pm.PackageManager.PERMISSION_GRANTED;
+            boolean enabled = nm != null && nm.areNotificationsEnabled();
+            return (perm ? "perm=1" : "perm=0") + ";enabled=" + (enabled ? "1" : "0") + ";sdk=" + Build.VERSION.SDK_INT;
+        } catch (Exception e) {
+            return "ERR:" + String.valueOf(e.getMessage()).substring(0, 80);
+        }
+    }
+
+    /** 🔔 一键拉起系统通知设置页：API26+ 直达本 App 通知设置；旧 ROM 降级 App 详情页（主人手动开通知）。 */
+    @android.webkit.JavascriptInterface
+    public void openNotifSettings() {
+        try {
+            Intent i;
+            if (Build.VERSION.SDK_INT >= 26) {
+                i = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                i.putExtra(Settings.EXTRA_APP_PACKAGE, act.getPackageName());
+            } else {
+                i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                i.setData(android.net.Uri.fromParts("package", act.getPackageName(), null));
+            }
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            act.startActivity(i);
+        } catch (Exception ignored) {
         }
     }
 
