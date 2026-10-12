@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.87-triple",
- "versionCode": 105,
- "md5": "9edbf3d175c91ff97c4c79496225514e",
- "size": 5610285,
+ "versionName": "2.5.88-pollfix",
+ "versionCode": 106,
+ "md5": "7356f3ce36a25ae73bb191806e96e565",
+ "size": 5614381,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38236399389)",
- "builtAt": "2026-10-12T10:28:10Z"
+ "reason": "evolve build (run 38238326634)",
+ "builtAt": "2026-10-12T10:46:53Z"
 }
