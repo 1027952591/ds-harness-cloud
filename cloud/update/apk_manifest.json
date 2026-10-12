@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.88-pollfix",
- "versionCode": 106,
- "md5": "5b031014576b6cdebfe1fc17438d4103",
- "size": 5614381,
+ "versionName": "2.5.92-hub",
+ "versionCode": 110,
+ "md5": "df437d4fd036e6dc1b36c520a86436e5",
+ "size": 5630765,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38238506776)",
- "builtAt": "2026-10-12T10:48:17Z"
+ "reason": "v2.5.92-hub/110 统一主动中枢 proactive.json+骨架层更新三入口（108 轮攻坚）",
+ "builtAt": "2026-10-12T11:44:05Z"
 }
