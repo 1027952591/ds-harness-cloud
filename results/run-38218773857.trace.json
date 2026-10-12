@@ -1,0 +1,15 @@
+{
+ "think": false,
+ "tools": {
+  "web": true,
+  "code": true
+ },
+ "steps": [
+  {
+   "step": 1,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "好的，很高兴能和你聊天。今天你想聊些什么呢？无论是日常琐事、科技动态，还是其他任何话题，我都很乐意和你一起探讨。"
+  }
+ ]
+}
