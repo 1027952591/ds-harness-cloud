@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-12T13:24:56.274Z",
- "action": "state",
- "appVersion": "2.5.95-rolefix",
- "mode": "chat",
+ "updated": "2026-10-12T13:53:28.262Z",
+ "action": "chat",
+ "appVersion": "2.5.97-vulnfix",
+ "mode": "cloud",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -29,23 +29,12 @@
  "probeOk": 1,
  "liveN": 0,
  "repoN": 0,
- "vulnOk": 7,
- "vulnN": 11,
- "memN": 26,
- "pbN": 78,
- "vulnBad": [
-  "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter",
-  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
-  "fresh:云端无 models.json 且本地无缓存（每日体检从未成功） → 🔧远程触发失败 HTTP 0（未配 GitHub Token 时无法自动触发，可到 Ac"
- ],
- "chanHealth": [
-  "scout:fastly.jsdelivr.net:ok0/p100",
-  "scout:gcore.jsdelivr.net:ok0/p100",
-  "scout:testingcf.jsdelivr.net:ok0/p100",
-  "scout:ghproxy.net:ok0/p100",
-  "scout:gh-proxy.com:ok0/p100",
-  "scout:ghfast.top:ok0/p100"
- ],
+ "vulnOk": 6,
+ "vulnN": 6,
+ "memN": 6,
+ "pbN": 17,
+ "vulnBad": [],
+ "chanHealth": [],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
