@@ -283,6 +283,20 @@ def main():
     _atomic_json("models.json", out)  # 🛡️ 65 轮原子写
     print("⚖️ audit: " + json.dumps(out["audit"], ensure_ascii=False))
     print("models.json written: %d/%d sources" % (len(out["sources"]), len(PROV)))
+    try:  # 🧬 v2.5.92-hub 108 轮：统一主动中枢——每日情报班战果同步进 cloud/proactive.json 战报流（App 端聊天页统一公告）
+        try:
+            with open("cloud/proactive.json", encoding="utf-8") as _f:
+                _feed = json.load(_f)
+        except Exception:
+            _feed = []
+        if not isinstance(_feed, list):
+            _feed = []
+        _feed.append({"kind": "models", "title": "📡 每日情报班完成：%d/%d 源在线" % (len(out["sources"]), len(PROV)),
+                      "brief": "探查 %d 源 · 在线 %d 源 · eol 累计 %d；清单已热更 App 端（chainList 动态吃进，进化新增源同拍参战）" % (out["audit"]["probed"], out["audit"]["ok_sources"], out["audit"]["eol_total"]),
+                      "ts": datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")})
+        _atomic_json("cloud/proactive.json", _feed[-30:])
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
