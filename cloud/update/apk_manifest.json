@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.92-hub",
- "versionCode": 110,
- "md5": "df437d4fd036e6dc1b36c520a86436e5",
- "size": 5630765,
+ "versionName": "2.5.93-notifail",
+ "versionCode": 111,
+ "md5": "4dc15bcbb0453edaffe64889e503f5f5",
+ "size": 5634861,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "v2.5.92-hub/110 统一主动中枢 proactive.json+骨架层更新三入口（108 轮攻坚）",
- "builtAt": "2026-10-12T11:44:05Z"
+ "reason": "v2.5.93-notifail/111 通知失败必进化（notifyUserEx 带回执+notifFailFeed GENE9 双发进化+PERM 一键授权，109 轮）",
+ "builtAt": "2026-10-12T12:02:43Z"
 }
