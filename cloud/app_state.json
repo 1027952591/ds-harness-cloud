@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-12T07:16:49.728Z",
+ "updated": "2026-10-12T07:33:42.442Z",
  "action": "state",
  "appVersion": "2.5.81-rpcfix",
- "mode": "cloud",
+ "mode": "chat",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -25,8 +25,8 @@
   "ondevice": "qwen2.5-0.5b"
  },
  "deadLogCount": 0,
- "probeOk": 1,
- "liveN": 0,
+ "probeOk": 6,
+ "liveN": 4,
  "repoN": 0,
  "vulnOk": 5,
  "vulnN": 6,
@@ -35,11 +35,7 @@
  "vulnBad": [
   "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
  ],
- "chanHealth": [
-  "raw.githubusercontent:ok0/p100",
-  "jsDelivr CDN:ok0/p100",
-  "GitHub API:ok0/p100"
- ],
+ "chanHealth": [],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
