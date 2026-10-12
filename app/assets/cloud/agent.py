@@ -1710,9 +1710,18 @@ def _code_rescue(content):
         stripped = stripped[7:]
     if (len(stripped) > 30
             and _re.search(r"^\s*(import |from .* import |def |class )", stripped, _re.M)
-            and stripped.count("=") >= 2
+            and (stripped.count("=") >= 2 or "agent." in stripped)
             and "。" not in stripped[:150]):
         return stripped
+    if _re.search(r"_xlsx|_docx|_pptx|_novel", c) and len(c) > 60:
+        m2 = _re.search(r'"code"\s*:\s*"([^"]{5,})"', c)
+        if m2:
+            raw_call = m2.group(1).strip()
+            if raw_call.startswith(("import ", "from ", "agent.", "print(")):
+                return raw_call
+            if not raw_call.startswith("agent."):
+                raw_call = "agent." + raw_call
+            return "import agent\n_r = " + raw_call + "\nprint(_r)"
     return None
 
 
