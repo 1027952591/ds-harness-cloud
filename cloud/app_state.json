@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-12T10:26:30.478Z",
+ "updated": "2026-10-12T10:45:24.764Z",
  "action": "chat",
- "appVersion": "2.5.87-triple",
+ "appVersion": "2.5.88-pollfix",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
