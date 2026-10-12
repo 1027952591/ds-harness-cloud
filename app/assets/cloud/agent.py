@@ -2166,7 +2166,7 @@ def _evolve():
                 _want_n = 0
             _gate_h = 0.0 if _want_n > 0 else 24.0  # 🚀 116 轮最高令：有未满足需求=马上进化（节流归零）；无待办才维持 24h
             if age_h < _gate_h:
-                print("[evolve] 距上次进化 %.1fh < %.0fh，跳过（%s）" % (age_h, _gate_h, ("⚡GENE9 未满足需求 %d 条：节流已降至 1h，到点即进化" % _want_n) if _want_n else "EVOLVE_FORCE 可绕过"), flush=True)
+                print("[evolve] 距上次进化 %.1fh < %.0fh，跳过（%s）" % (age_h, _gate_h, ("⚡GENE9 未满足需求 %d 条：节流归零马上进化" % _want_n) if _want_n else "EVOLVE_FORCE 可绕过"), flush=True)
                 return
         except Exception:
             pass
