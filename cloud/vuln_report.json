@@ -1,5 +1,5 @@
 {
- "ts": "2026-10-12T07:33:45.431041Z",
+ "ts": "2026-10-12T07:56:26.027363Z",
  "directive3": "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新",
  "directive4": "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检",
  "results": [
@@ -16,9 +16,9 @@
    "hard": 1
   },
   {
-   "name": "③ models.json 情报新鲜（0.0h 前，4 源）且 audit 基因在位",
+   "name": "③ models.json 情报新鲜（0.0h 前，5 源）且 audit 基因在位",
    "ok": 1,
-   "why": "age=0.001139301111111111 sources=4 directive3=True",
+   "why": "age=0.0011490019444444445 sources=5 directive3=True",
    "hard": 1
   },
   {
@@ -28,7 +28,7 @@
    "hard": 1
   },
   {
-   "name": "⑤ App 全天候镜像活跃（app_state.json 0.3h 前更新，最近动作=state）",
+   "name": "⑤ App 全天候镜像活跃（app_state.json 0.2h 前更新，最近动作=chat）",
    "ok": 1,
    "why": "App 状态镜像缺失或超 48h 未更新（App 可能离线）",
    "hard": 0
@@ -48,7 +48,7 @@
   {
    "name": "⑦ 🧬 云端引擎 --selftest 实弹通过",
    "ok": 1,
-   "why": "/home/runner/work/ds-harness-cloud/ds-harness-cloud/cloud/agent.py:448: DeprecationWarning: datetime.datetime.utcnow() i",
+   "why": "/home/runner/work/ds-harness-cloud/ds-harness-cloud/cloud/agent.py:318: DeprecationWarning: datetime.datetime.utcnow() i",
    "hard": 1
   },
   {
