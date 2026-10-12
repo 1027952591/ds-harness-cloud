@@ -458,6 +458,21 @@ def main():
     with open("cloud/vuln_report.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
     print("vuln_report.json written: %d checks, hard_ok=%s" % (len(RESULTS), hard_ok), flush=True)
+    try:  # 🧬 v2.5.92-hub 108 轮：统一主动中枢——体检战果同步进 proactive.json 战报流（App 端聊天页统一公告；红项也诚实上报绝不静默）
+        try:
+            with open("cloud/proactive.json", encoding="utf-8") as _f:
+                _feed = json.load(_f)
+        except Exception:
+            _feed = []
+        if not isinstance(_feed, list):
+            _feed = []
+        _feed.append({"kind": "vuln", "title": "🩺 双端体检完成：%d 项检查，%s" % (len(RESULTS), ("全绿" if hard_ok else "有红项（诚实上报）")),
+                      "brief": "; ".join(str(r.get("name", ""))[:60] for r in RESULTS)[:380],
+                      "ts": datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z")})
+        with open("cloud/proactive.json", "w", encoding="utf-8") as _f:
+            json.dump(_feed[-30:], _f, ensure_ascii=False, indent=1)
+    except Exception:
+        pass
     sys.exit(0 if hard_ok else 1)  # 硬检查任一失败 → Actions 红灯，App 端当场可见
 
 
