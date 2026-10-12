@@ -107,6 +107,8 @@ jobs:
         run: |
           git config user.name "ds-harness-agent"
           git config user.email "agent@ds-harness.local"
+          git rebase --abort >/dev/null 2>&1 || true  # 🔧 状态自愈：清掉任何遗留中断态（unmerged files 会炸整条 commit）
+          git merge --abort >/dev/null 2>&1 || true
           git add -A results/ || true  # -A 使滚动清理的删除也传播（防 git 历史膨胀；agent.py 保最近 20 个）
           git add anime/ output/ 2>/dev/null || true # 📦 v2.5.47-inchat：生成产物回仓（视频/图片/音频——不回仓 App 对话框内就没得拉）
           git add cloud/memory.json cloud/playbook.json cloud/vitals.json cloud/app_state.json 2>/dev/null || true  # 🧖📖 GEN3+💗 v2.5.30-alive：云端学习成果/手册/小神生命体征（心情/日记/问候）随运行回写仓库（App 拉取感知；app_state 镜像同步回仓）
@@ -116,9 +118,13 @@ jobs:
           python3 -c "import json,datetime,os; n=json.load(open('cloud/ping.json')).get('n',0)+1 if os.path.exists('cloud/ping.json') else 1; json.dump({'n':n,'ts':datetime.datetime.now(datetime.timezone.utc).isoformat(),'by':'agent'},open('cloud/ping.json','w'),ensure_ascii=False)" || true
           git add cloud/ping.json || true
           git commit -m "DS Harness: result of run ${{ github.run_id }} (+mind sync)" || echo "nothing to commit"
-          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
-          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
-          git push || echo "push failed (may be empty result)"
+          # 🛡️ v2.5.89-syncfix：App 端随时直推仓库（v2.5.57-wire），旧 pull --rebase 撞 ping.json 并发改动即冲突中断→detached HEAD→push 静默失败丢结果（run 38238427984 实锤）
+          # 改 merge -X ours：冲突自动偏向本次云端成果（rebase 的 -X ours 语义反转是陷阱，merge 语境清晰）；stash 护住未提交脏文件
+          git fetch origin main >/dev/null 2>&1 || true
+          git stash push -u -m dsh-sync >/dev/null 2>&1 || true
+          git merge -X ours --no-edit origin/main >/dev/null 2>&1 || { git merge --abort >/dev/null 2>&1 || true; git merge -X ours --no-edit origin/main >/dev/null 2>&1 || echo "⚠️ sync merge failed"; }
+          git stash pop >/dev/null 2>&1 || true
+          git push origin HEAD:main || echo "⚠️ PUSH FAILED: run ${{ github.run_id }} 成果未送达仓库（看上方报错）"
 
       - name: Self-evolve
         if: always()
@@ -142,6 +148,8 @@ jobs:
         run: |
           git config user.name "ds-harness-agent"
           git config user.email "agent@ds-harness.local"
+          git rebase --abort >/dev/null 2>&1 || true  # 🔧 状态自愈：清掉上一步遗留中断态
+          git merge --abort >/dev/null 2>&1 || true
           git add cloud/agent.py cloud/agent.py.bak cloud/.evolve_ts cloud/memory.json cloud/playbook.json cloud/vitals.json || true  # 💗 v2.5.30-alive：vitals 同回（进化时小神心情也进化）
           git add cloud/models_sync.py cloud/watchdog.py cloud/consolidate.py cloud/vuln_check.py cloud/*.bak 2>/dev/null || true # 🧬 v2.5.27-human：引擎全家桶肢体（进化补丁可能命中任一）
           git add build.sh app/AndroidManifest.xml app/java 2>/dev/null || true # 🧬 v2.5.27-human：Java 骨架肢体进化回仓（版本三处同步升随包；无变更自动跳过）
@@ -151,6 +159,10 @@ jobs:
           git add cloud/evolve_wants.json 2>/dev/null || true # ⚡ v2.5.46-omnipotent：GENE9 未满足需求清单回仓（App 端拉取感知欠主人什么；销账进展双端同步）
           git add .github/workflows 2>/dev/null || true # 🧬 v2.5.28-omni：工作流 yml 血管神经进化回仓（用户新授权，无变更自动跳过）
           git commit -m "cloud-evolve: engine self-evolution of run ${{ github.run_id }} (+mind sync)" || echo "nothing to commit"
-          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
-          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
-          git push || echo "push failed (may be empty evolve)"
+          # 🛡️ v2.5.89-syncfix：同上——merge -X ours 宽容同步（冲突偏向 evolve 成果）+ 显式 refspec push 防 detached
+          git fetch origin main >/dev/null 2>&1 || true
+          git stash push -u -m dsh-sync >/dev/null 2>&1 || true
+          git merge -X ours --no-edit origin/main >/dev/null 2>&1 || { git merge --abort >/dev/null 2>&1 || true; git merge -X ours --no-edit origin/main >/dev/null 2>&1 || echo "⚠️ sync merge failed"; }
+          git stash pop >/dev/null 2>&1 || true
+          git push origin HEAD:main || echo "⚠️ PUSH FAILED: evolve 成果未送达仓库（看上方报错）"
+
