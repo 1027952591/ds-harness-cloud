@@ -37,6 +37,15 @@ GENE_DIRECTIVE9 = "有求必应铁律：主人的任何要求必须都能做到�
 
 RESULTS = []
 
+# 🔧 buildfix 103 轮：转译宽容匹配——vuln_check 锚点当年按源码风格写（如 wHit*3+tagHit*4），
+#    而 app/assets/index.html 是 Babel 转译产物（空格重排如 wHit * 3 + tagHit * 4），
+#    精确子串必然 MISS=永久红灯噪声。统一走 _fz/_fzc：精确命中或去空格命中均算过
+def _fz(hay, needle):
+    return needle in hay or needle.replace(" ", "") in hay.replace(" ", "")
+
+def _fzc(hay, needle):
+    return hay.count(needle) + hay.replace(" ", "").count(needle.replace(" ", ""))
+
 
 def check(name, ok, why="", hard=True):
     """hard=False 为软检查（留痕不拦跑）；hard=True 失败即红灯。"""
@@ -246,10 +255,10 @@ def main():
     try:
         if os.path.exists("app/assets/index.html"):
             ix10 = open("app/assets/index.html", encoding="utf-8").read()
-            anchors10 = [("联想式记忆检索（bigram 突触+四维评分+召回即强化）", all(x in ix10 for x in ("memBigrams", "function memContext", "命中即强化", "wHit*3+tagHit*4"))),
-                         ("门铃模式实时同步（cloudPingCheck+四扇门强拉+心跳兜底）", all(x in ix10 for x in ("function cloudPingCheck", "st.pingSeen", "pullMindCloud(true)", "pullCloudProjectsSilentForce", "vulnReportRecoverForce"))),
+            anchors10 = [("联想式记忆检索（bigram 突触+四维评分+召回即强化）", all(_fz(ix10, x) for x in ("memBigrams", "function memContext", "命中即强化", "wHit*3+tagHit*4"))),
+                         ("门铃模式实时同步（cloudPingCheck+四扇门强拉+心跳兜底）", all(_fz(ix10, x) for x in ("function cloudPingCheck", "st.pingSeen", "pullMindCloud(true)", "pullCloudProjectsSilentForce", "vulnReportRecoverForce"))),
                          ("睡眠整理成果感知（sleep_report 拉回沉淀记忆）", "sleep_report.json" in ix10 and "睡眠整理成果感知" in ix10 and "st.sleepRepTs" in ix10),
-                         ("进化养料注入脑状态（类脑三件套入 prompt）", "类脑三件套" in ix10 and "st.pingSeen||0" in ix10)]
+                         ("进化养料注入脑状态（类脑三件套入 prompt）", _fz(ix10, "类脑三件套") and _fz(ix10, "st.pingSeen||0"))]
             # 云端侧锚（本地布局：cloud/* 或模拟仓 app/assets/cloud/*；runner 上：cloud/*）
             cp = "cloud/consolidate.py" if os.path.exists("cloud/consolidate.py") else ("app/assets/cloud/consolidate.py" if os.path.exists("app/assets/cloud/consolidate.py") else None)
             anchors10.append(("睡眠整理工序（合并/压缩/强化/淡忘+seed 永不淡忘）", cp is not None and all(x in open(cp, encoding="utf-8").read() for x in ("SIM_MERGE", "seed-", 'rpt["faded"]', "sleep_report.json"))))
@@ -377,10 +386,10 @@ def main():
         if os.path.exists("app/assets/index.html"):
             ih13 = open("app/assets/index.html", encoding="utf-8").read()
             if not check("⑬ 👁️👂🗣️ App 端感官同构（十源 vis+四源 asr+麦克风录音+嗓音播报）",
-                         (ih13.count('vis:"') == 10 or ih13.count('vis:"') >= 10) and ih13.count('asr:"') >= 4 and "micRec" in ih13 and "speechSynthesis" in ih13):
+                         (_fzc(ih13, 'vis:"') >= 10) and _fzc(ih13, 'asr:"') >= 4 and "micRec" in ih13 and "speechSynthesis" in ih13):
                 hard_ok = False
             if not check("⑬ 🎬 App 端番剧工坊同构（animeStudio 分镜导演+宫格渲染+入口+路由——v2.5.42-anime）",
-                         "animeStudio" in ih13 and "attachAnime" in ih13 and "japanese anime style" in ih13 and "image.pollinations.ai/prompt/" in ih13 and "seed+i" in ih13):
+                         "animeStudio" in ih13 and "attachAnime" in ih13 and "japanese anime style" in ih13 and "image.pollinations.ai/prompt/" in ih13 and _fz(ih13, "seed+i")):
                 hard_ok = False
             if not check("⑬ 🎥🎭 App 端真视频/配音入口同构（attachVideo/attachVoice 菜单+前缀路由转云端四源链——v2.5.43-video）",
                          "attachVideo" in ih13 and "attachVoice" in ih13 and "🎬真视频" in ih13 and "🎭配音" in ih13 and "_video(" in ih13 and "_voice_act(" in ih13):
@@ -410,7 +419,7 @@ def main():
         if os.path.exists("app/assets/index.html"):
             ih14 = open("app/assets/index.html", encoding="utf-8").read()
             if not check("⑭ ⚡ App 端 demandMiss 自动进化链（需求落空即登记+本地 evolveRun+云端进化任务双发；链空/全败双挂点+回复认怂检测——零人工零提醒）",
-                         "function demandMiss" in ih14 and "GENE9 需求登记" in ih14 and "回复中承认做不到" in ih14 and "wants_pass:JSON.stringify" in ih14 and "有求必应铁律（GENE9" in ih14 and ih14.count('demandMiss(text,"') >= 3):
+                         _fz(ih14, "function demandMiss") and _fz(ih14, "GENE9 需求登记") and _fz(ih14, "回复中承认做不到") and _fz(ih14, "wants_pass:JSON.stringify") and _fz(ih14, "有求必应铁律（GENE9") and _fzc(ih14, 'demandMiss(text,"') >= 3):
                 hard_ok = False
         ay14 = ".github/workflows/agent.yml" if os.path.exists(".github/workflows/agent.yml") else ("app/assets/cloud/agent.yml" if os.path.exists("app/assets/cloud/agent.yml") else None)
         if ay14:
