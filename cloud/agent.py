@@ -2009,6 +2009,8 @@ def _evolve():
     # ── 节流：24h 内已进化过则跳过；上轮任务失败（EVOLVE_FORCE）绕过节流优先自修 ──
     # ⚡ v2.5.91-evolve 107 轮（GENE9 有求必应补全·用户实弹三问：进化在不在位/为什么从没主动进化过）：
     # 未满足需求清单非空时节流 24h→1h——"做不到的那一刻必须马上进化"不该被日历拦住；无待办时维持 24h 省配额
+    # ⚡ v2.5.100-evofix 116 轮（用户最高令：小神触发全有进化时必须做到马上进化、版本马上更新）：
+    # 未满足需求清单非空时节流 1h→0——有需求就立即进化，绝不许日历再拦一秒；无待办时维持 24h 省配额
     if not force and os.path.exists(ts_path):
         try:
             age_h = (time.time() - os.path.getmtime(ts_path)) / 3600.0
@@ -2018,7 +2020,7 @@ def _evolve():
                     _want_n = len([_x for _x in ((json.load(_wf) or {}).get("wants") or []) if not _x.get("done")])
             except Exception:
                 _want_n = 0
-            _gate_h = 1.0 if _want_n > 0 else 24.0
+            _gate_h = 0.0 if _want_n > 0 else 24.0  # 🚀 116 轮最高令：有未满足需求=马上进化（节流归零）；无待办才维持 24h
             if age_h < _gate_h:
                 print("[evolve] 距上次进化 %.1fh < %.0fh，跳过（%s）" % (age_h, _gate_h, ("⚡GENE9 未满足需求 %d 条：节流已降至 1h，到点即进化" % _want_n) if _want_n else "EVOLVE_FORCE 可绕过"), flush=True)
                 return
