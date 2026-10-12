@@ -1,0 +1,81 @@
+# 🧠 v2.5.26-brain：云端睡眠整理（记忆巩固工序）——人脑海马体夜间回放机制的代码化
+# 每日 UTC 4:23（北京 12:23，避开 models 11:17 情报班）对全量记忆/手册做四道工序：
+# ① 合并近似重复（bigram 相似度>0.62）② 压缩超长 ③ 强化被唤起记忆（hit 结算 w+0.1）④ 淡忘 90 天未唤起（×0.8，永不删除）
+# 产出 cloud/memory.json/playbook.json/sleep_report.json 回仓 → App 端 pullMindCloud 下一拍自动拉回——双端共脑越用越聪明。
+# ⚖️ 最高指令（GENE·基因铁律，永不可移除）：每次动态拉取/更新/淘汰，必须强制深彻、
+# 全方位、无死角进行全球探查，事无巨细，仔细再仔细。
+# 🧠📖 最高指令三（GENE3·双端共脑铁律，永不可移除）：全局永久记忆与技术攻坚手册必须永久随身：
+# 记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，
+# 云端所有层面必须强制自动同步更新。
+name: Sleep Consolidation (Brain)
+
+on:
+  schedule:
+    - cron: '23 4 * * *'   # 每日 UTC 4:23（北京 12:23）——人脑睡眠整理时段
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# 🚦 统一并发排队组（v2.5.20-audit6）：与 agent/models/vuln/build 共用一把锁，整理不撞长任务
+concurrency:
+  group: dsh-cloud-engine
+  cancel-in-progress: false
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sleep consolidation（合并/压缩/强化/淡忘四道工序）
+        run: python3 cloud/consolidate.py
+
+      - name: Morning class（🎓 v2.5.51-human 每日晨课：无求先应——自主选题学习沉淀，主人不催自己学）
+        env:
+          # 🛡️ v2.5.57-wire 66 轮：旧版零转发——晨课 llm_call 只剩 pollinations 保底源、雷达 KEYS 恒空全部源永远 paused
+          # （verified 动态链在睡眠班恒空，还会把别处 verified 的状态回写成 paused）。修复：全量 secrets 对齐 agent.yml。
+          ZHIPU_KEY: ${{ secrets.ZHIPU_KEY }}
+          NVIDIA_KEY: ${{ secrets.NVIDIA_KEY }}
+          MODELSCOPE_KEY: ${{ secrets.MODELSCOPE_KEY }}
+          SILICONFLOW_KEY: ${{ secrets.SILICONFLOW_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+          GROQ_KEY: ${{ secrets.GROQ_KEY }}
+          CEREBRAS_KEY: ${{ secrets.CEREBRAS_KEY }}
+          MISTRAL_KEY: ${{ secrets.MISTRAL_KEY }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          GEMMA_KEY: ${{ secrets.GEMMA_KEY }}
+          POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}
+        run: python3 cloud/agent.py --class || true  # 失败不炸睡眠整理链（selftest 已验 callable；落 daily_class.json 如实记失败）
+
+      - name: Video source scout（🎥 v2.5.52-scout 视频源雷达巡天：免费视频新源每天自动发现/验活/接入/淘汰）
+        env:
+          ZHIPU_KEY: ${{ secrets.ZHIPU_KEY }}
+          NVIDIA_KEY: ${{ secrets.NVIDIA_KEY }}
+          MODELSCOPE_KEY: ${{ secrets.MODELSCOPE_KEY }}
+          SILICONFLOW_KEY: ${{ secrets.SILICONFLOW_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
+          GROQ_KEY: ${{ secrets.GROQ_KEY }}
+          CEREBRAS_KEY: ${{ secrets.CEREBRAS_KEY }}
+          MISTRAL_KEY: ${{ secrets.MISTRAL_KEY }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT }}
+          GEMMA_KEY: ${{ secrets.GEMMA_KEY }}
+          POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}
+        run: python3 cloud/agent.py --vidscout || true  # 61 轮用户最高令：不断探索免费视频新源的进化机制；战果落 vid_scout.json，失败不炸睡眠链
+
+      - name: Commit 整理成果回仓（App 端下一拍自动拉回）
+        run: |
+          git config user.name "ds-harness-agent"
+          git config user.email "agent@ds-harness.local"
+          git add cloud/memory.json cloud/playbook.json cloud/sleep_report.json cloud/vitals.json || true  # 💗 v2.5.30-alive：vitals 同回（梦话+晨间心情重置随睡眠整理回仓）
+          git add cloud/daily_class.json cloud/vid_scout.json 2>/dev/null || true  # 🎓🎥 v2.5.51-human+v2.5.52-scout：晨课+视频源雷达情报站同回（App 拉取感知）
+          # 🧠 v2.5.26-brain：按门铃；🛡️ v2.5.55-pulse 64 轮：铃号写在 commit 之前随 commit 入库（旧版 commit 后只 stage 永不入库，铃从未响过）
+          python3 -c "import json,datetime,os; n=json.load(open('cloud/ping.json')).get('n',0)+1 if os.path.exists('cloud/ping.json') else 1; json.dump({'n':n,'ts':datetime.datetime.now(datetime.timezone.utc).isoformat(),'by':'sleep'},open('cloud/ping.json','w'),ensure_ascii=False)" || true
+          git add cloud/ping.json || true
+          git commit -m "brain: sleep consolidation (merge/compress/strengthen/fade)" || echo "nothing to consolidate"
+          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
+          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
+          git push || echo "push failed (next queued run will carry it)"
