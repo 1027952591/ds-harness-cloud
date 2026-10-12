@@ -1,0 +1,10 @@
+{
+ "versionName": "2.5.81-rpcfix",
+ "versionCode": 99,
+ "md5": "05ce4228c0435b9b9fb991a4124cb4c4",
+ "size": 5610285,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "buildfix 103b: vendor transpile deps (zero-npm)",
+ "builtAt": "2026-10-12T09:51:03Z"
+}
