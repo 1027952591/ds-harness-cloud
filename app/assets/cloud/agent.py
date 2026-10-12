@@ -1695,6 +1695,27 @@ def run_python(code):
         os.unlink(path)
 
 
+def _code_rescue(content):
+    """🏢 v2.5.102-omni 118 轮：代码块抢救——模型直接输出 python 代码当答案（没按工具协议裹 JSON）时代为执行。
+    实弹教训（run 38323694150）：任务让调 _xlsx 工坊，模型裸写 pandas 代码一步收工，工具从未执行、产物从未落盘。
+    匹配 ```python 围栏块；或整篇是裸代码（python 头/含 import、def 等强代码特征且无中文长句标点）。
+    普通散文回答不含这些特征，返回 None 不误伤。"""
+    import re as _re
+    c = str(content or "").strip()
+    m = _re.search(r"```(?:python|py)?\s*\n([\s\S]*?)```", c)
+    if m and len(m.group(1).strip()) > 30:
+        return m.group(1)
+    stripped = c
+    if stripped.startswith("python\n"):
+        stripped = stripped[7:]
+    if (len(stripped) > 30
+            and _re.search(r"^\s*(import |from .* import |def |class )", stripped, _re.M)
+            and stripped.count("=") >= 2
+            and "。" not in stripped[:150]):
+        return stripped
+    return None
+
+
 def try_tool(content):
     """从模型回复中解析工具调用 JSON（兼容 ```json 包裹与裸 JSON）。"""
     obj = None  # 🛡️ v2.5.57-wire 66 轮：旧版贪婪 re 从首个 { 抓到末个 }——模型在 JSON 后带解释文字（内含花括号）时整体解析必败，工具静默不执行且把 JSON 原文当答案交付。修复：raw_decode 逐位平衡提取
@@ -1730,6 +1751,7 @@ def main():
                 {"role": "user", "content": PROMPT}]
     final = ""
     last = ""
+    rescues = 0  # 🏢 118 轮：代码抢救计数
     try:
         learn_memory("run", "云端运行开始：任务=" + PROMPT[:500], ["run", "云端"])  # 🧖 GEN3：运行留痕永久记忆（🛡️ v2.5.58-recall 66 轮用户最高令：旧版只记前 120 字——任务稍长留痕就断章取义，主人翻记忆看不到自己到底让小神干了啥；扩到 500 字，每日 consolidate 会自动合并压缩不撑库）
     except Exception:
@@ -1757,8 +1779,20 @@ def main():
                              % (tool_name, obs)})
             print("[step %d] prov=%s tool=%s obs=%d chars" % (steps, pk, tool_name, len(obs)), flush=True)
         else:
-            final = content
-            break
+            _resc = _code_rescue(content) if (TOOLS_CFG.get("code") and rescues < 4) else None  # 🏢 118 轮：裸代码抢救（模型没裹 JSON 时代为执行；限 4 次防循环）
+            if _resc:
+                rescues += 1
+                _obs = run_python(_resc)
+                transcript[-1]["tool"] = "run_python(rescue)"
+                messages.append({"role": "assistant", "content": content})
+                messages.append({"role": "user", "content":
+                                 "（系统检测到你上条回复直接输出了代码但没有按工具协议包裹 JSON——已自动代为执行，结果如下）\n"
+                                 + str(_obs)[:3500]
+                                 + "\n\n请基于执行结果继续。要再执行代码请按协议输出 JSON：{\'tool\': \'run_python\', \'input\': {\'code\': \'...\'}}。文件生成工具直接在代码里 import agent 后调 agent._xlsx/agent._docx/agent._pptx/agent._novel（勿用 pandas——runner 未装）。若已全部生成完毕请直接给最终回答（不要再输出代码）。"})
+                print("[step %d] prov=%s tool=run_python(rescue) obs=%d chars" % (steps, pk, len(str(_obs))), flush=True)
+            else:
+                final = content
+                break
     if not final:
         final = "(达到最大步数 %d，最后一次模型回复如下)\n\n%s" % (MAX_STEPS, last)
     _dlv = _deliver_scan(_t0)  # 📦 v2.5.47-inchat：本轮新增产物自动盘点（对话框内直接交付，确定性不依赖 LLM 自觉）
