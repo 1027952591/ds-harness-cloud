@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-12T09:31:47.718Z",
- "action": "state",
+ "updated": "2026-10-12T10:26:30.478Z",
+ "action": "chat",
  "appVersion": "2.5.87-triple",
  "mode": "cloud",
- "prefProv": "zhipu",
+ "prefProv": "",
  "chainOn": [
   "zhipu",
   "pollinations"
@@ -28,26 +28,18 @@
  "probeOk": 1,
  "liveN": 0,
  "repoN": 0,
- "vulnOk": 7,
- "vulnN": 11,
- "memN": 15,
- "pbN": 41,
+ "vulnOk": 5,
+ "vulnN": 6,
+ "memN": 7,
+ "pbN": 17,
  "vulnBad": [
-  "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter",
-  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
-  "fresh:云端无 models.json 且本地无缓存（每日体检从未成功） → 🔧远程触发失败 HTTP 0（未配 GitHub Token 时无法自动触发，可到 Ac"
+  "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
  ],
- "chanHealth": [
-  "raw.githubusercontent:ok0/p100",
-  "jsDelivr CDN:ok0/p100",
-  "GitHub API:ok0/p100"
- ],
+ "chanHealth": [],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {
-  "think": 1
- }
+ "plugins": {}
 }
