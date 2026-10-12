@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.94-permfix",
- "md5": "2de59256b0020a168868a6ad201290e4",
+ "appVersion": "2.5.95-rolefix",
+ "md5": "414acc525dca702549a032af005bf4ea",
  "bundleVer": 89,
- "ts": "2026-10-12T12:41:09Z",
- "size": 570032,
- "note": "v2.5.94-permfix 热更清单（四重闸门可过）"
+ "ts": "2026-10-12T13:15:00Z",
+ "size": 571185,
+ "note": "v2.5.95-rolefix 热更清单（四重闸门可过）"
 }
