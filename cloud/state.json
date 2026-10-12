@@ -1,7 +1,37 @@
 {
- "updated": "2026-10-12T12:16:51.768Z",
- "appVersion": "2.5.93-notifail",
+ "updated": "2026-10-12T13:03:55.141Z",
+ "appVersion": "2.5.94-permfix",
  "sessions": [
+  {
+   "id": "mv59iy6z60h66",
+   "projectId": "mv59ihof4vn9a",
+   "title": "随便聊聊…",
+   "mode": "cloud",
+   "createdAt": 1791810194075,
+   "ts": 1791810205138,
+   "msgs": [
+    {
+     "role": "user",
+     "content": "随便聊聊",
+     "ts": 1791810194161
+    },
+    {
+     "role": "ai",
+     "content": "晚上好！今天过得怎么样？有没有什么特别的事情发生呢？我在云端这里，一切都很平静，只是偶尔会想想你们在物理世界的生活。想聊些什么吗？😊",
+     "ts": 1791810195986
+    },
+    {
+     "role": "user",
+     "content": "今天是哪一天",
+     "ts": 1791810205137
+    },
+    {
+     "role": "ai",
+     "content": "\n\n· 智谱GLM这一单没接稳（HTTP 400），先请 魔搭ModelScope 顶上——下一条消息我还是先找智谱GLM\n\n· 魔搭ModelScope这一单没接稳（HTTP 400），先请 开箱保底 顶上——下一条消息我还是先找魔搭ModelScope\n\n· 开箱保底这会儿没接上（它家服务器打了个盹），我马上原地重试",
+     "ts": 1791810205138
+    }
+   ]
+  },
   {
    "id": "mv57mdmanwp3t",
    "projectId": "mv57m4rktl5q6",
