@@ -1,0 +1,133 @@
+# 🧬 v2.5.21-evolve：Java 骨架层自主进化物理通道——云端 runner 自动构建 APK
+# 链路：进化器/人工提交 Java 源码变更 → 触发本工作流 → runner 自带 SDK/NDK/JDK 跑 build.sh（零 Gradle）
+# → 新 APK + apk_manifest.json（版本/MD5/构建原因）commit 回仓 → App 端 updCheck 每日检测 → 通知用户一键下载安装。
+# 用户明确授权：Java 骨架层不再依赖人工审计，全部纳入自主进化闭环（Android 物理约束：新骨架必须以 APK 落地，
+# App 无法静默自装——点安装是系统级最后一道人工闸，其余全自动）。
+# ⚖️ 基因铁律四条同刻（与 agent.py/build.sh 同源同刻，永不可移除）。
+name: build-apk
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: '构建原因（进化号/修复说明）'
+        required: false
+  workflow_run:
+    workflows: ["DS Harness Cloud Agent (GENE-Enforced)"]   # 🧬 GENE6：进化任务跑完即触发（构建幂等：无变更 commit 步自动跳过）；🛡️ v2.5.55-pulse 64 轮：触发匹配修为工作流全名——该触发器按工作流 name 匹配而非文件名，旧版写 ["agent"] 永不命中，APK 自动重建从未触发过
+    types: [completed]
+
+permissions:
+  contents: write
+
+# 🚦 与 agent/models/vuln 共用排队锁（v2.5.20-audit6）：构建写回仓同样不互踢
+concurrency:
+  group: dsh-cloud-engine
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 🛡️ v2.5.57-wire 66 轮：旧版默认浅克隆（depth=1），骨架自愈步的 checkout $LAST~1 无父对象可取必死——自愈机制从上线起空转，必须全量历史
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Ensure Android SDK pieces (runner 预装为主，缺则补)
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager --install "platforms;android-34" "build-tools;34.0.0" "ndk;27.2.12479018" > /dev/null 2>&1 || true
+          ls "$ANDROID_HOME/platforms" 2>/dev/null || true
+          ls "$ANDROID_HOME/ndk" 2>/dev/null || true
+
+      - name: Assemble source tree（骨架 DNA 已随部署上仓；补端侧引擎源码+进化资产种子+最新热包）
+        run: |
+          # 端侧引擎源码：llama.cpp 免费克隆（本地 vendor 不上仓，runner 网络直取；失败则 APK 优雅降级无端侧引擎）
+          if [ ! -f vendor/llama-b4604/CMakeLists.txt ]; then
+            mkdir -p vendor
+            git clone --depth 1 --branch b4604 https://github.com/ggml-org/llama.cpp vendor/llama-b4604 || echo "llama.cpp 克隆失败，端侧引擎自动降级"
+          fi
+          # 云端进化资产种子 → APK assets 位（runner 编出的骨架包内嵌云端最新进化成果，而非 APK 内置旧种子）
+          mkdir -p app/assets/cloud
+          cp cloud/agent.py cloud/models_sync.py cloud/vuln_check.py cloud/watchdog.py cloud/consolidate.py cloud/memory.json cloud/playbook.json app/assets/cloud/ 2>/dev/null || true
+          # 最新热包：云端已有进化热包（cloud/update/bundle.json 的 b64 字段）则嵌入骨架包，实现热包层+骨架层双进化同拍落地
+          if [ -f cloud/update/bundle.json ]; then
+            python3 -c "import json,base64; b=json.load(open('cloud/update/bundle.json')); open('app/assets/index.html','wb').write(base64.b64decode(b['b64'])); print('embedded hot bundle', b.get('version'))" || echo "热包嵌入失败，保留 DNA 内置 index.html"
+          fi
+          ls app/java/com/dsh/app/ && head -3 build.sh
+
+      - name: Build APK（零 Gradle，DSH_* 自适应 runner 环境）
+        run: |
+          NDK_DIR="$(ls -d "$ANDROID_HOME"/ndk/* 2>/dev/null | sort -V | tail -1)"
+          echo "NDK_DIR=$NDK_DIR"
+          export DSH_BUILD_TOOLS="$ANDROID_HOME/build-tools/34.0.0"
+          export DSH_PLATFORM_JAR="$ANDROID_HOME/platforms/android-34/android.jar"
+          export DSH_JDK="$JAVA_HOME"
+          export DSH_NDK="$NDK_DIR"
+          bash build.sh
+
+      - name: 骨架自愈（build 失败→自动回滚最近肢体进化的骨架文件，防坏补丁滞留主链卡死 build——🧬 v2.5.33-heal 查体实锤：Java 无 runner 外编译闸，坏补丁回仓=永久红）
+        if: failure()
+        run: |
+          git config user.name "dsh-heal-bot"
+          git config user.email "agent@ds-harness.local"
+          LAST="$(git log -1 --format=%H)"
+          if git log -1 --format=%s | grep -q "cloud-evolve"; then
+            git checkout "$LAST~1" -- build.sh app/AndroidManifest.xml app/java app/res tests .github/workflows
+            if git diff --cached --quiet; then
+              echo "骨架无差异（非骨架致败，不回滚）"
+            else
+              git commit -m "heal: auto-revert skeleton from failed build (run ${{ github.run_id }})" || echo "nothing to commit"
+              git pull --rebase --autostash origin main >/dev/null 2>&1 || true
+              # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
+              git push || echo "push failed (next run will retry)"
+              echo "🧬 骨架坏补丁已自动回滚——下轮 build 自愈"
+            fi
+          else
+            echo "最近 commit 非肢体进化（cloud-evolve），不自动回滚"
+          fi
+
+      - name: Gen apk_manifest.json（版本/MD5/构建原因——App 端 updCheck 检测链）
+        env:
+          REASON_RAW: ${{ github.event.inputs.reason }}  # 🛡️ 66 轮：经 env 传入再由 python json 转义，旧版直接单引号内插——reason 含引号即破壳注入/写出坏 JSON
+          RUN_ID_E: ${{ github.run_id }}
+          REPO_E: ${{ github.repository }}
+        run: |
+          VER="$(grep -oP 'VER="\K[^"]+' build.sh | head -1)"
+          APK="build/DS-Harness-$VER.apk"
+          MD5="$(md5sum "$APK" | cut -d' ' -f1)"
+          SIZE="$(stat -c%s "$APK")"
+          VCODE="$(grep -oP 'VCODE=\K[0-9]+' build.sh | head -1)"
+          mkdir -p cloud/update/apk  # 🛡️ 66 轮：建目录必须在写盘之前——旧版 heredoc 先写 apk_manifest.json 后才 mkdir，冷仓（cloud/update 不在位）必报 No such file or directory
+          VER="$VER" MD5="$MD5" SIZE="$SIZE" VCODE="$VCODE" python3 - << 'PYGEN'
+          import json, os, datetime
+          reason = os.environ.get("REASON_RAW") or ("evolve build (run %s)" % os.environ.get("RUN_ID_E", ""))
+          m = {"versionName": os.environ["VER"], "versionCode": int(os.environ["VCODE"]), "md5": os.environ["MD5"],
+               "size": int(os.environ["SIZE"]),
+               "apkUrl": "https://raw.githubusercontent.com/%s/main/cloud/update/apk/DS-Harness.apk" % os.environ["REPO_E"],
+               "cdnUrl": "https://cdn.jsdelivr.net/gh/%s@main/cloud/update/apk/DS-Harness.apk" % os.environ["REPO_E"],
+               "reason": reason, "builtAt": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+          json.dump(m, open("cloud/update/apk_manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          PYGEN
+          cp "$APK" cloud/update/apk/DS-Harness.apk
+          cat cloud/update/apk_manifest.json
+
+      - name: Commit APK + manifest 回仓（进化产物沉淀，App 每日检测）
+        run: |
+          git config user.name "dsh-build-bot"
+          git config user.email "dsh-build-bot@users.noreply.github.com"
+          git add cloud/update/apk/ cloud/update/apk_manifest.json || true
+          # 🧠 v2.5.26-brain：按门铃；🛡️ v2.5.55-pulse 64 轮：铃号写在 commit 之前随 commit 入库（旧版 commit 后只 stage 永不入库，铃从未响过）
+          python3 -c "import json,datetime,os; n=json.load(open('cloud/ping.json')).get('n',0)+1 if os.path.exists('cloud/ping.json') else 1; json.dump({'n':n,'ts':datetime.datetime.now(datetime.timezone.utc).isoformat(),'by':'build'},open('cloud/ping.json','w'),ensure_ascii=False)" || true
+          git add cloud/ping.json || true
+          git commit -m "build-apk: skeleton evolution artifact (run ${{ github.run_id }})" || echo "nothing to commit"
+          git pull --rebase --autostash origin main >/dev/null 2>&1 || true
+          # 🛡️ v2.5.57-wire 66 轮：App 端随时直推仓库，远端超前时裸 push 必 non-fast-forward 被向下吞掉本轮成果——先 rebase 再推
+          git push || echo "push failed (next queued run will carry it)"
