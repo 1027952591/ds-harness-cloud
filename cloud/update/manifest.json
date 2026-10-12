@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.97-vulnfix",
- "md5": "bd069fc046018f78960b1e5b9c91c552",
+ "appVersion": "2.5.98-wxfix",
+ "md5": "7b9340fef52b137d3fd8b240bc4f15ac",
  "bundleVer": 89,
- "ts": "2026-10-12T13:45:00Z",
- "size": 573365,
+ "ts": "2026-10-12T14:03:00Z",
+ "size": 580493,
  "note": "v2.5.96-datefix 热更清单（四重闸门可过）"
 }
