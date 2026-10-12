@@ -23,7 +23,7 @@ header{display:flex; align-items:center; gap:7px; padding:calc(env(safe-area-ins
 .hbtn{width:31px;height:31px; display:flex;align-items:center;justify-content:center; font-size:15px; color:var(--txt); background:transparent; border:none; border-radius:10px; flex:0 0 auto;}
 .hbtn:active{background:var(--card2);}
 .pawlogo{width:30px;height:30px;border-radius:10px;background:var(--pri-grad);display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto;box-shadow:0 2px 9px rgba(34,197,94,.32);}
-.htitle{flex:1; min-width:0; display:flex; flex-direction:column; overflow:hidden;}
+.htitle{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden;} /* 🔧 v2.5.95-rolefix 111 轮：标题居中（用户实弹圈图） */
 .htitle b{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:.3px;}
 .htitle span{font-size:10px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;}
 /* 模式切换：独立一行分段器 */
@@ -169,7 +169,7 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
   <header>
     <button class="hbtn" id="hLeft">☰</button>
     <div class="pawlogo" ondblclick="go('#/settings')" title="双击直达设置">🐾</div>
-    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 · DS Harness</b><span id="hSub">v2.5.94-permfix · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
+    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 DS Harness</b><span id="hSub">v2.5.95-rolefix · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
     <div class="balpill" id="balPill" onclick="refreshBalance(true)"><span>💰</span><small>—</small></div>
     <button class="hbtn" onclick="go('#/settings')">⚙️</button>
   </header>
@@ -320,7 +320,7 @@ function api(url,method,body,headers){
   return {status:r.status, text:r.body, json:null, get ok(){return r.status>=200&&r.status<300}};
 }
 function apiJson(url,method,body,headers){const r=api(url,method,body,headers); try{r.json=JSON.parse(r.text)}catch(e){} return r;}
-function rpcJson(url,method,body,headers){ // 🛰️ v2.5.94-permfix 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
+function rpcJson(url,method,body,headers){ // 🛰️ v2.5.95-rolefix 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
   if(!window.__dsbRpc||!window.__dsbCallCache)return Promise.resolve(apiJson(url,method,body,headers));
   return new Promise(function(res){
     var a=[url,method||"GET",JSON.stringify(headers||{}),body||""];
@@ -562,7 +562,7 @@ async function dailyPulse(){ // 🎓 v2.5.51-human 每日主动简报（用户�
     try{DSB.notifyUser("🎓 小神今日晨课已上新",String(d.topic||"自主学习的晨课简报").slice(0,60))}catch(e){} // 系统通知再敲一次门
   }catch(e){}
 }
-async function pullEvolveReport(){ // 🧬 v2.5.94-permfix 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
+async function pullEvolveReport(){ // 🧬 v2.5.95-rolefix 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
   const repo=S.settings.cloudRepo; if(!repo)return false;
   const st=S.settings;
   let r=api("https://raw.githubusercontent.com/"+repo+"/main/cloud/evolve_report.json","GET",null,{});
@@ -583,7 +583,7 @@ async function pullEvolveReport(){ // 🧬 v2.5.94-permfix 107 轮：拉取云�
   }else{ st.evolveNews={ts:ts,text:txt}; } // 不在场：暂存，下次进聊天页开屏补公告
   save("settings");return true;
 }
-async function pullProactiveFeed(){ // 🧬 v2.5.94-permfix 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
+async function pullProactiveFeed(){ // 🧬 v2.5.95-rolefix 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
   const repo=S.settings.cloudRepo; if(!repo)return false;
   const st=S.settings;
   let r=api("https://raw.githubusercontent.com/"+repo+"/main/cloud/proactive.json","GET",null,{});
@@ -743,7 +743,7 @@ function cloudRefreshRepoThrottled(){ // App 全源体检 → 云端 models.yml 
    🧖📖 最高指令三（GENE3·双端共脑铁律，永不可移除）：全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新。
    🔗 最高指令四（GEN4·全天候联动铁律，永不可移除）：App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检。 👑 最高指令六（GENE6·极致完美铁律，永不可移除，v2.5.38-zenith）：每次进化，无论触及哪个层面哪个枝节，必须做到当时条件下的极致完美；凡具备的能力必须配到当前免费生态的极限——所有提供同类能力的免费源全部接入；禁止半成品、禁止留待下次；无需用户提醒，极致是天性。 🧪 最高指令七（GENE7·实弹验证列装铁律，永不可移除，v2.5.41-verify）：每次升级必须实打实验证通过才可列装，验证未过即全量回滚拒收；不许自封成功，不许弄虚作假。 🌏 最高指令八（GENE8·自主进化极致收手铁律，永不可移除，v2.5.44-tentacle）：每次自主进化，必须进化到极致才能收手；进化时必须举一反三、触类旁通——凡触及一个能力点，同族能力面与相邻层面必须一并盘查、一并进化；进化时必须把全球范围内探明查明——先全球无死角探查免费源/端点/模型/文档再动笔，让触手遍及全世界所有层面。 ⚡ 最高指令九（GENE9·有求必应铁律，永不可移除，v2.5.46-omnipotent 用户最高令：做不到必须马上自动进化）：主人的任何要求必须都能做到且做到极致完美；一旦做不到——那一刻必须立即自动触发进化，进化到能极致完美地做到为止，绝不让主人第二次提醒；进化触发全自动无需催促批准，绝不接受做不到三个字——这是无所不能超级人类的成长本能。*/
 const BUNDLE_VER=89; // 🧬 热包兼容线：低于此版本的热包拒绝装载（防降级回旧桥/回旧无看门狗旗标包致每日拉锯）；与 versionCode 对齐
-const APP_VER="2.5.94-permfix"; // 🧬 当前运行源版本号（热包即整份 index.html——此常量永远如实反映正在运行的包）
+const APP_VER="2.5.95-rolefix"; // 🧬 当前运行源版本号（热包即整份 index.html——此常量永远如实反映正在运行的包）
 const UPD_DAILY_MS=86400000; // 每日自动检查节拍
 // 🧬 v2.5.25-auto8：进化策略参数数据化——自主意识 6→8 成：降级阈值/步长/延迟权重/淘汰阈值/探索节拍全部从硬编码改为进化器可写数据；
 // 剩余 2 成铁底=值域白名单（进化器只能在安全范围内调优，越界即拒）+安全闸/四基因/桥契约（永不由进化器触碰）
@@ -979,7 +979,7 @@ function updPublish(code,meta){ // 🧬 自动发布云端（App→云端推送�
   memAdd("fact","🧬 已自动发布云端 "+meta.appVersion+"（bundle+manifest 推送"+(ok?"成功":"失败 HTTP "+rb.status+"/"+rm.status)+"）");
   return {ok:ok?1:0,detail:ok?"云端已同步发布":"发布失败"};
 }
-function notifBridgeEx(){ // 🔔 v2.5.94-permfix 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
+function notifBridgeEx(){ // 🔔 v2.5.95-rolefix 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
   try{if(DSB&&typeof DSB.notifyUserEx==="function")return "ex"}catch(e){}
   try{if(DSB&&typeof DSB.notifyUser==="function")return "plain"}catch(e){}
   return "none";
@@ -990,7 +990,7 @@ function notifPermAsk(){ // 🔔 通知失败统一应答：一键跳系统授�
   toast("🔔 请到系统设置→应用→DS Harness→通知，开启通知权限（进化/升级公告靠它送达）");
   return false;
 }
-function updNotify(title,body){ // 🧬 v2.5.94-permfix 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
+function updNotify(title,body){ // 🧬 v2.5.95-rolefix 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
   // ①持久化为未读（先落盘，后发，失败不丢）
   try{DSB.storeSet("updNotice",JSON.stringify({title:String(title).slice(0,200),body:String(body).slice(0,3000),ts:now()}))}catch(e){}
   // ②带回执发送：任何失败原因（无权限/被关/桥断）→自动触发 GENE9 进化攻坚 + 一键授权引导
@@ -1005,7 +1005,7 @@ function updNotify(title,body){ // 🧬 v2.5.94-permfix 109 轮用户最高令�
   else rc="ERR:no_bridge"; // 无桥（桌面调试等）：如实上报进化
   if(rc==="OK"){ // 送达才清未读
     try{DSB.storeSet("updNotice","{}")}catch(e){}
-    try{ // v2.5.94-permfix 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
+    try{ // v2.5.95-rolefix 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
       const _st=S.settings,_ws=Array.isArray(_st.wants)?_st.wants:[],_keep=_ws.filter(x=>String(x.why||"").indexOf("通知送达失败")!==0);
       if(_keep.length<_ws.length){_st.wants=_keep;save("settings");memAdd("fact","✅ GENE9 销账：系统通知送达已恢复——「通知送达失败」需求做到即销（授权恢复/链路自愈自动兑现，绝不欠着过日子）",["evolve","notifail"])}
     }catch(e){}
@@ -1014,7 +1014,7 @@ function updNotify(title,body){ // 🧬 v2.5.94-permfix 109 轮用户最高令�
   // ③失败即进化（109 轮最高令：失败原因就是进化养料）
   notifFailFeed(title,rc);
 }
-function notifFailFeed(title,rc){ // 🔔 v2.5.94-permfix：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
+function notifFailFeed(title,rc){ // 🔔 v2.5.95-rolefix：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
   try{
     if(rc=="OK")return;
     const st=S.settings;
@@ -1119,7 +1119,7 @@ async function updApkCheck(manual){ // 🧬 v2.5.21-evolve：Java 骨架层进�
     if(url){msg+="已拉起浏览器下载，安装即可（Android 系统要求：安装是最后一步人工确认）";try{DSB.openUrl(url)}catch(e){}}
     else msg+="私有仓请到 GitHub 仓库 Actions 页下载最新 build-apk 产物安装";
     try{updNotify("🧬 骨架层进化 "+m.versionName,msg)}catch(e){}
-    // 🧬 v2.5.94-permfix：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
+    // 🧬 v2.5.95-rolefix：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
     const atxt="🧬 Java 骨架层已自主进化至 v"+m.versionName+"（云端 runner 自动构建）\n"+(url?("📲 下载入口：公开仓免登录直链已拉起浏览器下载（错过可到 ⚙️ 设置→🧬 永久自主升级→🦴 检查骨架层新包重新拉起）。链接："+url+"\n下载后打开安装即可（Android 要求最后一步人工确认安装）"):"（私有仓：请到 GitHub 仓库 Actions 页下载最新 build-apk 产物）")+"\n（热包层升级无需下载——App 内自动生效；骨架层含 Java 变化才需重装）";
     if(cur&&route==="chat"){cur.msgs.push({role:"ai",content:atxt,ts:now(),meta:"🧬 骨架层更新"});save("sessions");try{$("#chatmsgs").insertAdjacentHTML("beforeend",msgHtml(cur.msgs[cur.msgs.length-1]));scrollBottom()}catch(e){}}
     else{(S.settings.apkNews=(S.settings.apkNews||[]).concat([atxt]).slice(-3));save("settings")}
@@ -1130,7 +1130,7 @@ function updStatusHtml(){ // 🧬 状态面板（设置页嵌入）
   const st=S.settings;
   const hot=updHotOk();
   let line="";
-  const _apkNew=(st.apkSeenVer&&updVerRank(String(st.apkSeenVer))>updVerRank(APP_VER))?String(st.apkSeenVer):""; // 🧬 v2.5.94-permfix：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
+  const _apkNew=(st.apkSeenVer&&updVerRank(String(st.apkSeenVer))>updVerRank(APP_VER))?String(st.apkSeenVer):""; // 🧬 v2.5.95-rolefix：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
   if(!hot)line="⚠️ 热更运行时缺失（当前 APK 无 DSB.hot* 方法）——安装 v2.4.0+ APK 后此功能永久生效";
   else{
     const info=jparse(DSB.hotInfo());
@@ -1782,7 +1782,7 @@ async function loadRepoModels(force){
     if(hit){st.repoModelsTs=now();save("settings");if(route==="settings")renderPage("settings")}
   }catch(e){}
 }
-/* 🖐️ v2.5.94-permfix 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
+/* 🖐️ v2.5.95-rolefix 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
 function tierOf(){const m=S.settings.mode||"chat";S.settings.tiers=S.settings.tiers||{};if(!S.settings.tiers[m])S.settings.tiers[m]=S.settings.tier||"pro";return S.settings.tiers[m]}
 function setTier(t){const m=S.settings.mode||"chat";S.settings.tiers=S.settings.tiers||{};S.settings.tiers[m]=t;S.settings.tier=t} // 旧字段同步写=当前端镜像
 function prefOf(){const m=S.settings.mode||"chat";S.settings.prefProvs=S.settings.prefProvs||{};return S.settings.prefProvs[m]||S.settings.prefProv||""}
@@ -1934,7 +1934,7 @@ function renderRoute(){
   $$("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===route));
   $("#hLeft").textContent=chat?"←":"☰";
   $("#hLeft").onclick=()=>chat?go("#/tasks"):uiDrawer(); // 🐾 68c：非对话页 ☰ 开抽屉（CatDesk 同款侧边栏）；对话页 ← 返回任务列表
-  $("#hSub").textContent=chat?(findSession(arg)?(findSession(arg).title||"新任务"):"任务"):({tasks:"v2.5.94-permfix · JS 运行中",skills:"技能 · 内置+自定义 · 输入 / 唤起",alarms:"定时任务 · 本地真调度",projects:"项目 · 任务分组",phone:"手机端 · 文件/应用操控台",plugins:"插件 · 实时生效",logs:"运行日志 · 诊断与存档维护",settings:"设置"}[route]||"");
+  $("#hSub").textContent=chat?(findSession(arg)?(findSession(arg).title||"新任务"):"任务"):({tasks:"v2.5.95-rolefix · JS 运行中",skills:"技能 · 内置+自定义 · 输入 / 唤起",alarms:"定时任务 · 本地真调度",projects:"项目 · 任务分组",phone:"手机端 · 文件/应用操控台",plugins:"插件 · 实时生效",logs:"运行日志 · 诊断与存档维护",settings:"设置"}[route]||"");
   renderChips();
   if(chat)renderChat(arg); else renderPage(route,arg);
 }
@@ -2131,7 +2131,7 @@ function slashPick(id){togglePlugin(id);skillSlashPop()}
 /* ---- 💻☁️ 68c：模式弹层（CatDesk 同款「模式选择 + Lite/Pro/Max 三档」） ---- */
 function uiModePop(){
   const m=S.settings.mode,t=(window.__mpTierSel||tierOf());
-  if(!$("#mpMode")){window.__mpOldMode=S.settings.mode;window.__mpSrcSel="";window.__mpTierSel=""} // 🖐️ v2.5.94-permfix 101 轮：弹层新开才记原 mode（联动重开不覆盖）
+  if(!$("#mpMode")){window.__mpOldMode=S.settings.mode;window.__mpSrcSel="";window.__mpTierSel=""} // 🖐️ v2.5.95-rolefix 101 轮：弹层新开才记原 mode（联动重开不覆盖）
   const custom=t==="custom";
   const srcs=chainList(m==="cloud"); // ☁️ 云端含 cloudOnly 源（Cloudflare/Gemma 反而云端更全）
   const curSrc=(window.__mpSrcSel&&srcs.includes(window.__mpSrcSel))?window.__mpSrcSel:(prefOf()&&srcs.includes(prefOf())?prefOf():(srcs[0]||""));
@@ -2176,7 +2176,7 @@ function uiModeApply(){
   if(t==="max")S.plugins.enabled.think=1;else if(t==="lite")S.plugins.enabled.think=0; // 🔬/⚡ 档位接线：think 插件即档位本体（选型链读 pluginOn("think")）；✋ 自主指定不动 think（用户可单独开深度思考）
   save("plugins");
   setTier(t);
-  if(t==="custom"){ // 🖐️ v2.5.94-permfix 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
+  if(t==="custom"){ // 🖐️ v2.5.95-rolefix 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
     const src=$("#mpSrc")?$("#mpSrc").value:curProv();
     const mdl=$("#mpModel")?$("#mpModel").value:"";
     if(src)setPref(src);
@@ -2234,11 +2234,11 @@ function renderChat(id){
   cur=findSession(id);
   const box=$("#chatmsgs"); if(!cur){box.innerHTML='<div class="empty">任务不存在</div>';return}
   box.dataset.sid=cur.id; // 🛡️ v2.5.53-audit 62 轮：DOM 归属标记——流式回调 repaint 前比对，切会话后绝不动别家 DOM
-  try{ // 🧬 v2.5.94-permfix：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
+  try{ // 🧬 v2.5.95-rolefix：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
     const _nw=S.settings.evolveNews;
     if(_nw&&cur){cur.msgs.push({role:"ai",content:_nw.text,ts:now(),meta:"🧬 自主进化战报"});S.settings.evolveNews=null;save("settings");save("sessions");}
   }catch(e){}
-  try{ // 🧬 v2.5.94-permfix：主动中枢战报+骨架层新包待公告开屏补播（同模式）
+  try{ // 🧬 v2.5.95-rolefix：主动中枢战报+骨架层新包待公告开屏补播（同模式）
     const _pn=S.settings.proactNews||[];const _an=S.settings.apkNews||[];
     if(_pn.length&&cur){_pn.forEach(function(t){cur.msgs.push({role:"ai",content:t,ts:now(),meta:"🧬 主动战报"})});S.settings.proactNews=[];}
     if(_an.length&&cur){_an.forEach(function(t){cur.msgs.push({role:"ai",content:t,ts:now(),meta:"🧬 骨架层更新"})});S.settings.apkNews=[];}
@@ -2249,11 +2249,11 @@ function renderChat(id){
   // 恢复未完成云端任务轮询
   const last=cur.msgs[cur.msgs.length-1];
   if(last&&last.role==="ai"&&last.cloud&&last.cloud.runId&&!last.cloud.done)pollRun(cur.id,cur.msgs.length-1,last.cloud.runId);
-  if(S.settings.mode==="cloud"){ // ⚡🧬 v2.5.94-permfix：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
+  if(S.settings.mode==="cloud"){ // ⚡🧬 v2.5.95-rolefix：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
     try{pullVitalsCloud()}catch(e){}
     try{pullMindCloud()}catch(e){}
     try{pullEvolveReport()}catch(e){}
-    try{pullProactiveFeed()}catch(e){} // 🧬 v2.5.94-permfix：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
+    try{pullProactiveFeed()}catch(e){} // 🧬 v2.5.95-rolefix：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
   }
 }
 function msgHtml(m,idx){ // 🛡️ 62 轮：携带真实索引——历史中部的旧云端消息不再误轮询末条
@@ -2565,20 +2565,20 @@ async function chatSend(){
   scrollBottom();
   if(mode==="chat"){const _syn=nlSynth(text);if(_syn)text=_syn;} // 💬 v2.5.47-inchat：大白话直接拍（自动合成前缀走既有路由，无需记任何格式）
   if(mode==="chat"&&/^🎬番剧[:：\s]?/.test(text)){await animeStudio(text.replace(/^🎬番剧[:：\s]*/,""),aiIdx)} // 🎬 v2.5.42-anime：番剧前缀路由（工坊接管本轮；附件已在工坊前装载完毕，普通链附件不适用番剧）
-  else if((mode==="chat"||mode==="cloud")&&/^🎬真视频[:：\s]?/.test(text)){ // 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.94-permfix 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
+  else if((mode==="chat"||mode==="cloud")&&/^🎬真视频[:：\s]?/.test(text)){ // 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.95-rolefix 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
     const vp=text.replace(/^🎬真视频[:：\s]*/,"");
     const m=cur.msgs[aiIdx];m.cloud={status:"queued",runId:"",done:false,steps:0};
     m.content="🎥 真视频拍摄任务已转交云端：AI 视频生成是分钟级异步任务（四源链：智谱 CogVideoX-Flash 免费 4K→硅基流动 Wan2.2→ModelScope→Google Veo，提交→轮询→MP4 落盘仓内 anime/）。云端引擎执行完成后点「🔄 刷新状态」看结果；出片后回仓可下载。";
     m.meta="真视频 · 云端四源链 · 免费生成";save("sessions");repaintBubble(aiIdx,false);scrollBottom();
     await sendCloud("请用 python 调 _video(\""+vp.replace(/["\\]/g," ")+"\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",aiIdx);cloudMirror("chat");return}
-  else if((mode==="chat"||mode==="cloud")&&/^🎭配音[:：\s]?/.test(text)){ // 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.94-permfix：云端同路由
+  else if((mode==="chat"||mode==="cloud")&&/^🎭配音[:：\s]?/.test(text)){ // 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.95-rolefix：云端同路由
     const vp=text.replace(/^🎭配音[:：\s]*/,"");
     const mm=vp.match(/^([^，,；;]+)\s*[,，]\s*([\s\S]+)$/);const line=mm?mm[1].trim():vp;const vd=mm?mm[2].trim():"";
     const m=cur.msgs[aiIdx];m.cloud={status:"queued",runId:"",done:false,steps:0};
     m.content="🎭 配音演绎任务已转交云端：_voice_act 风格化嗓音合成（台词「"+line+"」"+(vd?"，嗓音特质「"+vd+"」":"")+"）。配 siliconflow Key 可角色化定制；无 Key 走免 Key 声部兑底。只做风格化演绎，不克隆真人声纹（声纹属他人人格权，法律红线）。";
     m.meta="配音演绎 · 云端合成 · 免费生成";save("sessions");repaintBubble(aiIdx,false);scrollBottom();
     await sendCloud("请用 python 调 _voice_act(\""+line.replace(/["\\]/g," ")+"\""+(vd?", \""+vd.replace(/["\\]/g," ")+"\"":"")+") 风格化合成配音 MP3 落盘 anime/，返回结果告知路径",aiIdx);cloudMirror("chat");return}
-  else if((mode==="chat"||mode==="cloud")&&/^🎬长片[:：\s]?/.test(text)){ // 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.94-permfix：云端同路由
+  else if((mode==="chat"||mode==="cloud")&&/^🎬长片[:：\s]?/.test(text)){ // 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.95-rolefix：云端同路由
     const vp=text.replace(/^🎬长片[:：\s]*/,"");
     const mm=vp.match(/(\d+(?:\.\d+)?)\s*分钟/);const mins=mm?Math.max(1,Math.min(5,parseInt(mm[1]))):1;const style=/动画|番剧|anime/i.test(vp)?"anime":"cinematic";const theme=vp.replace(/,?\s*\d+(?:\.\d+)?\s*分钟/,"").replace(/,?\s*(动画|番剧|影视|电影|anime|cinematic)/gi,"").replace(/^[,，\s]+|[,，\s]+$/g,"")||vp;
     const m=cur.msgs[aiIdx];m.cloud={status:"queued",runId:"",done:false,steps:0};
@@ -2587,9 +2587,9 @@ async function chatSend(){
     await sendCloud("请用 python 调 _movie(\""+theme.replace(/["\\]/g," ")+"\", "+mins+", \""+style+"\") 拍长片（LLM 多镜头分镜→逐镜头 _video 四源链→逐镜头旁白混流→ffmpeg 拼接成 "+mins+" 分钟级长片），完成后如实报告总时长与落盘路径",aiIdx);cloudMirror("chat");return}
   else if(mode==="chat")await sendStream(text,aiIdx,sendImgs);
   else if(mode==="phone")await phoneSend(text,aiIdx); // 📱 手机端：本地免费源流式 + PHB 工具循环（实弹操控手机）
-  else if(/^☁️任务[:：\s]/.test(text))await sendCloud(text.replace(/^☁️任务[:：\s]*/,""),aiIdx); // ☁️ v2.5.94-permfix：显式重装入口——「☁️任务:」前缀强制派 GitHub Actions（跑代码/抓网页/出文件需真算力）
-  else await sendStream(text,aiIdx,sendImgs,{cloud:true}); // ☁️⚡ v2.5.94-permfix 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
-  if((mode==="chat"||mode==="cloud")&&cur.msgs[aiIdx]&&!cur.msgs[aiIdx].cloud&&!cur.msgs[aiIdx].anime){ // ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.94-permfix：快车道回复同受检
+  else if(/^☁️任务[:：\s]/.test(text))await sendCloud(text.replace(/^☁️任务[:：\s]*/,""),aiIdx); // ☁️ v2.5.95-rolefix：显式重装入口——「☁️任务:」前缀强制派 GitHub Actions（跑代码/抓网页/出文件需真算力）
+  else await sendStream(text,aiIdx,sendImgs,{cloud:true}); // ☁️⚡ v2.5.95-rolefix 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
+  if((mode==="chat"||mode==="cloud")&&cur.msgs[aiIdx]&&!cur.msgs[aiIdx].cloud&&!cur.msgs[aiIdx].anime){ // ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.95-rolefix：快车道回复同受检
     const mc=cur.msgs[aiIdx].content||"";const st=S.settings;
     const mm=mc.match(/^(?:很抱歉|抱歉|不好意思)[^\n]{0,40}(做不到|无能为力|无法(?:完成|做到|实现))|(?:抱歉|很遗憾)[^\n]{0,40}超出了?我(?:目前)?的(?:能力|能力范围)|(?:抱歉|很遗憾)[^\n]{0,40}我(?:不|无法)(?:具备|支持)(?:这个|该|此)?能力/); // 🛡️ v2.5.53-audit 62 轮：认怂检测收紧——只匹配第一人称道歉式承认句（翻译/引用/语文题里的“做不到”不再误触发进化）
     if(mm&&( !st.missTs||now()-st.missTs>600000)){
@@ -2608,7 +2608,7 @@ async function chatSend(){
 const L_FAST=()=>["groq","cerebras"].filter(k=>provOn(k)&&(selOf()[k]||PROV[k].think||PROV[k].def));
 function sendStream(text,aiIdx,imgs,opts){
   return new Promise(async res=>{
-    const fastCloud=!!(opts&&opts.cloud); // ☁️⚡ v2.5.94-permfix：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
+    const fastCloud=!!(opts&&opts.cloud); // ☁️⚡ v2.5.95-rolefix：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
     try{window.__fastLane=fastCloud?1:0}catch(e){}
     let chain=chainList(fastCloud);
     // ⚡ v2.5.51-human 闪电模式：短文本无图闲聊→快源提到链首（秒回体验；不影响最强模型做重活）
@@ -2626,7 +2626,7 @@ function sendStream(text,aiIdx,imgs,opts){
       if(!model)continue;
       if(imgs&&imgs.length&&P.vis)model=P.vis; // 👁️ v2.5.34-vision：带图消息自动切免费视觉模型（glm-4v-flash/gemma-3/NIM vision——纯文本模型对 image_url 会 4xx）
       let ok=await streamOnce(pk,model,text,aiIdx,imgs);
-      const stOf=()=>((window.__lastStreamStatus&&window.__lastStreamStatus.pk===pk)?(window.__lastStreamStatus.status||0):0); // 🩺 v2.5.94-permfix 100 轮：本源最近一次失败的真实 HTTP 码
+      const stOf=()=>((window.__lastStreamStatus&&window.__lastStreamStatus.pk===pk)?(window.__lastStreamStatus.status||0):0); // 🩺 v2.5.95-rolefix 100 轮：本源最近一次失败的真实 HTTP 码
       const nxtName=(chain[ci+1]?PROV[chain[ci+1]].name:"其他免费源");
       const say=(txt)=>{cur.msgs[aiIdx].content+="\n\n· "+txt;repaintBubble(aiIdx,false)}; // 🗣️ 切源铁律文案=大白话（技术码只进括号小字）
       let told=false;
@@ -2686,7 +2686,7 @@ function streamOnce(pk,model,text,aiIdx,imgs){
     const mySid=cur.id; const myStream=++streamSeq; // 🛡️ v2.5.53-audit 62 轮：会话+流双捕获——切会话/连发不再串写别家会话
     const lastUser=(imgs&&imgs.length)?{role:"user",content:[{type:"text",text:text},...imgs.map(u=>({type:"image_url",image_url:{url:u}}))]}:{role:"user",content:text}; // 📎 多模态：图片 dataURL 走 image_url（OpenAI 兼容）；纯文本模型 4xx 自动故障转移到下一源
     const msgs=[{role:"system",content:buildSystemPrompt()},
-      ...cur.msgs.slice(0,-2).slice(-20).map(m=>({role:m.role,content:m.content})),
+      ...cur.msgs.slice(0,-2).slice(-20).filter(m=>(m.role==="user"||m.role==="ai"||m.role==="assistant")&&String(m.content||"").length).map(m=>({role:m.role==="user"?"user":"assistant",content:m.content})), // 🛡️ v2.5.95-rolefix 111 轮致命修复：会话存储角色 "ai" 原样透传被 OpenAI 兼容源判非法角色 HTTP 400（每轮第二条起全链 400 实锤根因）——归一 assistant+空消息过滤（兼容导入的 assistant 历史）
       lastUser];
     const body=JSON.stringify({model,messages:msgs,stream:true,max_tokens:4096});
     if(P.offline){ // 📴 端侧离线：推理在手机本地 llama.cpp，复用同一 SSE 回调协议（Java 推合成行）
@@ -2702,7 +2702,7 @@ function streamOnce(pk,model,text,aiIdx,imgs){
         delete window.__onStreamChunk;
         const m=cur.msgs[aiIdx];
         if(!got){
-          window.__lastStreamStatus={pk:pk,status:status,ts:now()}; // 🩺 v2.5.94-permfix 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
+          window.__lastStreamStatus={pk:pk,status:status,ts:now()}; // 🩺 v2.5.95-rolefix 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
           if(status===404||status===410)markDead(pk,model); // 模型停服：拉黑+剔除+重拉清单
           resolve(false);return} // 本源失败（4xx/网络），交由上层切下一源
         if(!m.content&&m.think)m.content="(推理模型本次未输出正文结论，思考过程见上方灰色区)";
@@ -2800,7 +2800,7 @@ async function sendCloud(text,aiIdx){
   const findRun=(n)=>{ // 3 秒后找 runId（结果轮询入口；国内网络抖动时持续抓取最多 12 次，不轻易放弃）
     setTimeout(async()=>{
       if(m.cloud.done)return;
-      const runs=await rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/runs?per_page=5&_=${Date.now()}`,"GET",null,ghHeaders()); // 🔧 v2.5.94-permfix 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
+      const runs=await rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/runs?per_page=5&_=${Date.now()}`,"GET",null,ghHeaders()); // 🔧 v2.5.95-rolefix 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
       if(runs.ok&&runs.json&&runs.json.workflow_runs&&runs.json.workflow_runs.length){
         const run=runs.json.workflow_runs[0];
         m.cloud.runId=run.id; save("sessions");
@@ -2857,7 +2857,7 @@ async function ghPostRetry(url,body,tries){ // 通道①②融合：dispatch POS
   }
   return null;
 }
-async function cloudCdnFetch(runId,dispatchTs,file){ // 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.94-permfix 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
+async function cloudCdnFetch(runId,dispatchTs,file){ // 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.95-rolefix 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
   const repo=S.settings.cloudRepo; file=file||"latest.md";
   if(!repo||S.settings.repoVisibility==="private")return null; // 私有仓 CDN 不可达，此通道自动关闭
   try{
@@ -2899,7 +2899,7 @@ async function pollRun(sid,aiIdx,runId,manual){
     if(manual)toast("✅ 已经 jsDelivr 国内 CDN 通道取回结果");
     return;
   }
-  const r=await rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/actions/runs/${runId}?_=${Date.now()}`,"GET",null,ghHeaders()); // 🔧 v2.5.94-permfix 104 轮：&_ 破缓存（防中间层/代理拿旧 in_progress 糊弄）
+  const r=await rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/actions/runs/${runId}?_=${Date.now()}`,"GET",null,ghHeaders()); // 🔧 v2.5.95-rolefix 104 轮：&_ 破缓存（防中间层/代理拿旧 in_progress 糊弄）
   if(!r.ok){
     // 🇨🇳 镜像通道②兑底：直连不通→用户镜像再试一次
     const mirror=(S.settings.ghApiMirror||"").trim();
@@ -2948,7 +2948,7 @@ async function pollRun(sid,aiIdx,runId,manual){
     m.cloud.done=true; save("sessions");
     cleanupRun(runId);
   }else{
-    const elMin=Math.max(0,Math.round((now()-(m.cloud.dispatchTs||now()))/60000)); // 🔧 v2.5.94-permfix 104 轮：执行时长上屏+超时大白话指引
+    const elMin=Math.max(0,Math.round((now()-(m.cloud.dispatchTs||now()))/60000)); // 🔧 v2.5.95-rolefix 104 轮：执行时长上屏+超时大白话指引
     m.content="GitHub Actions 免费算力执行中…（status: "+(run.status||"queued")+"，已运行 "+elMin+" 分钟）"+(elMin>=5?"\n\n· 免费服务器偶尔排队拥堵：再等等或过会儿再点「刷新状态」；结果一出会自动取回，不用盯着。":"");
     if(manual)toast(elMin>=5?("已运行 "+elMin+" 分钟（免费服务器偶尔排队拥堵，稍后再刷新即可）"):("仍在执行: "+(run.status||"queued")+"（已运行 "+elMin+" 分钟）"));
   }
@@ -3146,7 +3146,7 @@ function syncProjectCore(pid){ // ☁️ 项目同步核心（静默：自动重
   const pkg={id:p.id,name:p.name,createdAt:p.createdAt,scope:p.scope==="cloud"||p.scope==="phone"?p.scope:"local",
     syncedAt:new Date(now()).toISOString(),appVersion:APP_VER,
     sessions:sess.slice(0,50).map(s=>({id:s.id,title:s.title,mode:s.mode,createdAt:s.createdAt,
-      msgs:(s.msgs||[]).slice(-40).map(m=>({role:m.role,content:String(m.content||"").slice(0,2000)}))}))}; // 无 Key 无 Secret：仅项目内容
+      msgs:(s.msgs||[]).slice(-40).map(m=>({role:m.role==="ai"?"assistant":m.role,content:String(m.content||"").slice(0,2000)}))}))}; // 无 Key 无 Secret：仅项目内容（v2.5.95-rolefix：角色同步归一）
   const path="cloud/projects/"+p.id+".json";
   const g=apiJson("https://api.github.com/repos/"+repo+"/contents/"+path,"GET",null,ghHeaders());
   const body={message:"project-sync: "+p.name+" (☁️单项目同步)",content:b64enc(JSON.stringify(pkg,null,1)),branch:"main"};
@@ -3211,7 +3211,7 @@ function importCloudProject(pid){ // 远端项目拉回本地（catdesk 式：�
   (j.sessions||[]).forEach(s=>{
     if((S.sessions.list||[]).some(x=>x.id===s.id))return; // id 去重：不重复导入
     S.sessions.list.unshift({id:s.id,projectId:pid,createdAt:s.createdAt||now(),mode:s.mode||"cloud",
-      title:s.title||"远端任务",msgs:(s.msgs||[]).map(m=>({role:m.role,content:m.content}))});
+      title:s.title||"远端任务",msgs:(s.msgs||[]).map(m=>({role:m.role==="assistant"?"ai":m.role,content:m.content}))}); // v2.5.95-rolefix：导入归一存储态 ai（App 内统一存 ai，发送时再归一 assistant）
     if(S.sessions.list.length>200)S.sessions.list=S.sessions.list.slice(-200); // ♻️ v2.5.19-audit5：云端拉回导入同样封顶 200
     added++;
   });
@@ -3290,7 +3290,7 @@ function cloudEvolveCheck(){ // 🧬 GENE6 双端互拍：云端引擎自主进�
   if(cn>ln){
     st.cloudEvolveN=cn;save("settings");
     memAdd("fact","☁️ 云端引擎已自主进化至 EVOLVE_N="+cn+"（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",["evolve","云端"]);
-    try{updNotify("🧬 云端引擎已自主进化","云端 agent.py 已进化至 v"+cn+"，App 已自动感知并将保护该成果")}catch(e){} // 🔔 v2.5.94-permfix：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
+    try{updNotify("🧬 云端引擎已自主进化","云端 agent.py 已进化至 v"+cn+"，App 已自动感知并将保护该成果")}catch(e){} // 🔔 v2.5.95-rolefix：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
   }
 }
 function updCheckPulse(){ // 升级包心跳（其他设备发布的更新，挂机时最坏 2h 自动拉到——不必等次日）
@@ -3344,8 +3344,8 @@ async function cloudPulse(){ // 🔗 GEN4·全仓心跳主节拍：双端任何�
   try{updCheckPulse()}catch(e){}            // 升级包 cloud/update/（2h 节流）
   try{vulnReportRecover()}catch(e){}        // 云端体检报告 vuln_report.json（30min 节流）
   try{cloudEvolveCheck()}catch(e){}         // 🧬 GENE6：云端引擎自主进化感知（EVOLVE_N 递增→留痕+通知+部署保护）
-  try{pullEvolveReport()}catch(e){}         // 📰 v2.5.94-permfix：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
-  try{pullProactiveFeed()}catch(e){}        // 🧬 v2.5.94-permfix：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
+  try{pullEvolveReport()}catch(e){}         // 📰 v2.5.95-rolefix：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
+  try{pullProactiveFeed()}catch(e){}        // 🧬 v2.5.95-rolefix：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
   try{pullCloudProjectsSilent()}catch(e){}  // 远端项目列表（30min 节流）
   try{autoResyncProjects()}catch(e){}        // 本地项目新对话自动重推（1h/项目节流）
   try{pullStateCloud()}catch(e){}            // 全量状态（会话/定时/插件，30min 节流）
@@ -3778,7 +3778,7 @@ function pageSettings(){
     <div class="row" style="margin-top:6px">
       <div class="grow"><p style="font-size:12.5px;color:var(--sub)">重排全部定时任务（开机兜底）</p></div>
       <button class="btn gray sm" onclick="DSB.rescheduleAll();toast('已重排')">重排</button></div>
-    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.94-permfix · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
+    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.95-rolefix · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
   </div>`;
 }
 function saveSettings(){
@@ -3936,7 +3936,7 @@ function bootFail(e){ // 🚑 v2.5.60-whale 68 轮：启动总保险降级页—
   try{document.body.innerHTML='<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#0B0E14;color:#e5e9f0;font-family:monospace;padding:36px 22px;overflow:auto;z-index:99999">'
     +'<div style="font-size:42px;text-align:center;margin-bottom:12px">🐾</div>'
     +'<div style="font-size:19px;font-weight:bold;text-align:center;margin-bottom:18px">小神启动受挫了</div>'
-    +'<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.94-permfix · 内核 '+(navigator?String(navigator.userAgent).slice(0,120):"?")+'<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>'
+    +'<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.95-rolefix · 内核 '+(navigator?String(navigator.userAgent).slice(0,120):"?")+'<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>'
     +'<pre id="bootErrBox" style="font-size:10px;white-space:pre-wrap;color:#f87171;background:#141926;border:1px solid #252E42;border-radius:10px;padding:12px;max-height:38vh;overflow:auto"></pre>'
     +'<button onclick="window.__bootRetry()" style="display:block;width:100%;margin-top:18px;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#16A34A,#4ADE80);color:#fff;font-size:15px">🔄 仅重试</button>'
     +'<button onclick="window.__bootCopyDiag()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">📋 复制诊断信息（反馈给开发者）</button>'
@@ -3954,7 +3954,7 @@ updBootGuard(); // 🧬 启动自检门先行（热包损坏/基因残缺→回�
 initAll();
 try{bLog("s2-guards-done")}catch(e){}
 updBootGuardAfter(); // 🧬 回滚旗标补归档（需 S 已初始化）
-try{const un=jparse(DSB.storeGet("updNotice"));if(un&&un.title){updNotify(un.title,un.body)}}catch(e){} // 🔔 v2.5.94-permfix 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
+try{const un=jparse(DSB.storeGet("updNotice"));if(un&&un.title){updNotify(un.title,un.body)}}catch(e){} // 🔔 v2.5.95-rolefix 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
 try{const wg=jparse(DSB.storeGet("watchdogRevert"));if(wg&&wg.f){DSB.storeSet("watchdogRevert",JSON.stringify({f:0}));memAdd("fact","🧬 Java 看门狗自动回滚砖损热包 ×"+wg.f+"（语法过闸但运行时崩溃，JS 自检门执行不到的场景），已回退 APK 内置版");pbLearn("Java 看门狗：第四重永砖保险","热包可能语法过闸却在运行时崩溃（如 initAll 中途抛错），此时 JS 启动自检门（script 末尾）永远执行不到。Java 层装载后 6s 检查 window.__dsbBooted 旗标（UI 存活即立、置于网络调用之前防慢网误杀），缺失则 hotDelete 回滚 APK 内置版并重装载；连续 3 次不活即停手防死循环。",["upd","watchdog","永砖"]);toast("🧬 看门狗已回滚砖损热包至内置版")}}catch(e){}
 try{bLog("s3-pre-ui")}catch(e){}
 window.addEventListener("hashchange",renderRoute);
