@@ -1,0 +1,15 @@
+{
+ "think": false,
+ "tools": {
+  "web": true,
+  "code": true
+ },
+ "steps": [
+  {
+   "step": 1,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "今天是2023年11月8日。"
+  }
+ ]
+}
