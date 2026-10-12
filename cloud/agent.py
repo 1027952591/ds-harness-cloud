@@ -644,6 +644,14 @@ if any(TOOLS_CFG.values()):
               + "\n当信息足够时，直接给出最终回答（纯文本，不要再输出工具 JSON）。\n" + MIND_CHARTER)
 else:
     SYSTEM = "你是 DS Harness 云端智能体，运行在 GitHub Actions 服务器上。" + NO_TOOL_PROMPT + "\n" + MIND_CHARTER
+try:  # 🕐 v2.5.83-datefix 98 轮：当前日期时间注入——主人问"今天几号/星期几"不再瞎猜（此前 SYSTEM 零时间信息=模型只能答"无法提供"）
+    import datetime as _dt
+    _now = _dt.datetime.utcnow() + _dt.timedelta(hours=8)
+    _wk = "一二三四五六日"[_now.weekday()]
+    SYSTEM += ("\n🕐 当前时间：" + _now.strftime("%Y-%m-%d %H:%M") + "（北京时间 UTC+8，星期" + _wk + "）。"
+               + "凡涉及日期/时间/星期的问题，一律以此为准直接回答，不要说“无法获取日期”。")
+except Exception:
+    pass
 try:
     SYSTEM += _mind_context(PROMPT)  # 🧖📖 GEN3：相关永久记忆/手册强制注入 system prompt
 except Exception:
