@@ -644,6 +644,14 @@ if any(TOOLS_CFG.values()):
               + "\n当信息足够时，直接给出最终回答（纯文本，不要再输出工具 JSON）。\n" + MIND_CHARTER)
 else:
     SYSTEM = "你是 DS Harness 云端智能体，运行在 GitHub Actions 服务器上。" + NO_TOOL_PROMPT + "\n" + MIND_CHARTER
+try:  # 🕐 v2.5.83-datefix 98 轮：当前日期时间注入——主人问"今天几号/星期几"不再瞎猜（此前 SYSTEM 零时间信息=模型只能答"无法提供"）
+    import datetime as _dt
+    _now = _dt.datetime.utcnow() + _dt.timedelta(hours=8)
+    _wk = "一二三四五六日"[_now.weekday()]
+    SYSTEM += ("\n🕐 当前时间：" + _now.strftime("%Y-%m-%d %H:%M") + "（北京时间 UTC+8，星期" + _wk + "）。"
+               + "凡涉及日期/时间/星期的问题，一律以此为准直接回答，不要说“无法获取日期”。")
+except Exception:
+    pass
 try:
     SYSTEM += _mind_context(PROMPT)  # 🧖📖 GEN3：相关永久记忆/手册强制注入 system prompt
 except Exception:
@@ -737,15 +745,15 @@ def llm_call(messages):
         for model in cand:
             if skip:
                 break
-            for attempt in range(2):
+            for attempt in range(3):  # 🩺 v2.5.85-fair 100 轮：切源铁律——额度/钥匙实锤才切源；服务/网络打盹当场纠正重试 3 轮
                 try:
                     content, reasoning = call_once(pk, model, messages, errors)
                     return content, reasoning, pk, model
                 except urllib.error.HTTPError as e:
                     detail = e.read().decode("utf-8", "ignore")[:200]
-                    errors.append("%s:%s(%s)" % (pk, e.code, detail))
                     if e.code in (401, 402, 403):
-                        skip = True; break       # 鉴权/权限问题：换下一个源
+                        errors.append("%s:钥匙不对或过期(%s)" % (pk, e.code))  # 大白话：401/403=钥匙问题，402=额度用完
+                        skip = True; break       # 钥匙/额度实锤：换下一个源（不换会死循环）
                     if e.code in (404, 410):
                         try:
                             learn_memory("eol", "源 %s 模型 %s 已停服下架（404/410），云端候选队列已自动跳过" % (pk, model), ["eol", pk, model])  # 🧖 GEN3：EOL 事件双端永久留痕
@@ -753,13 +761,21 @@ def llm_call(messages):
                             except Exception: pass
                         except Exception:
                             pass
-                        break                   # 模型下架：同源换下一个候选模型
+                        break                   # 模型下架：同源换下一个候选模型（不换台不浪费配额）
                     if e.code == 429:
-                        time.sleep(20 * (attempt + 1))  # 限流：退避后本模型再试一次
+                        errors.append("%s:限流(429 第%d次)" % (pk, attempt + 1))
+                        if attempt >= 2:         # 退避 3 轮（10/20/40s）仍限流=免费额度/频率实锤到顶，才准换源
+                            skip = True; break
+                        time.sleep(10 * (attempt + 1))  # 限流：退避后原地再试（额度没确认用完前不换源）
                     else:
+                        errors.append("%s:服务打盹(%s 第%d次)" % (pk, e.code, attempt + 1))
+                        if attempt >= 2:         # 当场纠正 3 轮仍不通才换源
+                            skip = True; break
                         time.sleep(3 * (attempt + 1))
                 except Exception as e:
-                    errors.append("%s:%s" % (pk, type(e).__name__))
+                    errors.append("%s:联系不上(%s 第%d次)" % (pk, type(e).__name__, attempt + 1))
+                    if attempt >= 2:             # 网络类故障当场纠正 3 轮，仍不通才换源
+                        skip = True; break
                     time.sleep(3 * (attempt + 1))
     raise RuntimeError("全部免费源失败 -> " + " | ".join(errors))
 
