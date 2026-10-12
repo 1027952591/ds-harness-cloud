@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-12T07:33:42.442Z",
- "action": "state",
+ "updated": "2026-10-12T07:41:36.895Z",
+ "action": "chat",
  "appVersion": "2.5.81-rpcfix",
- "mode": "chat",
+ "mode": "cloud",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -25,17 +25,26 @@
   "ondevice": "qwen2.5-0.5b"
  },
  "deadLogCount": 0,
- "probeOk": 6,
+ "probeOk": 1,
  "liveN": 4,
  "repoN": 0,
- "vulnOk": 5,
- "vulnN": 6,
+ "vulnOk": 7,
+ "vulnN": 11,
  "memN": 7,
- "pbN": 17,
+ "pbN": 18,
  "vulnBad": [
-  "tier3:零模型源: openrouter → 🔧修复后仍零模型（源停服或网络不通）: openrouter"
+  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
+  "fresh:云端无 models.json 且本地无缓存（每日体检从未成功） → 🔧远程触发失败 HTTP 0（未配 GitHub Token 时无法自动触发，可到 Ac",
+  "mind:云端缺记忆/手册文件（App 改动未同步上去） → 🔧推送后云端仍落后（Token 权限或网络问题）：-1/7 -1/18"
  ],
- "chanHealth": [],
+ "chanHealth": [
+  "scout:fastly.jsdelivr.net:ok0/p100",
+  "scout:gcore.jsdelivr.net:ok0/p100",
+  "scout:testingcf.jsdelivr.net:ok0/p100",
+  "scout:ghproxy.net:ok0/p100",
+  "scout:gh-proxy.com:ok0/p100",
+  "scout:ghfast.top:ok0/p100"
+ ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
