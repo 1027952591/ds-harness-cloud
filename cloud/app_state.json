@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-13T10:49:46.081Z",
+ "updated": "2026-10-13T11:49:32.450Z",
  "action": "state",
- "appVersion": "2.5.124-probe",
- "mode": "cloud",
+ "appVersion": "2.5.125-md5fix",
+ "mode": "chat",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -35,9 +35,9 @@
  "pbN": 17,
  "vulnBad": [],
  "chanHealth": [
-  "raw.githubusercontent:连败6/p140",
-  "jsDelivr CDN:连败6/p140",
-  "GitHub API:ok4/p100"
+  "raw.githubusercontent:连败7/p150",
+  "jsDelivr CDN:连败7/p150",
+  "GitHub API:ok6/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
