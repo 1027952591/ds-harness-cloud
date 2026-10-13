@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.111-cors",
- "md5": "e0f4e28e95ececb5535d4219b04b2224",
- "bundleVer": 99,
- "ts": "2026-10-13T05:13:52Z",
- "size": 716075,
- "note": "v2.5.111-cors 热更清单（127 轮：CORS 全灭根治——原生桥 HTTP 兜底血管+铁律六眼扩容）"
+ "appVersion": "2.5.112-cors",
+ "md5": "c458d3c18d89b91124c155af76f2aa56",
+ "bundleVer": 100,
+ "ts": "2026-10-13T05:37:55Z",
+ "size": 716649,
+ "note": "v2.5.112-cors 热更清单（128 轮 GENE8：新闻眼 CORS 桥兜底——六眼全域收口零死角）"
 }
