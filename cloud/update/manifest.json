@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.117-diag",
- "md5": "d15c25d5bf28fe9812dd39f809f6c291",
- "bundleVer": 105,
- "ts": "2026-10-13T07:38:02Z",
- "size": 722908,
- "note": "v2.5.117-diag 热更清单（133 轮：诊断到闸——PERM 细分 runtime/master/channel，卡片按闸给精确指引，渠道死闸冒充 OK 根治）"
+ "appVersion": "2.5.118-verify",
+ "md5": "9e3fc63a9899188de65bc3dc5cdb5d68",
+ "bundleVer": 106,
+ "ts": "2026-10-13T07:52:34Z",
+ "size": 724859,
+ "note": "v2.5.118-verify 热更清单（134 轮：先自证再报警——报 PERM 前探针实测三态，全绿即桥抖动假警报静默重试零打扰；真关了卡片带探针读数精确指路，旧 APK 也生效）"
 }
