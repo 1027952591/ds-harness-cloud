@@ -1,12 +1,13 @@
 {
- "updated": "2026-10-13T06:35:54.333Z",
- "action": "state",
- "appVersion": "2.5.113-radius",
+ "updated": "2026-10-13T07:21:28.563Z",
+ "action": "chat",
+ "appVersion": "2.5.116-instant",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
   "zhipu",
-  "modelscope"
+  "modelscope",
+  "pollinations"
  ],
  "phoneToolN": 0,
  "phoneToolLast": "",
@@ -30,8 +31,8 @@
  "repoN": 0,
  "vulnOk": 6,
  "vulnN": 6,
- "memN": 6,
- "pbN": 17,
+ "memN": 37,
+ "pbN": 43,
  "vulnBad": [],
  "chanHealth": [],
  "scoutOK": 0,
@@ -39,7 +40,5 @@
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {
-  "think": 1
- }
+ "plugins": {}
 }
