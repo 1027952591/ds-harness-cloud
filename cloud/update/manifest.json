@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.123-proxy",
- "md5": "2060ef4b284126ff744a5e564339b6d6",
- "bundleVer": 111,
- "ts": 1791887624513,
- "size": 734627,
- "note": "137d 轮：进化分析云端中转兜底"
+ "appVersion": "2.5.124-probe",
+ "md5": "9c7ab8f4acc382f23ce77073591b23ce",
+ "bundleVer": 112,
+ "ts": 1791888379064,
+ "size": 735316,
+ "note": "137e 轮：MD5 证据探针"
 }
