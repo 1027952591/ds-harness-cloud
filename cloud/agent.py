@@ -1720,14 +1720,21 @@ def run_python(code):
 
 def _code_rescue(content):
     """🏢 v2.5.102-omni 118 轮：代码块抢救——模型直接输出 python 代码当答案（没按工具协议裹 JSON）时代为执行。
-    实弹教训（run 38323694150）：任务让调 _xlsx 工坊，模型裸写 pandas 代码一步收工，工具从未执行、产物从未落盘。
-    匹配 ```python 围栏块；或整篇是裸代码（python 头/含 import、def 等强代码特征且无中文长句标点）。
-    普通散文回答不含这些特征，返回 None 不误伤。"""
+    实弹教训（run 38323694150）：模型裸写 pandas 一步收工，工具从未执行。
+    实弹教训（run 38326577171）：①模型一次性输出全部计划的多块围栏代码——只抓首块浪费步数还丢失后续文件；
+    ②模型散文+裸 run_python 标记+无围栏代码（无 JSON 无围栏）——全形态漏接 premature 收工。
+    v3：多围栏块合并 exec 逐块隔离错误；裸 run_python 标记切尾提取。"""
     import re as _re
     c = str(content or "").strip()
-    m = _re.search(r"```(?:python|py)?\s*\n([\s\S]*?)```", c)
-    if m and len(m.group(1).strip()) > 30:
-        return m.group(1)
+    blocks = [b for b in _re.findall(r"```(?:python|py)?\s*\n([\s\S]*?)```", c) if b.strip()]
+    if blocks and sum(len(b) for b in blocks) > 30:
+        if len(blocks) == 1:
+            return blocks[0]
+        # 多块合并：exec 逐块隔离（一块炸不影响其余，错误响亮回显给模型自查）
+        parts = []
+        for _i, _b in enumerate(blocks):
+            parts.append("try:\n    exec(%r)\nexcept Exception as _e:\n    print('⚠️ 第%d块失败: ' + str(_e)[:150])\n" % (_b, _i + 1))
+        return "".join(parts)
     stripped = c
     if stripped.startswith("python\n"):
         stripped = stripped[7:]
@@ -1745,6 +1752,11 @@ def _code_rescue(content):
             if not raw_call.startswith("agent."):
                 raw_call = "agent." + raw_call
             return "import agent\n_r = " + raw_call + "\nprint(_r)"
+    # ④ 裸 run_python 标记切尾（run 38326577171 step3 实弹：散文+`run_python`+代码无围栏无 JSON）
+    if "run_python" in c and _re.search(r"agent\._(xlsx|docx|pptx|novel)\(", c):
+        seg = c[c.rfind("run_python") + len("run_python"):].strip()
+        if len(seg) > 20 and "```" not in seg and _re.search(r"agent\._(xlsx|docx|pptx|novel)\(", seg):
+            return seg
     return None
 
 
