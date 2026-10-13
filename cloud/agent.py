@@ -1721,9 +1721,13 @@ def run_python(code):
 def _uncomment_workshops(code):
     """🛡️ 118 轮实弹（run 38327089727）：模型对工坊存在性不自信，把 agent._xxx(...) 调用全部注释成
     『# 假设 agent._xlsx 函数存在』→ 同段代码复读 5 遍零产物死循环。修：被注释的工坊调用行自动解注执行
-    （boot 已注入 import agent，模型没写 import 也能跑）。"""
+    （boot 已注入 import agent，模型没写 import 也能跑）。
+    🛡️ 118 轮实弹（run 38327585785）：模型敢调工坊了，但函数名瞎编成 _wxlsx/_wdocx/_wpptx/_wnovel——
+    4 步全 NameError 零产物。修：裸短名工坊调用统一归一为 agent.真名（归一后工坊调用真被执行而非嘴上说调了）。"""
     import re as _re
-    return _re.sub(r"^(\s*)#\s*(agent\._(?:xlsx|docx|pptx|novel)\(.*)$", r"\1\2", str(code), flags=_re.M)
+    code = _re.sub(r"^(\s*)#\s*(agent\._(?:xlsx|docx|pptx|novel)\(.*)$", r"\1\2", str(code), flags=_re.M)
+    code = _re.sub(r"(?<![\w.])_w(xlsx|docx|pptx|novel)\(", r"agent._\1(", code)
+    return code
 
 
 def _code_rescue(content):
