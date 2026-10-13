@@ -13,6 +13,8 @@ name: DS Harness Cloud Agent (GENE-Enforced)
 # 注入相关记忆与 App 动作镜像 cloud/app_state.json，学习成果回写并由 Commit 步骤 commit 回仓，
 # App 端任何改动（记忆/手册/体检/状态）也自动推送上来——双端全天候联动，永无死角。
 on:
+  push:
+    paths: ["cloud/evolve_task.json"]   # 🧬 137l 自主闭环：手机 PUT 任务即自动开跑（一拳制胜——dispatch POST 是手机网络最易被吞的第二拳，push 触发由 GitHub 代打，物理消灭该环节；手机端 dispatch 调用保留作双保险）
   workflow_dispatch:
     inputs:
       prompt:
