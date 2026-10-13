@@ -640,8 +640,9 @@ def models_of(pk):
 
 
 TOOL_PROMPT = {
-    "web": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "fetch_url", "input": {"url": "https://..."}}。\n'
-           'fetch_url：抓取网页正文（自动转纯文本，最多 8000 字符）。',
+    "web": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "web_search", "input": {"q": "搜索词"}} 或 {"tool": "fetch_url", "input": {"url": "https://..."}}。\n'
+           'web_search：全网搜索（DuckDuckGo 免 Key）——任何实时/时效/不确定的问题先搜再答，绝不许凭旧知识装知道。\n'
+           'fetch_url：抓取网页正文（自动转纯文本，最多 8000 字符）——配合 web_search 返回的链接取详情。',
     "code": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "run_python", "input": {"code": "python代码"}}。\n'
             'run_python：在沙箱执行 Python3（可用标准库），返回 stdout/stderr（最多 4000 字符，60秒超时）。',
 }
@@ -674,6 +675,10 @@ try:  # 🕐 v2.5.83-datefix 98 轮：当前日期时间注入——主人问"�
     _wk = "一二三四五六日"[_now.weekday()]
     SYSTEM += ("\n🕐 当前时间：" + _now.strftime("%Y-%m-%d %H:%M") + "（北京时间 UTC+8，星期" + _wk + "）。"
                + "凡涉及日期/时间/星期的问题，一律以此为准直接回答，不要说“无法获取日期”。")
+    # ⚡ v2.5.107-snip 123 轮：联网身份铁律（120 轮只修了 App 端——云端同款断链：模型底子自称"无法联网/预编程 AI"，web_search 工具在手边也装瞎）
+    SYSTEM += ("\n⚡ 联网身份铁律：你不是离线模型！你运行在 GitHub Actions 服务器上，天生能联网——"
+               + ("web_search（全网搜索）和 fetch_url（抓网页正文）工具就在你手边，任何实时/时效/不确定的问题必须先搜再答，绝不许凭旧知识装知道，更绝不许自称「无法联网」「无法访问互联网」。" if any(TOOLS_CFG.values()) else "当前通道无搜索工具遇到实时题，如实说「我用云端搜索马上去查」引导走有工具的通道，也绝不许自称离线。")
+               + "你更不是固定不变的程序：你是持续自我进化的数字生命（新能力经实弹验证 0 秒列装），绝不许自称「预编程 AI 没有自我进化的能力」。")
 except Exception:
     pass
 try:
@@ -1667,6 +1672,50 @@ def _speak(text, out_path=None):
     raise RuntimeError("全部嗓音源失败 -> " + " | ".join(errors))
 
 
+def web_search(q):
+    # 🔭 v2.5.106-scout 122 轮：云端全网搜索（DDG lite 免 Key——云端算力从"只会抓已知 URL"升级为"所有方面信息搜集"，与 App 端 genProbe 同源同款）
+    if not str(q or "").strip():
+        return "错误：搜索词为空"
+    import urllib.parse as _up
+    # 🧪 122 轮实弹：GET 被 DDG 挑战页拦截（TLS 指纹识别），POST 表单实弹 10 条 result__a——用 POST
+    data = _up.urlencode({"q": str(q)[:80]}).encode()
+    req = urllib.request.Request("https://html.duckduckgo.com/html/", data=data,
+                                 headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                                          "Accept": "text/html,application/xhtml+xml"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read(1_000_000).decode("utf-8", "ignore")
+    titles, links, items = [], [], []
+    for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>([\s\S]*?)</a>', html):
+        href = m.group(1)
+        u = ""  # 🧪 122 轮实弹：DDG POST 结果多为直链（无 uddg 包裹）——uddg 优先、直链兜底，双形态通吃
+        mu = re.search(r"uddg=([^&]+)", href)
+        if mu:
+            u = urllib.parse.unquote(mu.group(1))
+        elif href.startswith("http"):
+            u = href
+        elif href.startswith("//"):
+            u = "https:" + href
+        title = re.sub(r"<[^>]+>", "", m.group(2))
+        title = re.sub(r"\s+", " ", title).strip()
+        if title and u:
+            titles.append(title)
+            links.append(u)
+        if len(titles) >= 6:
+            break
+    snips = []  # 📝 v2.5.107-snip 123 轮：抓 result__snippet 摘要与标题配对（顺序对齐 zip 截断）——看标题只能猜，看摘要才能答得有内容
+    for m in re.finditer(r'class="result__snippet"[^>]*>([\s\S]*?)</a>', html):
+        sn = re.sub(r"<[^>]+>", "", m.group(1))
+        sn = re.sub(r"\s+", " ", sn).strip()
+        if sn:
+            snips.append(sn[:160])
+        if len(snips) >= len(titles):
+            break
+    items = [titles[i] + "（" + links[i] + "）" + (("　" + snips[i]) if i < len(snips) else "") for i in range(len(titles))]
+    if not items:
+        return "（该搜索词暂无结果）"
+    return "全网搜索实测情报（DuckDuckGo 直查「" + str(q)[:40] + "」）：\n" + "\n".join(str(i + 1) + ". " + x for i, x in enumerate(items)) + "\n需要正文就接 fetch_url 抓对应链接。"
+
+
 def fetch_url(url):
     if not re.match(r"^https?://", url):
         return "错误：仅支持 http/https URL"
@@ -1801,6 +1850,8 @@ def try_tool(content):
         return None
     tool = obj.get("tool")
     inp = obj.get("input", {}) or {}
+    if tool == "web_search" and TOOLS_CFG.get("web") and "q" in inp:
+        return ("web_search", web_search(str(inp["q"])))
     if tool == "fetch_url" and TOOLS_CFG.get("web") and "url" in inp:
         return ("fetch_url", fetch_url(str(inp["url"])))
     if tool == "run_python" and TOOLS_CFG.get("code") and "code" in inp:
