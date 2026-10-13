@@ -350,7 +350,7 @@ b = injectSnapshot(b); // 📸 90 轮：fail3 路径同样快照预灌（与 loa
     private String readHotBundle() {
         try {
             File f = new File(new File(getFilesDir(), "webbundle"), "index.html");
-            if (!f.exists() || f.length() < 60000 || f.length() > 500000) return null;
+            if (!f.exists() || f.length() < 60000 || f.length() > 20971520) return null;
             StringBuilder sb = new StringBuilder();
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8))) {
