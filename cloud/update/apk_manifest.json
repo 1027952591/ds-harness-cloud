@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.110-sync",
- "versionCode": 128,
- "md5": "0d4056cffae275e2e5b30872a8f60bb5",
- "size": 6577761,
- "ts": "2026-10-13T13:00:00Z",
- "note": "126 轮终验盖回"
+ "appVersion": "2.5.111-cors",
+ "versionCode": 129,
+ "md5": "adcad012e1512a4c53056638f84e1fb7",
+ "size": 6581857,
+ "ts": "2026-10-13T05:13:52Z",
+ "note": "127 轮：bridgeGet 原生桥 CORS 兜底+铁律六眼（开奖/全网搜索）+大乐透实例"
 }
