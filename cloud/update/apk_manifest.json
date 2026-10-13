@@ -1,8 +1,10 @@
 {
- "appVersion": "2.5.114-fast",
- "versionCode": 132,
- "md5": "9ac5e3c24fb7ef61a2a7b2961d4822de",
- "size": 6581857,
- "ts": "2026-10-13T06:46:41Z",
- "note": "130 轮：全链又快又准（探针 8s 总预算+墙外跳+思考态+开奖眼并行）"
+ "versionName": "2.5.113-radius",
+ "versionCode": 131,
+ "md5": "fc7dd5b7d1d9bdfcf34eb355ec2c53b5",
+ "size": 5954417,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38358758132)",
+ "builtAt": "2026-10-13T06:48:43Z"
 }
