@@ -1,10 +1,8 @@
 {
- "versionName": "2.5.109-clean",
+ "appVersion": "2.5.109-clean",
  "versionCode": 127,
- "md5": "88f8e62d080043db97d1fe39f391597f",
- "size": 5946225,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38346441284)",
- "builtAt": "2026-10-13T04:27:53Z"
+ "md5": "7c693629224419a139ea4fd3f3fc4e2a",
+ "size": 6577761,
+ "ts": "2026-10-13T12:40:00Z",
+ "note": "125 轮终验盖回"
 }
