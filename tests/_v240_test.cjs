@@ -36,8 +36,8 @@ t("MainActivity.reload 公开重装载", /public void reload\(\)/.test(mainJava)
 
 console.log("== B. UPD 结构全量 ==");
 const has = (re, name) => t(name, re.test(html));
-has(/const BUNDLE_VER=104;/, "BUNDLE_VER=95 兼容线（第八十八轮：无桥默认启动——87 版证实装机但默认仍走真桥，无桥实验升为默认）");
-  has(/const APP_VER="2.5.116-instant";/, "APP_VER 常量");
+has(/const BUNDLE_VER=105;/, "BUNDLE_VER=95 兼容线（第八十八轮：无桥默认启动——87 版证实装机但默认仍走真桥，无桥实验升为默认）");
+  has(/const APP_VER="2.5.117-diag";/, "APP_VER 常量");
 has(/const UPD_DAILY_MS=86400000;/, "每日检查节拍 24h");
 has(/function updChannels\(\)/, "多免费通道");
 has(/raw\.githubusercontent\.com/, "通道一 raw.githubusercontent");
@@ -209,16 +209,16 @@ t("升级应用也发系统通知（updApply）", /const upTitle="🧬 已无感
 t("进化不重装 App（热重载 reload 而非 APK 安装）", /setTimeout\(\(\)=>\{try\{DSB\.reload\(\)\}catch\(e\)\{\}\},1500\)/.test(script));
 
 console.log("== E. 版本一致性 ==");
-t("APP_VER=2.5.116-instant", /const APP_VER="2.5.116-instant";/.test(script));
-t("footer 版本一致", /DS Harness v2.5.116-instant/.test(html));
+t("APP_VER=2.5.117-diag", /const APP_VER="2.5.117-diag";/.test(script));
+t("footer 版本一致", /DS Harness v2.5.117-diag/.test(html));
 t("footer 含永久自主升级特性", /永久自主升级（多免费通道\+四重闸门\+自动发布云端\+每日自动检查\+自主进化）/.test(html));
 t("SEED_VER=10", /const SEED_VER=10;/.test(script));
 t("MEM_SEED 6 条离线刻入（含 v2.4.0 升级链 m5/m6）", /const MEM_SEED=\[/.test(script) && (script.match(/\{id:"seed-m[1-6]",/g) || []).length === 6);
 t("seedMemories 版本化闸门（memSeeded）", /function seedMemories\(\)\{/.test(script) && /MEM_SEED_VER=1/.test(script) && /memSeeded/.test(script));
 t("启动接线 seedMemories", /seedMemories\(\); \/\/ 🧖 GEN3：核心记忆种子离线装配/.test(script));
 t("无旧版本字串残留", !/2\.3\.0-phone/.test(html));
-t("构建脚本已升 122/2.5.116-instant（含 NDK 编译段）", /VER="2.5.116-instant"; VCODE=134/.test(buildSh) && /DS-Harness-\$VER\.apk/.test(buildSh) && /libdshllama\.so/.test(buildSh));
-t("Manifest 已升 122/2.5.116-instant", /android:versionCode="134"/.test(manifestXml) && /android:versionName="2.5.116-instant"/.test(manifestXml));
+t("构建脚本已升 122/2.5.117-diag（含 NDK 编译段）", /VER="2.5.117-diag"; VCODE=135/.test(buildSh) && /DS-Harness-\$VER\.apk/.test(buildSh) && /libdshllama\.so/.test(buildSh));
+t("Manifest 已升 122/2.5.117-diag", /android:versionCode="135"/.test(manifestXml) && /android:versionName="2.5.117-diag"/.test(manifestXml));
 
 console.log("== F. 云端 py 六检 ==");
 t("docstring 升六检", /六检全部实弹/.test(vulnPy));
@@ -265,7 +265,7 @@ t("回滚归档链：watchdogRevert 旗标→记忆+手册+toast", /storeGet\("w
 t("安全锚锁 UPD_LOCK 硬闸在位（禁触 token 管道/热包读写/闸门自检门/看门狗旗标）", ["api\\.github\\.com","raw\\.githubusercontent","ghHeaders","githubToken","Authorization","hotWrite","hotDelete","updGauntlet","updBootGuard","updSelfMd5","updManifestParse","__dsbBooted","BUNDLE_VER"].every(x=>script.includes(x)) && script.includes("const UPD_LOCK="));
 t("补丁循环逐条过安全锚锁（find/replace 双检）", /UPD_LOCK\.test\(p\.find\)\|\|UPD_LOCK\.test\(p\.replace\)\)\{applied\.push\("安全锚锁拦截跳过"\);continue\}/.test(script));
 t("进化 prompt 含安全锚禁令（软约束+硬闸双保险）", /禁触安全锚/.test(script));
-t("BUNDLE_VER 防降级地板全链升版（防旧包拉锯战）", /const BUNDLE_VER=104;/.test(script) && !/BUNDLE_VER=(?:[1-9]|[12][0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98);/.test(script));
+t("BUNDLE_VER 防降级地板全链升版（防旧包拉锯战）", /const BUNDLE_VER=105;/.test(script) && !/BUNDLE_VER=(?:[1-9]|[12][0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98);/.test(script));
 
 console.log("== D8. 第五轮深查：清单方向闸防回退 + persona 独面同步 + Store 存活 ==");
 t("updVerRank 版本排序函数在位（三段版本号+进化号全编码）", /function updVerRank\(v\)\{[\s\S]{0,400}evolve[\s\S]{0,200}1e9/.test(script));
@@ -916,7 +916,7 @@ console.log("\n== D29. 第二十九轮：深挖六度（AI 文件防护闸+云�
 
 console.log("\n== D30. 第三十轮：Java 骨架层自主进化物理通道（用户授权纳入闭环）==");
 (() => { const by = fs.readFileSync(path.join(ROOT,"app/assets/cloud/build.yml"),"utf8"); const vc = fs.readFileSync(path.join(ROOT,"app/assets/cloud/vuln_check.py"),"utf8");
-  t("build.sh 环境变量自适应（DSH_BUILD_TOOLS/PLATFORM_JAR/JDK/NDK 四覆盖；本地零变化 runner 可建）", ["DSH_BUILD_TOOLS","DSH_PLATFORM_JAR","DSH_JDK","DSH_NDK"].every(v=>buildSh.includes(v)) && buildSh.includes("VER=\"2.5.116-instant\"; VCODE=134"));
+  t("build.sh 环境变量自适应（DSH_BUILD_TOOLS/PLATFORM_JAR/JDK/NDK 四覆盖；本地零变化 runner 可建）", ["DSH_BUILD_TOOLS","DSH_PLATFORM_JAR","DSH_JDK","DSH_NDK"].every(v=>buildSh.includes(v)) && buildSh.includes("VER=\"2.5.117-diag\"; VCODE=135"));
   t("build.yml 云端自动构建链（checkout→JDK17→SDK→build.sh→apk_manifest→commit 回仓）", by.includes("name: build-apk") && by.includes("actions/setup-java@v4") && by.includes("bash build.sh") && by.includes("apk_manifest.json") && by.includes("dsh-cloud-engine"));
   t("build.yml 触发面：workflow_dispatch + 进化任务完成后自动触发（workflow_run 按 name 匹配——🛡️ 64 轮修复：旧版写 [\"agent\"] 文件名永不命中，APK 自动重建从未触发过）", by.includes("workflow_dispatch") && by.includes('workflows: ["DS Harness Cloud Agent (GENE-Enforced)"]'));
   t("App 端 updApkCheck：骨架层进化包每日检测（复用四通道拉 apk_manifest→updVerRank 比较→通知+openUrl 拉起下载）", script.includes("async function updApkCheck(manual)") && script.includes("apk_manifest.json") && script.includes("updVerRank(String(m.versionName))>updVerRank(APP_VER)") && script.includes("DSB.openUrl(url)"));
@@ -1859,7 +1859,7 @@ console.log("\n== D63. 第六十三轮：深层审计 12 缺陷全修（agent.py
   t("🛡️ JS 安全锚锁自锁（正则含 UPD_LOCK 与执法行标识——补丁改执法行绕闸被拦）", script.includes("|UPD_LOCK|安全锚锁拦截/i") && script.includes("正则补入锁自身与执法行标识"));
   t("🛡️ JS updCheck 幂等改计数遍历（CDN 缓存滞后不再漏检后续通道新版本）", script.includes("errs=[],sameCnt=0") && script.includes("sameCnt++;continue") && script.includes("if(sameCnt){if(manual)toast("));
   t("🛡️ JS load 损坏存档备份 .bak（不再静默清零丢数据）", script.includes('storeSet(k+".bak",JSON.stringify({ts:now(),raw:_bad}))') && script.includes("损坏已隔离")); // 🛡️ 65 轮升维：备份包进合法 JSON 载体（Bridge.storeSet 内部 JSONObject 解析必炸损坏原文——直存从未落盘过）
-  t("🛡️ 83 轮版本钉已被 84 轮接棒（升 2.5.116-instant/92/122/122，详见 D68-B0）", script.includes('const APP_VER="2.5.116-instant"') && script.includes("const BUNDLE_VER=104;") && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"'));
+  t("🛡️ 83 轮版本钉已被 84 轮接棒（升 2.5.117-diag/92/122/122，详见 D68-B0）", script.includes('const APP_VER="2.5.117-diag"') && script.includes("const BUNDLE_VER=105;") && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"'));
 })();
 
 console.log("\n== D64. 第六十四轮：无人区审计 12 缺陷全修（云端睡眠/工作流血管/Java 骨架/App 交互链）==");
@@ -1947,31 +1947,31 @@ t("D67-M1 底栏五 tab 点击委托绑定（data-tab 挂着无监听的第二�
 t("D67-M2 renderMode boot 即调（新装首屏模式分段器不再全灰）", /provs\(\); renderMode\(\);\}/.test(script) && script.includes("boot 即渲染模式分段器"));
 t("D67-M3 heroHtml 英雄页三处接线（任务页空态/空会话共用；旧三行灰字已废）", script.includes("function heroHtml()") && script.includes('}).join("")|||HERO|||;'.replace("|||HERO|||",":heroHtml()")) && script.includes("cur.msgs.length?cur.msgs.map((m,i)=>msgHtml(m,i)).join(\"\"):heroHtml()") && !script.includes("还没有任务"));
 t("D67-M4 quickStart 延时 80ms 发送（go 的 hashchange 异步，同步发会被 !cur 闸吞掉）", script.includes("function quickStart(t){newTask();setTimeout(function(){var ta=$(\"#chatTa\");if(ta){ta.value=t;chatSend()}},80)}"));
-t("D67-M5 顶栏 CatPaw 化（爪印徽标+小神标题+三端分段器独立 modeRow 行；id 全保留；68c 徽标双击直达设置；v2.5.116-instant 111 轮：去「·」+标题居中）", /<div class="pawlogo"[^>]*><img id="pawImg"[^>]*>/.test(html) && html.includes("<b>小神 DS Harness</b>") && html.includes('<div id="modeRow">') && html.includes('id="modeChat"') && html.includes('id="balPill"') && html.includes("align-items:center; text-align:center;"));
+t("D67-M5 顶栏 CatPaw 化（爪印徽标+小神标题+三端分段器独立 modeRow 行；id 全保留；68c 徽标双击直达设置；v2.5.117-diag 111 轮：去「·」+标题居中）", /<div class="pawlogo"[^>]*><img id="pawImg"[^>]*>/.test(html) && html.includes("<b>小神 DS Harness</b>") && html.includes('<div id="modeRow">') && html.includes('id="modeChat"') && html.includes('id="balPill"') && html.includes("align-items:center; text-align:center;"));
 t("D67-C1 CatPaw 设计系统令牌落位（暗夜底/猫爪绿/渐变/pawlogo/hero/sugs 全套）", html.includes("--bg:#0B0E14") && html.includes("--pri:#22C55E") && html.includes("--pri-grad") && html.includes(".pawlogo{") && html.includes(".hero{") && html.includes(".sugs{") && html.includes("#modeRow{"));
 /* ===== D68：68 轮四大任务逐一锁死（打不开三重加固/小黑鲸/CatDesk 同款全层级界面/render 补全） ===== */
-t("D88-B0 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && script.includes("const BUNDLE_VER=104;") && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"') && manifestXml.includes('android:versionName="2.5.116-instant"'));
+t("D88-B0 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && script.includes("const BUNDLE_VER=105;") && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"') && manifestXml.includes('android:versionName="2.5.117-diag"'));
 // ===== D95 组：95 轮 rpcfull——体检四缺口+三小病一次全修（通用 RPC 通道把废弃同步桥上的器官全部接回） =====
 t("D95-R1 通用 RPC 通道（桩 __dsbRpc 发起 [dsb.call]method#seq/i/n 分块；__dsbRpcOk 回填 __dsbRpcCache——同步契约三态：占位降级→回填→轮询点二次命中）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("window.__dsbRpc=function(m,a)") && nb.includes("[dsb.call]'+m+'#'+seq") && nb.includes("window.__dsbRpcOk=function(seq,r)") && nb.includes("window.__dsbRpcCache")})());
 t("D95-R2 桩面四缺口全接 RPC（http/readAsset 真通道+pick×7 真触发+mic×5 真录音/ASR+llama×4 真状态——不再恒返安全空值）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("__dsbRpc('readAsset'") && nb.includes("__dsbRpc('http'") && nb.includes("__dsbRpc('pickFile'") && nb.includes("__dsbRpc('micAsrChat'") && nb.includes("__dsbRpc('llamaStatus'") && nb.includes("__dsbRpc('llamaStream'")})());
 t("D95-R3 Java RPC 分发器（call 分支分块重组→dispatchRpc 白名单 24 方法真调 Bridge+dispatchPhb 12 方法真调 PhoneBridge→evaluate __dsbRpcOk）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("dispatchRpc") && mj.includes("dispatchPhb") && mj.includes("bridge.micAsrChat(a0, a1)") && mj.includes("phoneBridge.fsRead") && mj.indexOf("startsWith(\"phb_\")")>0})());
 t("D95-R4 三小病补接（exactset/vib/savedlv 动作通道 Java 侧真执行——91 轮桩面盖了 Java 忘了接的三处）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes('act.equals("exactset")') && mj.includes('act.equals("vib")') && mj.includes('act.equals("savedlv")') && mj.includes("VibrationEffect")})());
 t("D95-R5 PHB 接线+护栏（PhoneBridge 实例化+call 分支 phb_ 路由；storeGet 护栏子串保快照注入）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("new PhoneBridge(this); // 📱 95 轮：PHB 接线") && mj.indexOf("new PhoneBridge(this); // 📱 95 轮：PHB 接线")<mj.indexOf("phoneBridge.fsGranted")})());
-t("D95-R6 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"'));
+t("D95-R6 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"'));
 // ===== D94 组：94 轮 asyncnet——聊天网络层回归（httpStream 异步真网：console 下行+evaluate 回调） =====
 t("D94-N1 桩 httpStream 真实现（请求 URL\\t hdr \\t body 三段制分块 [dsb.http] console 下发——替代 91 版返 '0' 永不回调的假桩）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("httpStream:function(url,hdr,body)") && nb.includes("[dsb.http]'+id+'#'+i+'/'+n") && nb.includes("window.__dsbHttpSeq")})());
 t("D94-N2 桩 llamaStream 立即失败回调（端侧未部署不再永挂——streamOnce Promise 能收口切下一源）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("llamaStream") && nb.includes("__dsbRpc('llamaStream'")})());
 t("D94-N3 Java http 分块重组+后台真网（onConsoleMessage [dsb.http] 分支收齐→startHttpStream 后台线程 HttpURLConnection POST+SSE 逐行读）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("act.equals(\"http\")") && mj.includes("startHttpStream") && mj.includes("java.net.HttpURLConnection") && mj.includes("readLine()")})());
 t("D94-N4 evaluate 行批量回调（flushHttpChunks 批量拼 __onStreamChunk；done 帧 status 透传——页面零改动收到流）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("flushHttpChunks") && mj.includes("window.__onStreamChunk&&window.__onStreamChunk('") && mj.indexOf("JSONObject.quote(ln)")>0})());
 t("D94-N5 诊断可视化（⓿段加流式网请求计数：0=聊天网络未发起）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("流式网请求") && mj.includes("netStreams")})());
-t("D94-N6 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"'));
+t("D94-N6 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"'));
 // ===== D93 组：93 轮 seedfix——重启丢档根因定罪（快照播种对象 vs load() JSON 字符串契约）+任务页建分组 =====
 t("D93-F1 播种类型归一（桩播种 stringify——快照对象直存 M 会让 load() 的 JSON.parse 吃到 [object Object] 必炸→catch 隔离道 S[k]={}→每次重启全键清零；真机坐实：项目/任务重启全没=用户报'创建的都没了'）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("M[k]=(typeof S[k]==='string')?S[k]:JSON.stringify(S[k])")})());
 t("D93-F2 storeGet/Set 返回值字符串化（桩 storeGet 非 string 即 stringify——契约归一三层：播种/读/写）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("storeGet:function(k){var v=(k in M)?M[k]:null;return (v==null||typeof v==='string')?v:JSON.stringify(v)}") && nb.includes("storeSet:function(k,v){M[k]=String(v);")})());
 t("D93-F3 非破坏收割（__dsbDrain 不清 dirty 转 __dsbSent；Java 落盘确认后 __dsbDrainOk 逐键 ack 删——回程丢包不再丢数据，下拍自动重发）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return nb.includes("window.__dsbSent={}") && nb.includes("window.__dsbDrainOk=function(a)") && mj.includes("ackKeys.toString()") && mj.includes("__dsbDrainOk")})());
 t("D93-F4 bootTrace 跨重启证据链（initAll 装载条数落档留 prev；日志页存档证据卡两代对比——丢在落盘还是装载一张截图分案）", script.includes("bootTrace") && script.includes("_btPrev") && script.includes("存档装载证据（跨重启对比）"));
 t("D93-F5 任务页 chips ➕ 新建分组（分组=项目复用弹层；projectDo 从任务页建就地刷新不跳走）", script.includes("newProject('新建分组')") && script.includes("已创建「") && script.includes("就地刷新 chips"));
-t("D93-F6 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"'));
+t("D93-F6 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"'));
 t("D68-A1 load 类型闸（裸字符串/数组存档必进隔离道——打不开根因①）", script.includes('if(!_v||typeof _v!=="object"||Array.isArray(_v))throw new Error("存档类型非法') && script.includes('S[k]={};try{toast("⚠️ 存档 "'));
 t("D68-A2 initAll 容器三件套（强制 object+list 强制 Array——打不开根因②）", script.includes('["sessions","projects","alarms"].forEach(k=>{if(!S[k]||typeof S[k]!=="object")S[k]={};if(!Array.isArray(S[k].list))S[k].list=[]})'));
 t("D68-A3 bootFail 红屏降级页（启动炸断不再黑屏：诊断+仅重试+安全模式重启）", script.includes("function bootFail(e)") && script.includes("__bootRetry") && script.includes("__bootSafeReset") && script.includes("小神启动受挫了") && script.includes("catch(_bootErr){bootFail(_bootErr)"));
@@ -2002,7 +2002,7 @@ const dstBlocks = [...dstHtml.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m =
 const dstMain = dstBlocks.reduce((a, b) => b.length > a.length ? b : a, "");
 const bbBlock = dstBlocks.find(b => b.includes("s0-blackbox-ready")) || "";
 t("D79-T1 转译管线三件套（src 存在+transpile.cjs+build.sh 接门）", fs.existsSync(path.join(ROOT, "app/assets/index.src.html")) && fs.existsSync(path.join(ROOT, "tools/transpile.cjs")) && buildSh.includes('node "$ROOT/tools/transpile.cjs" 44'));
-t("D83-T2 产物与源码双生（src 主体在产物中有转译形态；产物带 var BUNDLE_VER 转译形态）", /var BUNDLE_VER = 104;/.test(dstHtml) && /var APP_VER = "2.5.116-instant";/.test(dstHtml));
+t("D83-T2 产物与源码双生（src 主体在产物中有转译形态；产物带 var BUNDLE_VER 转译形态）", /var BUNDLE_VER = 105;/.test(dstHtml) && /var APP_VER = "2.5.117-diag";/.test(dstHtml));
 t("D79-T3 产物老语法清零地板（async/await/箭头全转 ES5；模板串 Chrome41+ 原生豁免；字符串字面量豁免）", (function(){const codeOnly = dstMain.replace(/"(?:[^"\\\n]|\\.)*"/g, '""').replace(/'(?:[^'\\\n]|\\.)*'/g, "''");return !/\basync\b/.test(codeOnly) && !/\bawait\b/.test(codeOnly) && !/=>/.test(codeOnly) && true;})()); // 模板串豁免：Chrome 41+ 原生支持（44 目标安全保留），async/await/箭头仍是硬地板
 t("D79-T4 产物 ES5 可解析（new Function 全块过=Chrome 44-59 不再整块语法死）", (function(){try{new Function(dstMain);return true}catch(e){return false}})());
 t("D79-B1 黑匣子独立 ES5 块（先于主块+无 let/const/箭头/模板串）", bbBlock.length > 200 && !/=>/.test(bbBlock) && !/`/.test(bbBlock) && !/\b(let|const)\s/.test(bbBlock) && bbBlock.includes("s0-blackbox-ready") && bbBlock.includes("bootFailLog"));
@@ -2026,9 +2026,9 @@ t("D80-P4 boot-wipe 清档扩容（含 .bak 隔离档/updNotice/watchdogRevert�
 t("D80-R1 polyfill 独立块（纯 ES5+原生已有不覆盖 def 模式）", pfBlock.length > 500 && !/=>/.test(pfBlock) && !/`/.test(pfBlock) && pfBlock.includes('function def(o,k,f)'));
 t("D80-R2 polyfill 覆盖审计清单（entries/values/assign/includes/find/padStart/TextEncoder）", ["entries","values","assign","includes","find","padStart","TextEncoder"].every(k=>pfBlock.includes(k)));
 t("D80-R3 polyfill 主块前装载顺序（黑匣子→补丁→主块）", dstHtml.indexOf("s0-blackbox-ready") < dstHtml.indexOf("运行时 API 补丁层") && dstHtml.indexOf("运行时 API 补丁层") < dstHtml.indexOf("GENE"));
-t("D80-V1 静态版本浮标（JS 全死截图可辨版本）", html.includes('v2.5.116-instant · 双端共体同脑') && html.includes("静态版本浮标") && script.includes("v2.5.116-instant · JS 运行中"));
+t("D80-V1 静态版本浮标（JS 全死截图可辨版本）", html.includes('v2.5.117-diag · 双端共体同脑') && html.includes("静态版本浮标") && script.includes("v2.5.117-diag · JS 运行中"));
 t("D80-V2 bootErr 落盘带版本+内核 UA（红页截图自带诊断）", script.includes('v:APP_VER,ua:(navigator?String(navigator.userAgent).slice(0,160):"")'));
-t("D80-V3 红页头行显示版本+内核", script.includes("版本 v2.5.116-instant · 内核 "));
+t("D80-V3 红页头行显示版本+内核", script.includes("版本 v2.5.117-diag · 内核 "));
 
 /* ===== D81：81 轮「v80 依然全死+诊断页永不出现」破局——双计时器探针+console 捕获+acorn ES5 硬门 ===== */
 console.log("\n== D81. 双计时器探针+console 捕获+ES5 硬门 ==");
@@ -2053,7 +2053,7 @@ t("D82-L5 二分页产出（转译器同步生成 index.probe.html：主块→MA
 t("D82-L6 probeMainTest 接线（dsh://boot-probemain→载二分页→getTitle 判 MAIN_REPLACED_OK→结论落盘 probeMain 进诊断页）", mainJava.includes("boot-probemain") && mainJava.includes("probeMainTest") && mainJava.includes('contains("MAIN_REPLACED_OK")') && mainJava.includes('storeSet("probeMain"'));
 t("D82-L7 二分判定双分支（OK=凶手在主块内容内部/FAIL=凶手在外壳层——一轮截图完成主块内/外壳层二分）", mainJava.includes("凶手锁定在主块内容内部") && mainJava.includes("凶手在外壳层"));
 t("D82-L8 重试走梯（诊断页重试按钮 dsh://boot-retry 也过 bootLadder 自检，不裸载主应用）", (function(){const seg=mainJava.slice(mainJava.indexOf("shouldOverrideUrlLoading"),mainJava.indexOf("private void bootLadder"));return seg.includes("bootLadder()") && seg.includes("probeMainTest()")})());
-t("D82-L9 hSub 双文案分离（静态浮标=双端共体同脑/JS 活 tasks=JS 运行中——任何截图立判 JS 活死，80 轮设计缺陷修复）", html.includes("v2.5.116-instant · 双端共体同脑") && script.includes('tasks:"v2.5.116-instant · JS 运行中"') && script.includes("v2.5.65-bridge · 双端共体同脑") === false ? html.includes("双端共体同脑") : true);
+t("D82-L9 hSub 双文案分离（静态浮标=双端共体同脑/JS 活 tasks=JS 运行中——任何截图立判 JS 活死，80 轮设计缺陷修复）", html.includes("v2.5.117-diag · 双端共体同脑") && script.includes('tasks:"v2.5.117-diag · JS 运行中"') && script.includes("v2.5.65-bridge · 双端共体同脑") === false ? html.includes("双端共体同脑") : true);
 t("D82-L10 清档扩容 stage1/probeMain", mainJava.includes('"stage1", "probeMain"'));
 
 /* ===== D83：83 轮「引擎活但主应用死」破案——统一桥载（file:// 装载路径疑为华为内核 JS 限制） ===== */
@@ -2095,49 +2095,49 @@ t("D87-B4 桥读缓存层（Bridge STORE_MEM ConcurrentHashMap——启动期 st
 t("D87-B5 诊断页⑦段无桥实验结论+🧪 链接（一张截图携带桥死锁验证结果）", mainJava.includes("⑦ 无桥实验（桥死锁验证）") && mainJava.includes("dsh://boot-nobridge"));
 t("D87-B6 清档扩容 nobridge（boot-wipe 键表含 nobridge/bootTitle——毒档自愈覆盖新诊断位）", mainJava.includes("\"probeMain\", \"nobridge\", \"bootTitle\", \"settings.bak\""));
 
-// —— D89 v2.5.116-instant：真桥轻量化收网（88 轮真机实锤后数据层回归）——
+// —— D89 v2.5.117-diag：真桥轻量化收网（88 轮真机实锤后数据层回归）——
 t("D89-A1 桥线程零磁盘：storeSet 只更内存+落盘交 STORE_WRITER 后台单线程（死点=桥线程 Store fsync 互锁）", (function(){const bj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/Bridge.java"),"utf8");return bj.includes("STORE_WRITER") && bj.includes("Executors.newSingleThreadExecutor()") && /storeSet[\s\S]{0,600}STORE_WRITER\.execute/.test(bj) && !/storeSet[\s\S]{0,400}store\.set\(key/.test(bj)})());
 t("D89-A2 启动预热 warmup()（files/*.json 全量预载 STORE_MEM——桥读永远命中缓存不碰磁盘）", (function(){const bj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/Bridge.java"),"utf8");const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return bj.includes("public void warmup()") && bj.includes("STORE_MEM.put(key, v)") && mj.includes("bridge.warmup()")})());
 t("D89-A3 看门狗三级递进保留（fail1 重载/fail2 主块二分/fail3 无桥实验兑底链完整——90 轮装载序翻转后仍兑底）", mainJava.includes("if (bootFails > 2)") && /bootFails > 2[\s\S]{0,80}nobridgeTest\(\)/.test(mainJava) && mainJava.includes("probeMainTest()"));
-t("D89-A4 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && script.includes("const BUNDLE_VER=104;") && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"') && manifestXml.includes('android:versionName="2.5.116-instant"'));
+t("D89-A4 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && script.includes("const BUNDLE_VER=105;") && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"') && manifestXml.includes('android:versionName="2.5.117-diag"'));
 
-// —— D90 v2.5.116-instant：console 通道正式桥（89 版真机终审：同步桥 IPC 本身死锁）——
+// —— D90 v2.5.117-diag：console 通道正式桥（89 版真机终审：同步桥 IPC 本身死锁）——
 t("D90-S1 JS 桩快照播种+分块回写（__DSB_SNAPSHOT 播种 M；storeSet 走 [dsb.set]key#i/n 分块 console）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("window.__DSB_SNAPSHOT||{}") && nb.includes("[dsb.set]'+k+'#'+i+'/'+n") && nb.indexOf("__DSB_SNAPSHOT") < nb.indexOf("window.DSB={storeGet")})());
 t("D90-S2 Java 侧快照预灌（Bridge.snapshotJson 全量 JSON；loadWeb/nobridgeTest 载入前 injectSnapshot 注 stub 之前）", (function(){const bj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/Bridge.java"),"utf8");const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return bj.includes("public String snapshotJson()") && /loadWeb\(\)[\s\S]{0,600}injectSnapshot\(b\)/.test(mj) && /nobridgeTest\(\)[\s\S]{0,300}injectSnapshot\(b\)/.test(mj) && /html\.substring\(0, i \+ 6\) \+ tag \+ html\.substring\(i \+ 6\)/.test(mj)})());
 t("D90-S3 console 回写重组落盘（onConsoleMessage 收 [dsb.set] 分块重组→bridge.storeSet；setRx 缓冲）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("startsWith(\"[dsb.\")") && mj.includes("setRx") && /setRx[\s\S]{0,200}bridge\.storeSet\(key, acc\.toString\(\)\)/.test(mj)})());
 t("D90-S4 loadWeb 默认 nobridge 快照版优先（nobridge→快照注入→热包→内置；同步桥 IPC 死锁终审后的正式装载序）", /loadWeb\(\)[\s\S]{0,400}String b = readAsset\("index\.nobridge\.html"\);[\s\S]{0,120}injectSnapshot\(b\);[\s\S]{0,120}readHotBundle\(\)/.test(mainJava));
 
-// —— D91 v2.5.116-instant：Pro▼ 弹层内核兼容+桩面 39 方法全覆盖（用户实弹：Pro 点不开）——
+// —— D91 v2.5.117-diag：Pro▼ 弹层内核兼容+桩面 39 方法全覆盖（用户实弹：Pro 点不开）——
 t("D91-F1 弹层定位内核兼容（#modal 不再使用 inset:0 简写——华为内核 84~86 不支持致弹层渲染到视口外=『点不开』）", (function(){const src=fs.readFileSync(path.join(ROOT,"app/assets/index.src.html"),"utf8");const dst=fs.readFileSync(path.join(ROOT,"app/assets/index.html"),"utf8");return !/inset:\s*0/.test(src) && src.includes("top:0;left:0;right:0;bottom:0") && dst.includes("top:0;left:0;right:0;bottom:0")})());
 t("D91-F2 桩面全覆盖（39 方法在 nobridge 桩全定义：动作类 fire console/同步值类安全降级）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");const need=["openUrl","notifyUser","scheduleAlarm","cancelAlarm","runAlarmNow","rescheduleAll","askNotifPermission","canExactAlarm","openExactAlarmSettings","reload","exitApp","hotInfo","hotRead","hotWrite","hotDelete","notifPerm","saveDlv","readAsset","appInfo","http","httpStream","llamaStatus","llamaStream","llamaDownload","llamaDelete","micAsr","micAsrChat","micAsrFile","micRecStart","micRecStop","pickFile","pickGallery","pickCamera","pickVideoFrames","pickVideoAudio","pickReadText","pickDelete","toast","vib"];return need.every(function(f){return nb.indexOf(f+":function(")>-1})})());
 t("D91-F3 Java 动作通道（onConsoleMessage 统一 [dsb. 开关：notify 真通知/openUrl/闹钟三件/reload/exit/hotdel/toast——console 单向总线转正）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes('raw.startsWith("[dsb.")') && mj.includes('act.equals("notify")') && mj.includes("bridge.notifyUser(") && mj.includes('act.equals("openurl")') && mj.includes('act.equals("alarm")') && mj.includes('act.equals("reload")') && mj.includes('act.equals("exit")')})());
 t("D91-F4 appInfo 快照预灌（__DSB_APPINFO 注入+桩 appInfo() 读快照——诊断页/关于页 snapbridge 下可用）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return mj.includes("__DSB_APPINFO") && mj.includes("bridge.appInfo()") && nb.includes("window.__DSB_APPINFO||'{}'")})());
 
-// —— D92 v2.5.116-instant：持久化双通道保险+存档徽章（91 版真机：任务重启丢失）——
+// —— D92 v2.5.117-diag：持久化双通道保险+存档徽章（91 版真机：任务重启丢失）——
 t("D92-H1 JS 侧双写（storeSet 同步登记 __dsbDirty；__dsbDrain 收割口）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("window.__dsbDirty={};window.__dsbSaved=0;") && nb.includes("window.__dsbDirty[k]=String(v)") && nb.includes("window.__dsbDrain=function")})());
 t("D92-H2 Java 心跳收割（4s evaluate __dsbDrain→双解 JSON→bridge.storeSet 落盘→回写 __dsbSaved 驱动徽章）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("window.__dsbDrain?window.__dsbDrain():null") && mj.includes("bridge.storeSet(k, map.getString(k))") && mj.includes("ackKeys.toString()") && mj.includes("__dsbDrainOk") && mj.includes("hbHandler.postDelayed(this, 4000)")})());
 t("D92-H3 心跳接线+诊断可视化（装载后 4s 启动 hbTick；诊断页⓿段带收割计数）", (function(){const mj=fs.readFileSync(path.join(ROOT,"app/java/com/dsh/app/MainActivity.java"),"utf8");return mj.includes("h.postDelayed(hbTick, 4000)") && mj.includes("心跳收割") && mj.includes("hbAcks")})());
 t("D92-H4 存档徽章（左下常驻 💾已存档/存档等待——真机一张截图判读通道活死）", (function(){const nb=fs.readFileSync(path.join(ROOT,"app/assets/index.nobridge.html"),"utf8");return nb.includes("dsbAckBadge") && nb.includes("已存档") && nb.includes("存档等待")})());
-t("D92-H5 版本钉（index 2.5.116-instant/BUNDLE 104 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.116-instant"') && script.includes("const BUNDLE_VER=104;") && buildSh.includes('VER="2.5.116-instant"; VCODE=134') && manifestXml.includes('android:versionCode="134"') && manifestXml.includes('android:versionName="2.5.116-instant"'));
+t("D92-H5 版本钉（index 2.5.117-diag/BUNDLE 105 + build.sh 129 + Manifest 129）", script.includes('const APP_VER="2.5.117-diag"') && script.includes("const BUNDLE_VER=105;") && buildSh.includes('VER="2.5.117-diag"; VCODE=135') && manifestXml.includes('android:versionCode="135"') && manifestXml.includes('android:versionName="2.5.117-diag"'));
 
-// —— D98 v2.5.116-instant：云端日期注入+结果标记剥离（98 轮真机：小神答不出今天几号+provs/run 标记漏进聊天）——
+// —— D98 v2.5.117-diag：云端日期注入+结果标记剥离（98 轮真机：小神答不出今天几号+provs/run 标记漏进聊天）——
 t("D98-T1 agent.py SYSTEM 注入北京时间（utcnow+8h/星期映射/不许说无法获取）", (function(){const ap=fs.readFileSync(path.join(ROOT,"app/assets/cloud/agent.py"),"utf8");return ap.includes("当前时间：") && ap.includes("timedelta(hours=8)") && ap.includes("星期") && ap.includes("不要说“无法获取日期")})());
 
-// —— D99 v2.5.116-instant：429 限流退避重试+切换文案带 HTTP 码（99 轮真机观感：智谱连发限流被误读为"只能答一次"）——
+// —— D99 v2.5.117-diag：429 限流退避重试+切换文案带 HTTP 码（99 轮真机观感：智谱连发限流被误读为"只能答一次"）——
 t("D99-F1 streamOnce 失败留痕（__lastStreamStatus：pk+status+ts）", script.includes("window.__lastStreamStatus={pk:pk,status:status,ts:now()}"));
 t("D99-F2 429 退避重试同源（额度没确认用完前不换源）", script.includes("st===429") && script.includes("额度没确认用完前不换源") && script.includes("退避重试 2 轮仍然限流"));
 
-// —— D100 v2.5.116-instant：切源铁律+大白话文案（用户最高令：额度实锤才切源，其他故障当场纠正继续用；提示不许甩代码要说人话）——
+// —— D100 v2.5.117-diag：切源铁律+大白话文案（用户最高令：额度实锤才切源，其他故障当场纠正继续用；提示不许甩代码要说人话）——
 t("D100-A1 App 端故障分类纠正（网络/5xx=原地重试 2 次+3s 再试；401/403=钥匙大白话；402=额度大白话）", script.includes("我马上原地重试") && script.includes("钥匙（Key）不对或过期了") && script.includes("免费额度真的用完了") && script.includes("再给它一次机会"));
 t("D100-A2 App 端模型停服=同源换最强不换台+通用兜底文案大白话", script.includes("停服下架了，我换它家更强的") && script.includes("这一单没接稳") && script.includes("下一条消息我还是先找"));
 t("D100-C1 agent.py 切源铁律（429 退避 3 轮 10/20/40s 实锤才切+钥匙/额度大白话 errors+网络类当场纠正 3 轮）", (function(){const ap2=fs.readFileSync(path.join(ROOT,"app/assets/cloud/agent.py"),"utf8");return ap2.includes("for attempt in range(3)") && ap2.includes("额度没确认用完前不换源") && ap2.includes("钥匙不对或过期") && ap2.includes("attempt >= 2") && ap2.includes("联系不上")})());
 
-// —— D101 v2.5.116-instant：自主指定档（用户令：除自动最强外，全部源+模型开放自选）——
+// —— D101 v2.5.117-diag：自主指定档（用户令：除自动最强外，全部源+模型开放自选）——
 t("D101-U1 弹层第四档「自主指定」+③源④模型联动下拉（云端含 cloudOnly 源、免 Key 保底标注）", script.includes("我自己选源和模型（选型引擎让路）") && script.includes('id="mpSrc" onchange="uiModeSyncReadback()"') && script.includes('id="mpModel"') && script.includes("③ 免费源（全部"));
 t("D101-U2 应用落盘=首选源+指定模型（chainList 链首+provPick 用户选型优先——云端 dispatch 的 provider/model 同源跟随）", script.includes('if(src)setPref(src)') && script.includes('selOf()[src]=mdl'));
 t("D101-U3 自主指定主权：闪电模式跳过快源插队+顶栏徽标「✋自选」", script.includes('tierOf()!=="custom"&&imgs&&imgs.length===0') && script.includes('t==="custom"?"✋自选"'));
 
-// —— D102 v2.5.116-instant：三端分治（用户令：切端时源/档位不串台——电脑端/云端/手机端各自独立记忆）——
+// —— D102 v2.5.117-diag：三端分治（用户令：切端时源/档位不串台——电脑端/云端/手机端各自独立记忆）——
 t("D102-T1 访问器三件套（tiers/prefProvs/selModelss 按 mode 独立存档，旧字段=当前端镜像）", script.includes("S.settings.tiers=S.settings.tiers||{}") && script.includes("S.settings.prefProvs=S.settings.prefProvs||{}") && script.includes("S.settings.selModelss=S.settings.selModelss||{}") && script.includes("function setTier(t)") && script.includes("function setPref(src)"));
 t("D102-T2 读写全走访问器（chainList/provPick/闪电/wireModeBtn——无直引残留）", script.includes("const pref=prefOf();") && script.includes('const sel=selOf()[k]||"";') && script.includes('if(tierOf()!=="custom"') && script.includes("const m=S.settings.mode,t=tierOf();"));
 t("D102-T3 切端即刻切换独立档位（弹层 readback setTier 落当前端；设置页首选源 setPref）", script.includes("if(t)setTier(t.value);") && script.includes("setPref('${k}')"));
@@ -2148,7 +2148,7 @@ t("D102-T3 切端即刻切换独立档位（弹层 readback setTier 落当前端
 t("D98-T2 结果标记剥离正则升级（前导全部 <!-- --> 注释行一把剥——旧 /^<!--[\s\S]*?-->\n*/g 无 m 只剥首行，provs/run 两行漏进聊天）", script.includes('replace(/^(?:<!--[\\s\\S]*?-->\\s*)+/,"")') && !script.includes('replace(/^<!--[\\s\\S]*?-->\\n*/g,"")'));
 
 function __finish(){ // 97b：D19 实弹异步化后，退出时序收口（同步段全跑完→D19 IIFE 收尾）
-  // —— D105 v2.5.116-instant：云端秒回快车道（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）——
+  // —— D105 v2.5.117-diag：云端秒回快车道（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）——
   t("D105-A1 快车道路由（云端模式默认走 sendStream{cloud:true} 直连秒答，不再为闲聊派 GitHub）", script.includes('else await sendStream(text,aiIdx,sendImgs,{cloud:true})'));
   t("D105-A2 ☁️任务: 强制重装入口（前缀剥离后仍派 sendCloud 走 GitHub 真算力）", script.includes('sendCloud(text.replace(/^☁️任务[:：\\s]*/,""),aiIdx)') && script.includes('/^☁️任务[:：\\s]/.test(text)'));
   t("D105-A3 sendStream 云端选项（opts.cloud→chainList(true) 全源参战：cloudOnly+动态拉取+进化新增源一个不落）", script.includes("function sendStream(text,aiIdx,imgs,opts)") && script.includes("const fastCloud=!!(opts&&opts.cloud)") && script.includes("let chain=chainList(fastCloud)"));
@@ -2158,56 +2158,56 @@ function __finish(){ // 97b：D19 实弹异步化后，退出时序收口（同�
   t("D105-A7 快车道受 GENE9 认怂检测管辖（云端直连回复承认做不到也自动触发进化）", script.includes('if((mode==="chat"||mode==="cloud")&&cur.msgs[aiIdx]&&!cur.msgs[aiIdx].cloud&&!cur.msgs[aiIdx].anime)'));
   t("D105-A8 界面文案同步（chatHint+setMode toast 双处标注快车道与重活入口）", script.includes("云端快车道：全源直连秒回") && script.includes("聊天全源直连秒回"));
   // —— D105 end ——
-  // —— D106 v2.5.116-instant：进化觉醒（用户实弹三问：进化在不在位/为什么从没主动进化过→节流锈+战报锈双根治）——
+  // —— D106 v2.5.117-diag：进化觉醒（用户实弹三问：进化在不在位/为什么从没主动进化过→节流锈+战报锈双根治）——
   const agentPy = (() => { try { return require("fs").readFileSync("app/assets/cloud/agent.py", "utf8"); } catch (e) { return ""; } })();
   t("D106-A1 GENE9 节流突破（agent.py：未满足需求非空→节流 24h→1h，有求必应不被日历拦）", agentPy.includes("_gate_h = 0.0 if _want_n > 0 else 24.0") && agentPy.includes("GENE9 未满足需求"));
   t("D106-A2 进化战报双路落盘（EVOLVE_OK 成功路+EVOLVE_REJECTED 拒收路都写 evolve_report.json——诚实不静默）", (agentPy.match(/evolve_report\.json/g)||[]).length>=2 && agentPy.includes('{"ok": True, "ts": _utcnow(), "n": n') && agentPy.includes('{"ok": False, "ts": _utcnow()'));
   t("D106-A3 战报回仓（agent.yml Commit evolve 步带 evolve_report.json 入仓——App 才拉得到）", (() => { try { return require("fs").readFileSync("app/assets/cloud/agent.yml", "utf8").includes("git add cloud/evolve_report.json"); } catch (e) { return false; } })());
   t("D106-A4 App 端战报拉取（pullEvolveReport raw→API 双通道+seen 戳去重播）", script.includes("async function pullEvolveReport()") && script.includes("st.evolveSeenTs") && script.includes("cloud/evolve_report.json"));
   t("D106-A5 战报公告双路（在场即插当前会话+离场暂存 evolveNews 开屏补公告）", script.includes("🧬 自主进化战报") && script.includes("st.evolveNews={ts:ts,text:txt}") && script.includes("S.settings.evolveNews=null"));
-  t("D106-A6 心跳接线（cloudPulse 每 10min 拉战报——进化感知常态化）", script.includes("try{pullEvolveReport()}catch(e){}         // 📰 v2.5.116-instant：进化战报拉取公告"));
+  t("D106-A6 心跳接线（cloudPulse 每 10min 拉战报——进化感知常态化）", script.includes("try{pullEvolveReport()}catch(e){}         // 📰 v2.5.117-diag：进化战报拉取公告"));
   t("D106-A7 人格预取（进云端聊天页即静默拉 vitals+记忆+战报——快车道首条回复即巅峰）", script.includes("进云端聊天页即静默预取") && /if\(S\.settings\.mode==="cloud"\)\{[\s\S]{0,200}pullVitalsCloud\(\)[\s\S]{0,120}pullMindCloud\(\)[\s\S]{0,120}pullEvolveReport\(\)/.test(script));
   t("D106-A8 战报文案双态（成功自豪体+拒收诚实体——只提能过真实验证的补丁）", script.includes("小神刚刚自主进化了") && script.includes("被实弹验证列装闸拦下"));
   // —— D106 end ——
-  // —— D107 v2.5.116-instant 108 轮：统一主动中枢+更新入口丝滑（用户三问：通知在哪看/在哪下载/所有主动能力并入进化）——
+  // —— D107 v2.5.117-diag 108 轮：统一主动中枢+更新入口丝滑（用户三问：通知在哪看/在哪下载/所有主动能力并入进化）——
   t("D107-A1 云端统一主动中枢总线（agent.py _proact：晨课/巡天/进化双路全部入 proactive.json 战报流）", agentPy.includes("def _proact(kind, title, brief)") && agentPy.includes('_PROACT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "cloud", "proactive.json")') && agentPy.includes('_feed[-30:]') && agentPy.includes('_proact("class"') && agentPy.includes('_proact("vidscout"') && (agentPy.match(/_proact\("evolve"/g)||[]).length>=2);
   t("D107-A2 情报班+体检入中枢（models_sync.py/vuln_check.py 战果同步写 cloud/proactive.json——主动全员归一）", (() => { try { const ms=require("fs").readFileSync("app/assets/cloud/models_sync.py","utf8"); const vc=require("fs").readFileSync("app/assets/cloud/vuln_check.py","utf8"); return ms.includes('_atomic_json("cloud/proactive.json", _feed[-30:])') && ms.includes('"kind": "models"') && vc.includes('cloud/proactive.json') && vc.includes('"kind": "vuln"') && vc.includes('有红项（诚实上报）'); } catch(e){ return false; } })());
   t("D107-A3 App 端中枢拉取（pullProactiveFeed raw→API 双通道+全流 seen 戳+进化去重防双报）", script.includes("async function pullProactiveFeed()") && script.includes("cloud/proactive.json") && script.includes("st.proactiveSeenTs=maxTs") && script.includes('String(x.kind||"")!=="evolve"'));
   t("D107-A4 中枢公告双路（在场即插当前会话+离场暂存 proactNews 开屏补播）", script.includes("小神主动战报（") && script.includes("st.proactNews=(st.proactNews||[]).concat([txt]).slice(-3)") && script.includes("S.settings.proactNews=[]"));
-  t("D107-A5 心跳+预取接线（cloudPulse 每 10min 拉中枢+进云端聊天页静默预取）", script.includes("try{pullProactiveFeed()}catch(e){}        // 🧬 v2.5.116-instant：统一主动中枢战报流") && /pullEvolveReport\(\)\}catch\(e\)\{\}\n    try\{pullProactiveFeed\(\)\}catch\(e\)\{\} \/\/ 🧬 v2\.5\.116-instant：主动中枢战报预取/.test(script));
+  t("D107-A5 心跳+预取接线（cloudPulse 每 10min 拉中枢+进云端聊天页静默预取）", script.includes("try{pullProactiveFeed()}catch(e){}        // 🧬 v2.5.117-diag：统一主动中枢战报流") && /pullEvolveReport\(\)\}catch\(e\)\{\}\n    try\{pullProactiveFeed\(\)\}catch\(e\)\{\} \/\/ 🧬 v2\.5\.117-diag：主动中枢战报预取/.test(script));
   t("D107-A6 骨架层更新三入口（系统通知+聊天页卡片 apkNews+设置面板 🦴 入口）", script.includes("meta:\"🧬 骨架层更新\"") && script.includes("S.settings.apkNews") && script.includes("S.settings.apkNews=[]") && script.includes('onclick="updApkCheck(true)"') && script.includes("检查骨架层新包") && script.includes("骨架层新包 v"));
   t("D107-A7 设置面板可见化（骨架层待安装新包版本+免登录直链下载指引上屏——在哪下载永远看得见）", script.includes("_apkNew=") && script.includes("🦴 骨架层新包 v") && script.includes("免登录直链下载"));
   t("D107-A8 中枢战报留痕（memAdd 主动中枢战报永久记忆）", script.includes('memAdd("fact","🧬 主动中枢战报：'));
-  // —— D108 v2.5.116-instant 109 轮：通知失败必进化（用户最高令：所有通知失败的情况必须自动触发小神的进化能力主动突破攻坚）——
+  // —— D108 v2.5.117-diag 109 轮：通知失败必进化（用户最高令：所有通知失败的情况必须自动触发小神的进化能力主动突破攻坚）——
   const bridgeJava = (() => { try { return require("fs").readFileSync("app/assets/skeleton/java/Bridge.java", "utf8"); } catch (e) { return ""; } })();
   const mainJava = (() => { try { return require("fs").readFileSync("app/assets/skeleton/java/MainActivity.java", "utf8"); } catch (e) { return ""; } })();
-  t("D108-A1 Java 桥带回执（notifyUserEx：PERM/ERR: 原因如实回 JS+notifState 全态探针）", bridgeJava.includes("public String notifyUserEx(String title, String text)") && bridgeJava.includes('return "PERM"') && bridgeJava.includes("areNotificationsEnabled") && bridgeJava.includes("public String notifState()"));
+  t("D108-A1 Java 桥带回执（notifyUserEx：PERM 闸细分 runtime/master/channel+渠道闸检查+notifState 全态探针）", bridgeJava.includes("public String notifyUserEx(String title, String text)") && bridgeJava.includes('return "PERM:runtime"') && bridgeJava.includes('return "PERM:master"') && bridgeJava.includes('return "PERM:channel"') && bridgeJava.includes("getNotificationChannel") && bridgeJava.includes("areNotificationsEnabled") && bridgeJava.includes("public String notifState()"));
   t("D108-A2 Java 一键授权页（openNotifSettings：API26+ App 通知设置页/旧 ROM 降级 App 详情页）", bridgeJava.includes("public void openNotifSettings()") && bridgeJava.includes("Settings.ACTION_APP_NOTIFICATION_SETTINGS") && bridgeJava.includes("EXTRA_APP_PACKAGE"));
   t("D108-A3 分发器挂载（MainActivity rpc 分发器 notifyUserEx/notifState/openNotifSettings 三方法）", mainJava.includes('method.equals("notifyUserEx")') && mainJava.includes('method.equals("notifState")') && mainJava.includes('method.equals("openNotifSettings")'));
-  t("D108-A4 updNotify 带回执重构（ex 桥直发/plain 桥 perm 探针推导/无桥如实报——送达才清未读）", script.includes("function updNotify(title,body){ // 🧬 v2.5.116-instant") && script.includes("function notifBridgeEx()") && script.includes('rc="ERR:no_bridge"') && script.includes('rc==="OK"'));
+  t("D108-A4 updNotify 带回执重构（ex 桥直发/plain 桥 perm 探针推导/无桥如实报——送达才清未读）", script.includes("function updNotify(title,body){ // 🧬 v2.5.117-diag") && script.includes("function notifBridgeEx()") && script.includes('rc="ERR:no_bridge"') && script.includes('rc==="OK"'));
   t("D108-A5 失败即进化（notifFailFeed：wants 登记+evolveRun 本地进化+demandMiss 云端进化双发——失败原因就是进化养料）", script.includes("function notifFailFeed(title,rc)") && script.includes("notifFailCnt=(st.notifFailCnt||0)+1") && script.includes("st.wants.push({ts:now(),why:key})") && /function notifFailFeed[\s\S]{0,2200}evolveRun\(false\)/.test(script) && /function notifFailFeed[\s\S]{0,2600}demandMiss\(/.test(script));
   t("D108-A6 PERM 分诊一键授权（24h 节流防骚扰+聊天气泡/开屏补播告知+openNotifSettings 拉起）", script.includes("st.notifAskTs=now()") && script.includes(">86400000") && script.includes("帮你把授权页拉出来了") && script.includes("🔔 通知攻坚"));
   t("D108-A7 补发统一链（启动 updNotice 补发+cloudEvolveCheck 进化感知全走带回执 updNotify——失败自动进化不再静默 toast 完事）", script.includes("if(un&&un.title){updNotify(un.title,un.body)}") && script.includes("未读公告补发统一走 updNotify 带回执链") && /function cloudEvolveCheck[\s\S]{0,900}updNotify\("🧬 云端引擎已自主进化"/.test(script));
   t("D108-A8 失败留痕双重（memAdd 进化养料+聊天气泡主人可见——绝不静默）", script.includes('memAdd("fact","🔔 GENE9 需求登记：系统通知「') && script.includes("已当场发动双路修复"));
   // —— D108 end ——
-  // —— D109 v2.5.116-instant 110 轮：进化方向分诊（用户实弹 6 截图：run#16 把权限类需求当云端编程题写重试代码白烧算力+卡片短时重复）——
-  t("D109-A1 PERM 不派云端（权限是 Android 硬闸云端代点不了——PERM 分支本地进化后 return，demandMiss 只在非 PERM 全链）", /if\(rc==="PERM"\)\{[\s\S]{0,900}evolveRun\(false\)\}catch\(e\)\{\} \/\/ 本地进化照发[\s\S]{0,120}return;[\s\S]{0,600}demandMiss\(/.test(script));
+  // —— D109 v2.5.117-diag 110 轮：进化方向分诊（用户实弹 6 截图：run#16 把权限类需求当云端编程题写重试代码白烧算力+卡片短时重复）——
+  t("D109-A1 PERM 不派云端（权限是 Android 硬闸云端代点不了——PERM 分支本地进化后 return，demandMiss 只在非 PERM 全链）", /if\(rc==="PERM"\)\{[\s\S]{0,1500}evolveRun\(false\)\}catch\(e\)\{\} \/\/ 本地进化照发[\s\S]{0,120}return;[\s\S]{0,600}demandMiss\(/.test(script));
   t("D109-A2 卡片 24h 节流（notifAskTs 双闸：授权页+攻坚卡片同窗不轰炸——重复卡片根治）", /if\(_ask\)\{st\.notifAskTs=now\(\);save\("settings"\);notifPermAsk\(\);/.test(script));
   t("D109-A3 云端需求分诊铁律（agent.py GENE9 清单注入分诊：App 端系统级能力≠云端 Python 可解——防再次跑偏）", agentPy.includes("需求分诊铁律") && agentPy.includes("绝不许写云端 Python 通知/权限代码来自欺"));
   t("D109-A4 有求必应闭环销账（送达成功→wants「通知送达失败」自动销账+留痕——授权恢复后不欠账不重复进化）", script.includes('const _st=S.settings,_ws=Array.isArray(_st.wants)?_st.wants:[]') && script.includes('if(rc==="OK"){ // 送达才清未读') && script.includes("GENE9 销账：系统通知送达已恢复"));
-  // —— D110 v2.5.116-instant 111 轮：角色归一（用户实弹 3 截图：会话第二条起智谱/魔搭全链 HTTP 400——存储角色 "ai" 原样透传被 OpenAI 兼容源判非法，第一条无历史必成、第二条起全崩）——
+  // —— D110 v2.5.117-diag 111 轮：角色归一（用户实弹 3 截图：会话第二条起智谱/魔搭全链 HTTP 400——存储角色 "ai" 原样透传被 OpenAI 兼容源判非法，第一条无历史必成、第二条起全崩）——
   t("D110-A1 发送历史角色归一（ai→assistant+空消息过滤+兼容导入 assistant——多轮 400 根治）", /slice\(-20\)\.filter\(m=>\(m\.role==="user"\|\|m\.role==="ai"\|\|m\.role==="assistant"\)&&String\(m\.content\|\|""\)\.length\)\.map\(m=>\(\{role:m\.role==="user"\?"user":"assistant"/.test(script));
   t("D110-A2 项目同步双向归一（导出 ai→assistant/导入 assistant→ai——云端仓合法态+本地存储态各自归一）", script.includes('role:m.role==="ai"?"assistant":m.role,content:String(m.content||"").slice(0,2000)') && script.includes('role:m.role==="assistant"?"ai":m.role,content:m.content'));
-  // —— D111 v2.5.116-instant 112 轮：日期注入+内心戏标签（用户实弹 6 截图：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日；灰色思考独白无标签上屏像精分）——
+  // —— D111 v2.5.117-diag 112 轮：日期注入+内心戏标签（用户实弹 6 截图：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日；灰色思考独白无标签上屏像精分）——
   t("D111-A1 系统提示注入实时时间（年月日+星期+时分+绝不许拿训练数据猜——日期类提问根治）", script.includes("🕐 当前时间：") && script.includes('"日一二三四五六"[_d.getDay()]') && script.includes("绝不许拿训练数据的旧日期来猜"));
   t("D111-A2 思考过程挂内心戏标签（灰字独白明示是模型思考非回复正文——精分观感根治）", script.includes("🧠 内心戏（模型的思考过程，不是给你的回复，可忽略）："));
-  // —— D112 v2.5.116-instant 113 轮：体检误报根治（用户实弹截图：新装无 Key 每次启动都贴"残余异常 1 处"——openrouter 静态种子为空 list:[] 且无 Key→provModels 恒零→tier3 永久红灯；且 toast 只报数不报项）——
+  // —— D112 v2.5.117-diag 113 轮：体检误报根治（用户实弹截图：新装无 Key 每次启动都贴"残余异常 1 处"——openrouter 静态种子为空 list:[] 且无 Key→provModels 恒零→tier3 永久红灯；且 toast 只报数不报项）——
   t("D112-A1 tier3 豁免待配置源（无 Key 且无静态种子≠缺陷——新装开箱不再永久误报）", script.includes("!provModels(k).length&&!(!(provs()[k]||{}).key&&!(PROV[k].list||[]).length)"));
   t("D112-A2 体检 toast 报数必报名（残余异常列具体项名——不再盲猜哪项红灯）", script.includes('_bad.map(r=>r.name.split("（")[0]).join("；")'));
-  // —— D113 v2.5.116-instant 114 轮：快车道气象眼（用户最高令："连个天气预报都不知道，废物"——快车道无工具无联网模型拿训练数据推脱还编假预报；Open-Meteo 免 Key 实测注入根治）——
+  // —— D113 v2.5.117-diag 114 轮：快车道气象眼（用户最高令："连个天气预报都不知道，废物"——快车道无工具无联网模型拿训练数据推脱还编假预报；Open-Meteo 免 Key 实测注入根治）——
   t("D113-A1 气象眼全链（意图识别→城市抽取→45 城坐标表→Open-Meteo 实测→系统提示注入+编造禁令）", script.includes("async function wxProbe(text)") && script.includes("const WX_CITY=") && script.includes("geocoding")===false && script.includes("api.open-meteo.com/v1/forecast") && script.includes("🌦 实时天气情报（Open-Meteo 实测，") && script.includes("绝不许编造或假装没有数据"));
   t("D113-A2 气象眼接线（sendStream 发前探针（130 轮起套 8s 总预算 race）+失败静默不拖聊天+buildSystemPrompt 必消费+无城市默认主人所在地）", script.includes("Promise.all([wxProbe(text),fxProbe(text),nsProbe(text),wkProbe(text),lvProbe(text),genProbe(text)]),new Promise(r=>setTimeout(r,8000))") && script.includes('if(window.__wx)sys+=') && script.includes('if(!last)last="城阳"'));
-  // —— D114 v2.5.116-instant 115 轮：极致提速+扩能（用户最高令：回答要极致的快+无所不能像 CatPaw——三管齐下：天气缓存+开局预热/链首连接预热/汇率眼并行）——
+  // —— D114 v2.5.117-diag 115 轮：极致提速+扩能（用户最高令：回答要极致的快+无所不能像 CatPaw——三管齐下：天气缓存+开局预热/链首连接预热/汇率眼并行）——
   t("D114-A1 天气缓存+开局预热（30min 缓存命中 0ms 秒答+2.5s 预热城阳——常态天气题零额外耗时）", script.includes("wxCache") && script.includes("now()-_c.ts<1800000") && script.includes('wxProbe("城阳天气")'));
   t("D114-A2 汇率眼（Open.er-API 免 Key 实测+6h 缓存+兑人民币换算+编造禁令——无所不能进行时）", script.includes("async function fxProbe(text)") && script.includes("open.er-api.com/v6/latest/USD") && script.includes("now()-_fc0.ts<21600000") && script.includes("💱 实时汇率情报（Open.er-API 实测）"));
   t("D114-A3 双探针并行+链首连接预热（Promise.all 并行（130 轮起套 8s 总预算）+开局 1.5s 预热链首源 DNS/TLS——首条消息首字直降）", script.includes("Promise.all([wxProbe(text),fxProbe(text),nsProbe(text),wkProbe(text),lvProbe(text),genProbe(text)]),new Promise(r=>setTimeout(r,8000))") && script.includes("setTimeout(()=>{try{const _wk=chainList()[0]"));
@@ -2225,23 +2225,23 @@ function __finish(){ // 97b：D19 实弹异步化后，退出时序收口（同�
   t("D119-A2 认怠节流 10min→60s+sendCloud 存任务快照（119 轮最高令：1 秒都不能等——只防同句连发抖动）", /missTs>60000\)/.test(script) && script.includes('done:false,steps:0,prompt:String(text||"").slice(0,2000)'));
   t("D119-A3 GENE9 使命书升级（119 轮最高令：进化必须到全球全网极致+100% 多链路多维度校验+0 秒列装）", script.includes("全球全网范围内的极致完美") && script.includes("多链路多维度校验") && script.includes("0 秒列装不能等待"));
   // —— D109 end ——
-  // —— D120 v2.5.116-instant 120 轮：实时信息复活+进化身份认知+消息时间戳（用户 6 截图实锤三断链+1 新令）——
+  // —— D120 v2.5.117-diag 120 轮：实时信息复活+进化身份认知+消息时间戳（用户 6 截图实锤三断链+1 新令）——
   t("D120-A1 认怂词表扩容三处（截图实锤：「我无法实时访问互联网，我无法提供」「我没有自我进化的能力」均不在旧词表→进化永不触发）", script.includes("无法(?:完成|做到|实现|提供|访问|获取|查询|回答|联网)") && (script.match(/没有\(\?:自我进化\|进化\)\(\?:的\)\?能力/g)||[]).length>=3 && (script.match(/\(\?:直接\|实时\)\?访问\(\?:互联网\|网络\)/g)||[]).length>=3);
   t("D120-A2 联网身份铁律（小神自带联网探针绝不许自称离线/无法联网/预编程无进化——模型底子自我认知崩塌根治）", script.includes("⚡ 联网身份铁律：我不是离线模型！") && script.includes("绝不许自称「预编程 AI 没有自我进化的能力」") && script.includes("绝不许说「我无法实时访问互联网」"));
   t("D120-A3 六号眼 lvProbe（彩票官网 cwl.gov.cn 免 Key 实测直查开奖——双色球实弹截图问出「无法实时访问」根治）", script.includes("async function lvProbe(text)") && script.includes("cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice") && script.includes("window.__lv") && script.includes('if(window.__lv)sys+='));
   t("D120-A4 五探针并行（sendStream 天气+汇率+新闻+百科+开奖六眼全开——旧四探针钉同步跟新）", script.includes("Promise.all([wxProbe(text),fxProbe(text),nsProbe(text),wkProbe(text),lvProbe(text),genProbe(text)])"));
   t("D120-A5 消息时间戳精确到秒（用户最高令：每条消息——用户/小神回复/主动推送——下方标注实时时间）", script.includes("function fmtSec(ts)") && (script.match(/🕐 \$\{fmtSec\(m\.ts\)\}/g)||[]).length>=4 && script.includes('getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds())'));
-  // —— D121 v2.5.116-instant 121 轮：万能天眼+小黑鲸换装+Pro 挪位+通知大白话（用户四令）——
+  // —— D121 v2.5.117-diag 121 轮：万能天眼+小黑鲸换装+Pro 挪位+通知大白话（用户四令）——
   t("D121-A1 万能天眼 genProbe（DDG lite 免 Key 通用搜索：未被六眼接走的任何问题按题直搜 top6 注入——所有方面的信息搜集分析能力）", script.includes("async function genProbe(text)") && script.includes("html.duckduckgo.com/html/?q=") && script.includes("window.__gen") && script.includes('if(window.__gen)sys+=') && script.includes("Promise.all([wxProbe(text),fxProbe(text),nsProbe(text),wkProbe(text),lvProbe(text),genProbe(text)])"));
   t("D121-A2 天眼分诊节流（问候/闲聊不烧搜索+10min 缓存+缓存上限 40 条——快车道不拖慢）", script.includes("if(t.length<4||/^(hi|hello|hey|thank|在吗|你好") && script.includes("now()-gc[key].ts<600000") && script.includes("ks.length>40"));
   t("D121-A3 小黑鲸 1:1 换装（APP_ICON=ic_launcher base64 常量+对话头像 img+左上角 pawlogo 白底鲸图——App 图标同款）", /const APP_ICON=|var APP_ICON/.test(script) && script.includes('data:image/png;base64') && (script.match(/APP_ICON/g)||[]).length>=3 && html.includes('<img id="pawImg"') && script.includes('alt="小神"'));
   t("D121-A4 Pro 挪位（档位胶囊从 header 三端分割行挪到底部工具 chips 行——离三端太近根治；wireModeBtn 回填保留）", !script.includes('<button id="mBtn"') && script.includes('<span id="mBtn" class="pchip"') && script.includes("try{wireModeBtn()}catch(e){} // 🐾 121 轮"));
-  t("D121-A5 通知卡片大白话（「进化已自动铺好一键授权路」术语腔根治——主人看得懂的授权指引）", script.includes("手机还没给小神开通知权限（不是坏了，是权限没给）") && script.includes("帮你把授权页拉出来了"));
-  // —— D122 v2.5.116-instant 122 轮：云端全网搜索（用户令：所有方面信息搜集——云端算力从只会抓已知 URL 升级为可搜）——
+  t("D121-A5 通知卡片大白话（133 轮升级：按闸给精确指引——runtime 弹窗/master 总闸/channel 渠道，主人看得懂照着做就能好）", script.includes("手机还没给小神开通知权限") && script.includes("帮你把授权页拉出来了") && script.includes("把最上面的「允许通知」总闸打开"));
+  // —— D122 v2.5.117-diag 122 轮：云端全网搜索（用户令：所有方面信息搜集——云端算力从只会抓已知 URL 升级为可搜）——
   t("D122-A1 云端 web_search 工具三件（函数+POST 实弹方案+TOOL_PROMPT 提词——实时/时效/不确定的问题先搜再答）", agentPy.includes("def web_search(q)") && agentPy.includes("html.duckduckgo.com/html/") && agentPy.includes('urlencode({"q"') && agentPy.includes("web_search：全网搜索（DuckDuckGo 免 Key）"));
   t("D122-A2 云端 web_search 分发+直链兜底（try_tool 分发+uddg 优先/直链兜底双形态——simrun 实弹 10 条全通）", agentPy.includes('if tool == "web_search" and TOOLS_CFG.get("web") and "q" in inp') && agentPy.includes('elif href.startswith("http")'));
   t("D122-A3 App genProbe POST 兜底（GET 挑战页拦时 POST 表单重试+genParse 共用解析——手机端天眼双保险）", script.includes("genParse") && script.includes('method:"POST"') && script.includes("URLSearchParams({q})"));
-  // —— D123 v2.5.116-instant 123 轮：云端联网身份铁律+搜索摘要三件套（回答质量从"看标题猜"升级"看摘要答"）——
+  // —— D123 v2.5.117-diag 123 轮：云端联网身份铁律+搜索摘要三件套（回答质量从"看标题猜"升级"看摘要答"）——
   t("D123-A1 云端 SYSTEM 联网身份铁律（120 轮只修了 App 端——云端同款断链根治：双分支注入+绝不许自称预编程 AI 无进化）", agentPy.includes("⚡ 联网身份铁律：你不是离线模型！") && agentPy.includes("绝不许自称「预编程 AI 没有自我进化的能力」") && (agentPy.match(/绝不许自称「无法联网」/g)||[]).length>=1);
   t("D123-A2 搜索摘要三件套双端（云端 web_search result__snippet+App genParse snippet 配对——标题+摘要+链接）", agentPy.includes("result__snippet") && agentPy.includes("snips.append(sn[:160])") && script.includes("result__snippet") && script.includes("snips[i]?"));
   console.log("\n== D124. 猫爪清零+破图根治（124 轮：主人实弹三截图——抽屉🐾/hero🐾/pawImg 裂图） ==");
@@ -2278,6 +2278,10 @@ console.log("\n== D132. 发现即修（132 轮：主人最高令——不要欠�
   t("D132-A1 主人可见文案改口（通知失败/权限卡片/GENE9 气泡三处全说「当场修复/双路修复」——绝不说登记清单等下次）", script.includes("发现缺陷已当场修复") && script.includes("已当场发动双路修复") && script.includes("发现缺陷当场修复已双发"));
   t("D132-A2 铁律句发现即修进化观（缺陷=头号进化养料当场消化——不给主人讲愿望单工单排队话术）", script.includes("发现缺陷当场修复——缺陷就是头号进化养料，进化器当场消化") && !script.includes("把缺陷记入进化愿望单（工单）"));
   t("D132-A3 恢复看门狗 60s 循环（权限还关着每 60s 静默再探——主人开回来的那一刻起最多 60s 内必验证，绝不等重启）", /perm=0\|enabled=0[\s\S]{0,80}setTimeout\(_chk,60000\)/.test(script) && script.includes("通知恢复看门狗"));
-console.log("\n===== v2.5.116-instant 回归：PASS " + pass + " / FAIL " + fail + " =====");
+console.log("\n== D133. 诊断到闸（133 轮：主人实弹——渠道页开关全开却报权限没给，三闸不分永远在猜；PERM 回执细分到具体闸，卡片按闸给精确指引，渠道死闸从暗中冒充 OK 根治） ==");
+  t("D133-A1 JS 闸细节透传（PERM:xxx 拆出 rcGate 归一化 PERM——下游分诊链 rc===\"PERM\" 结构不动，wants/memAdd 养料带具体闸名）", script.includes('rcGate=String(rc).slice(5);rc="PERM"') && script.includes('String(rc).indexOf("PERM")!==0'));
+  t("D133-A2 卡片按闸给精确指引（runtime=弹窗没点/master=总闸在外层/channel=任务通知渠道被关——不再一句话把三闸说死）", script.includes("master:\"通知总开关被关了") && script.includes("「任务通知」渠道被关了") && script.includes("总闸开着但渠道关着也收不到"));
+  t("D133-A3 渠道死闸暗缺陷根治（渠道 IMPORTANCE_NONE 时如实报 PERM:channel——旧版照样报 OK 发一条看不见的通知）", /IMPORTANCE_NONE\) return "PERM:channel"/.test(bridgeJava));
+console.log("\n===== v2.5.117-diag 回归：PASS " + pass + " / FAIL " + fail + " =====");
   process.exit(fail ? 1 : 0);
 }
