@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-13T11:49:32.450Z",
+ "updated": "2026-10-13T12:33:23.810Z",
  "action": "state",
- "appVersion": "2.5.125-md5fix",
- "mode": "chat",
+ "appVersion": "2.5.127-cdnfix",
+ "mode": "cloud",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -13,10 +13,11 @@
  "phoneToolLast": "",
  "phoneApps": 0,
  "selModels": {
-  "zhipu": "glm-4-flash",
-  "nvidia": "deepseek-ai/deepseek-v4.1-flash",
-  "modelscope": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "zhipu": "glm-5",
+  "nvidia": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+  "modelscope": "OpenGVLab/InternVL3_5-241B-A28B",
   "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
+  "openrouter": "nvidia/nemotron-3-ultra-550b-a55b:free",
   "gemma": "gemma-3-12b-it",
   "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
   "groq": "llama-3.3-70b-versatile",
@@ -27,22 +28,24 @@
  },
  "deadLogCount": 0,
  "probeOk": 1,
- "liveN": 0,
- "repoN": 0,
+ "liveN": 4,
+ "repoN": 5,
  "vulnOk": 6,
  "vulnN": 6,
- "memN": 6,
- "pbN": 17,
+ "memN": 11,
+ "pbN": 21,
  "vulnBad": [],
  "chanHealth": [
-  "raw.githubusercontent:连败7/p150",
-  "jsDelivr CDN:连败7/p150",
-  "GitHub API:ok6/p100"
+  "raw.githubusercontent:连败45/p530",
+  "jsDelivr CDN:连败45/p530",
+  "GitHub API:ok62/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {}
+ "plugins": {
+  "think": 1
+ }
 }
