@@ -114,7 +114,9 @@ jobs:
           git rebase --abort >/dev/null 2>&1 || true  # 🔧 状态自愈：清掉任何遗留中断态（unmerged files 会炸整条 commit）
           git merge --abort >/dev/null 2>&1 || true
           git add -A results/ || true  # -A 使滚动清理的删除也传播（防 git 历史膨胀；agent.py 保最近 20 个）
-          git add anime/ output/ 2>/dev/null || true # 📦 v2.5.47-inchat：生成产物回仓（视频/图片/音频——不回仓 App 对话框内就没得拉）
+          # 📦 v2.5.47-inchat：生成产物回仓（视频/图片/音频——不回仓 App 对话框内就没得拉）
+          # 🛡️ 118 轮祖传断链真因实锤（run 38325792604 诊断）：旧写法 `git add anime/ output/` 多路径时 anime/ 不存在即 pathspec fatal 整条退出（128 被 || true 静默吞）——output/ 文件即使生成也 47 轮来从未被 stage 过。修：逐目录存在守卫，add 成功响亮回显
+          for _d in anime output; do if [ -d "$_d" ] && [ -n "$(ls -A "$_d" 2>/dev/null)" ]; then git add "$_d" && echo "📦 已入册 $_d/: $(git diff --cached --name-only -- "$_d" | tr '\n' ' ')" || echo "⚠️ add $_d 失败"; else echo "📦 $_d/ 目录为空或不存在，跳过"; fi; done
           git add cloud/memory.json cloud/playbook.json cloud/vitals.json cloud/app_state.json 2>/dev/null || true  # 🧖📖 GEN3+💗 v2.5.30-alive：云端学习成果/手册/小神生命体征（心情/日记/问候）随运行回写仓库（App 拉取感知；app_state 镜像同步回仓）
           git add cloud/daily_class.json 2>/dev/null || true  # 🎓 v2.5.51-human：晨课成果回仓（App 每日拉回主动汇报）
           git add cloud/vid_scout.json 2>/dev/null || true  # 🎥 v2.5.52-scout：视频源雷达情报站回仓（61 轮用户最高令：免费视频新源自动发现接入）
