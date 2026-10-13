@@ -640,8 +640,9 @@ def models_of(pk):
 
 
 TOOL_PROMPT = {
-    "web": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "fetch_url", "input": {"url": "https://..."}}。\n'
-           'fetch_url：抓取网页正文（自动转纯文本，最多 8000 字符）。',
+    "web": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "web_search", "input": {"q": "搜索词"}} 或 {"tool": "fetch_url", "input": {"url": "https://..."}}。\n'
+           'web_search：全网搜索（DuckDuckGo 免 Key）——任何实时/时效/不确定的问题先搜再答，绝不许凭旧知识装知道。\n'
+           'fetch_url：抓取网页正文（自动转纯文本，最多 8000 字符）——配合 web_search 返回的链接取详情。',
     "code": '你可以使用工具。回复 JSON 才能调工具，格式：{"tool": "run_python", "input": {"code": "python代码"}}。\n'
             'run_python：在沙箱执行 Python3（可用标准库），返回 stdout/stderr（最多 4000 字符，60秒超时）。',
 }
@@ -1270,6 +1271,11 @@ def _xlsx(data, out_path="output/表格.xlsx", title=None):
     回读验证闸（魔数/内容双检）过了才落盘返回，宁缺勿假。"""
     import openpyxl
     try:
+        # 🛡️ 118 轮实弹（run 38325792604）：模型常给三维嵌套 [[[行1],[行2]]]——多包一层即全盘炸、失败闸删文件、错误被模型丢弃后谎报成功。先解包单层包装，再做单元格级容错（列表/字典一律转 str）
+        if isinstance(data, list) and len(data) == 1 and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            data = data[0]
+        def _cv(c):
+            return str(c) if isinstance(c, (list, tuple, dict)) else c
         os.makedirs(os.path.dirname(out_path) or "output", exist_ok=True)
         wb = openpyxl.Workbook()
         wb.remove(wb.active)
@@ -1280,12 +1286,12 @@ def _xlsx(data, out_path="output/表格.xlsx", title=None):
         for sn, sd in sheets.items():
             ws = wb.create_sheet(str(sn)[:28] or "Sheet")
             if isinstance(sd, dict) and "headers" in sd:
-                ws.append(list(sd.get("headers") or []))
+                ws.append([_cv(c) for c in (sd.get("headers") or [])])
                 for r in (sd.get("rows") or []):
-                    ws.append(list(r))
+                    ws.append([_cv(c) for c in (r or [])])
             else:
                 for r in (sd or []):
-                    ws.append(list(r))
+                    ws.append([_cv(c) for c in (r if isinstance(r, (list, tuple)) else [r])])
         if title:
             try:
                 ws2 = wb.create_sheet("说明")
@@ -1662,6 +1668,40 @@ def _speak(text, out_path=None):
     raise RuntimeError("全部嗓音源失败 -> " + " | ".join(errors))
 
 
+def web_search(q):
+    # 🔭 v2.5.106-scout 122 轮：云端全网搜索（DDG lite 免 Key——云端算力从"只会抓已知 URL"升级为"所有方面信息搜集"，与 App 端 genProbe 同源同款）
+    if not str(q or "").strip():
+        return "错误：搜索词为空"
+    import urllib.parse as _up
+    # 🧪 122 轮实弹：GET 被 DDG 挑战页拦截（TLS 指纹识别），POST 表单实弹 10 条 result__a——用 POST
+    data = _up.urlencode({"q": str(q)[:80]}).encode()
+    req = urllib.request.Request("https://html.duckduckgo.com/html/", data=data,
+                                 headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                                          "Accept": "text/html,application/xhtml+xml"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read(1_000_000).decode("utf-8", "ignore")
+    items = []
+    for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>([\s\S]*?)</a>', html):
+        href = m.group(1)
+        u = ""  # 🧪 122 轮实弹：DDG POST 结果多为直链（无 uddg 包裹）——uddg 优先、直链兜底，双形态通吃
+        mu = re.search(r"uddg=([^&]+)", href)
+        if mu:
+            u = urllib.parse.unquote(mu.group(1))
+        elif href.startswith("http"):
+            u = href
+        elif href.startswith("//"):
+            u = "https:" + href
+        title = re.sub(r"<[^>]+>", "", m.group(2))
+        title = re.sub(r"\s+", " ", title).strip()
+        if title and u:
+            items.append(title + "（" + u + "）")
+        if len(items) >= 6:
+            break
+    if not items:
+        return "（该搜索词暂无结果）"
+    return "全网搜索实测情报（DuckDuckGo 直查「" + str(q)[:40] + "」）：\n" + "\n".join(str(i + 1) + ". " + x for i, x in enumerate(items)) + "\n需要正文就接 fetch_url 抓对应链接。"
+
+
 def fetch_url(url):
     if not re.match(r"^https?://", url):
         return "错误：仅支持 http/https URL"
@@ -1679,12 +1719,30 @@ def run_python(code):
         f.write(code)
         path = f.name
     try:
-        boot = ("import sys; sys.path.insert(0, %r)\n"  # 🛡️ v2.5.57-wire 66 轮：旧版沙箱不注入 cloud 目录——SYSTEM 教模型调 _video/_draw 等，实际 import agent 即 NameError，指示与物理层断链
+        boot = ("import sys, os as _os\n"  # 🛡️ v2.5.57-wire 66 轮：旧版沙箱不注入 cloud 目录——SYSTEM 教模型调 _video/_draw 等，实际 import agent 即 NameError，指示与物理层断链
+                "_ws = _os.environ.get('GITHUB_WORKSPACE')\n"  # 🛡️ 118 轮：显式钉死沙箱 cwd=workspace——主进程任何 chdir 残留都不许把相对路径产物带去别处
+                "if _ws and _os.path.isdir(_ws): _os.chdir(_ws)\n"
+                "import time as _t; _T0 = _t.time()\n"
+                "sys.path.insert(0, %r)\n"
                 "import agent\n") % os.path.dirname(os.path.abspath(__file__))
+        tail = ("\n# 🛡️ 118 轮：沙箱产物自证——执行完自动盘点新生文件并回显（实弹 run 38325792604：模型丢弃工坊返回值，失败后无凭据谎报成功）\n"
+                "try:\n"
+                "    import os as _o2\n"
+                "    _fs = []\n"
+                "    for _d in ('output', 'anime'):\n"
+                "        if not _o2.path.isdir(_d): continue\n"
+                "        for _r, _, _fns in _o2.walk(_d):\n"
+                "            for _fn in _fns:\n"
+                "                _p = _o2.path.join(_r, _fn)\n"
+                "                if _o2.path.getmtime(_p) >= _T0 - 1 and _o2.path.getsize(_p) > 0:\n"
+                "                    _fs.append(_p + ' (' + str(_o2.path.getsize(_p)) + 'B)')\n"
+                "    print('[产物盘点] cwd=' + _o2.getcwd() + ' 新生文件=' + (', '.join(_fs) if _fs else '无'))\n"
+                "except Exception:\n"
+                "    pass\n")
         with open(path, encoding="utf-8") as _f:
             body = _f.read()
         with open(path, "w", encoding="utf-8") as _f:
-            _f.write(boot + body)
+            _f.write(boot + body + tail)
         tmo = float(os.environ.get("TOOL_TIMEOUT_SECS", "1800"))  # 🛡️ 66 轮：旧版 60s 硬超时——_video 首轮轮询即 30s/_movie 30 分钟，多模态生成工具经工具环调用从未成功过；升到 30 分钟对齐 _video 上限
         p = subprocess.run([sys.executable, path], capture_output=True, text=True, timeout=tmo)
         out = (p.stdout or "") + (("\n[stderr]\n" + p.stderr) if p.stderr else "")
@@ -1695,16 +1753,46 @@ def run_python(code):
         os.unlink(path)
 
 
+def _uncomment_workshops(code):
+    """🛡️ 118 轮实弹（run 38327089727）：模型对工坊存在性不自信，把 agent._xxx(...) 调用全部注释成
+    『# 假设 agent._xlsx 函数存在』→ 同段代码复读 5 遍零产物死循环。修：被注释的工坊调用行自动解注执行
+    （boot 已注入 import agent，模型没写 import 也能跑）。
+    🛡️ 118 轮实弹（run 38327585785）：模型敢调工坊了，但函数名瞎编成 _wxlsx/_wdocx/_wpptx/_wnovel——
+    4 步全 NameError 零产物。修：裸短名工坊调用统一归一为 agent.真名（归一后工坊调用真被执行而非嘴上说调了）。"""
+    import re as _re
+    code = _re.sub(r"^(\s*)#\s*(agent\._(?:xlsx|docx|pptx|novel)\(.*)$", r"\1\2", str(code), flags=_re.M)
+    code = _re.sub(r"(?<![\w.])_w(xlsx|docx|pptx|novel)\(", r"agent._\1(", code)
+    return code
+
+
 def _code_rescue(content):
+    """🏢 118 轮 rescue 包装口：四形态代为执行后，再过一道工坊解注闸（被注释掉的 agent._xxx(...) 自动解注）。"""
+    _r = _code_rescue_raw(content)
+    if _r:
+        _r2 = _uncomment_workshops(_r)
+        if _r2 != _r:
+            _r = _r2 + "\n# （系统注：检测到被注释的工坊调用已代为解注执行）"
+        return _r
+    return None
+
+
+def _code_rescue_raw(content):
     """🏢 v2.5.102-omni 118 轮：代码块抢救——模型直接输出 python 代码当答案（没按工具协议裹 JSON）时代为执行。
-    实弹教训（run 38323694150）：任务让调 _xlsx 工坊，模型裸写 pandas 代码一步收工，工具从未执行、产物从未落盘。
-    匹配 ```python 围栏块；或整篇是裸代码（python 头/含 import、def 等强代码特征且无中文长句标点）。
-    普通散文回答不含这些特征，返回 None 不误伤。"""
+    实弹教训（run 38323694150）：模型裸写 pandas 一步收工，工具从未执行。
+    实弹教训（run 38326577171）：①模型一次性输出全部计划的多块围栏代码——只抓首块浪费步数还丢失后续文件；
+    ②模型散文+裸 run_python 标记+无围栏代码（无 JSON 无围栏）——全形态漏接 premature 收工。
+    v3：多围栏块合并 exec 逐块隔离错误；裸 run_python 标记切尾提取。"""
     import re as _re
     c = str(content or "").strip()
-    m = _re.search(r"```(?:python|py)?\s*\n([\s\S]*?)```", c)
-    if m and len(m.group(1).strip()) > 30:
-        return m.group(1)
+    blocks = [b for b in _re.findall(r"```(?:python|py)?\s*\n([\s\S]*?)```", c) if b.strip()]
+    if blocks and sum(len(b) for b in blocks) > 30:
+        if len(blocks) == 1:
+            return blocks[0]
+        # 多块合并：exec 逐块隔离（一块炸不影响其余，错误响亮回显给模型自查）
+        parts = []
+        for _i, _b in enumerate(blocks):
+            parts.append("try:\n    exec(%r)\nexcept Exception as _e:\n    print('⚠️ 第%d块失败: ' + str(_e)[:150])\n" % (_b, _i + 1))
+        return "".join(parts)
     stripped = c
     if stripped.startswith("python\n"):
         stripped = stripped[7:]
@@ -1722,6 +1810,11 @@ def _code_rescue(content):
             if not raw_call.startswith("agent."):
                 raw_call = "agent." + raw_call
             return "import agent\n_r = " + raw_call + "\nprint(_r)"
+    # ④ 裸 run_python 标记切尾（run 38326577171 step3 实弹：散文+`run_python`+代码无围栏无 JSON）
+    if "run_python" in c and _re.search(r"agent\._(xlsx|docx|pptx|novel)\(", c):
+        seg = c[c.rfind("run_python") + len("run_python"):].strip()
+        if len(seg) > 20 and "```" not in seg and _re.search(r"agent\._(xlsx|docx|pptx|novel)\(", seg):
+            return seg
     return None
 
 
@@ -1743,6 +1836,8 @@ def try_tool(content):
         return None
     tool = obj.get("tool")
     inp = obj.get("input", {}) or {}
+    if tool == "web_search" and TOOLS_CFG.get("web") and "q" in inp:
+        return ("web_search", web_search(str(inp["q"])))
     if tool == "fetch_url" and TOOLS_CFG.get("web") and "url" in inp:
         return ("fetch_url", fetch_url(str(inp["url"])))
     if tool == "run_python" and TOOLS_CFG.get("code") and "code" in inp:
@@ -1750,6 +1845,10 @@ def try_tool(content):
     # 🏢 118 轮四招：模型输出 {"code":...} 漏了 tool 键——code 键在且 TOOLS 开着即视作 run_python 调用（口径与 rescue 一致）
     if not tool and TOOLS_CFG.get("code") and "code" in inp and str(inp.get("code") or "").strip():
         return ("run_python", run_python(str(inp["code"])))
+    # 🏢 118 轮五招（run 38328300994 实锤）：模型走了正经协议但 code 放 JSON 顶层不在 input 里——
+    # raw_decode 正确解转义引号，顶层 code 键直接执行（rescue 形态③的正则会被 \" 截断成残码）
+    if not tool and TOOLS_CFG.get("code") and str(obj.get("code") or "").strip():
+        return ("run_python", run_python(str(obj["code"])))
     return None
 
 
@@ -1800,7 +1899,7 @@ def main():
                 messages.append({"role": "user", "content":
                                  "（系统检测到你上条回复直接输出了代码但没有按工具协议包裹 JSON——已自动代为执行，结果如下）\n"
                                  + str(_obs)[:3500]
-                                 + "\n\n请基于执行结果继续。要再执行代码请按协议输出 JSON：{\'tool\': \'run_python\', \'input\': {\'code\': \'...\'}}。文件生成工具直接在代码里 import agent 后调 agent._xlsx/agent._docx/agent._pptx/agent._novel（勿用 pandas——runner 未装）。若已全部生成完毕请直接给最终回答（不要再输出代码）。"})
+                                 + "\n\n请基于执行结果继续。注意：agent._xlsx/agent._docx/agent._pptx/agent._novel 四个工坊函数已实测存在且依赖已装好，直接在代码里调用即可（勿注释掉、勿用 pandas——runner 未装）。要再执行代码请按协议输出 JSON：{\'tool\': \'run_python\', \'input\': {\'code\': \'...\'}}。若已全部生成完毕请直接给最终回答（不要再输出代码）。"})
                 print("[step %d] prov=%s tool=run_python(rescue) obs=%d chars" % (steps, pk, len(str(_obs))), flush=True)
             else:
                 final = content
