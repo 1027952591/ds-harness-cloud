@@ -5,5 +5,6 @@
  "size": 6606433,
  "md5": "03a8ef284b78f01292af106ff130228f",
  "minBundleVer": 113,
- "note": "vc143：纯JS MD5 根治热更死锁（实收md5空误杀好包）+Blob API大文件兜底+部署雪崩修复+HTML挡板首判"
+ "note": "vc143：纯JS MD5 根治热更死锁（实收md5空误杀好包）+Blob API大文件兜底+部署雪崩修复+HTML挡板首判",
+ "versionName": "2.5.125-md5fix"
 }
