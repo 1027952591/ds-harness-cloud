@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.110-sync",
- "md5": "f3a4e39755b753867230dc218c788b6a",
- "bundleVer": 98,
- "ts": "2026-10-13T12:55:00Z",
- "size": 712877,
- "note": "v2.5.110-sync 热更清单"
+ "appVersion": "2.5.111-cors",
+ "md5": "e0f4e28e95ececb5535d4219b04b2224",
+ "bundleVer": 99,
+ "ts": "2026-10-13T05:13:52Z",
+ "size": 716075,
+ "note": "v2.5.111-cors 热更清单（127 轮：CORS 全灭根治——原生桥 HTTP 兜底血管+铁律六眼扩容）"
 }
