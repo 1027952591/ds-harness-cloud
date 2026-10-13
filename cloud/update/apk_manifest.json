@@ -1,9 +1,9 @@
 {
- "versionName": "2.5.124-probe",
- "versionCode": 142,
- "md5": "a56ad239e43cfea167052bb65bbfab60",
- "size": 6602337,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "note": "137e 轮：MD5 证据探针+关透明缓存"
+ "apkVersion": "2.5.125-md5fix",
+ "versionCode": 143,
+ "url": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/releases/DS-Harness-2.5.125-md5fix.apk",
+ "size": 6606433,
+ "md5": "03a8ef284b78f01292af106ff130228f",
+ "minBundleVer": 113,
+ "note": "vc143：纯JS MD5 根治热更死锁（实收md5空误杀好包）+Blob API大文件兜底+部署雪崩修复+HTML挡板首判"
 }
