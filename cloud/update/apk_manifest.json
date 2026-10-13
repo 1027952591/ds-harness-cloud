@@ -1,8 +1,10 @@
 {
- "appVersion": "2.5.113-radius",
+ "versionName": "2.5.113-radius",
  "versionCode": 131,
- "md5": "804057b3f707dfb0d902fefd7100af91",
- "size": 6581857,
- "ts": "2026-10-13T06:18:35Z",
- "note": "129 轮：进化无半径全面打开（编译器/git/构建链全自有+工单自主消化）"
+ "md5": "390bd15968ab4725c40afd0e87f6d9d1",
+ "size": 5950321,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38356030554)",
+ "builtAt": "2026-10-13T06:20:06Z"
 }
