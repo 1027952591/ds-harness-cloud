@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
  "updated": "2026-10-13T13:10:19.673011Z",
+=======
+ "updated": "2026-10-13T13:15:08.719582Z",
+>>>>>>> Stashed changes
  "wants": [
   {
    "id": "w791094475",
@@ -23,6 +27,7 @@
    "why": "通知链路失败，进化到能送达为止",
    "tag": "demand",
    "done": false,
+<<<<<<< Updated upstream
    "tries": 1
   },
   {
@@ -32,6 +37,17 @@
    "tag": "demand",
    "done": false,
    "tries": 1
+=======
+   "tries": 0
+  },
+  {
+   "id": "w897115683",
+   "ts": 1791897115683,
+   "why": "回复中承认做不到：然我暂时无法直接输出视频，我可以为你生成",
+   "tag": "demand",
+   "done": false,
+   "tries": 0
+>>>>>>> Stashed changes
   }
  ]
 }
