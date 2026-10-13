@@ -1,8 +1,10 @@
 {
- "appVersion": "2.5.111-cors",
+ "versionName": "2.5.111-cors",
  "versionCode": 129,
- "md5": "adcad012e1512a4c53056638f84e1fb7",
- "size": 6581857,
- "ts": "2026-10-13T05:13:52Z",
- "note": "127 轮：bridgeGet 原生桥 CORS 兜底+铁律六眼（开奖/全网搜索）+大乐透实例"
+ "md5": "2cf56eb3dbfcc292735404c79cce51b3",
+ "size": 5954417,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38350380723)",
+ "builtAt": "2026-10-13T05:15:59Z"
 }
