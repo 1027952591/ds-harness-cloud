@@ -242,10 +242,28 @@ webView.addJavascriptInterface(bridge, "DSB");
     }
 
     /* 🧪 迷你自检页：15 行零依赖，内联脚本第一时间改标题（Java getTitle 可读）+页面可见「启动自检中」 */
+    /* 🐳 v2.5.109-clean 125 轮：红爪印→小黑鲸图标（运行时读 res/drawable 转 base64 内嵌——loadDataWithBaseURL(null) 无 base 路径，file:// 相对引用不可用；读图失败兜底 🐳 emoji） */
+    /* 🐳 v2.5.109-clean 125 轮：小黑鲸 data URI 公共方法（运行时读 res/drawable 转 base64——loadDataWithBaseURL(null) 无 base 路径；读图失败返回空串由调用方兜底） */
+    private String whaleIcon() {
+        try {
+            android.graphics.Bitmap bm = android.graphics.BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+            if (bm != null) {
+                java.io.ByteArrayOutputStream bo = new java.io.ByteArrayOutputStream();
+                bm.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, bo);
+                return "data:image/png;base64," + android.util.Base64.encodeToString(bo.toByteArray(), android.util.Base64.NO_WRAP);
+            }
+        } catch (Exception ignored) {}
+        return "";
+    }
+
     private String probeHtml() {
+        String icon = whaleIcon();
+        String hero = icon.isEmpty()
+            ? "<div style='font-size:44px'>🐳</div>"
+            : "<img src='" + icon + "' style='width:72px;height:72px;border-radius:20px;display:inline-block' alt=''>";
         return "<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>probe-init</title></head>"
             + "<body style='background:rgb(11,14,20);color:rgb(229,233,240);font-family:monospace;padding:80px 24px;text-align:center'>"
-            + "<div style='font-size:44px'>🐾</div><h2>小神启动自检中…</h2>"
+            + hero + "<h2>小神启动自检中…</h2>"
             + "<p style='color:rgb(138,148,168);font-size:13px'>正在检测网页引擎（约 3 秒）</p>"
             + "<script>document.title='PROBE_JS_OK';window.__probeOK=1;<" + "/script>"
             + "</body></html>";
@@ -666,8 +684,12 @@ if (b == null) b = readAsset("index.html");
             String nbr = bridge.storeGet("nobridge");
             String nb = (nbr == null || nbr.isEmpty() || "{}".equals(nbr) ? "（未跑）" : nbr.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"));
             String ua = ""; try { ua = webView.getSettings().getUserAgentString(); } catch (Exception ignored) {}
+            String wIcon = whaleIcon();
+            String wHero = wIcon.isEmpty()
+                ? "<div style='font-size:40px;text-align:center'>🐳</div>"
+                : "<img src='" + wIcon + "' style='width:64px;height:64px;border-radius:18px;display:block;margin:0 auto' alt=''>";
             String diag = "<html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'></head><body style='background:rgb(11,14,20);color:rgb(229,233,240);font-family:monospace;padding:36px 22px'>"
-                + "<div style='font-size:40px;text-align:center'>🐾</div>"
+                + wHero
                 + "<h2 style='text-align:center'>小神启动失败（已记录诊断）</h2>"
                 + "<p style='font-size:13px;line-height:1.8'>请截图此页反馈给开发者（本页自带全部诊断信息）。版本：v" + appVer() + "</p>"
                 + "<p style='font-size:10px;line-height:1.5;color:rgb(138,148,168)'>内核：" + (ua == null ? "?" : ua.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")) + "</p>"
