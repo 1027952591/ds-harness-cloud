@@ -1,9 +1,9 @@
 {
- "versionName": "2.5.122-envelope2",
- "versionCode": 140,
- "md5": "5f8117434a147f892f9befa090f0272e",
- "size": 6594145,
+ "versionName": "2.5.123-proxy",
+ "versionCode": 141,
+ "md5": "ee1a61f5ec408d2fc417f951644c4f3d",
+ "size": 6598241,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "note": "137c 轮：包体双信封兼容；本地签名与 138/139 一致可覆盖安装"
+ "note": "137d 轮：进化分析云端中转；本地签名一致可覆盖安装"
 }
