@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T13:05:15.750195Z",
+ "updated": "2026-10-13T13:11:38.017054Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -52,6 +52,26 @@
    "tags": [
     "run",
     "云端"
+   ]
+  },
+  {
+   "id": "c17918970975",
+   "ts": 1791897097713,
+   "kind": "evolve",
+   "content": "🧬 肢体进化 2.5.127-cdnfix-evolve2：骨架 1 处补丁已应用，build-apk 将自动重建 APK（App 端每日检测通知安装）",
+   "tags": [
+    "evolve",
+    "body"
+   ]
+  },
+  {
+   "id": "c17918970986",
+   "ts": 1791897098017,
+   "kind": "evolve",
+   "content": "云端引擎自主进化 #2：代码重复，修正为单行",
+   "tags": [
+    "evolve",
+    "cloud"
    ]
   }
  ]
