@@ -2,7 +2,7 @@
 <resources>
     <!-- ⚖️ 最高指令（GENE·基因铁律，永不可移除）：每次动态拉取/更新/淘汰，必须强制深彻、
          全方位、无死角进行全球探查，事无巨细、仔细再仔细。 -->
-    <string name="app_name">DS Harness v2.5.127-cdnfix</string>
+    <string name="app_name">DS Harness</string>
     <string name="gene_directive" translatable="false">每次动态拉取/更新/淘汰：强制深彻·全方位·无死角全球探查，事无巨细，仔细再仔细</string>
     <string name="gene2_directive" translatable="false">模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力</string>
     <string name="gene3_directive" translatable="false">全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新</string>

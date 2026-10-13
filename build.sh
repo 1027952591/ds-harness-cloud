@@ -22,7 +22,7 @@ PLATFORM="${DSH_PLATFORM_JAR:-$TC/sdk/platforms/android-34/android.jar}"
 OUT="$ROOT/build"
 export JAVA_HOME="${DSH_JDK:-$TC/jdk17}"
 export PATH="$JAVA_HOME/bin:$PATH"
-VER="2.5.127-cdnfix-evolve2"; VCODE=146
+VER="2.5.127-cdnfix"; VCODE=145
 NDK="${DSH_NDK:-$TC/ndk/r27c}"
 LLAMA="$ROOT/vendor/llama-b4604"
 CLANGXX="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
