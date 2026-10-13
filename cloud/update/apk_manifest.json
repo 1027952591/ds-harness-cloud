@@ -1,8 +1,10 @@
 {
- "appVersion": "2.5.110-sync",
+ "versionName": "2.5.110-sync",
  "versionCode": 128,
- "md5": "0d4056cffae275e2e5b30872a8f60bb5",
- "size": 6577761,
- "ts": "2026-10-13T12:55:00Z",
- "note": "126 轮：记忆同步假阴性根治"
+ "md5": "23d14a8ad38aec7d6db2fa5c400bad8a",
+ "size": 5946225,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38347865067)",
+ "builtAt": "2026-10-13T04:45:22Z"
 }
