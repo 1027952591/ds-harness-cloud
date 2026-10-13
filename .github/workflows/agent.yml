@@ -110,6 +110,7 @@ jobs:
         run: |
           git config user.name "ds-harness-agent"
           git config user.email "agent@ds-harness.local"
+          echo "🔍 118 轮产物回仓诊断："; pwd; ls -la output/ anime/ 2>&1 | head -20 || true
           git rebase --abort >/dev/null 2>&1 || true  # 🔧 状态自愈：清掉任何遗留中断态（unmerged files 会炸整条 commit）
           git merge --abort >/dev/null 2>&1 || true
           git add -A results/ || true  # -A 使滚动清理的删除也传播（防 git 历史膨胀；agent.py 保最近 20 个）
