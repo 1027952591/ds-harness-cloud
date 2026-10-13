@@ -3,7 +3,7 @@
  "size": 6606433,
  "md5": "03a8ef284b78f01292af106ff130228f",
  "minBundleVer": 113,
- "note": "vc143：纯JS MD5 根治热更死锁（实收md5空误杀好包）+Blob API大文件兜底+部署雪崩修复+HTML挡板首判",
+ "note": "vc143：纯JS MD5 根治热更死锁+Blob API 兜底+部署雪崩修复。下载走 GitHub Releases CDN（raw 域国内被墙）",
  "versionName": "2.5.125-md5fix",
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/releases/DS-Harness-2.5.125-md5fix.apk"
+ "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v143/DS-Harness-2.5.125-md5fix.apk"
 }
