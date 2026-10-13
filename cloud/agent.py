@@ -1808,6 +1808,10 @@ def try_tool(content):
     # 🏢 118 轮四招：模型输出 {"code":...} 漏了 tool 键——code 键在且 TOOLS 开着即视作 run_python 调用（口径与 rescue 一致）
     if not tool and TOOLS_CFG.get("code") and "code" in inp and str(inp.get("code") or "").strip():
         return ("run_python", run_python(str(inp["code"])))
+    # 🏢 118 轮五招（run 38328300994 实锤）：模型走了正经协议但 code 放 JSON 顶层不在 input 里——
+    # raw_decode 正确解转义引号，顶层 code 键直接执行（rescue 形态③的正则会被 \" 截断成残码）
+    if not tool and TOOLS_CFG.get("code") and str(obj.get("code") or "").strip():
+        return ("run_python", run_python(str(obj["code"])))
     return None
 
 
