@@ -1,0 +1,124 @@
+{
+ "sources": {
+  "zhipu": {
+   "models": [
+    "cogvideox-3"
+   ],
+   "style": "zhipu",
+   "ep": "https://open.bigmodel.cn/api/paas/v4/videos/generations",
+   "note": "智谱 CogVideoX（基础源·免费）",
+   "fails": 1,
+   "status": "candidate"
+  },
+  "siliconflow": {
+   "models": [
+    "Wan-AI/Wan2.2-TI2V-5B"
+   ],
+   "style": "sf-video",
+   "ep": "https://api.siliconflow.cn/v1/video/submit",
+   "note": "硅基流动 Wan2.2（基础源）",
+   "fails": 0,
+   "status": "paused"
+  },
+  "modelscope": {
+   "models": [
+    "Wan-AI/Wan2.2-TI2V-5B"
+   ],
+   "style": "openai-video",
+   "ep": "https://api-inference.modelscope.cn/v1/videos/generations",
+   "note": "魔搭开源托管（基础源·开源权重免费推理窗口多）",
+   "fails": 0,
+   "status": "verified"
+  },
+  "google": {
+   "models": [
+    "veo-3.0-fast-generate-preview"
+   ],
+   "style": "veo",
+   "ep": "https://generativelanguage.googleapis.com/v1beta/models",
+   "note": "Google AI Studio Veo（基础源·免费档）",
+   "fails": 0,
+   "status": "paused"
+  },
+  "minimax": {
+   "models": [
+    "MiniMax-H3-FL2VA",
+    "video-01"
+   ],
+   "style": "openai-video",
+   "ep": "https://api.minimax.chat/v1/video_generation",
+   "note": "海螺 H3（2026-08 权重开源 768P 开源评测第一；商业 API 付费——探免费窗口/托管迁移，61 轮真网情报）",
+   "fails": 1,
+   "status": "candidate"
+  },
+  "aliyun": {
+   "models": [
+    "wan2.5-t2v-preview",
+    "wan2.2-t2v"
+   ],
+   "style": "openai-video",
+   "ep": "https://dashscope.aliyuncs.com/api/v1/services/aigc/video-generation/video-synthesis",
+   "note": "阿里云百炼万相 wan2.5/2.6（新户免费额度窗口，61 轮真网情报）",
+   "fails": 0,
+   "status": "paused"
+  },
+  "1": {
+   "status": "candidate",
+   "models": [
+    "DeepArt"
+   ],
+   "style": "openai-video",
+   "ep": "https://deepart.io/api/v1/convert",
+   "note": "注册后每月有100个免费转换额度",
+   "fails": 1
+  },
+  "2": {
+   "status": "candidate",
+   "models": [
+    "Artbreeder API"
+   ],
+   "style": "openai-video",
+   "ep": "https://api.artbreeder.com/v1/",
+   "note": "注册后每月有50个免费生成请求",
+   "fails": 1
+  },
+  "3": {
+   "status": "candidate",
+   "models": [
+    "Deep Dream Generator"
+   ],
+   "style": "openai-video",
+   "ep": "https://deepdreamgenerator.com/api/v1/",
+   "note": "注册后每月有100个免费生成请求",
+   "fails": 1
+  },
+  "4": {
+   "status": "candidate",
+   "models": [
+    "RunwayML"
+   ],
+   "style": "openai-video",
+   "ep": "https://runwayml.com/api/v1/",
+   "note": "注册后每月有50个免费推理时间",
+   "fails": 1
+  },
+  "5": {
+   "status": "candidate",
+   "models": [
+    "StyleGAN API"
+   ],
+   "style": "openai-video",
+   "ep": "https://stylegan.io/api/v1/",
+   "note": "开源权重托管免费推理",
+   "fails": 1
+  }
+ },
+ "updated": "2026-10-13T04:42:48.385786Z",
+ "scan": "1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,1)",
+ "verified_chain": [
+  "zhipu",
+  "siliconflow",
+  "modelscope",
+  "google"
+ ]
+}
