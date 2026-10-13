@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.122-envelope2",
- "md5": "f0c459d5f55ecb3ea0bf278468bc9e30",
- "bundleVer": 110,
- "ts": 1791887155339,
- "size": 732445,
- "note": "137c 轮：包体双信封兼容+清单信封兼容+实收形态探针（appVersion 规范键）"
+ "appVersion": "2.5.123-proxy",
+ "md5": "2060ef4b284126ff744a5e564339b6d6",
+ "bundleVer": 111,
+ "ts": 1791887624513,
+ "size": 734627,
+ "note": "137d 轮：进化分析云端中转兜底"
 }
