@@ -22,7 +22,7 @@ PLATFORM="${DSH_PLATFORM_JAR:-$TC/sdk/platforms/android-34/android.jar}"
 OUT="$ROOT/build"
 export JAVA_HOME="${DSH_JDK:-$TC/jdk17}"
 export PATH="$JAVA_HOME/bin:$PATH"
-VER="2.5.108-icon"; VCODE=126
+VER="2.5.109-clean"; VCODE=127
 NDK="${DSH_NDK:-$TC/ndk/r27c}"
 LLAMA="$ROOT/vendor/llama-b4604"
 CLANGXX="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
@@ -93,12 +93,15 @@ echo "[2/7] aapt2 链接"
   --manifest "$APP/AndroidManifest.xml" \
   --min-sdk-version 24 --target-sdk-version 34 \
   --version-code $VCODE --version-name $VER \
+  --java "$OUT/gen" \
   "$OUT/res.zip" \
   -A "$APP/assets"
 
 echo "[3/7] javac 编译 Java"
+mkdir -p "$OUT/gen" # 🐳 v2.5.109-clean 125 轮：aapt2 --java 产出 R.java 进编译（whaleIcon 读 R.drawable.ic_launcher）
 javac -classpath "$PLATFORM" -encoding UTF-8 \
   -d "$OUT/classes" \
+  "$OUT/gen/com/dsh/app/R.java" \
   $(find "$APP/java" -name "*.java")
 
 echo "[4/7] d8 转 dex"
