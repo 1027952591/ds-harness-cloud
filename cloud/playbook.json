@@ -1,6 +1,193 @@
 {
- "updated": "2026-10-13T07:27:47.711Z",
+ "updated": "2026-10-13T09:07:14.801Z",
  "entries": [
+  {
+   "id": "pmv6g73t0602",
+   "ts": 1791881864964,
+   "title": "JS 位运算 32 位截断陷阱：X25519/Blake2b 大数乘加必须用 Math.imul 或拆 16 位",
+   "body": "JS 的 << 和 * 超过 2^31 会溢出为浮点/截断。libsodium 手写实现中 64 位乘加一律拆成 (hi*2^16+lo)*Math.imul 模式，或用 Math.imul 保证 32 位语义。曾因此导致标量乘基点全错、RFC7748 向量不过。任何涉及大整数运算的密码学代码，先写官方向量回归再谈功能。",
+   "tags": [
+    "crypto",
+    "js",
+    "大数"
+   ]
+  },
+  {
+   "id": "pmv6g73t042l",
+   "ts": 1791881864964,
+   "title": "HSalsa20 布局：core 输入 16 字直接替换前 4 行并清零末 4 字，绝不能当 stream 调",
+   "body": "X25519 共享密钥到对称密钥的桥是 HSalsa20（20 轮但输出 32 字）：x0..x3 用 shared 覆盖、x12..x15 置 0，Sigma 常量铺 x4..x11。曾把它错当 Salsa20 stream 调用导致密封盒互通失败。手写曲线密码学时把 RFC7748/8439 向量嵌入自检（vulnCheck crypto 项），每次启动自动回归。",
+   "tags": [
+    "crypto",
+    "hsalsa20",
+    "sealbox"
+   ]
+  },
+  {
+   "id": "pmv6g73t156q",
+   "ts": 1791881864965,
+   "title": "模型停服自愈铁律：404/410 立即拉黑并重拉清单，401/403/429 切源退避",
+   "body": "免费源模型下架返回 404/410：必须 markDead（deadLog 永久留痕）+ 该源强制重拉最新清单 + 按强度评分切换可切换的最强模型（GENE2）。401/402/403=Key/配额问题切下一源，429=限流退避。严禁对单一错误码无脑重试同一模型浪费配额。",
+   "tags": [
+    "eol",
+    "switch",
+    "api"
+   ]
+  },
+  {
+   "id": "pmv6g73t14qo",
+   "ts": 1791881864965,
+   "title": "Cloudflare Workers AI 是私有 REST 不是 OpenAI 兼容",
+   "body": "端点 /accounts/{account}/ai/models/search 与 /accounts/{account}/ai/run/{model}：model 必须在路径里、请求体不传 model、响应取 result.response、Key 格式 account:token。曾因按 OpenAI 兼容格式写导致漏掉此源（9/10 事件）。任何非标源必须像 cloudflare 分支一样特判接入，绝不静默跳过。",
+   "tags": [
+    "cloudflare",
+    "rest",
+    "盲区"
+   ]
+  },
+  {
+   "id": "pmv6g73t11ba",
+   "ts": 1791881864965,
+   "title": "免费源清单清洗：CHAT_FILTER+免费策略+deadLog 三重过滤缺一不可",
+   "body": "拉到 /v1/models 后先过 CHAT_FILTER（embed/vision/audio/safety 等非对话模型）、再按 FREE_MODE（curated 精选∩在线防拉到付费模型 / orfree 按 pricing==0）清洗、最后剔 deadLog 停服模型。只清洗一次就会被非对话模型或付费模型污染选型。",
+   "tags": [
+    "models",
+    "filter",
+    "免费"
+   ]
+  },
+  {
+   "id": "pmv6g73t127f",
+   "ts": 1791881864965,
+   "title": "GitHub Actions 公共仓免费算力：无限分钟+Secrets 加密+用后删运行记录",
+   "body": "公共仓标准 runner 分钟数不限（0 元无限算力）；Key 一律走 Secrets（App 内手写 libsodium 密封盒加密写入，运行记录零泄露）；任务结果取回后删运行记录不留痕。私有仓仅 2000 分钟/月。contents API PUT 更新文件需要先 GET 拿 sha 再提交，409=sha 过期需重取。",
+   "tags": [
+    "github",
+    "actions",
+    "免费算力"
+   ]
+  },
+  {
+   "id": "pmv6g73t22lf",
+   "ts": 1791881864966,
+   "title": "双向并集合并算法：双端记忆同步永不丢的保证",
+   "body": "App 与云端各自追加记忆后同步：mergeMind 按 id（无 id 用内容哈希）并集合并、同 id 取 ts 新者，绝不允许直接覆盖（会把对端新写的记忆抹掉）。同步前先拉后推，推送时以 GET 拿 sha 增量更新。此模式同样适用于任何双端最终一致数据。",
+   "tags": [
+    "sync",
+    "merge",
+    "记忆"
+   ]
+  },
+  {
+   "id": "pmv6g73t25i4",
+   "ts": 1791881864966,
+   "title": "模型强度评分制：自动切换必须按评分降序取最强，严禁拿第一个凑合",
+   "body": "评分：推理型(r1/reasoning/thinking/cot)+200、参数规模×10（封顶 1500）、新一代版本号加权、pro/max/ultra+60、flash/lite/mini-40、非对话模型-999。所有切换路径（源故障转移/模型停服/清单排序/云端候选队列）统一过 modelStrength 降序，队首即最强（GENE_DIRECTIVE2）。",
+   "tags": [
+    "switch",
+    "最强",
+    "评分"
+   ]
+  },
+  {
+   "id": "pmv6g73t22r6",
+   "ts": 1791881864966,
+   "title": "零 Gradle 纯手搓 Android 构建：aapt2→javac→d8→zip→zipalign→apksigner",
+   "body": "全程零第三方依赖：aapt2 编资源、javac 编 Java、d8 转 dex、zip 打包 assets/dex/资源、zipalign 4 字节对齐、apksigner 签名。构建脚本 build.sh 可复现，APK 体积 70KB 级。WebView+JavascriptInterface 单文件前端是最小维护成本架构。",
+   "tags": [
+    "build",
+    "android",
+    "零成本"
+   ]
+  },
+  {
+   "id": "pmv6g73t24ki",
+   "ts": 1791881864966,
+   "title": "PHB 手机操控桥安全铁律：桥方法异常吞并成 JSON+读写字符上限+二进制探测+防符号链接环",
+   "body": "Java 桥每个方法必须 try-catch 全包并返回 {ok:0,err:...}，绝不让异常裸穿到 JS（会直接崩 WebView）。fsRead 加 READ_CHAR_CAP + 首 4KB NUL 二进制探测（返回 binary:1 不把乱码端给模型）；fsWrite 加 WRITE_CHAR_CAP 拒绝 >1MB；fsSearch 用 ArrayDeque BFS + HashSet 防符号链接环、隐藏目录不入队。目录列举 LIST_CAP 封顶。跨卷 renameTo 失败必须复制+删源兜底。",
+   "tags": [
+    "phone",
+    "phb",
+    "桥安全"
+   ]
+  },
+  {
+   "id": "pmv6g73t32iv",
+   "ts": 1791881864967,
+   "title": "onclick 属性注入单引号击穿陷阱：路径/包名一律过 phAttr 转义",
+   "body": "动态拼 onclick='fn(\"...\")' 时，路径含单引号会直接击穿 HTML 属性字符串导致整页 JS 崩。解法：专用 phAttr=s=>esc(String(s)).replace(/'/g,\"\\\\'\")，所有 onclick 注入点（路径/包名/搜索结果）无一例外过它。教训：任何一个注入点漏掉就是一个运行时崩洞，必须全点扫描而非抽查。",
+   "tags": [
+    "phone",
+    "注入",
+    "xss"
+   ]
+  },
+  {
+   "id": "pmv6g73t34l8",
+   "ts": 1791881864967,
+   "title": "三端分割铁律 scope 三值化：sessScope 优先于 mode 键，历史数据归 local 零迁移",
+   "body": "curScope/sessScope/projScope/alarmScope 返回 local/cloud/phone 三值；历史无 mode/scope 的数据一律归 local 不迁移（零数据迁移风险）。执行链归属看 sessScope(会话.mode)而非全局 settings.mode：云端拉回的会话在手机端入口打开也必须走云端链。Agent 工具循环上限 8 步（phoneMaxSteps）防爆，流式输出 ```tool 块取最后一个解析、白名单校验。",
+   "tags": [
+    "phone",
+    "三端分割",
+    "scope"
+   ]
+  },
+  {
+   "id": "pmv6g73t379g",
+   "ts": 1791881864967,
+   "title": "热更架构根基：全数据走 Java Store + loadDataWithBaseURL 保基址 → 热替换 HTML 零数据丢失",
+   "body": "热替换 WebView 里整份 index.html 可行的前提：①所有持久化数据走 DSB.storeGet/storeSet（files/<key>.json），零 localStorage 依赖——换 HTML 不丢数；②crypto.js 用相对路径 <script src>，装载必须 loadDataWithBaseURL(\"file:///android_asset/\",...) 保住基址，否则相对路径崩；③原子落盘 tmp+fsync+renameTo，跨卷 rename 失败复制+删源兑底。热包大小门 60KB~500KB 双侧硬校验。",
+   "tags": [
+    "upd",
+    "热更",
+    "架构"
+   ]
+  },
+  {
+   "id": "pmv6g73t4wc",
+   "ts": 1791881864968,
+   "title": "永砖三重门：Java 门→JS 启动门→应用前四重闸门，坏包永远进不来",
+   "body": "①Java 门（MainActivity.readHotBundle：存在+大小+含\"DS Harness\"+\"BUNDLE_VER\"才装载，不依赖 JS 存活）②JS 启动门（updBootGuard：词法 typeof 探针验证关键函数+四基因，坏即 hotDelete 回滚内置版）③四重闸门（updGauntlet：MD5 对拍/new Function 语法/结构必需函数/四基因+防降级 BUNDLE_VER）+落盘后读回 MD5 再对拍。任何一层拦截都不给坏包活路，且全部自动回滚零人工。",
+   "tags": [
+    "upd",
+    "闸门",
+    "永砖"
+   ]
+  },
+  {
+   "id": "pmv6g73t4417",
+   "ts": 1791881864968,
+   "title": "const 箭头函数不在 window 上：探针严禁 window[f]，必须词法引用直接 typeof",
+   "body": "esc/curScope 等是 const 箭头函数，不会挂到 window 对象上。用 typeof window[f]===\"function\" 探针会把完好热包误判为缺函数→误删好包！正确写法是词法直接引用：[typeof esc,typeof curScope,...].filter(t=>t!==\"function\")。同理任何\"函数存在性校验\"都要先想清楚目标在哪个作用域。此坑在 updBootGuard 首版就是真缺陷。",
+   "tags": [
+    "upd",
+    "探针",
+    "js坑"
+   ]
+  },
+  {
+   "id": "pmv6g73t4lp",
+   "ts": 1791881864968,
+   "title": "热更幂等短路必须 MD5 级对拍：版本号相同不等于包相同",
+   "body": "每日自动检查如果只比版本号，进化包（同版本号重发布）会漏拉；如果拿空 code 算 MD5 对拍永远不命中变成死代码。正确做法：updSelfMd5()（热包取 hotInfo().md5，内置版取 readAsset 算 MD5）与 manifest.md5 对拍，版本号+MD5 双一致才短路。进化包应用前必须改写包内 APP_VER 常量为新进化号，否则重装载后 APP_VER 不变→每日检查无限重拉同一包。且 md5 必须在 APP_VER 改写之后计算。",
+   "tags": [
+    "upd",
+    "幂等",
+    "防死循环"
+   ]
+  },
+  {
+   "id": "pmv6g73t512x",
+   "ts": 1791881864969,
+   "title": "编辑工具锚点反复失手的根治：先 sed -n 实查再改，或直接 sed -i 正则替换",
+   "body": "连续 3 次在同一锚点上失手（纯手摸 vs 纯手搓、emoji 差异）：multi_edit 是原子操作任一失配全部不应用。根治法：①改前必 grep/sed -n 看实文；②长锚点拆短只取关键行；③或直接 sed -i 正则替换（无预读也不怕锚点细节）；④编辑后必 diff/语法校验。任何\"我记得它是这样\"都是锚点事故的种子。",
+   "tags": [
+    "upd",
+    "工具坑",
+    "工程纪律"
+   ]
+  },
   {
    "id": "pmv6co5nt7hj",
    "ts": 1791875942057,
