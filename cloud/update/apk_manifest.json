@@ -1,10 +1,8 @@
 {
- "versionName": "2.5.118-verify",
- "versionCode": 136,
- "md5": "72fd000404888faac351aeb380fe5221",
- "size": 5962609,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38365545701)",
- "builtAt": "2026-10-13T07:54:21Z"
+ "appVersion": "2.5.119-evolve",
+ "versionCode": 137,
+ "md5": "7f45cb568cb2745dd7435c563354724b",
+ "size": 6594145,
+ "ts": 1791879376797,
+ "note": "135 轮：快车道认怂即进化（GLM 五连认怂第二扇门当场 demandMiss 双发）+云端白话秒派真拍（视频/画图等文件型）+办公课件笔误修"
 }
