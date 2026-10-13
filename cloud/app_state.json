@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-13T10:22:59.676Z",
+ "updated": "2026-10-13T10:42:03.409Z",
  "action": "state",
- "appVersion": "2.5.121-envelope",
+ "appVersion": "2.5.123-proxy",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
@@ -15,7 +15,7 @@
  "selModels": {
   "zhipu": "glm-4-flash",
   "nvidia": "deepseek-ai/deepseek-v4.1-flash",
-  "modelscope": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "modelscope": "Qwen/Qwen3.5-397B-A17B",
   "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
   "gemma": "gemma-3-12b-it",
   "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
@@ -23,21 +23,22 @@
   "cerebras": "llama-3.3-70b",
   "mistral": "mistral-small-latest",
   "pollinations": "openai-fast",
-  "ondevice": "qwen2.5-0.5b"
+  "ondevice": "qwen2.5-0.5b",
+  "openrouter": "inclusionai/ling-3.1-flash"
  },
  "deadLogCount": 0,
- "probeOk": 1,
- "liveN": 0,
- "repoN": 0,
+ "probeOk": 5,
+ "liveN": 3,
+ "repoN": 5,
  "vulnOk": 6,
  "vulnN": 6,
- "memN": 6,
- "pbN": 17,
+ "memN": 37,
+ "pbN": 96,
  "vulnBad": [],
  "chanHealth": [
-  "raw.githubusercontent:连败3/p110",
-  "jsDelivr CDN:连败3/p110",
-  "GitHub API:ok1/p100"
+  "raw.githubusercontent:ok0/p100",
+  "jsDelivr CDN:ok0/p100",
+  "GitHub API:ok0/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
