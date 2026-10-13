@@ -1270,6 +1270,11 @@ def _xlsx(data, out_path="output/表格.xlsx", title=None):
     回读验证闸（魔数/内容双检）过了才落盘返回，宁缺勿假。"""
     import openpyxl
     try:
+        # 🛡️ 118 轮实弹（run 38325792604）：模型常给三维嵌套 [[[行1],[行2]]]——多包一层即全盘炸、失败闸删文件、错误被模型丢弃后谎报成功。先解包单层包装，再做单元格级容错（列表/字典一律转 str）
+        if isinstance(data, list) and len(data) == 1 and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            data = data[0]
+        def _cv(c):
+            return str(c) if isinstance(c, (list, tuple, dict)) else c
         os.makedirs(os.path.dirname(out_path) or "output", exist_ok=True)
         wb = openpyxl.Workbook()
         wb.remove(wb.active)
@@ -1280,12 +1285,12 @@ def _xlsx(data, out_path="output/表格.xlsx", title=None):
         for sn, sd in sheets.items():
             ws = wb.create_sheet(str(sn)[:28] or "Sheet")
             if isinstance(sd, dict) and "headers" in sd:
-                ws.append(list(sd.get("headers") or []))
+                ws.append([_cv(c) for c in (sd.get("headers") or [])])
                 for r in (sd.get("rows") or []):
-                    ws.append(list(r))
+                    ws.append([_cv(c) for c in (r or [])])
             else:
                 for r in (sd or []):
-                    ws.append(list(r))
+                    ws.append([_cv(c) for c in (r if isinstance(r, (list, tuple)) else [r])])
         if title:
             try:
                 ws2 = wb.create_sheet("说明")
@@ -1679,12 +1684,30 @@ def run_python(code):
         f.write(code)
         path = f.name
     try:
-        boot = ("import sys; sys.path.insert(0, %r)\n"  # 🛡️ v2.5.57-wire 66 轮：旧版沙箱不注入 cloud 目录——SYSTEM 教模型调 _video/_draw 等，实际 import agent 即 NameError，指示与物理层断链
+        boot = ("import sys, os as _os\n"  # 🛡️ v2.5.57-wire 66 轮：旧版沙箱不注入 cloud 目录——SYSTEM 教模型调 _video/_draw 等，实际 import agent 即 NameError，指示与物理层断链
+                "_ws = _os.environ.get('GITHUB_WORKSPACE')\n"  # 🛡️ 118 轮：显式钉死沙箱 cwd=workspace——主进程任何 chdir 残留都不许把相对路径产物带去别处
+                "if _ws and _os.path.isdir(_ws): _os.chdir(_ws)\n"
+                "import time as _t; _T0 = _t.time()\n"
+                "sys.path.insert(0, %r)\n"
                 "import agent\n") % os.path.dirname(os.path.abspath(__file__))
+        tail = ("\n# 🛡️ 118 轮：沙箱产物自证——执行完自动盘点新生文件并回显（实弹 run 38325792604：模型丢弃工坊返回值，失败后无凭据谎报成功）\n"
+                "try:\n"
+                "    import os as _o2\n"
+                "    _fs = []\n"
+                "    for _d in ('output', 'anime'):\n"
+                "        if not _o2.path.isdir(_d): continue\n"
+                "        for _r, _, _fns in _o2.walk(_d):\n"
+                "            for _fn in _fns:\n"
+                "                _p = _o2.path.join(_r, _fn)\n"
+                "                if _o2.path.getmtime(_p) >= _T0 - 1 and _o2.path.getsize(_p) > 0:\n"
+                "                    _fs.append(_p + ' (' + str(_o2.path.getsize(_p)) + 'B)')\n"
+                "    print('[产物盘点] cwd=' + _o2.getcwd() + ' 新生文件=' + (', '.join(_fs) if _fs else '无'))\n"
+                "except Exception:\n"
+                "    pass\n")
         with open(path, encoding="utf-8") as _f:
             body = _f.read()
         with open(path, "w", encoding="utf-8") as _f:
-            _f.write(boot + body)
+            _f.write(boot + body + tail)
         tmo = float(os.environ.get("TOOL_TIMEOUT_SECS", "1800"))  # 🛡️ 66 轮：旧版 60s 硬超时——_video 首轮轮询即 30s/_movie 30 分钟，多模态生成工具经工具环调用从未成功过；升到 30 分钟对齐 _video 上限
         p = subprocess.run([sys.executable, path], capture_output=True, text=True, timeout=tmo)
         out = (p.stdout or "") + (("\n[stderr]\n" + p.stderr) if p.stderr else "")
