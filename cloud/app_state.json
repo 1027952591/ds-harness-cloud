@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-13T07:21:28.563Z",
- "action": "chat",
- "appVersion": "2.5.116-instant",
+ "updated": "2026-10-13T09:07:28.034Z",
+ "action": "state",
+ "appVersion": "2.5.120-gate",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
@@ -32,9 +32,13 @@
  "vulnOk": 6,
  "vulnN": 6,
  "memN": 37,
- "pbN": 43,
+ "pbN": 60,
  "vulnBad": [],
- "chanHealth": [],
+ "chanHealth": [
+  "raw.githubusercontent:连败4/p120",
+  "jsDelivr CDN:连败4/p120",
+  "GitHub API:ok2/p100"
+ ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
