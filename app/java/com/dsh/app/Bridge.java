@@ -71,6 +71,7 @@ public class Bridge {
             HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
             c.setRequestMethod(method == null ? "GET" : method);
             c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
             c.setReadTimeout(120000);
             applyHeaders(c, headersJson);
             if (body != null && !body.isEmpty() && !method.equals("GET") && !method.equals("HEAD")) {
@@ -97,6 +98,7 @@ public class Bridge {
                 HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
                 c.setRequestMethod("POST");
                 c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
                 c.setReadTimeout(300000);
                 applyHeaders(c, headersJson);
                 if (body != null && !body.isEmpty()) {
@@ -371,6 +373,7 @@ public class Bridge {
     private String saveDlvOnce(String fUrl, String fName, String mime, String fSha) throws Exception {
         HttpURLConnection c = (HttpURLConnection) new URL(fUrl).openConnection();
         c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
         c.setReadTimeout(300000);
         c.setInstanceFollowRedirects(true);
         int st = c.getResponseCode();
@@ -380,6 +383,7 @@ public class Bridge {
             try { c.disconnect(); } catch (Exception ignored) { }
             c = (HttpURLConnection) new URL(new URL(base), loc).openConnection();
             c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
             c.setReadTimeout(300000);
             st = c.getResponseCode();
         }
@@ -1050,6 +1054,7 @@ public class Bridge {
             java.net.HttpURLConnection c = (java.net.HttpURLConnection) new URL(url).openConnection();
             c.setRequestMethod("POST");
             c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
             c.setReadTimeout(120000);
             c.setDoOutput(true);
             c.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
@@ -1123,6 +1128,7 @@ public class Bridge {
             java.net.HttpURLConnection c = (java.net.HttpURLConnection) new URL(url).openConnection();
             c.setRequestMethod("POST");
             c.setConnectTimeout(20000);
+            c.setUseCaches(false); // 🔬 137e 轮：关透明缓存——HttpURLConnection 默认缓存可能返回陈旧 GET 体（manifest/bundle 版本错配嫌疑）
             c.setReadTimeout(180000);
             c.setDoOutput(true);
             c.setRequestProperty("Content-Type", "application/json");
@@ -1353,7 +1359,7 @@ public class Bridge {
     public String hotWrite(String content) { // 原子落盘热包（tmp+rename+fsync，写入即返回 MD5 供 JS 对拍）
         JSONObject o = new JSONObject();
         try {
-            if (content == null || content.length() < 60000 || content.length() > 500000) {
+            if (content == null || content.length() < 60000 || content.length() > 20971520) {
                 o.put("ok", 0); o.put("err", "size " + (content == null ? 0 : content.length()));
                 return o.toString();
             }
