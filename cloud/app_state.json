@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-13T22:50:37.540Z",
+ "updated": "2026-10-13T23:41:15.775Z",
  "action": "state",
- "appVersion": "2.5.128-evoslim",
- "mode": "cloud",
+ "appVersion": "2.5.129-evoreclaim",
+ "mode": "chat",
  "prefProv": "",
  "chainOn": [
   "zhipu",
@@ -13,11 +13,10 @@
  "phoneToolLast": "",
  "phoneApps": 0,
  "selModels": {
-  "zhipu": "glm-5",
-  "nvidia": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-  "modelscope": "Qwen/Qwen3.5-397B-A17B",
+  "zhipu": "glm-4-flash",
+  "nvidia": "deepseek-ai/deepseek-v4.1-flash",
+  "modelscope": "deepseek-ai/DeepSeek-V4.1-Flash",
   "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
-  "openrouter": "inclusionai/ling-3.1-flash",
   "gemma": "gemma-3-12b-it",
   "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
   "groq": "llama-3.3-70b-versatile",
@@ -28,28 +27,22 @@
  },
  "deadLogCount": 0,
  "probeOk": 1,
- "liveN": 4,
- "repoN": 5,
- "vulnOk": 8,
- "vulnN": 11,
- "memN": 22,
- "pbN": 24,
- "vulnBad": [
-  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
-  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿",
-  "cloudvuln:云端同拍触发失败 HTTP 0（vuln.yml 缺失→重新部署可修）"
- ],
+ "liveN": 0,
+ "repoN": 0,
+ "vulnOk": 6,
+ "vulnN": 6,
+ "memN": 6,
+ "pbN": 17,
+ "vulnBad": [],
  "chanHealth": [
-  "raw.githubusercontent:连败23/p690",
-  "jsDelivr CDN:连败77/p850",
-  "GitHub API:ok114/p100"
+  "raw.githubusercontent:连败3/p110",
+  "jsDelivr CDN:连败3/p110",
+  "GitHub API:ok2/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {
-  "think": 1
- }
+ "plugins": {}
 }
