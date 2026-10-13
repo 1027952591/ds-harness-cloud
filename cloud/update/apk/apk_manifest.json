@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.116-instant",
- "versionCode": 134,
- "md5": "ee3ceb0a51e806b996d406635077c321",
+ "appVersion": "2.5.117-diag",
+ "versionCode": 135,
+ "md5": "d7dbabd1c2890a4105e13dd622d5ffef",
  "size": 6585953,
- "ts": "2026-10-13T07:12:23Z",
- "note": "132 轮：发现即修（文案零挂账+看门狗 60s 循环）"
+ "ts": "2026-10-13T07:38:02Z",
+ "note": "133 轮：诊断到闸（PERM 三闸细分+渠道死闸根治）"
 }
