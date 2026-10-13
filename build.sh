@@ -86,6 +86,7 @@ if [ -f "$ROOT/keystore.jks" ]; then base64 -w0 "$ROOT/keystore.jks" > "$DNA/key
 echo "  骨架 DNA 已刻入 assets/skeleton/（$(du -sh "$DNA" | cut -f1)）——APK 自带完整重建蓝图"
 
 echo "[1/7] aapt2 编译资源"
+find "$APP/res" -type f \( -name "*.bak" -o -name "*.tmp" -o -name "*.orig" \) -delete # 🛡️ 137k：部署残渣免疫——手机端部署会把 .bak 备份混进 res/，aapt2 碰到即拒收（invalid file path），三连败实锤；编译前自动清扫
 "$BT/aapt2" compile --dir "$APP/res" -o "$OUT/res.zip"
 
 echo "[2/7] aapt2 链接"
