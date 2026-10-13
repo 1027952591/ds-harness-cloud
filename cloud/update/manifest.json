@@ -1,8 +1,8 @@
 {
- "md5": "e4ee7fa2b7f1b071125970b5c2b60ec0",
- "bundleVer": 108,
- "ts": 1791880904872,
- "size": 729041,
- "note": "136 轮：热更包体三道闸 500KB→20MB 极限（正规热包 728KB 早超旧闸——手机热更被自家闸拦死停 B104 的总根子）+私有仓误导文案根治+资产快照缺文件 ◌ 降级提示",
- "appVersion": "2.5.120-gate"
+ "appVersion": "2.5.121-envelope",
+ "md5": "bb59a6cea9c3186eb81aef33e02bdb2a",
+ "bundleVer": 109,
+ "ts": 1791883000000,
+ "size": 731385,
+ "note": "137 轮：清单信封双形态兼容+实收形态探针（键名 appVersion 规范——136 轮曾笔误 version）"
 }
