@@ -489,8 +489,14 @@ public class Bridge {
             if (nm == null) return "ERR:no_notification_service";
             if (Build.VERSION.SDK_INT >= 33 &&
                     act.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
-                            != android.content.pm.PackageManager.PERMISSION_GRANTED) return "PERM";
-            try { if (!nm.areNotificationsEnabled()) return "PERM"; } catch (Exception ignored) { }
+                            != android.content.pm.PackageManager.PERMISSION_GRANTED) return "PERM:runtime"; // 🔔 133 轮：闸诊断到具体——弹窗权限没点
+            try { if (!nm.areNotificationsEnabled()) return "PERM:master"; } catch (Exception ignored) { } // 🔔 133 轮：App 通知总开关被关（荣耀渠道页里的子开关开着也没用，总闸在外层）
+            try { // 🔔 133 轮：渠道闸检查——渠道被关时旧版照样报 OK 发一条看不见的通知（暗缺陷），现在如实报 PERM:channel
+                if (Build.VERSION.SDK_INT >= 26) {
+                    android.app.NotificationChannel _ch = nm.getNotificationChannel(MainActivity.CHANNEL_TASKS);
+                    if (_ch != null && _ch.getImportance() == android.app.NotificationManager.IMPORTANCE_NONE) return "PERM:channel";
+                }
+            } catch (Exception ignored) { }
             Intent i = new Intent(act, MainActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent pi = PendingIntent.getActivity(act, 0, i,
