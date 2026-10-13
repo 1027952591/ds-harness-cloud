@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-13T12:33:23.810Z",
+ "updated": "2026-10-13T13:27:16.456Z",
  "action": "state",
- "appVersion": "2.5.127-cdnfix",
+ "appVersion": "2.5.128-evoslim",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
@@ -15,9 +15,9 @@
  "selModels": {
   "zhipu": "glm-5",
   "nvidia": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-  "modelscope": "OpenGVLab/InternVL3_5-241B-A28B",
+  "modelscope": "Qwen/Qwen3.5-397B-A17B",
   "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
-  "openrouter": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "openrouter": "inclusionai/ling-3.1-flash",
   "gemma": "gemma-3-12b-it",
   "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
   "groq": "llama-3.3-70b-versatile",
@@ -30,15 +30,17 @@
  "probeOk": 1,
  "liveN": 4,
  "repoN": 5,
- "vulnOk": 6,
- "vulnN": 6,
- "memN": 11,
- "pbN": 21,
- "vulnBad": [],
+ "vulnOk": 10,
+ "vulnN": 11,
+ "memN": 16,
+ "pbN": 23,
+ "vulnBad": [
+  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿"
+ ],
  "chanHealth": [
-  "raw.githubusercontent:连败45/p530",
-  "jsDelivr CDN:连败45/p530",
-  "GitHub API:ok62/p100"
+  "raw.githubusercontent:ok7/p480",
+  "jsDelivr CDN:连败54/p620",
+  "GitHub API:ok78/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
