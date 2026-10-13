@@ -1,8 +1,1 @@
-{
- "appVersion": "2.5.127-cdnfix",
- "md5": "07e347a90abea3140c8e72637f7d3904",
- "bundleVer": 115,
- "ts": "2026-10-13T12:00:36Z",
- "size": 612420,
- "note": "DS Harness 自主升级清单（四重闸门已过）"
-}
+{"appVersion": "2.5.128-evoslim", "version": "2.5.128-evoslim", "md5": "95b6d90268bcbef87164564834037701", "bundleVer": 116, "ts": "2026-10-13T13:18:29Z", "size": 615191, "note": "DS Harness 137j：进化基底瘦身+流式智能跟随", "minBundleVer": 116}
