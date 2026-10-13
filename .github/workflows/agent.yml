@@ -119,6 +119,7 @@ jobs:
           for _d in anime output; do if [ -d "$_d" ] && [ -n "$(ls -A "$_d" 2>/dev/null)" ]; then git add "$_d" && echo "📦 已入册 $_d/: $(git diff --cached --name-only -- "$_d" | tr '\n' ' ')" || echo "⚠️ add $_d 失败"; else echo "📦 $_d/ 目录为空或不存在，跳过"; fi; done
           git add cloud/memory.json cloud/playbook.json cloud/vitals.json cloud/app_state.json 2>/dev/null || true  # 🧖📖 GEN3+💗 v2.5.30-alive：云端学习成果/手册/小神生命体征（心情/日记/问候）随运行回写仓库（App 拉取感知；app_state 镜像同步回仓）
           git add cloud/daily_class.json 2>/dev/null || true  # 🎓 v2.5.51-human：晨课成果回仓（App 每日拉回主动汇报）
+          git add cloud/evolve_reply.json cloud/evolve_task.json 2>/dev/null || true  # 📡 137d 轮：进化分析云端中转——手机全源失败时经此链回家（reply 落仓 App 轮询拉回）
           git add cloud/vid_scout.json 2>/dev/null || true  # 🎥 v2.5.52-scout：视频源雷达情报站回仓（61 轮用户最高令：免费视频新源自动发现接入）
           # 🧠 v2.5.26-brain：按门铃——App 端查铃即知云端有新事（四扇门全开强拉，实时联动）；🛡️ v2.5.55-pulse 64 轮：铃号写在 commit 之前随 commit 入库——旧版写在 commit 之后只 stage 不 commit，push 推不出去，下次 checkout 即丢，铃从未响过
           python3 -c "import json,datetime,os; n=json.load(open('cloud/ping.json')).get('n',0)+1 if os.path.exists('cloud/ping.json') else 1; json.dump({'n':n,'ts':datetime.datetime.now(datetime.timezone.utc).isoformat(),'by':'agent'},open('cloud/ping.json','w'),ensure_ascii=False)" || true
