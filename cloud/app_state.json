@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T13:27:16.456Z",
+ "updated": "2026-10-13T14:07:44.430Z",
  "action": "state",
  "appVersion": "2.5.128-evoslim",
  "mode": "cloud",
@@ -32,15 +32,15 @@
  "repoN": 5,
  "vulnOk": 10,
  "vulnN": 11,
- "memN": 16,
- "pbN": 23,
+ "memN": 22,
+ "pbN": 24,
  "vulnBad": [
   "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿"
  ],
  "chanHealth": [
-  "raw.githubusercontent:ok7/p480",
-  "jsDelivr CDN:连败54/p620",
-  "GitHub API:ok78/p100"
+  "raw.githubusercontent:连败14/p600",
+  "jsDelivr CDN:连败68/p760",
+  "GitHub API:ok98/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
