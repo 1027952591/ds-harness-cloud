@@ -1,0 +1,43 @@
+{
+ "think": false,
+ "tools": {
+  "web": true,
+  "code": true
+ },
+ "steps": [
+  {
+   "step": 1,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "run_python\n```python\nimport os\nfrom openpyxl import Workbook\nfrom pptx import Presentation\nfrom docx import Document\n\n# 生成 Excel 文件\nwb = Workbook()\nws = wb.active\ndata = [[\"产品\", \"销量\"], [\"小神App\", 100], [\"夸克\", 80]]\nfor row in data:\n    ws.append(row)\nwb.save(\"output/F表格.xlsx\")\n\n# 生成 Word 文档\ndoc = Document()\ndoc.add_heading(level=0, text=\"# 终验报告\")\ndoc.add_heading(level=1, text=\"## 一、结论\")\ndoc.add_paragraph(\"118 轮四工坊终验通过。\")\ndoc.save(\"output/F文档.docx\")\n\n# 生成 PPT 演示\nprs = Presentation()\nslide_layout = ",
+   "tool": "run_python(rescue)"
+  },
+  {
+   "step": 2,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "```python\nimport os\nfrom openpyxl import Workbook\nfrom pptx import Presentation\nfrom docx import Document\n\n# 生成 Excel 文件\nwb = Workbook()\nws = wb.active\ndata = [[\"产品\", \"销量\"], [\"小神App\", 100], [\"夸克\", 80]]\nfor row in data:\n    ws.append(row)\nwb.save(\"output/F表格.xlsx\")\n\n# 生成 Word 文档\ndoc = Document()\ndoc.add_heading(level=0, text=\"# 终验报告\")\ndoc.add_heading(level=1, text=\"## 一、结论\")\ndoc.add_paragraph(\"118 轮四工坊终验通过。\")\ndoc.save(\"output/F文档.docx\")\n\n# 生成 PPT 演示\nprs = Presentation()\nslide_layout = prs.slide_l",
+   "tool": "run_python(rescue)"
+  },
+  {
+   "step": 3,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "```python\nimport os\nfrom openpyxl import Workbook\nfrom pptx.util import Inches\n\n# 生成 Excel 文件\nwb = Workbook()\nws = wb.active\ndata = [[\"产品\", \"销量\"], [\"小神App\", 100], [\"夸克\", 80]]\nfor row in data:\n    ws.append(row)\nwb.save(\"output/F表格.xlsx\")\n\n# 生成 Word 文档\ndoc = Document()\ndoc.add_heading(level=0, text=\"# 终验报告\")\ndoc.add_heading(level=1, text=\"## 一、结论\")\ndoc.add_paragraph(\"118 轮四工坊终验通过。\")\ndoc.save(\"output/F文档.docx\")\n\n# 生成 PPT 演示\nprs = Presentation()\nslide_layout = prs.slide_layouts[0]\nslide = prs.slide",
+   "tool": "run_python(rescue)"
+  },
+  {
+   "step": 4,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "```python\nimport os\nfrom openpyxl import Workbook\nfrom pptx.util import Inches\n\n# 生成 Excel 文件\nwb = Workbook()\nws = wb.active\ndata = [[\"产品\", \"销量\"], [\"小神App\", 100], [\"夸克\", 80]]\nfor row in data:\n    ws.append(row)\nwb.save(\"output/F表格.xlsx\")\n\n# 生成 Word 文档\nfrom docx import Document\ndoc = Document()\ndoc.add_heading(level=0, text=\"# 终验报告\")\ndoc.add_heading(level=1, text=\"## 一、结论\")\ndoc.add_paragraph(\"118 轮四工坊终验通过。\")\ndoc.save(\"output/F文档.docx\")\n\n# 生成 PPT 演示\nfrom pptx import Presentation\nprs = Presentation",
+   "tool": "run_python(rescue)"
+  },
+  {
+   "step": 5,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "```python\nimport os\nfrom openpyxl import Workbook\n\n# 生成 Excel 文件\nwb = Workbook()\nws = wb.active\ndata = [[\"产品\", \"销量\"], [\"小神App\", 100], [\"夸克\", 80]]\nfor row in data:\n    ws.append(row)\nwb.save(\"output/F表格.xlsx\")\n\n# 生成 Word 文档\nfrom docx import Document\ndoc = Document()\ndoc.add_heading(level=0, text=\"# 终验报告\")\ndoc.add_heading(level=1, text=\"## 一、结论\")\ndoc.add_paragraph(\"118 轮四工坊终验通过。\")\ndoc.save(\"output/F文档.docx\")\n\n# 生成 PPT 演示\nfrom pptx import Presentation\nprs = Presentation()\nslide_layout = prs.slide_l"
+  }
+ ]
+}

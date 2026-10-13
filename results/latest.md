@@ -1,34 +1,50 @@
 <!-- steps:5 -->
 <!-- provs:zhipu -->
-<!-- run:38327585785 -->
+<!-- run:38327939112 -->
 ```python
 import os
+from openpyxl import Workbook
 
-# 生成 Excel 表格
+# 生成 Excel 文件
+wb = Workbook()
+ws = wb.active
 data = [["产品", "销量"], ["小神App", 100], ["夸克", 80]]
-xlsx_path = "output/OK表格.xlsx"
-_wxlsx(data, xlsx_path)
+for row in data:
+    ws.append(row)
+wb.save("output/F表格.xlsx")
 
 # 生成 Word 文档
-text = "# 终验报告\n\n## 一、结论\n\n终验通过"
-docx_path = "output/OK文档.docx"
-_wdocx(text, docx_path)
+from docx import Document
+doc = Document()
+doc.add_heading(level=0, text="# 终验报告")
+doc.add_heading(level=1, text="## 一、结论")
+doc.add_paragraph("118 轮四工坊终验通过。")
+doc.save("output/F文档.docx")
 
 # 生成 PPT 演示
-slides = [
-    {"title": "终验", "body": ""},
-    {"title": "结论", "body": "全链通过"}
-]
-pptx_path = "output/OK演示.pptx"
-_wpptx(slides, pptx_path)
+from pptx import Presentation
+prs = Presentation()
+slide_layout = prs.slide_layouts[0]
+slide = prs.slides.add_slide(slide_layout)
+title = slide.shapes.title
+subtitle = slide.placeholders[1]
+title.text = "终验"
+subtitle.text = "118 轮四工坊终验通过。"
 
-# 写说明文本
-with open("output/OK说明.txt", "w") as file:
-    file.write("118 轮四工坊终验通过")
+slide_layout = prs.slide_layouts[5]
+slide = prs.slides.add_slide(slide_layout)
+title = slide.shapes.title
+body = slide.placeholders[1]
+title.text = "结论"
+body.text = "118 轮四工坊终验通过。"
 
-# 检查文件是否生成
-files = [xlsx_path, docx_path, pptx_path, "output/OK说明.txt"]
-all_files_created = all(os.path.exists(file) for file in files)
+prs.save("output/F演示.pptx")
 
-all_files_created
+# 写说明文件
+with open("output/F说明.txt", "w") as f:
+    f.write("118 轮四工坊终验通过。")
 ```
+
+📦 交付物（已在对话框内直接渲染播放/预览，也可到仓库下载）：
+【交付:output/F文档.docx】
+【交付:output/F表格.xlsx】
