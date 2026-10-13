@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-13T04:42:48.386459Z",
+ "updated": "2026-10-13T05:13:40.794Z",
  "memories": [
   {
    "id": "seed-m1",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "DS Harness 双端共脑体系：App 与云端共用 cloud/memory.json（记忆）与 cloud/playbook.json（手册），App 改动自动推送、云端学习自动 commit 回仓，App 启动拉取并集合并，双端永不丢。",
    "tags": [
@@ -14,7 +14,7 @@
   },
   {
    "id": "seed-m2",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "四条最高指令已刻入双端基因：①强制深彻·全方位·无死角全球探查（铁律）；②自动切换强制优先最强（强度评分制）；③永久记忆+攻坚手册随身且 App 改动强制自动同步云端；④App 所有动作与云端全天候联动同步。",
    "tags": [
@@ -25,7 +25,7 @@
   },
   {
    "id": "seed-m3",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "免费源体系：10 源聚合（zhipu/nvidia/modelscope/siliconflow/openrouter/gemma/cloudflare/groq/lingyi/moonshot），三级动态清单+自动淘汰停服+强度评分降序取最强。单源 50 次/天 → 多源叠加数千次/天。",
    "tags": [
@@ -36,7 +36,7 @@
   },
   {
    "id": "seed-m4",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "Cloudflare Workers AI 为私有 REST（model 在路径、响应取 result.response、Key 格式 account:token）——任何非标源必须特判接入，绝不静默跳过（曾因此漏掉此源）。",
    "tags": [
@@ -47,7 +47,7 @@
   },
   {
    "id": "seed-m5",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "v2.4.0 永久自主升级链：三条免费通道（raw.githubusercontent/jsDelivr/自定义镜像）→ 四重闸门（MD5 对拍/语法/结构/四基因+BUNDLE_VER≥17 防降级）→ 原子落盘+读回二次对拍 → 应用即自动发布云端。每日自动检查（>24h）+ 启动自检门回滚保险，全程零人工零成本。",
    "tags": [
@@ -58,13 +58,23 @@
   },
   {
    "id": "seed-m6",
-   "ts": 1791866135558,
+   "ts": 1791867062415,
    "kind": "fact",
    "content": "App↔云端双向同步升级：cloud/update/manifest.json + bundle.json 双文件互拍（md5 一致+bundleVer≥17），App 升级后自动 PUT 发布，其他设备与云端 Agent 同拍拉到同一版本；自主进化补丁同样走此链（改写包内 APP_VER 进化号防每日重拉）。",
    "tags": [
     "selfupdate",
     "同步",
     "seed"
+   ]
+  },
+  {
+   "id": "mmv67louqsv",
+   "ts": 1791867428882,
+   "kind": "fact",
+   "content": "🧠 云端睡眠整理完成（2026-10-13）：记忆合并13、压缩0、强化2、淡忘0（成果已并入记忆库，联想检索权重已更新）",
+   "tags": [
+    "mind",
+    "brain"
    ]
   },
   {
@@ -76,7 +86,7 @@
     "evolve",
     "vuln"
    ],
-   "w": 3.0,
+   "w": 3,
    "hit": 0,
    "consolidated": 5
   },
@@ -89,7 +99,7 @@
     "demand",
     "evolve"
    ],
-   "w": 2.0,
+   "w": 2,
    "hit": 0,
    "consolidated": 1
   },
@@ -135,7 +145,7 @@
     "run",
     "云端"
    ],
-   "w": 3.0,
+   "w": 3,
    "hit": 0,
    "consolidated": 3
   },
@@ -210,7 +220,7 @@
     "run",
     "云端"
    ],
-   "w": 2.0,
+   "w": 2,
    "hit": 0,
    "consolidated": 1
   },
@@ -263,7 +273,7 @@
     "run",
     "云端"
    ],
-   "w": 2.0,
+   "w": 2,
    "hit": 0,
    "consolidated": 1
   },
@@ -276,7 +286,7 @@
     "run",
     "云端"
    ],
-   "w": 2.0,
+   "w": 2,
    "hit": 0,
    "consolidated": 1
   },
@@ -298,6 +308,46 @@
    "tags": [
     "vidscout",
     "video"
+   ]
+  },
+  {
+   "id": "mmv686qhq22x",
+   "ts": 1791868410782,
+   "kind": "fact",
+   "content": "☁️ 云端引擎已自主进化至 EVOLVE_N=1（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",
+   "tags": [
+    "evolve",
+    "云端"
+   ]
+  },
+  {
+   "id": "mmv686qhu14i",
+   "ts": 1791868410786,
+   "kind": "fact",
+   "content": "🔔 GENE9 需求登记：系统通知「🧬 云端引擎已自主进化」送达失败（原因：PERM）——已自动触发进化攻坚，进化到能送达为止",
+   "tags": [
+    "evolve",
+    "notifail"
+   ]
+  },
+  {
+   "id": "mmv686qlu6pq",
+   "ts": 1791868410930,
+   "kind": "fact",
+   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
+   "tags": [
+    "proactive",
+    "report"
+   ]
+  },
+  {
+   "id": "mmv686qmi669",
+   "ts": 1791868410954,
+   "kind": "fact",
+   "content": "💗 小神主动问候：早上好！我是小神，现在清晨（天刚亮，新的一天），我😌平静",
+   "tags": [
+    "soul",
+    "greet"
    ]
   }
  ]
