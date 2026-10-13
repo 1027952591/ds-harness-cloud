@@ -1886,7 +1886,7 @@ def _evolve_proxy():  # 📡 137d 轮：进化分析云端中转——手机网�
         print("[evolve-proxy] FAIL:", str(e)[:200], flush=True)
 
 def main():
-    if os.environ.get("PROMPT", "") == "__EVOLVE_PROXY__":  # 📡 137d 轮：进化中转哨兵——prompt 哨兵值即转代理分支（进化 prompt 含整包源码超 dispatch inputs 上限，走文件中转）
+    if os.environ.get("PROMPT", "") in ("", "__EVOLVE_PROXY__"):  # 🧬 137l：空 PROMPT=push 自触发（任务文件落仓即跑），与 dispatch 哨兵值同走进化中转分支  # 📡 137d 轮：进化中转哨兵——prompt 哨兵值即转代理分支（进化 prompt 含整包源码超 dispatch inputs 上限，走文件中转）
         _evolve_proxy()
         sys.exit(0)
     steps = 0
