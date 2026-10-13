@@ -1,10 +1,8 @@
 {
- "versionName": "2.5.103-reflex",
- "versionCode": 121,
- "md5": "aeb9d515bf18a0bb7348ce29cce096ba",
- "size": 5802865,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38342625225)",
- "builtAt": "2026-10-13T03:39:08Z"
+ "appVersion": "2.5.108-icon",
+ "versionCode": 126,
+ "md5": "9a287f2ad96e80976da0ae81783dbe0d",
+ "size": 6573665,
+ "ts": "2026-10-13T12:05:00Z",
+ "note": "124 轮：猫爪清零+小黑鲸全换装+pawImg 破图根治"
 }
