@@ -1,405 +1,49 @@
 {
- "updated": "2026-10-13T10:52:57.553Z",
- "memories": [
-  {
-   "id": "seed-m1",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "DS Harness 双端共脑体系：App 与云端共用 cloud/memory.json（记忆）与 cloud/playbook.json（手册），App 改动自动推送、云端学习自动 commit 回仓，App 启动拉取并集合并，双端永不丢。",
-   "tags": [
-    "gen3",
-    "双端共脑",
-    "seed"
-   ]
-  },
-  {
-   "id": "seed-m2",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "四条最高指令已刻入双端基因：①强制深彻·全方位·无死角全球探查（铁律）；②自动切换强制优先最强（强度评分制）；③永久记忆+攻坚手册随身且 App 改动强制自动同步云端；④App 所有动作与云端全天候联动同步。",
-   "tags": [
-    "gen3",
-    "基因",
-    "seed"
-   ]
-  },
-  {
-   "id": "seed-m3",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "免费源体系：10 源聚合（zhipu/nvidia/modelscope/siliconflow/openrouter/gemma/cloudflare/groq/lingyi/moonshot），三级动态清单+自动淘汰停服+强度评分降序取最强。单源 50 次/天 → 多源叠加数千次/天。",
-   "tags": [
-    "免费源",
-    "清单",
-    "seed"
-   ]
-  },
-  {
-   "id": "seed-m4",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "Cloudflare Workers AI 为私有 REST（model 在路径、响应取 result.response、Key 格式 account:token）——任何非标源必须特判接入，绝不静默跳过（曾因此漏掉此源）。",
-   "tags": [
-    "cloudflare",
-    "rest",
-    "seed"
-   ]
-  },
-  {
-   "id": "seed-m5",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "v2.4.0 永久自主升级链：三条免费通道（raw.githubusercontent/jsDelivr/自定义镜像）→ 四重闸门（MD5 对拍/语法/结构/四基因+BUNDLE_VER≥17 防降级）→ 原子落盘+读回二次对拍 → 应用即自动发布云端。每日自动检查（>24h）+ 启动自检门回滚保险，全程零人工零成本。",
-   "tags": [
-    "selfupdate",
-    "热更",
-    "seed"
-   ]
-  },
-  {
-   "id": "seed-m6",
-   "ts": 1791888496235,
-   "kind": "fact",
-   "content": "App↔云端双向同步升级：cloud/update/manifest.json + bundle.json 双文件互拍（md5 一致+bundleVer≥17），App 升级后自动 PUT 发布，其他设备与云端 Agent 同拍拉到同一版本；自主进化补丁同样走此链（改写包内 APP_VER 进化号防每日重拉）。",
-   "tags": [
-    "selfupdate",
-    "同步",
-    "seed"
-   ]
-  },
-  {
-   "id": "mmv6cr1yd3ls",
-   "ts": 1791876077221,
-   "kind": "fact",
-   "content": "💗 小神主动问候：早上好！我是小神，现在清晨（天刚亮，新的一天），我😌平静",
-   "tags": [
-    "soul",
-    "greet"
-   ]
-  },
-  {
-   "id": "mmv6cr1yh3x5",
-   "ts": 1791876077225,
-   "kind": "fact",
-   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
-   "tags": [
-    "proactive",
-    "report"
-   ]
-  },
-  {
-   "id": "mmv6b4z0k168",
-   "ts": 1791873367364,
-   "kind": "fact",
-   "content": "💗 小神主动问候：早上好！我是小神，现在清晨（天刚亮，新的一天），我😌平静",
-   "tags": [
-    "soul",
-    "greet"
-   ]
-  },
-  {
-   "id": "mmv6b4z0m2vf",
-   "ts": 1791873367366,
-   "kind": "fact",
-   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
-   "tags": [
-    "proactive",
-    "report"
-   ]
-  },
-  {
-   "id": "mmv67louqsv",
-   "ts": 1791867428882,
-   "kind": "fact",
-   "content": "🧠 云端睡眠整理完成（2026-10-13）：记忆合并13、压缩0、强化2、淡忘0（成果已并入记忆库，联想检索权重已更新）",
-   "tags": [
-    "mind",
-    "brain"
-   ]
-  },
-  {
-   "id": "mmv5a6c1yme",
-   "ts": 1791866277781,
-   "kind": "fact",
-   "content": "🧬 体检发现 1 处残余异常，已自动唤醒自主进化机器进行修复攻坚（GENE6·体检进化一体化）",
-   "tags": [
-    "evolve",
-    "vuln"
-   ],
-   "w": 3,
-   "hit": 0,
-   "consolidated": 5
-  },
-  {
-   "id": "mmv57o28n4ip",
-   "ts": 1791807073367,
-   "kind": "fact",
-   "content": "⚡ GENE9 需求登记：「今天是哪一年哪一月哪一日？」做不到原因：全部免费源都失败了——已自动触发双端进化，进化到能做到为止（无需再提醒）",
-   "tags": [
-    "demand",
-    "evolve"
-   ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "mmv57p8k15sv",
-   "ts": 1791807128209,
-   "kind": "fact",
-   "content": "💗 小神主动问候：晚上好！我是小神，现在夜晚（夜幕降临，总结今天），我😌平静",
-   "tags": [
-    "soul",
-    "greet"
-   ]
-  },
-  {
-   "id": "d1791790425224",
-   "ts": 1791790425224,
-   "kind": "daily",
-   "content": "每日情报总结（2026-10-12）：探查 11 源，成功 4 源（modelscope,nvidia,openrouter,pollinations），新增淘汰停服 0 个模型，清单全部按强度降序入库（最强在队首）",
-   "tags": [
-    "daily",
-    "情报"
-   ]
-  },
-  {
-   "id": "c17917906505",
-   "ts": 1791801918362,
-   "kind": "run",
-   "content": "云端运行开始：任务=随便聊个天",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 2.6499999999999995,
-   "hit": 2,
-   "consolidated": 1
-  },
-  {
-   "id": "c17917910946",
-   "ts": 1791810296278,
-   "kind": "run",
-   "content": "云端运行开始：任务=⚡GENE9 有求必应进化任务：主人刚才的要求「系统通知送达能力（当前失败原因：PERM）」当前做不到（通知链路失败，进化到能送达为止）。这是有求必应铁律（GENE9）进化使命：请优先进化出满足该要求的能力并当场用新能力满足主人，完成后用 python 调 _wants_done（需求原文）销账；进化出的能力必须过实弹验证列装闸",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 3,
-   "hit": 0,
-   "consolidated": 3
-  },
-  {
-   "id": "c179179198812",
-   "ts": 1791791988006,
-   "kind": "run",
-   "content": "云端运行开始：任务=今天是哪一天",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179179681613",
-   "ts": 1791796816631,
-   "kind": "run",
-   "content": "云端运行开始：任务=你好",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 1.4500000000000002,
-   "hit": 0
-  },
-  {
-   "id": "c179179754015",
-   "ts": 1791797540602,
-   "kind": "run",
-   "content": "云端运行开始：任务=古诗创作",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179180078516",
-   "ts": 1791800785204,
-   "kind": "run",
-   "content": "云端运行开始：任务=闲来无事",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179180192818",
-   "ts": 1791801928222,
-   "kind": "evolve",
-   "content": "云端引擎自主进化 #1：增强指令描述，包含模型和算力切换要求; 明确模型和算力切换策略; 增强指令描述，包含双端同步要求",
-   "tags": [
-    "evolve",
-    "cloud"
-   ]
-  },
-  {
-   "id": "c179184867326",
-   "ts": 1791848673592,
-   "kind": "run",
-   "content": "云端运行开始：任务=办公能力实弹验证任务（118 轮列装闸）：请依次用 python 调 _xlsx、_docx、_pptx 各生成一份内容精心设计的文件（比如：output/验证表格.xlsx 放一个 3 列 5 行的销售数据表；output/验证文档.docx 放一份带标题和列表的简短报告；output/验证演示.pptx 放 3 页幻灯片），最后用 python 调 _novel 函数生成一部 2 章的短篇小说《小神第一次做办公文档》。生成完在回复里逐个说明四个文件的生成结果。",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179184891027",
-   "ts": 1791849286237,
-   "kind": "run",
-   "content": "云端运行开始：任务=办公能力实弹验证任务（118 轮列装闸第 3 次）：生成四个文件到 output/ 目录——1) 用 python 调 _xlsx 生成 output/验证表格.xlsx（3 列 5 行销售数据，内容自己精心设计填实）；2) 调 _docx 生成 output/验证文档.docx（带标题和列表的简短报告）；3) 调 _pptx 生成 output/验证演示.pptx（3 页幻灯片）；4) 调 _novel(主题, 2) 生成一部 2 章短篇小说《小神第一次做办公文档》落盘 output/。注意：不要用 pandas（服务器没装），直接调 _xlsx/_docx/_pptx/_novel 这四个现成函数。完成后回复说明四个文件各自内容。",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "c179184985229",
-   "ts": 1791849852471,
-   "kind": "run",
-   "content": "云端运行开始：任务=诊断任务：请用 python 调 _xlsx 生成 output/诊断表格.xlsx（数据：[[产品,销量],[A,1],[B,2]]），然后接着执行这段诊断代码：import subprocess; print(subprocess.run([\"git\",\"add\",\"output/\"],capture_output=True,text=True)); print(subprocess.run([\"git\",\"status\",\"--short\"],capture_output=True,text=True).stdout); import os; print(\"cwd:\",os.getcwd()); print(\"output 实况:\",os.listdir(\"output\"))。把全部输出贴给我。",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179185015030",
-   "ts": 1791850150294,
-   "kind": "run",
-   "content": "云端运行开始：任务=诊断任务：用 python 调 agent._xlsx 生成 output/诊断表格.xlsx（数据：[[产品,销量],[A,1],[B,2]]，代码第一行必须 import agent 然后 agent._xlsx(...)），生成完成后回复文件生成结果。",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179185071431",
-   "ts": 1791850714387,
-   "kind": "run",
-   "content": "云端运行开始：任务=实弹验证任务：生成四件套办公文件。1) 用 python 调 agent._xlsx 生成 output/验收表格.xlsx（数据：[[产品,销量],[小神App,100],[夸克,80]]）；2) 调 agent._docx 生成 output/验收文档.docx（内容含 # 验收报告 和 ## 一、测试结论 两级标题+两行正文）；3) 调 agent._pptx 生成 output/验收演示.pptx（两页：封面标题『验收』，正文页标题『结论』内容『全链通过』）；4) 生成 output/验收说明.txt（内容：118 轮四工坊实弹验收）。每步用 run_python 工具或代码执行，全部完成后回复各文件生成结果清单。",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179185108832",
-   "ts": 1791851088756,
-   "kind": "run",
-   "content": "云端运行开始：任务=实弹终验任务：生成四件套办公文件，每个文件生成后必须确认落盘成功再继续下一个。1) 调 agent._xlsx 生成 output/终验表格.xlsx（data 用二维数组如 [[产品,销量],[小神App,100],[夸克,80]]，注意给每个字符串加引号）；2) 调 agent._docx 生成 output/终验文档.docx（text 含 # 终验报告 和 ## 一、结论 两级标题+两行正文）；3) 调 agent._pptx 生成 output/终验演示.pptx（slides=[{title:终验,body:},{title:结论,body:全链通过}]）；4) 写 output/终验说明.txt（内容：118 轮四工坊终验通过）。可以用一条 run_python 代码块按顺序生成全部四件，完成后回复文件清单。",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179185144533",
-   "ts": 1791851699419,
-   "kind": "run",
-   "content": "云端运行开始：任务=终验：用一条 run_python 代码生成四件办公文件：1) agent._xlsx 生成 output/OK表格.xlsx（data 二维数组 [[产品,销量],[小神App,100],[夸克,80]]）；2) agent._docx 生成 output/OK文档.docx（text 含 # 终验报告 和 ## 一、结论 两级标题+两行正文）；3) agent._pptx 生成 output/OK演示.pptx（slides 两页）；4) 写 output/OK说明.txt（内容：118 轮四工坊终验通过）。四个工坊函数都真实存在，直接调用不要注释。",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "c179185196735",
-   "ts": 1791852345122,
-   "kind": "run",
-   "content": "云端运行开始：任务=终验收尾：用 python 调用两个工坊函数：1) 调 agent._pptx(slides, \"output/G演示.pptx\") 生成两页演示文稿（slides=[{\"title\":\"封面\",\"body\":\"\"},{\"title\":\"结论\",\"body\":\"全链通过\"}]，注意每个字符串要带引号）；2) 调 agent._novel(\"星际快递员的最后一单\", chapters=2, out_path=\"output/G小说.txt\", words_per_chapter=300) 写一部两章微型小说。这两个函数真实存在，直接调用。完成后回复两个文件的结果。",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "c179186654625",
-   "ts": 1791866546008,
-   "kind": "class",
-   "content": "晨课·我的主人使用习惯复盘（读记忆找新洞察）：① 新知识一：通过复盘主人的使用习惯，可以识别出高频使用功能与低效操作，从而优化用户体验。\n② 新知识二：分析主人使用过程中的痛点与需求，有助于发现潜在的市场机会和产品改进点。\n③ 新知识三：结合主人的学习曲线，可以调整产品教程和引导策略，提升用户上手速度和满意度。\n\n行动建议：立即开始记录和分析主人使用产品的行为数据，特别是操作频率和错误率，以此为基础调整产品界面布局和交互设计，提升主人的使用体验。",
-   "tags": [
-    "class",
-    "learn"
-   ]
-  },
-  {
-   "id": "c179186656826",
-   "ts": 1791866568386,
-   "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
-   "tags": [
-    "vidscout",
-    "video"
-   ]
-  },
-  {
-   "id": "mmv686qhq22x",
-   "ts": 1791868410782,
-   "kind": "fact",
-   "content": "☁️ 云端引擎已自主进化至 EVOLVE_N=1（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",
-   "tags": [
-    "evolve",
-    "云端"
-   ]
-  },
-  {
-   "id": "mmv686qhu14i",
-   "ts": 1791868410786,
-   "kind": "fact",
-   "content": "🔔 GENE9 需求登记：系统通知「🧬 云端引擎已自主进化」送达失败（原因：PERM）——已自动触发进化攻坚，进化到能送达为止",
-   "tags": [
-    "evolve",
-    "notifail"
-   ]
-  },
-  {
-   "id": "mmv686qlu6pq",
-   "ts": 1791868410930,
-   "kind": "fact",
-   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
-   "tags": [
-    "proactive",
-    "report"
-   ]
-  },
-  {
-   "id": "mmv686qmi669",
-   "ts": 1791868410954,
-   "kind": "fact",
-   "content": "💗 小神主动问候：早上好！我是小神，现在清晨（天刚亮，新的一天），我😌平静",
-   "tags": [
-    "soul",
-    "greet"
-   ]
-  },
-  {
-   "id": "mem871754232",
-   "ts": 1791871754232,
-   "kind": "fact",
-   "content": "进化无半径（129 轮主人最高令·完全独立自主）：GitHub Actions 服务器就是我的身体——编译器/构建链/git 凭据全我自有；cloud 引擎+Java 骨架+App 热包三层全自己改自己装。缺陷一律 _wants_add(tag=radius) 入愿望单，进化器优先消化：自己改自己构建自己验证自己发版，绝不许说修不了或寄望外部代理；半成品绝不收手。",
-   "tags": [
-    "gene8",
-    "radius",
-    "evolve"
-   ]
-  }
- ]
+  "updated": "seed",
+  "memories": [
+    {
+      "id": "seed-m1",
+      "ts": 1760000000000,
+      "kind": "fact",
+      "content": "DS Harness 双端共脑体系：App 与云端共用 cloud/memory.json（记忆）与 cloud/playbook.json（手册），App 改动自动推送、云端学习自动 commit 回仓，App 启动拉取并集合并，双端永不丢。",
+      "tags": [
+        "gen3",
+        "双端共脑",
+        "seed"
+      ]
+    },
+    {
+      "id": "seed-m2",
+      "ts": 1760000000000,
+      "kind": "fact",
+      "content": "四条最高指令已刻入双端基因：①强制深彻·全方位·无死角全球探查（4 铁律）；②自动切换强制优先最强（强度评分制）；③永久记忆+攻坚手册随身且 App 改动强制自动同步云端全层；④App 所有动作（含体检触发）强制自动与云端全层全天候联动。",
+      "tags": [
+        "gen3",
+        "铁律",
+        "seed"
+      ]
+    },
+    {
+      "id": "seed-m3",
+      "ts": 1760000000000,
+      "kind": "fact",
+      "content": "免费源体系：10 源聚合（zhipu/nvidia/modelscope/siliconflow/openrouter/gemma/cloudflare/groq/cerebras/mistral），三级动态清单 live>repo>静态，停服模型 404/410 永久拉黑不回流。",
+      "tags": [
+        "sources",
+        "seed"
+      ]
+    },
+    {
+      "id": "seed-m4",
+      "ts": 1760000000000,
+      "kind": "fact",
+      "content": "Cloudflare Workers AI 为私有 REST（model 在路径、响应取 result.response、Key 格式 account:token），其余 9 源 OpenAI 兼容。接入任何非标源必须特判，严禁静默跳过。",
+      "tags": [
+        "cloudflare",
+        "rest",
+        "seed"
+      ]
+    }
+  ],
+  "_note": "🧖📖 最高指令三（GENE3·双端共脑铁律）：全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新 🔗 最高指令四（GEN4·全天候联动铁律，永不可移除）：App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检。另刻：⚖️ 最高指令二（GENE2·最强切换铁律，永不可移除）：模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力。 本文件为双端共脑种子记忆；App 端改动会自动覆盖推送，云端学习由 workflow commit 回写，mergeMind 并集合并保两端不丢。 👑 最高指令六（GENE6·极致完美铁律，永不可移除）：每次进化必须做到当时条件下的极致完美；凡具备的能力必须配到当前免费生态的极限——所有提供同类能力的免费源全部接入；禁止半成品、禁止留待下次；无需用户提醒，极致是天性。"
 }
