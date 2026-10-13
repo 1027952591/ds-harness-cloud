@@ -1,10 +1,10 @@
 {
- "versionName": "2.5.116-instant",
- "versionCode": 134,
- "md5": "49a4f0476330071f0b560728b4f88e65",
+ "versionName": "2.5.117-diag",
+ "versionCode": 135,
+ "md5": "bd7bb7aca7ccf33e6ef1a7d55d260226",
  "size": 5958513,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38361256210)",
- "builtAt": "2026-10-13T07:13:59Z"
+ "reason": "evolve build (run 38363960931)",
+ "builtAt": "2026-10-13T07:40:06Z"
 }
