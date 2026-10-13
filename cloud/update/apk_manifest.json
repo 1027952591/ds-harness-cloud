@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.109-clean",
- "versionCode": 127,
- "md5": "7c693629224419a139ea4fd3f3fc4e2a",
+ "appVersion": "2.5.110-sync",
+ "versionCode": 128,
+ "md5": "0d4056cffae275e2e5b30872a8f60bb5",
  "size": 6577761,
- "ts": "2026-10-13T12:40:00Z",
- "note": "125 轮终验盖回"
+ "ts": "2026-10-13T12:55:00Z",
+ "note": "126 轮：记忆同步假阴性根治"
 }
