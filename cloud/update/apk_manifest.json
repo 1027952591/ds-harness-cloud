@@ -1,8 +1,10 @@
 {
- "appVersion": "2.5.112-cors",
+ "versionName": "2.5.112-cors",
  "versionCode": 130,
- "md5": "2f4632bc701f0dd1e23f667ff3aacebd",
- "size": 6577761,
- "ts": "2026-10-13T05:37:55Z",
- "note": "128 轮：新闻眼 CORS 桥兜底（GENE8 举一反三）——六眼全域收口"
+ "md5": "2a83920cf62024366e6ca7d2036bfd32",
+ "size": 5950321,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38352423349)",
+ "builtAt": "2026-10-13T05:39:37Z"
 }
