@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.106-scout",
- "versionCode": 124,
+ "appVersion": "2.5.107-snip",
+ "versionCode": 125,
  "size": 6467169,
- "md5": "141a039c7083078491edee0e02735b2f",
- "ts": "2026-10-13T12:15:00Z",
- "note": "122 轮全功能包（盖回后重校准）"
+ "md5": "6a5ff585af0bc02f377058ba11f032f7",
+ "ts": "2026-10-13T12:45:00Z",
+ "note": "123 轮全功能包"
 }
