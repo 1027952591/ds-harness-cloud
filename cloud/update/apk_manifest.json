@@ -1,10 +1,1 @@
-{
- "versionName": "2.5.127-cdnfix",
- "versionCode": 145,
- "md5": "a638af368c99af176b3d0d4a2d821cb3",
- "size": 5954417,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38399081165)",
- "builtAt": "2026-10-13T12:42:14Z"
-}
+{"versionName": "2.5.128-evoslim", "versionCode": 146, "apkMd5": "8f6fcc6a4ff0b73bab47bebdb0d23e07", "apkSize": 6614625, "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v146/DS-Harness-2.5.128-evoslim.apk", "minBundleVer": 116, "ts": "2026-10-13T13:18:29Z"}
