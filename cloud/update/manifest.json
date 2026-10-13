@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.126-proxy2",
- "md5": "cdf64b8275374d7276b52961eac36abc",
- "bundleVer": 114,
- "ts": "2026-10-13T11:53:21Z",
- "size": 612095,
+ "appVersion": "2.5.127-cdnfix",
+ "md5": "07e347a90abea3140c8e72637f7d3904",
+ "bundleVer": 115,
+ "ts": "2026-10-13T12:00:36Z",
+ "size": 612420,
  "note": "DS Harness 自主升级清单（四重闸门已过）"
 }
