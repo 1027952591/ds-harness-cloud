@@ -1,10 +1,10 @@
 {
  "versionName": "2.5.101-knowall",
  "versionCode": 119,
- "md5": "3a163b6c1315209dc2b5a5b8bcfe9849",
+ "md5": "2ea436141262ab0d7580f8cdcc9aee69",
  "size": 5671725,
  "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
  "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38327294233)",
- "builtAt": "2026-10-13T00:28:09Z"
+ "reason": "evolve build (run 38327730473)",
+ "builtAt": "2026-10-13T00:33:48Z"
 }
