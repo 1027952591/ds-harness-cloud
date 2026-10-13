@@ -1,9 +1,10 @@
 {
  "versionName": "2.5.127-cdnfix",
  "versionCode": 145,
- "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v145/DS-Harness-2.5.127-cdnfix.apk",
- "size": 6610529,
- "md5": "4e1c9edd6706146e656f8eada4f3e5ac",
- "minBundleVer": 115,
- "note": "vc145：CDN 缓存幂等修复（137h）。下载走 Releases CDN"
+ "md5": "a638af368c99af176b3d0d4a2d821cb3",
+ "size": 5954417,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38399081165)",
+ "builtAt": "2026-10-13T12:42:14Z"
 }
