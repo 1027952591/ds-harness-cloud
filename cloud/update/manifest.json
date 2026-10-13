@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.124-probe",
- "md5": "9c7ab8f4acc382f23ce77073591b23ce",
- "bundleVer": 112,
- "ts": 1791888379064,
- "size": 735316,
- "note": "137e 轮：MD5 证据探针"
+ "appVersion": "2.5.125-md5fix",
+ "md5": "020a4cbc3fbb3c59d3703fa879ad62b9",
+ "bundleVer": 113,
+ "ts": "2026-10-13T11:07:53Z",
+ "size": 610529,
+ "note": "DS Harness 自主升级清单（四重闸门已过）"
 }
