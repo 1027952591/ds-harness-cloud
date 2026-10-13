@@ -1718,7 +1718,26 @@ def run_python(code):
         os.unlink(path)
 
 
+def _uncomment_workshops(code):
+    """🛡️ 118 轮实弹（run 38327089727）：模型对工坊存在性不自信，把 agent._xxx(...) 调用全部注释成
+    『# 假设 agent._xlsx 函数存在』→ 同段代码复读 5 遍零产物死循环。修：被注释的工坊调用行自动解注执行
+    （boot 已注入 import agent，模型没写 import 也能跑）。"""
+    import re as _re
+    return _re.sub(r"^(\s*)#\s*(agent\._(?:xlsx|docx|pptx|novel)\(.*)$", r"\1\2", str(code), flags=_re.M)
+
+
 def _code_rescue(content):
+    """🏢 118 轮 rescue 包装口：四形态代为执行后，再过一道工坊解注闸（被注释掉的 agent._xxx(...) 自动解注）。"""
+    _r = _code_rescue_raw(content)
+    if _r:
+        _r2 = _uncomment_workshops(_r)
+        if _r2 != _r:
+            _r = _r2 + "\n# （系统注：检测到被注释的工坊调用已代为解注执行）"
+        return _r
+    return None
+
+
+def _code_rescue_raw(content):
     """🏢 v2.5.102-omni 118 轮：代码块抢救——模型直接输出 python 代码当答案（没按工具协议裹 JSON）时代为执行。
     实弹教训（run 38323694150）：模型裸写 pandas 一步收工，工具从未执行。
     实弹教训（run 38326577171）：①模型一次性输出全部计划的多块围栏代码——只抓首块浪费步数还丢失后续文件；
@@ -1835,7 +1854,7 @@ def main():
                 messages.append({"role": "user", "content":
                                  "（系统检测到你上条回复直接输出了代码但没有按工具协议包裹 JSON——已自动代为执行，结果如下）\n"
                                  + str(_obs)[:3500]
-                                 + "\n\n请基于执行结果继续。要再执行代码请按协议输出 JSON：{\'tool\': \'run_python\', \'input\': {\'code\': \'...\'}}。文件生成工具直接在代码里 import agent 后调 agent._xlsx/agent._docx/agent._pptx/agent._novel（勿用 pandas——runner 未装）。若已全部生成完毕请直接给最终回答（不要再输出代码）。"})
+                                 + "\n\n请基于执行结果继续。注意：agent._xlsx/agent._docx/agent._pptx/agent._novel 四个工坊函数已实测存在且依赖已装好，直接在代码里调用即可（勿注释掉、勿用 pandas——runner 未装）。要再执行代码请按协议输出 JSON：{\'tool\': \'run_python\', \'input\': {\'code\': \'...\'}}。若已全部生成完毕请直接给最终回答（不要再输出代码）。"})
                 print("[step %d] prov=%s tool=run_python(rescue) obs=%d chars" % (steps, pk, len(str(_obs))), flush=True)
             else:
                 final = content
