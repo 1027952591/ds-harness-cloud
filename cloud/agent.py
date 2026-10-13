@@ -1713,7 +1713,7 @@ def _code_rescue(content):
             and (stripped.count("=") >= 2 or "agent." in stripped)
             and "。" not in stripped[:150]):
         return stripped
-    if _re.search(r"_xlsx|_docx|_pptx|_novel", c) and len(c) > 60:
+    if _re.search(r"_xlsx|_docx|_pptx|_novel", c) and len(c) > 20:
         m2 = _re.search(r'"code"\s*:\s*"([^"]{5,})"', c)
         if m2:
             raw_call = m2.group(1).strip()
@@ -1736,7 +1736,7 @@ def try_tool(content):
             _o, _ = dec.raw_decode(content[_i:])
         except Exception:
             continue
-        if isinstance(_o, dict) and _o.get("tool"):
+        if isinstance(_o, dict) and (_o.get("tool") or (_o.get("code") and "code" in _o)):
             obj = _o
             break
     if obj is None:
@@ -1746,6 +1746,9 @@ def try_tool(content):
     if tool == "fetch_url" and TOOLS_CFG.get("web") and "url" in inp:
         return ("fetch_url", fetch_url(str(inp["url"])))
     if tool == "run_python" and TOOLS_CFG.get("code") and "code" in inp:
+        return ("run_python", run_python(str(inp["code"])))
+    # 🏢 118 轮四招：模型输出 {"code":...} 漏了 tool 键——code 键在且 TOOLS 开着即视作 run_python 调用（口径与 rescue 一致）
+    if not tool and TOOLS_CFG.get("code") and "code" in inp and str(inp.get("code") or "").strip():
         return ("run_python", run_python(str(inp["code"])))
     return None
 
