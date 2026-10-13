@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.105-whale",
- "versionCode": 123,
- "size": 6463073,
- "md5": "a60eed2c9136d33b677e19203f61fecb",
- "ts": "2026-10-13T11:20:00Z",
- "note": "121 轮全功能包（盖回后重校准）"
+ "appVersion": "2.5.106-scout",
+ "versionCode": 124,
+ "size": 6467169,
+ "md5": "141a039c7083078491edee0e02735b2f",
+ "ts": "2026-10-13T12:05:00Z",
+ "note": "122 轮全功能包：云端 web_search 工具+App 天眼 POST 兜底"
 }
