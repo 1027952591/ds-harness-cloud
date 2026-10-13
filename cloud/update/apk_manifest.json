@@ -1,1 +1,10 @@
-{"versionName": "2.5.129-evoreclaim", "versionCode": 147, "apkMd5": "d439d746b9ab4238ddb4b57eeac3e180", "apkSize": 6614625, "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v147/DS-Harness-2.5.129-evoreclaim.apk", "minBundleVer": 117, "ts": "2026-10-13T13:53:01Z"}
+{
+ "versionName": "2.5.128-evoslim",
+ "versionCode": 146,
+ "md5": "ddc71856e321446458bd8328ad8d3e14",
+ "size": 5958513,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38486000943)",
+ "builtAt": "2026-10-13T23:45:04Z"
+}
