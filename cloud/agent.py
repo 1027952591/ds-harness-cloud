@@ -1867,7 +1867,28 @@ def try_tool(content):
     return None
 
 
+def _evolve_proxy():  # 📡 137d 轮：进化分析云端中转——手机网络下 AI 源全灭（进化引擎 sendStreamOnceRaw 全失败），转 GitHub 云链：手机 PUT evolve_task.json→dispatch 哨兵→runner（海外网络全源通）llm_call 分析→reply 落仓→手机轮询回家
+    task = None
+    try:
+        task = json.load(open("cloud/evolve_task.json", encoding="utf-8"))
+        prompt = str(task.get("prompt") or "")[:200000]
+        content, reasoning, pk, model = llm_call([{"role": "user", "content": prompt}])
+        reply = (content or reasoning or "").strip()
+        json.dump({"ts": task.get("ts"), "reply": reply, "used": str(pk) + "/" + str(model), "done": 1},
+                  open("cloud/evolve_reply.json", "w", encoding="utf-8"), ensure_ascii=False)
+        print("[evolve-proxy] OK used=%s/%s reply=%d chars" % (pk, model, len(reply)), flush=True)
+    except Exception as e:
+        try:
+            json.dump({"ts": (task or {}).get("ts"), "err": str(e)[:300], "done": 1},
+                      open("cloud/evolve_reply.json", "w", encoding="utf-8"), ensure_ascii=False)
+        except Exception:
+            pass
+        print("[evolve-proxy] FAIL:", str(e)[:200], flush=True)
+
 def main():
+    if os.environ.get("PROMPT", "") == "__EVOLVE_PROXY__":  # 📡 137d 轮：进化中转哨兵——prompt 哨兵值即转代理分支（进化 prompt 含整包源码超 dispatch inputs 上限，走文件中转）
+        _evolve_proxy()
+        sys.exit(0)
     steps = 0
     _t0 = time.time()  # 📦 v2.5.47-inchat：运行起点——产物盘点以此为界（只交付本轮新生成的）
     used = set()
