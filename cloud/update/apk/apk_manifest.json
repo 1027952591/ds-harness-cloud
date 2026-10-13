@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.117-diag",
- "versionCode": 135,
- "md5": "d7dbabd1c2890a4105e13dd622d5ffef",
- "size": 6585953,
- "ts": "2026-10-13T07:38:02Z",
- "note": "133 轮：诊断到闸（PERM 三闸细分+渠道死闸根治）"
+ "appVersion": "2.5.118-verify",
+ "versionCode": 136,
+ "md5": "a112e60e0edc5ec89025307ee2f0576d",
+ "size": 6590049,
+ "ts": "2026-10-13T07:52:34Z",
+ "note": "134 轮：先自证再报警（探针门控 PERM+假警报静默重试）"
 }
