@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-13T09:07:28.034Z",
+ "updated": "2026-10-13T10:22:59.676Z",
  "action": "state",
- "appVersion": "2.5.120-gate",
+ "appVersion": "2.5.121-envelope",
  "mode": "cloud",
  "prefProv": "",
  "chainOn": [
@@ -31,13 +31,13 @@
  "repoN": 0,
  "vulnOk": 6,
  "vulnN": 6,
- "memN": 37,
- "pbN": 60,
+ "memN": 6,
+ "pbN": 17,
  "vulnBad": [],
  "chanHealth": [
-  "raw.githubusercontent:连败4/p120",
-  "jsDelivr CDN:连败4/p120",
-  "GitHub API:ok2/p100"
+  "raw.githubusercontent:连败3/p110",
+  "jsDelivr CDN:连败3/p110",
+  "GitHub API:ok1/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
