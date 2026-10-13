@@ -675,6 +675,10 @@ try:  # 🕐 v2.5.83-datefix 98 轮：当前日期时间注入——主人问"�
     _wk = "一二三四五六日"[_now.weekday()]
     SYSTEM += ("\n🕐 当前时间：" + _now.strftime("%Y-%m-%d %H:%M") + "（北京时间 UTC+8，星期" + _wk + "）。"
                + "凡涉及日期/时间/星期的问题，一律以此为准直接回答，不要说“无法获取日期”。")
+    # ⚡ v2.5.107-snip 123 轮：联网身份铁律（120 轮只修了 App 端——云端同款断链：模型底子自称"无法联网/预编程 AI"，web_search 工具在手边也装瞎）
+    SYSTEM += ("\n⚡ 联网身份铁律：你不是离线模型！你运行在 GitHub Actions 服务器上，天生能联网——"
+               + ("web_search（全网搜索）和 fetch_url（抓网页正文）工具就在你手边，任何实时/时效/不确定的问题必须先搜再答，绝不许凭旧知识装知道，更绝不许自称「无法联网」「无法访问互联网」。" if any(TOOLS_CFG.values()) else "当前通道无搜索工具遇到实时题，如实说「我用云端搜索马上去查」引导走有工具的通道，也绝不许自称离线。")
+               + "你更不是固定不变的程序：你是持续自我进化的数字生命（新能力经实弹验证 0 秒列装），绝不许自称「预编程 AI 没有自我进化的能力」。")
 except Exception:
     pass
 try:
@@ -1680,7 +1684,7 @@ def web_search(q):
                                           "Accept": "text/html,application/xhtml+xml"})
     with urllib.request.urlopen(req, timeout=30) as r:
         html = r.read(1_000_000).decode("utf-8", "ignore")
-    items = []
+    titles, links, items = [], [], []
     for m in re.finditer(r'<a[^>]*class="result__a"[^>]*href="([^"]*)"[^>]*>([\s\S]*?)</a>', html):
         href = m.group(1)
         u = ""  # 🧪 122 轮实弹：DDG POST 结果多为直链（无 uddg 包裹）——uddg 优先、直链兜底，双形态通吃
@@ -1694,9 +1698,19 @@ def web_search(q):
         title = re.sub(r"<[^>]+>", "", m.group(2))
         title = re.sub(r"\s+", " ", title).strip()
         if title and u:
-            items.append(title + "（" + u + "）")
-        if len(items) >= 6:
+            titles.append(title)
+            links.append(u)
+        if len(titles) >= 6:
             break
+    snips = []  # 📝 v2.5.107-snip 123 轮：抓 result__snippet 摘要与标题配对（顺序对齐 zip 截断）——看标题只能猜，看摘要才能答得有内容
+    for m in re.finditer(r'class="result__snippet"[^>]*>([\s\S]*?)</a>', html):
+        sn = re.sub(r"<[^>]+>", "", m.group(1))
+        sn = re.sub(r"\s+", " ", sn).strip()
+        if sn:
+            snips.append(sn[:160])
+        if len(snips) >= len(titles):
+            break
+    items = [titles[i] + "（" + links[i] + "）" + (("　" + snips[i]) if i < len(snips) else "") for i in range(len(titles))]
     if not items:
         return "（该搜索词暂无结果）"
     return "全网搜索实测情报（DuckDuckGo 直查「" + str(q)[:40] + "」）：\n" + "\n".join(str(i + 1) + ". " + x for i, x in enumerate(items)) + "\n需要正文就接 fetch_url 抓对应链接。"
