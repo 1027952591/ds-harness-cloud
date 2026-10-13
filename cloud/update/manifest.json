@@ -1,8 +1,8 @@
 {
- "appVersion": "2.5.106-scout",
- "md5": "862e029317a03367df62a7eaf8758226",
- "bundleVer": 94,
- "ts": "2026-10-13T12:00:00Z",
- "size": 659297,
+ "appVersion": "2.5.107-snip",
+ "md5": "5463508775ee3a5a7df7d42bcf1bacb3",
+ "bundleVer": 95,
+ "ts": "2026-10-13T12:40:00Z",
+ "size": 659824,
  "note": "v2.5.103-reflex 热更清单（条件反射进化列装）"
 }
