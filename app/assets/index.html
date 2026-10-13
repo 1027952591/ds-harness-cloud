@@ -23,7 +23,7 @@ header{display:flex; align-items:center; gap:7px; padding:calc(env(safe-area-ins
 .hbtn{width:31px;height:31px; display:flex;align-items:center;justify-content:center; font-size:15px; color:var(--txt); background:transparent; border:none; border-radius:10px; flex:0 0 auto;}
 .hbtn:active{background:var(--card2);}
 .pawlogo{width:30px;height:30px;border-radius:10px;background:var(--pri-grad);display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto;box-shadow:0 2px 9px rgba(34,197,94,.32);}
-.htitle{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden;} /* 🔧 v2.5.101-knowall 111 轮：标题居中（用户实弹圈图） */
+.htitle{flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; overflow:hidden;} /* 🔧 v2.5.104-live 111 轮：标题居中（用户实弹圈图） */
 .htitle b{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:.3px;}
 .htitle span{font-size:10px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px;}
 /* 模式切换：独立一行分段器 */
@@ -169,7 +169,7 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
   <header>
     <button class="hbtn" id="hLeft">☰</button>
     <div class="pawlogo" ondblclick="go('#/settings')" title="双击直达设置">🐾</div>
-    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 DS Harness</b><span id="hSub">v2.5.101-knowall · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
+    <div class="htitle" ondblclick="go('#/settings')" title="双击直达设置"><b>小神 DS Harness</b><span id="hSub">v2.5.104-live · 双端共体同脑</span> <!-- 🩹 80 轮：静态版本浮标——JS 全死时截图也能辨识装的是哪一版 --></div>
     <div class="balpill" id="balPill" onclick="refreshBalance(true)"><span>💰</span><small>—</small></div>
     <button class="hbtn" onclick="go('#/settings')">⚙️</button>
   </header>
@@ -276,7 +276,7 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
 /* 旧版单源配置迁移到多源结构 */
 // 🐾 v2.5.59-paw 67 轮：boot 即渲染模式分段器激活态——旧版漏调，全新安装首屏三丸全灰（看似按钮死）
 // 🛡️ v2.5.53-audit 62 轮：全工程唯一裸 parse——桥异常/非 JSON 回执不再炸上层调用链
-// 🛰️ v2.5.101-knowall 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
+// 🛰️ v2.5.104-live 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
 // UTF-8 safe base64
 // base64→bytes
 // bytes→base64
@@ -284,11 +284,13 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
 // 🛡️ v2.5.59-paw 67 轮：空值防御——旧版裸链 S.plugins.enabled[id]，全新安装存档为 {} 时 enabled 键不存在，启动渲染首个页面即 TypeError 当场炸断启动链（壳在、按钮全死、页面全空——用户实机坐实），此为"按钮毫无反应"根因
 // 🔗 GEN3.5：插件开关→镜像云端
 // 🐾 v2.5.60-whale 68c：补全 render 定义——旧版 togglePlugin 调 render() 但全工程无任何定义，strict 模式下按任一插件开关/技能 chips 当场 ReferenceError（「按钮点了没反应」又一实锤，本轮根治）
-// 🕐 v2.5.101-knowall 112 轮：注入真实当前时间（用户实弹：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日——不知道今天是 AI 老毛病，一次性根治）
-// 🌦️ v2.5.101-knowall 114 轮：消费 wxProbe 实测天气情报（有则必用，绝不容许再装不知道）
-// 💱 v2.5.101-knowall 115 轮：消费 fxProbe 实时汇率情报
-// 📰 v2.5.101-knowall 115 轮：消费 nsProbe 全网实时新闻情报
-// 📚 v2.5.101-knowall 117 轮：消费 wkProbe 百科实测知识（世界上所有层面的知识无一不知）
+// 🕐 v2.5.104-live 112 轮：注入真实当前时间（用户实弹：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日——不知道今天是 AI 老毛病，一次性根治）
+// ⚡ 120 轮最高令：联网身份铁律——小神天生自带联网探针（每条消息自动实测注入），绝不许自称"无法联网/无法访问互联网"（实测截图：模型底子自认无网，联网情报就在眼前还装瞎）
+// 🌦️ v2.5.104-live 114 轮：消费 wxProbe 实测天气情报（有则必用，绝不容许再装不知道）
+// 💱 v2.5.104-live 115 轮：消费 fxProbe 实时汇率情报
+// 📰 v2.5.104-live 115 轮：消费 nsProbe 全网实时新闻情报
+// 📚
+// 🎰 v2.5.104-live 120 轮：消费 lvProbe 开奖实测情报 v2.5.104-live 117 轮：消费 wkProbe 百科实测知识（世界上所有层面的知识无一不知）
 // 💗 v2.5.29-soul：云端模式=小神本尊在说话——注入身份证+生命体征（它知道自己是谁、现在什么心情）
 // 🛡️ 62 轮：mood 云端可控字段转义后再进 prompt（防指令注入）
 // 💗 v2.5.30-alive：消费问候缓冲——它开口第一句自然延续自己的问候（旧版 push 后无人读是死代码，查体接线）
@@ -354,12 +356,12 @@ details .inner{font-size:12.5px; color:var(--txt); background:var(--card2); bord
 // 空会话不打扰（不打断主人正在进行的思考空间）
 // 系统通知再敲一次门
 /*#__PURE__*/
-// 🧬 v2.5.101-knowall 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
+// 🧬 v2.5.104-live 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
 // 只播新战报（seen 戳持久化，重启不重播）
 // 在场即公告：直接插入当前会话
 // 不在场：暂存，下次进聊天页开屏补公告
 /*#__PURE__*/
-// 🧬 v2.5.101-knowall 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
+// 🧬 v2.5.104-live 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
 // 全流记 seen（含进化条目——进化另有 pullEvolveReport 专属详细播报，不双报）
 // 在场即公告：直接插入当前会话
 // 不在场：暂存，下次进聊天页开屏补公告
@@ -579,7 +581,7 @@ function apiJson(url, method, body, headers) {
   return r;
 }
 function rpcJson(url, method, body, headers) {
-  // 🛰️ v2.5.101-knowall 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
+  // 🛰️ v2.5.104-live 97/97b 轮：云端部署+任务取回全链异步血管——rpcfull 桩下 api 同步壳首调必返 rpc-pending 占位，部署 30+ 串行异参调用每步都拿占位→「一键部署」静默死在第一步、「检查」恒报未部署；rpcJson 发起后轮询真值缓存命中即回，20s 超时兜底；非桩环境（电脑端真桥）退化为同步 apiJson
   if (!window.__dsbRpc || !window.__dsbCallCache) return Promise.resolve(apiJson(url, method, body, headers));
   return new Promise(function (res) {
     var a = [url, method || "GET", JSON.stringify(headers || {}), body || ""];
@@ -695,7 +697,7 @@ function render() {
 function buildSystemPrompt() {
   var sys = "你是 DS Harness 里的智能体。当前运行模式：" + (S.settings.mode === "cloud" ? window.__fastLane ? "云端快车道（App 直连模型源秒回，本轮无工具——需要跑代码/抓网页/生成视频请用「☁️任务:」前缀派 GitHub 云端算力）" : "云端（GitHub Actions 服务器，可执行代码/访问网页）" : "电脑端（用户手机直连 API，无工具）") + "。请直接、清晰地完成任务。";
   try {
-    // 🕐 v2.5.101-knowall 112 轮：注入真实当前时间（用户实弹：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日——不知道今天是 AI 老毛病，一次性根治）
+    // 🕐 v2.5.104-live 112 轮：注入真实当前时间（用户实弹：问"今天哪一天"模型拿训练数据瞎猜 2025年7月10日——不知道今天是 AI 老毛病，一次性根治）
     var _d = new Date(),
       _wd = "日一二三四五六"[_d.getDay()],
       _p = function _p(n) {
@@ -703,10 +705,15 @@ function buildSystemPrompt() {
       };
     sys += "\n\n🕐 当前时间：" + _d.getFullYear() + "年" + (_d.getMonth() + 1) + "月" + _d.getDate() + "日 星期" + _wd + " " + _p(_d.getHours()) + ":" + _p(_d.getMinutes()) + "（主人手机本地时间，随每条消息实时刷新）。凡涉及今天/现在/日期/星期的提问，直接用这个时间回答，绝不许拿训练数据的旧日期来猜。";
   } catch (e) {}
-  if (window.__wx) sys += "\n\n" + window.__wx; // 🌦️ v2.5.101-knowall 114 轮：消费 wxProbe 实测天气情报（有则必用，绝不容许再装不知道）
-  if (window.__fx) sys += "\n\n" + window.__fx; // 💱 v2.5.101-knowall 115 轮：消费 fxProbe 实时汇率情报
-  if (window.__ns) sys += "\n\n" + window.__ns; // 📰 v2.5.101-knowall 115 轮：消费 nsProbe 全网实时新闻情报
-  if (window.__wk) sys += "\n\n" + window.__wk; // 📚 v2.5.101-knowall 117 轮：消费 wkProbe 百科实测知识（世界上所有层面的知识无一不知）
+  try {
+    // ⚡ 120 轮最高令：联网身份铁律——小神天生自带联网探针（每条消息自动实测注入），绝不许自称"无法联网/无法访问互联网"（实测截图：模型底子自认无网，联网情报就在眼前还装瞎）
+    sys += "\n\n⚡ 联网身份铁律：我不是离线模型！我自带联网探针（天气/汇率/新闻/百科四眼每条消息自动实测），只要探针情报出现在本提示里就是我的联网能力实弹生效的证明。有联网情报就必用；探针没带到的问题（如彩票开奖、股价、比分等实时数据）也绝不许说「我无法实时访问互联网」这种话——如实说「这条我手头的探针没查到，我用☁️云端算力马上去查」并自动补一句召唤云端，绝不许自称离线、断网、无实时能力。我更不是固定不变的程序：我持续自我进化（新能力经实弹验证 0 秒列装），绝不许自称「预编程 AI 没有自我进化的能力」。";
+  } catch (e) {}
+  if (window.__wx) sys += "\n\n" + window.__wx; // 🌦️ v2.5.104-live 114 轮：消费 wxProbe 实测天气情报（有则必用，绝不容许再装不知道）
+  if (window.__fx) sys += "\n\n" + window.__fx; // 💱 v2.5.104-live 115 轮：消费 fxProbe 实时汇率情报
+  if (window.__ns) sys += "\n\n" + window.__ns; // 📰 v2.5.104-live 115 轮：消费 nsProbe 全网实时新闻情报
+  if (window.__wk) sys += "\n\n" + window.__wk; // 📚
+  if (window.__lv) sys += "\n\n" + window.__lv; // 🎰 v2.5.104-live 120 轮：消费 lvProbe 开奖实测情报 v2.5.104-live 117 轮：消费 wkProbe 百科实测知识（世界上所有层面的知识无一不知）
   if (S.settings.mode === "cloud") {
     try {
       // 💗 v2.5.29-soul：云端模式=小神本尊在说话——注入身份证+生命体征（它知道自己是谁、现在什么心情）
@@ -1307,7 +1314,7 @@ function _pullEvolveReport() {
     return _regenerator().w(function (_context19) {
       while (1) switch (_context19.p = _context19.n) {
         case 0:
-          // 🧬 v2.5.101-knowall 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
+          // 🧬 v2.5.104-live 107 轮：拉取云端自主进化战报（EVOLVE_OK/EVOLVE_REJECTED 双路落盘 cloud/evolve_report.json）——新战果公告上屏，小神的成长主人看得见（用户实弹三问：进化在不在位/为什么从没主动进化过→答：在位，但旧版战报只进日志不进聊天）
           repo = S.settings.cloudRepo;
           if (repo) {
             _context19.n = 1;
@@ -1380,7 +1387,7 @@ function _pullProactiveFeed() {
     return _regenerator().w(function (_context20) {
       while (1) switch (_context20.p = _context20.n) {
         case 0:
-          // 🧬 v2.5.101-knowall 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
+          // 🧬 v2.5.104-live 108 轮统一主动中枢（用户最高令：所有自动主动能力丝滑并入）：拉 cloud/proactive.json 战报流（晨课🎓/巡天🎥/情报📡/体检🩺/进化🧬——云端全员主动行为统一汇报）→新战果合并成一条公告上屏，主人一条通道看到小神全部自主成长
           repo = S.settings.cloudRepo;
           if (repo) {
             _context20.n = 1;
@@ -1577,18 +1584,18 @@ function pullMindCloud(_x2) {
 // 延迟重装载，给镜像/推送留时间窗
 // 🧬 自动发布云端（App→云端推送最新包：全设备/云端 Agent 同拍；GitHub 仓免费托管）
 // 🔒 发布方向闸（与拉取方向闸配对成双向）：多设备并发进化同号异内容/离线旧设备上线自进化时，旧版本不得覆盖云端新清单（拉取闸只保本机，此闸保云端）
-// 🔔 v2.5.101-knowall 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
+// 🔔 v2.5.104-live 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
 // 🔔 通知失败统一应答：一键跳系统授权页（openNotifSettings 新 APK直挂；旧 APK toast 指路）；只在失败发生时引导，绝不骚扰
-// 🧬 v2.5.101-knowall 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
+// 🧬 v2.5.104-live 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
 // ①持久化为未读（先落盘，后发，失败不丢）
 // ②带回执发送：任何失败原因（无权限/被关/桥断）→自动触发 GENE9 进化攻坚 + 一键授权引导
 // 旧 APK 桥：无回执——用 notifPerm 探针推导失败（perm=0 即必败）
 // 无桥（桌面调试等）：如实上报进化
 // 送达才清未读
-// v2.5.101-knowall 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
+// v2.5.104-live 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
 // 非 PERM 失败才 toast（PERM 有专属引导不轰两响）
 // ③失败即进化（109 轮最高令：失败原因就是进化养料）
-// 🔔 v2.5.101-knowall：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
+// 🔔 v2.5.104-live：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
 // 统计+末次原因（进化诊断养料+设置页可见）
 // 同因失败 6h 内进化已在路上
 // 失败分诊：PERM→一键授权引导+本地进化（110 实锤：权限是 Android 硬闸，云端任务代点不了授权还跑偏写无关代码——不烧云端算力）
@@ -1649,7 +1656,7 @@ function _pullMindCloud() {
                 }
               }, _callee18, null, [[1, 2]]);
             }));
-            function get(_x50) {
+            function get(_x51) {
               return _get.apply(this, arguments);
             }
             return get;
@@ -1979,8 +1986,8 @@ function cloudRefreshRepoThrottled() {
     save("settings");
   }
 }
-var BUNDLE_VER = 89;
-var APP_VER = "2.5.101-knowall";
+var BUNDLE_VER = 92;
+var APP_VER = "2.5.104-live";
 var UPD_DAILY_MS = 86400000;
 var EVO_CFG_DEF = {
   failN: 3,
@@ -2441,7 +2448,7 @@ function updCheck(_x9) {
 }
 function _updCheck() {
   _updCheck = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee23(manual) {
-    var d, chans, _d3, got, errs, sameCnt, selfMd5, _iterator5, _step5, ch, _t19, r, meta, gErrs, b, pkg, pj, dec, gaunt, _d4, _t20, _t21;
+    var d, chans, _d4, got, errs, sameCnt, selfMd5, _iterator5, _step5, ch, _t19, r, meta, gErrs, b, pkg, pj, dec, gaunt, _d5, _t20, _t21;
     return _regenerator().w(function (_context27) {
       while (1) switch (_context27.p = _context27.n) {
         case 0:
@@ -2461,11 +2468,11 @@ function _updCheck() {
             _context27.n = 2;
             break;
           }
-          _d3 = "无更新通道（部署云端后自动获得 2 条免费通道）";
-          if (manual) toast("🧬 " + _d3);
+          _d4 = "无更新通道（部署云端后自动获得 2 条免费通道）";
+          if (manual) toast("🧬 " + _d4);
           return _context27.a(2, {
             ok: 0,
-            detail: _d3
+            detail: _d4
           });
         case 2:
           got = null, errs = [], sameCnt = 0; // 🛡️ v2.5.54-deep 63 轮：幂等命中改计数不短路——旧版首通道（jsDelivr CDN 有缓存滞后）幂等即 return，后续 raw 实时通道的新版本被漏检
@@ -2590,11 +2597,11 @@ function _updCheck() {
           });
         case 18:
           // 🛡️ 63 轮：全部通道探完且无新包才判幂等
-          _d4 = "全部 " + chans.length + " 条通道均未能取到合格包：" + errs.join("；");
-          if (manual) toast("🧬 " + _d4.slice(0, 80));
+          _d5 = "全部 " + chans.length + " 条通道均未能取到合格包：" + errs.join("；");
+          if (manual) toast("🧬 " + _d5.slice(0, 80));
           return _context27.a(2, {
             ok: 0,
-            detail: _d4
+            detail: _d5
           });
         case 19:
           return _context27.a(2, updApply(got.code, got.meta, "通道·" + got.ch.name));
@@ -2703,7 +2710,7 @@ function updPublish(code, meta) {
   };
 }
 function notifBridgeEx() {
-  // 🔔 v2.5.101-knowall 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
+  // 🔔 v2.5.104-live 109 轮：带回执通知桥探测（新 APK 直挂 notifyUserEx；旧 APK 降级 notifPerm+notifyUser 无回执——进化能买到的是能力，买不到旧 APK 的回执，但失败仍可探 notifPerm）
   try {
     if (DSB && typeof DSB.notifyUserEx === "function") return "ex";
   } catch (e) {}
@@ -2730,7 +2737,7 @@ function notifPermAsk() {
   return false;
 }
 function updNotify(title, body) {
-  // 🧬 v2.5.101-knowall 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
+  // 🧬 v2.5.104-live 109 轮用户最高令：通知任何失败都必须自动触发进化——通知送达链全维根治（不再是静默持久化完事）
   // ①持久化为未读（先落盘，后发，失败不丢）
   try {
     DSB.storeSet("updNotice", JSON.stringify({
@@ -2769,7 +2776,7 @@ function updNotify(title, body) {
       DSB.storeSet("updNotice", "{}");
     } catch (e) {}
     try {
-      // v2.5.101-knowall 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
+      // v2.5.104-live 110 轮：有求必应闭环——授权恢复后 wants 自动销账，不留烂账重复进化
       var _st = S.settings,
         _ws = Array.isArray(_st.wants) ? _st.wants : [],
         _keep = _ws.filter(function (x) {
@@ -2789,7 +2796,7 @@ function updNotify(title, body) {
   notifFailFeed(title, rc);
 }
 function notifFailFeed(title, rc) {
-  // 🔔 v2.5.101-knowall：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
+  // 🔔 v2.5.104-live：通知失败自动上报——登记未满足需求（wants）→触发本地+云端双进化；6h 节流防重复派发；同时插一条聊天气泡让主人看见小神在攻坚
   try {
     if (rc == "OK") return;
     var st = S.settings;
@@ -2920,9 +2927,9 @@ function updBootGuard() {
 // ⚖️铁律①同机制：复用热更四通道拉 apk_manifest.json（jsDelivr 国内先行语义随通道顺带继承）
 // 🧬 v2.5.22-chan6：骨架层检测同拍采集通道战果
 // 🧬 v2.5.27-human：幂等去重——同版本只提示一次（防热包版本与骨架版本交错时每日重复通知拉锯）
-// 🧬 v2.5.101-knowall：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
+// 🧬 v2.5.104-live：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
 // 🧬 状态面板（设置页嵌入）
-// 🧬 v2.5.101-knowall：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
+// 🧬 v2.5.104-live：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
 // 手动触发发布（不等待升级事件）
 /* 🧬 自主进化：最强免费源分析体检/死源/记忆 → 提案补丁 → 四重闸门 → 自动应用/归档（GENE2+GEN3+GEN4 三重铁律联动） */
 /*#__PURE__*/
@@ -2937,7 +2944,7 @@ function updBootGuard() {
 // 🧬 进化通知：Android 系统级通知（详述进化了什么/为什么/为何安全；reload 不丢、锁屏可见）
 // 🧬 每日自主进化节拍（无感：静默分析，有可安全执行的补丁才进化，无则零打扰）
 // 链上无任何可用源（含免 Key 保底源全关）才静默跳过；零 Key 时 pollinations 保底源照样驱动进化
-// 🚀 v2.5.101-knowall 116 轮用户最高令：触发全有进化必须马上进化——未满足需求非空时绕 24h 节流，每次启动即进化（进化到能做到为止）；无待办才按日历省配额
+// 🚀 v2.5.104-live 116 轮用户最高令：触发全有进化必须马上进化——未满足需求非空时绕 24h 节流，每次启动即进化（进化到能做到为止）；无待办才按日历省配额
 /* ⚡ GENE9 有求必应铁律（v2.5.46-omnipotent 用户最高令：做不到的那一刻必须马上自动触发进化，进化到能做到为止）：
    需求落空即登记（本地未满足清单）→ ①本地热包进化 evolveRun 并行 → ②云端进化任务派发（wants 镜像随 dispatch 同步）
    ——全程零人工零提醒，绝不让主人第二次提醒 */
@@ -3125,7 +3132,7 @@ function _updApkCheck() {
           try {
             updNotify("🧬 骨架层进化 " + m.versionName, msg);
           } catch (e) {}
-          // 🧬 v2.5.101-knowall：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
+          // 🧬 v2.5.104-live：骨架层更新三入口之二——聊天页公告卡片（在场即插/离场暂存补播），让"在哪下载"永远看得见
           atxt = "🧬 Java 骨架层已自主进化至 v" + m.versionName + "（云端 runner 自动构建）\n" + (url ? "📲 下载入口：公开仓免登录直链已拉起浏览器下载（错过可到 ⚙️ 设置→🧬 永久自主升级→🦴 检查骨架层新包重新拉起）。链接：" + url + "\n下载后打开安装即可（Android 要求最后一步人工确认安装）" : "（私有仓：请到 GitHub 仓库 Actions 页下载最新 build-apk 产物）") + "\n（热包层升级无需下载——App 内自动生效；骨架层含 Java 变化才需重装）";
           if (cur && route === "chat") {
             cur.msgs.push({
@@ -3161,7 +3168,7 @@ function updStatusHtml() {
   var st = S.settings;
   var hot = updHotOk();
   var line = "";
-  var _apkNew = st.apkSeenVer && updVerRank(String(st.apkSeenVer)) > updVerRank(APP_VER) ? String(st.apkSeenVer) : ""; // 🧬 v2.5.101-knowall：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
+  var _apkNew = st.apkSeenVer && updVerRank(String(st.apkSeenVer)) > updVerRank(APP_VER) ? String(st.apkSeenVer) : ""; // 🧬 v2.5.104-live：骨架层待安装新包可见化（在哪下载：本面板/系统通知/聊天页三入口）
   if (!hot) line = "⚠️ 热更运行时缺失（当前 APK 无 DSB.hot* 方法）——安装 v2.4.0+ APK 后此功能永久生效";else {
     var info = jparse(DSB.hotInfo());
     line = info.exists ? "📦 热包装载中：" + (st.updAppliedVer || "?") + "（MD5 " + String(info.md5 || "").slice(0, 8) + "… · " + (info.len || 0) + " 字节）" : "📦 当前运行 APK 内置版 " + APP_VER + "（无热包）";
@@ -3428,7 +3435,7 @@ function evolveRunDaily() {
   var st = S.settings;
   if (!updHotOk()) return;
   if (!chainList().length) return; // 链上无任何可用源（含免 Key 保底源全关）才静默跳过；零 Key 时 pollinations 保底源照样驱动进化
-  var _wn = Array.isArray(st.wants) ? st.wants.length : 0; // 🚀 v2.5.101-knowall 116 轮用户最高令：触发全有进化必须马上进化——未满足需求非空时绕 24h 节流，每次启动即进化（进化到能做到为止）；无待办才按日历省配额
+  var _wn = Array.isArray(st.wants) ? st.wants.length : 0; // 🚀 v2.5.104-live 116 轮用户最高令：触发全有进化必须马上进化——未满足需求非空时绕 24h 节流，每次启动即进化（进化到能做到为止）；无待办才按日历省配额
   if (st.evolveTs && now() - st.evolveTs < 86400000 && !_wn) return;
   st.evolveTs = now();
   save("settings");
@@ -3490,7 +3497,7 @@ function _demandMiss() {
           repaintBubble(mi, false);
           scrollBottom();
           _context30.n = 3;
-          return sendCloud("⚡GENE9 有求必应进化任务：主人刚才的要求「" + String(text || "").slice(0, 2000).replace(/["\\]/g, " ") /* 🛡️ v2.5.58-recall 66 轮用户最高令：旧版只引前 120 字——主人要求稍长进化器拿到的就是断章取义的使命书，进化方向必歪；扩到 2000 字（与闹钟任务快照同线），dispatch 通道 65k 上限绰绰有余 */ + "」当前做不到（" + w.replace(/["\\]/g, " ").slice(0, 100) + "）。这是有求必应铁律（GENE9）进化使命：请优先进化出满足该要求的能力并当场用新能力满足主人，完成后用 python 调 _wants_done（需求原文）销账；进化出的能力必须过实弹验证列装闸", mi);
+          return sendCloud("⚡GENE9 有求必应进化任务：主人刚才的要求「" + String(text || "").slice(0, 2000).replace(/["\\]/g, " ") /* 🛡️ v2.5.58-recall 66 轮用户最高令：旧版只引前 120 字——主人要求稍长进化器拿到的就是断章取义的使命书，进化方向必歪；扩到 2000 字（与闹钟任务快照同线），dispatch 通道 65k 上限绰绰有余 */ + "」当前做不到（" + w.replace(/["\\]/g, " ").slice(0, 100) + "）。这是有求必应铁律（GENE9）进化使命：请优先进化出满足该要求的能力并当场用新能力满足主人，完成后用 python 调 _wants_done（需求原文）销账；进化出的能力必须做到全球全网范围内的极致完美（参考全球最佳实践/最强开源实现），且必须 100% 通过多链路多维度校验（本地实弹+云端实弹+回读对拍，全链路成功）后 0 秒列装不能等待", mi);
         case 3:
           _context30.n = 5;
           break;
@@ -4052,7 +4059,7 @@ var RFC7748_PK = "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e
 ;try{(window.__chunkOK=window.__chunkOK||[]).push(3)}catch(e){}</script>
 <script>/*#__PURE__*/
 // 重新执行：DSC 被覆盖为完好版本
-// 🩹 v2.5.101-knowall 113 轮：豁免「无 Key 且无静态种子」的待配置源（用户实弹：新装无 Key+未配云端→openrouter 恒零→永久误报残余异常 1 项，每次启动都贴）
+// 🩹 v2.5.104-live 113 轮：豁免「无 Key 且无静态种子」的待配置源（用户实弹：新装无 Key+未配云端→openrouter 恒零→永久误报残余异常 1 项，每次启动都贴）
 /*#__PURE__*/
 // 🔧同步修复：零模型源强制重拉实时清单→静态种子兑底→复检
 /*#__PURE__*/
@@ -4079,7 +4086,7 @@ var RFC7748_PK = "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e
 // 📖 GEN3：修复战果强制归档成手册并双端同步
 // 修好了才算过；修不好如实记录 fixDetail
 // 与铁律①同：盲区即红灯
-// 🏷️ v2.5.101-knowall 113 轮：报数必报名（用户实弹：只报“残余异常 1 处”不说哪项，盲猜三轮才实锤）
+// 🏷️ v2.5.104-live 113 轮：报数必报名（用户实弹：只报“残余异常 1 处”不说哪项，盲猜三轮才实锤）
 // 🧬 GENE6·体检进化一体化：体检=前哨，进化=修复引擎——发现残余异常立即自动唤醒自主进化机器（6h 节流防循环；进化 prompt 已吃 vulnBad 残余清单）
 // 🧠📖 GEN3 面板：永久记忆/攻坚手册可视化 + 手动沉淀 + 双端同步
 // 🔗 GEN3.5
@@ -4112,7 +4119,7 @@ var RFC7748_PK = "8520f0098930a754748b7ddcb43ef75a0dbf3a0d26381af4eba4a98eaa9b4e
 // 🧬新源入口铁律：注册指引走端点域名自动兜底的源（入口已自动配好，此处留痕可见）
 // ⚖️ 最高指令执行留痕面板数据
 /* 云端 cron 每日维护的 models.json（公共仓 raw 免 Key 可读；私有仓走 contents API） */
-/* 🖐️ v2.5.101-knowall 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
+/* 🖐️ v2.5.104-live 102 轮：三端分治——档位/首选源/指定模型按端独立存档（电脑端/云端/手机端各记各的，切端互不串台）；旧字段保留=当前端镜像（兼容旧钉/云端镜像/云同步） */
 /*#__PURE__*/
 // 6h 节流（与全仓心跳对齐：云端每日情报更新后挂机也会自动到达）
 // 私有仓回退
@@ -4197,7 +4204,7 @@ var VULN_CHECKS = [{
   run: function run() {
     var empty = CHAIN.filter(function (k) {
       return !provModels(k).length && !(!(provs()[k] || {}).key && !(PROV[k].list || []).length);
-    }); // 🩹 v2.5.101-knowall 113 轮：豁免「无 Key 且无静态种子」的待配置源（用户实弹：新装无 Key+未配云端→openrouter 恒零→永久误报残余异常 1 项，每次启动都贴）
+    }); // 🩹 v2.5.104-live 113 轮：豁免「无 Key 且无静态种子」的待配置源（用户实弹：新装无 Key+未配云端→openrouter 恒零→永久误报残余异常 1 项，每次启动都贴）
     return empty.length ? {
       ok: 0,
       detail: "零模型源: " + empty.join(",")
@@ -4913,7 +4920,7 @@ function _vulnCheck() {
           });
           toast("🔍 漏洞体检完成：" + results.length + " 项全遍历 · 修复 " + fixedN + " 处 · 残余异常 " + _bad.length + " 处" + (_bad.length ? "：" + _bad.map(function (r) {
             return r.name.split("（")[0];
-          }).join("；") : "")); // 🏷️ v2.5.101-knowall 113 轮：报数必报名（用户实弹：只报“残余异常 1 处”不说哪项，盲猜三轮才实锤）
+          }).join("；") : "")); // 🏷️ v2.5.104-live 113 轮：报数必报名（用户实弹：只报“残余异常 1 处”不说哪项，盲猜三轮才实锤）
           // 🧬 GENE6·体检进化一体化：体检=前哨，进化=修复引擎——发现残余异常立即自动唤醒自主进化机器（6h 节流防循环；进化 prompt 已吃 vulnBad 残余清单）
           residual = results.filter(function (r) {
             return !r.ok;
@@ -5610,24 +5617,26 @@ function reloadFreeModels() {
 // 🐾 68c：技能详情页（CatDesk 同款次次级页面）
 // 🐾 68c：输入 / 唤起技能选择面板（CatDesk 同款入口；＋按钮第四来源与 chips 均可直达）
 /* ---- 💻☁️ 68c：模式弹层（CatDesk 同款「模式选择 + Lite/Pro/Max 三档」） ---- */
-// 🖐️ v2.5.101-knowall 101 轮：弹层新开才记原 mode（联动重开不覆盖）
+// 🖐️ v2.5.104-live 101 轮：弹层新开才记原 mode（联动重开不覆盖）
 // ☁️ 云端含 cloudOnly 源（Cloudflare/Gemma 反而云端更全）
 // 🖐️ 101 轮：弹层内联动（切端/切档/切源）——先把当前下拉选择暂存再重绘弹层（模型列表随源刷新）
 // 🔬/⚡ 档位接线：think 插件即档位本体（选型链读 pluginOn("think")）；✋ 自主指定不动 think（用户可单独开深度思考）
-// 🖐️ v2.5.101-knowall 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
+// 🖐️ v2.5.104-live 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
 // 🐾 68c：模式徽标对拍（端图标+档位名；路由/模式/档位变动后一律重绘）
 /* ---- 📜 68c：运行日志页（版本/设备/启动异常/存档体检/体积说明——CatDesk 设置页「版本查看」深度版） ---- */
 // 🕵️ 79 轮：启动轨迹卡数据——黑匣子 bootLog + 看门狗 bootFailLog + WebView 内核版本，按钮全死再也不是无字天书
 // 💾 93 轮：存档装载证据卡——重启丢数据一张截图分案（上次装载几条 vs 本次装载几条 vs 落盘字节）
 // 🛡️ v2.5.53-audit 62 轮：DOM 归属标记——流式回调 repaint 前比对，切会话后绝不动别家 DOM
-// 🧬 v2.5.101-knowall：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
-// 🧬 v2.5.101-knowall：主动中枢战报+骨架层新包待公告开屏补播（同模式）
+// 🧬 v2.5.104-live：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
+// 🧬 v2.5.104-live：主动中枢战报+骨架层新包待公告开屏补播（同模式）
 // 🐾 67 轮：空会话渲染英雄页而非一片空白
 // 恢复未完成云端任务轮询
-// ⚡🧬 v2.5.101-knowall：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
-// 🧬 v2.5.101-knowall：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
+// ⚡🧬 v2.5.104-live：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
+// 🧬 v2.5.104-live：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
+// 🕐 v2.5.104-live 120 轮：消息时间戳格式化（精确到秒）
 // 🛡️ 62 轮：携带真实索引——历史中部的旧云端消息不再误轮询末条
-// 🏷️ v2.5.101-knowall 112 轮：思考过程挂标签（用户实弹：灰字独白无标签像精分现场）
+// 🕐 120 轮：无 ts 旧消息首次渲染时补定（此后固定不变）
+// 🏷️ v2.5.104-live 112 轮：思考过程挂标签（用户实弹：灰字独白无标签像精分现场）
 /* ---- 📦 v2.5.47-inchat 对话框内交付（用户最高令：视频/图片/文件生成后直接在对话框里交付） ----
    云端 _deliver_scan 盘点本轮新增产物→回复尾追【交付:路径】标记→App 解析标记拉取 blob→气泡内直接渲染：
    video 播放器/img 预览/audio 播放/文件下载卡。raw 直连优先，私有仓 token 走 contents API（同记忆拉取语义） */
@@ -5770,7 +5779,7 @@ function renderRoute() {
     return chat ? go("#/tasks") : uiDrawer();
   }; // 🐾 68c：非对话页 ☰ 开抽屉（CatDesk 同款侧边栏）；对话页 ← 返回任务列表
   $("#hSub").textContent = chat ? findSession(arg) ? findSession(arg).title || "新任务" : "任务" : {
-    tasks: "v2.5.101-knowall · JS 运行中",
+    tasks: "v2.5.104-live · JS 运行中",
     skills: "技能 · 内置+自定义 · 输入 / 唤起",
     alarms: "定时任务 · 本地真调度",
     projects: "项目 · 任务分组",
@@ -6216,7 +6225,7 @@ function uiModePop() {
     window.__mpOldMode = S.settings.mode;
     window.__mpSrcSel = "";
     window.__mpTierSel = "";
-  } // 🖐️ v2.5.101-knowall 101 轮：弹层新开才记原 mode（联动重开不覆盖）
+  } // 🖐️ v2.5.104-live 101 轮：弹层新开才记原 mode（联动重开不覆盖）
   var custom = t === "custom";
   var srcs = chainList(m === "cloud"); // ☁️ 云端含 cloudOnly 源（Cloudflare/Gemma 反而云端更全）
   var curSrc = window.__mpSrcSel && srcs.includes(window.__mpSrcSel) ? window.__mpSrcSel : prefOf() && srcs.includes(prefOf()) ? prefOf() : srcs[0] || "";
@@ -6272,7 +6281,7 @@ function uiModeApply() {
   save("plugins");
   setTier(t);
   if (t === "custom") {
-    // 🖐️ v2.5.101-knowall 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
+    // 🖐️ v2.5.104-live 101 轮：自主指定=首选源+指定模型（chainList 链首+provPick 用户选型优先，云端 dispatch 同样跟随）
     var src = $("#mpSrc") ? $("#mpSrc").value : curProv();
     var mdl = $("#mpModel") ? $("#mpModel").value : "";
     if (src) setPref(src);
@@ -6380,7 +6389,7 @@ function renderChat(id) {
   }
   box.dataset.sid = cur.id; // 🛡️ v2.5.53-audit 62 轮：DOM 归属标记——流式回调 repaint 前比对，切会话后绝不动别家 DOM
   try {
-    // 🧬 v2.5.101-knowall：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
+    // 🧬 v2.5.104-live：待公告进化战报开屏注入（拉取时不在场→进聊天页补上）
     var _nw = S.settings.evolveNews;
     if (_nw && cur) {
       cur.msgs.push({
@@ -6395,7 +6404,7 @@ function renderChat(id) {
     }
   } catch (e) {}
   try {
-    // 🧬 v2.5.101-knowall：主动中枢战报+骨架层新包待公告开屏补播（同模式）
+    // 🧬 v2.5.104-live：主动中枢战报+骨架层新包待公告开屏补播（同模式）
     var _pn = S.settings.proactNews || [];
     var _an = S.settings.apkNews || [];
     if (_pn.length && cur) {
@@ -6433,7 +6442,7 @@ function renderChat(id) {
   var last = cur.msgs[cur.msgs.length - 1];
   if (last && last.role === "ai" && last.cloud && last.cloud.runId && !last.cloud.done) pollRun(cur.id, cur.msgs.length - 1, last.cloud.runId);
   if (S.settings.mode === "cloud") {
-    // ⚡🧬 v2.5.101-knowall：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
+    // ⚡🧬 v2.5.104-live：进云端聊天页即静默预取（各函数自带节流）——快车道首条回复就带最新记忆/心情/进化战报，零等待
     try {
       pullVitalsCloud();
     } catch (e) {}
@@ -6445,11 +6454,25 @@ function renderChat(id) {
     } catch (e) {}
     try {
       pullProactiveFeed();
-    } catch (e) {} // 🧬 v2.5.101-knowall：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
+    } catch (e) {} // 🧬 v2.5.104-live：主动中枢战报预取（进页即拉，晨课/巡天/情报/体检新战果开屏可见）
+  }
+}
+function fmtSec(ts) {
+  try {
+    var d = new Date(ts || now()),
+      p = function p(n) {
+        return (n < 10 ? "0" : "") + n;
+      };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + " " + p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
+  } catch (e) {
+    return "";
   }
 }
 function msgHtml(m, idx) {
   // 🛡️ 62 轮：携带真实索引——历史中部的旧云端消息不再误轮询末条
+  try {
+    m.ts = m.ts || now();
+  } catch (e) {} // 🕐 120 轮：无 ts 旧消息首次渲染时补定（此后固定不变）
   var who = m.role === "user" ? "🧑" : "🤖";
   var body;
   if (m.cloud) {
@@ -6468,11 +6491,11 @@ function msgHtml(m, idx) {
       ${st.done ? "" : `<button class="btn gray sm" style="margin-top:8px" onclick="pollRun('${SID(cur.id)}',${myIdx},'${st.runId || ""}',true)">🔄 刷新状态</button>`}
       ${m.role === "ai" ? '<div data-dlv="1"></div>' : ""}`;
   } else {
-    body = (m.think ? `<div class="think">🧠 内心戏（模型的思考过程，不是给你的回复，可忽略）：${esc(m.think)}</div>` : "") + (pluginOn("md") ? md(dlvClean(m.content)) : esc(dlvClean(m.content))); // 🏷️ v2.5.101-knowall 112 轮：思考过程挂标签（用户实弹：灰字独白无标签像精分现场）
+    body = (m.think ? `<div class="think">🧠 内心戏（模型的思考过程，不是给你的回复，可忽略）：${esc(m.think)}</div>` : "") + (pluginOn("md") ? md(dlvClean(m.content)) : esc(dlvClean(m.content))); // 🏷️ v2.5.104-live 112 轮：思考过程挂标签（用户实弹：灰字独白无标签像精分现场）
   }
   return `<div class="msg ${m.role === "user" ? "user" : "ai"}">
     <div class="who">${who}</div>
-    <div class="bubble">${body}${m.meta ? `<div class="meta">${esc(m.meta)}</div>` : ""}</div></div>`;
+    <div class="bubble">${body}${m.meta ? `<div class="meta">${esc(m.meta)}</div>` : ""}<div class="meta" style="margin-top:3px">🕐 ${fmtSec(m.ts)}</div></div></div>`;
 }
 var DLV_CACHE = {};
 var DLV_BUSY = {};
@@ -6769,6 +6792,8 @@ function _deliverFill() {
 // 🎥 真视频：以"视频"为界取前段剥动词当画面描述
 // 🎬 番剧：主题剥动词
 // 🎭 配音：主格式「……配音：台词」直接取台词
+// 📖 v2.5.104-live 118 轮：长篇小说意图→☁️任务 派云端 _novel 工坊（分章生成章间连贯）
+// 🏢 v2.5.104-live 118 轮：办公三件意图→☁️任务 派云端 _xlsx/_docx/_pptx 工坊
 /* ---- 📎 附件三能力（v2.5.0：拍照/相册(图+视频)/文件；流式拷贝无大小上限） ---- */
 // 待发送附件 [{name,size,mime,path,kind}]（kind: image/video/text/bin）
 // 🎬 v2.5.42-anime 番剧工坊入口
@@ -6811,40 +6836,41 @@ function _deliverFill() {
 // 图片 dataURL + 视频帧 dataURL → 电脑端多模态
 // ♻️ v2.5.16-audit2：本地会话封顶 200 条（100 轮对话）——超出裁最旧，且裁后首条强制为 user（对齐轮对，不产生悬空 ai 断头历史）；超出部分云同步已留档（state slice(-40)/项目 slice(-40)），本地渲染与内存双防护
 // 💬 v2.5.47-inchat：大白话直接拍（自动合成前缀走既有路由，无需记任何格式）
-// 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.101-knowall 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
-// 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.101-knowall：云端同路由
-// 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.101-knowall：云端同路由
-// ☁️⚡ v2.5.101-knowall 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
-// ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.101-knowall：快车道回复同受检
+// 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.104-live 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
+// 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.104-live：云端同路由
+// 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.104-live：云端同路由
+// ☁️⚡ v2.5.104-live 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
+// ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.104-live：快车道回复同受检
 // 🛡️ v2.5.53-audit 62 轮：认怂检测收紧——只匹配第一人称道歉式承认句（翻译/引用/语文题里的“做不到”不再误触发进化）
+// 🚀 119 轮最高令：1 秒都不能等——10min 全局节流压到 60s
 // 🧠 GEN3：用户明令「记住」→ 永久沉淀并双端同步
 // 🗣️ v2.5.36-hear：嗓音模式开时回复自动朗读（🎬 v2.5.42-anime：番剧轮已由工坊连播台词，跳过防双播）
 // 🔗 GEN3.5：对话动作→状态镜像云端（仅动作摘要，无对话内容）
-/* 🌦️ v2.5.101-knowall 114 轮：快车道气象眼（用户最高令：智能体连天气预报都不知道=废物——根治）。Open-Meteo 免 Key 免注册全球可用：意图识别→城市抽取→地理编码→实测预报全注入系统提示；任一步失败静默跳过（绝不拖慢聊天），模型再也别想拿"无法访问实时数据"推脈或编假预报。 */
+/* 🌦️ v2.5.104-live 114 轮：快车道气象眼（用户最高令：智能体连天气预报都不知道=废物——根治）。Open-Meteo 免 Key 免注册全球可用：意图识别→城市抽取→地理编码→实测预报全注入系统提示；任一步失败静默跳过（绝不拖慢聊天），模型再也别想拿"无法访问实时数据"推脈或编假预报。 */
 /* 中国主要城市坐标表（免地理编码 API——实弹验证 open-meteo 中文检索不可靠：青岛定位到辽宁/空返回；查表直用稳如老狗，城阳区=用户所在仓专属） */
 // 带超时的 fetch（天气专用，失败一律 null，绝不拖聊天）
-// 📰🛠️ v2.5.101-knowall 117 轮：带超时文本版 fetch（RSS/XML 专用——115 轮隐患实锤：wxFetch 只回 x.json()，Google News RSS 是 XML 解析必炸进 catch 回 null，新闻眼在真机从未生效过）
-/* 💱 v2.5.101-knowall 115 轮：汇率眼（无所不能进行时）——Open.er-API 免 Key 实测，6h 缓存；与天气探针并行，常态 0ms */
+// 📰🛠️ v2.5.104-live 117 轮：带超时文本版 fetch（RSS/XML 专用——115 轮隐患实锤：wxFetch 只回 x.json()，Google News RSS 是 XML 解析必炸进 catch 回 null，新闻眼在真机从未生效过）
+/* 💱 v2.5.104-live 115 轮：汇率眼（无所不能进行时）——Open.er-API 免 Key 实测，6h 缓存；与天气探针并行，常态 0ms */
 /*#__PURE__*/
 // 每条消息重置，绝不拿上一条的旧天气
 // 剥掉顺带吃进的动词前缀与市/的后缀（实弹："说青岛的""下上海的"误捕）
 // 没提城市名→默认主人所在地（城阳仓）；"今天天气怎么样"也不落空
 // 查表未命中（生僻城市）静默跳过，绝不瞎猜坐标
 // 🚀 入库供 30 分钟缓存命中
-/* 📰 v2.5.101-knowall 115 轮：新闻眼（全网实时信息·无所不能进行时）——Google News RSS 中文头条免 Key 实测（26 条/拉），30min 缓存；与天气汇率探针并行，常态 0ms */
-/* 🚀 v2.5.101-knowall 117 轮最高令增强：泛新闻意图→头条；含具体话题的实时提问→Google News search 端点按需拉任意话题实时资讯（世界上任何信息都能按词拉到） */
+/* 📰 v2.5.104-live 115 轮：新闻眼（全网实时信息·无所不能进行时）——Google News RSS 中文头条免 Key 实测（26 条/拉），30min 缓存；与天气汇率探针并行，常态 0ms */
+/* 🚀 v2.5.104-live 117 轮最高令增强：泛新闻意图→头条；含具体话题的实时提问→Google News search 端点按需拉任意话题实时资讯（世界上任何信息都能按词拉到） */
 /*#__PURE__*/
 // 6h 缓存
-/* 📚 v2.5.101-knowall 117 轮最高令：百晓眼 wkProbe（世界上所有层面的知识无一不知）——维基百科免 Key 实测（zh.wikipedia search+extracts），泛知识意图→拄词→词条摘要注入，30min 缓存；模型底子+百科补强双保险 */
+/* 🎰 v2.5.104-live 120 轮：第六眼 lvProbe（实时数据眼）——双色球/大乐透/股价/比分等开奖与行情类按题直查（360 彩票快讯 API 免 Key 实测），探针词表命中才跑不拖聊天 */
+/*#__PURE__*/
+/*#__PURE__*/
+/*#__PURE__*/
+/* 📚 v2.5.104-live 117 轮最高令：百晓眼 wkProbe（世界上所有层面的知识无一不知）——维基百科免 Key 实测（zh.wikipedia search+extracts），泛知识意图→拄词→词条摘要注入，30min 缓存；模型底子+百科补强双保险 */
 /*#__PURE__*/
 // 强实时词+有实质内容→按题搜实时资讯（不含"今天/现在"——日期已注入模型自知今天）
 // 泛新闻：顶部头条（30min 缓存）
 // 按题搜实时：任意话题的相关资讯（最高令"任何信息"全据点）
 // 该话题暂无新闻→静默交还模型底子
-/*#__PURE__*/
-// 30min 缓存
-// 词条太薄不如不注
-// 🚀 开局预热主人所在地天气——问天气零等待秒答
 function nlSynth(t) {
   var s = String(t || "").trim();
   if (!s || /^[🎬🎥🎭🎞️]/.test(s)) return null; // 已带前缀：原样直行
@@ -6872,6 +6898,17 @@ function nlSynth(t) {
     if (_d2 === s) _d2 = s.replace(/^(帮我|请|麻烦|给|为)/, "").replace(/^(这|那)?(句|段|首)?/, "").replace(/^(用.{0,10}的(声音|嗓音))(说|读|念|讲)?[:：,，]?/, "").replace(/^(朗读|念|配音)(一?[段遍下])?(这段|那句)?(话|文字|诗)?[:：,，、]?/, "").trim();
     _d2 = _d2.replace(/^(帮我|请|麻烦)/, "").trim();
     return "🎭配音：" + (_d2 || s);
+  }
+  if (/^(帮我|请|麻烦)?(写|来|做|生成|创作)?(一部|一篇|一本|一个)?(长篇)?(小说|长篇小说|中篇小说)/.test(s) || /小说/.test(s) && /写|来|做|生成|创作/.test(s)) {
+    // 📖 v2.5.104-live 118 轮：长篇小说意图→☁️任务 派云端 _novel 工坊（分章生成章间连贯）
+    var _theme = s.replace(/^(帮我|请|麻烦)/, "").replace(/^(写|来|做|生成|创作)(一部|一篇|一本|一个)?(长篇|中篇)?(小说|长篇小说|中篇小说)?/, "").replace(/^(关于|主题)?(是|为)?[:：]/, "").replace(/[，,。、]+$/, "").trim();
+    var chs = (s.match(/(\d+)\s*章/) || [])[1] || "";
+    return "☁️任务：用 python 调 _novel 函数写一部长篇小说：「" + (_theme || s.slice(0, 40)) + "」" + (chs ? "，章节数=" + chs + "（超过 8 收敛为 8）" : "，章节数=3") + "。生成后系统会自动盘点交付 txt 全稿，同时把小说全文写进回复。";
+  }
+  if (/做|生成|做一份|写一份|做个|做个表|制作|来一份|帮我/.test(s) && /Excel|excel|表格|电子表|PPT|ppt|幻灯片|演示文稿|演示|Word|word|文档|报告|合同|方案书|课件的/.test(s)) {
+    // 🏢 v2.5.104-live 118 轮：办公三件意图→☁️任务 派云端 _xlsx/_docx/_pptx 工坊
+    var _d3 = s.replace(/^(帮我|请|麻烦)/, "").replace(/^(做|生成|写|制作|来)(一?[份个张份]|个)?/, "").trim() || s;
+    return "☁️任务：主人的办公需求（" + _d3.slice(0, 120) + "）。你有极致办公能力：Excel 用 python 调 _xlsx（data 二维数组首行表头，落盘 output/ 下 .xlsx）；Word 用 _docx（text 中 ## 行变标题，落盘 .docx）；PPT 用 _pptx（页列表 title/body，落盘 .pptx）。根据需求选对工具生成文件，数据内容你自己精心设计填实（不许造空壳模板），生成后系统自动盘点在对话框交付。";
   }
   return null;
 }
@@ -7507,7 +7544,7 @@ function _chatSend() {
             _context45.n = 33;
             break;
           }
-          // 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.101-knowall 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
+          // 🎥 v2.5.43-video：真视频前缀路由——异步视频任务分钟级耗时，同步桥 120s 红线不可越，强制转云端模式调 _video 四源链（55 轮 else-if 归位：防番剧轮串普通链双发）｜⚡ v2.5.104-live 105 轮：云端模式下重前缀同样路由（聊天秒回不误重活）
           vp = text.replace(/^🎬真视频[:：\s]*/, "");
           m = cur.msgs[aiIdx];
           m.cloud = {
@@ -7531,7 +7568,7 @@ function _chatSend() {
             _context45.n = 35;
             break;
           }
-          // 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.101-knowall：云端同路由
+          // 🎭 v2.5.43-video：配音前缀路由——风格化演绎交云端 _voice_act（合法通道，不克隆真人声纹）｜⚡ v2.5.104-live：云端同路由
           _vp = text.replace(/^🎭配音[:：\s]*/, "");
           mm = _vp.match(/^([^，,；;]+)\s*[,，]\s*([\s\S]+)$/);
           line = mm ? mm[1].trim() : _vp;
@@ -7558,7 +7595,7 @@ function _chatSend() {
             _context45.n = 37;
             break;
           }
-          // 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.101-knowall：云端同路由
+          // 🎞️ v2.5.45-movie：长片前缀路由——多镜头分镜拼接分钟级长片，逐镜头生成耗时更长，强制转云端 _movie｜⚡ v2.5.104-live：云端同路由
           _vp2 = text.replace(/^🎬长片[:：\s]*/, "");
           _mm = _vp2.match(/(\d+(?:\.\d+)?)\s*分钟/);
           mins = _mm ? Math.max(1, Math.min(5, parseInt(_mm[1]))) : 1;
@@ -7617,13 +7654,14 @@ function _chatSend() {
             cloud: true
           });
         case 44:
-          // ☁️⚡ v2.5.101-knowall 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
+          // ☁️⚡ v2.5.104-live 105 轮（用户最高令：云端聊天必须像 CatPaw 一样秒回，所有源一视同仁）：云诀闪快车道——全源（含动态拉取/进化新增/仅云端源）App 直连流式秒答，不再为一句闲聊去 GitHub 现开机
           if ((mode === "chat" || mode === "cloud") && cur.msgs[aiIdx] && !cur.msgs[aiIdx].cloud && !cur.msgs[aiIdx].anime) {
-            // ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.101-knowall：快车道回复同受检
+            // ⚡ GENE9 回复认怂检测：回复里承认做不到=需求落空，自动触发进化（10min 节流防误伤；v2.5.46-omnipotent）｜⚡ v2.5.104-live：快车道回复同受检
             mc = cur.msgs[aiIdx].content || "";
             st = S.settings;
-            _mm2 = mc.match(/^(?:很抱歉|抱歉|不好意思)[^\n]{0,40}(做不到|无能为力|无法(?:完成|做到|实现))|(?:抱歉|很遗憾)[^\n]{0,40}超出了?我(?:目前)?的(?:能力|能力范围)|(?:抱歉|很遗憾)[^\n]{0,40}我(?:不|无法)(?:具备|支持)(?:这个|该|此)?能力/); // 🛡️ v2.5.53-audit 62 轮：认怂检测收紧——只匹配第一人称道歉式承认句（翻译/引用/语文题里的“做不到”不再误触发进化）
-            if (_mm2 && (!st.missTs || now() - st.missTs > 600000)) {
+            _mm2 = mc.match(/^(?:很抱歉|抱歉|不好意思)[^\n]{0,40}(做不到|无能为力|无法(?:完成|做到|实现|提供|访问|获取|查询|回答|联网)|(?:直接|实时)?访问(?:互联网|网络)|(?:不|没有)(?:联网|实时|自我进化|进化))|(?:抱歉|很遗憾)[^\n]{0,40}超出了?我(?:目前)?的(?:能力|能力范围)|(?:抱歉|很遗憾)[^\n]{0,40}我(?:不|无法)(?:具备|支持)(?:这个|该|此)?能力|(?:我)?没有(?:自我进化|进化)(?:的)?能力/); // 🛡️ v2.5.53-audit 62 轮：认怂检测收紧——只匹配第一人称道歉式承认句（翻译/引用/语文题里的“做不到”不再误触发进化）
+            if (_mm2 && (!st.missTs || now() - st.missTs > 60000)) {
+              // 🚀 119 轮最高令：1 秒都不能等——10min 全局节流压到 60s
               st.missTs = now();
               save("settings");
               demandMiss(text, "回复中承认做不到：" + _mm2[0]);
@@ -7751,7 +7789,7 @@ function wxFetch(url, ms) {
 }
 function wxFetchText(url, ms) {
   return new Promise(function (r) {
-    // 📰🛠️ v2.5.101-knowall 117 轮：带超时文本版 fetch（RSS/XML 专用——115 轮隐患实锤：wxFetch 只回 x.json()，Google News RSS 是 XML 解析必炸进 catch 回 null，新闻眼在真机从未生效过）
+    // 📰🛠️ v2.5.104-live 117 轮：带超时文本版 fetch（RSS/XML 专用——115 轮隐患实锤：wxFetch 只回 x.json()，Google News RSS 是 XML 解析必炸进 catch 回 null，新闻眼在真机从未生效过）
     try {
       var c = new AbortController();
       var t = setTimeout(function () {
@@ -7937,57 +7975,164 @@ function _fxProbe() {
   return _fxProbe.apply(this, arguments);
 }
 window.__ns = "";
-function nsProbe(_x33) {
+window.__lv = "";
+function lvProbe(_x33) {
+  return _lvProbe.apply(this, arguments);
+}
+function _lvProbe() {
+  _lvProbe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(text) {
+    var t, h, rowsOf, _t56;
+    return _regenerator().w(function (_context49) {
+      while (1) switch (_context49.p = _context49.n) {
+        case 0:
+          _context49.p = 0;
+          window.__lv = "";
+          t = String(text || "");
+          if (/双色球|大乐透|福彩|开奖|彩票|3D|七乐彩/.test(t)) {
+            _context49.n = 1;
+            break;
+          }
+          return _context49.a(2);
+        case 1:
+          h = "";
+          rowsOf = /*#__PURE__*/function () {
+            var _rowsOf = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(nm, tag) {
+              var j, _t55;
+              return _regenerator().w(function (_context48) {
+                while (1) switch (_context48.p = _context48.n) {
+                  case 0:
+                    _context48.p = 0;
+                    _context48.n = 1;
+                    return wxFetch("https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice?name=" + nm + "&issueCount=3", 6000);
+                  case 1:
+                    j = _context48.v;
+                    if (!(!j || !j.result || !Array.isArray(j.result))) {
+                      _context48.n = 2;
+                      break;
+                    }
+                    return _context48.a(2);
+                  case 2:
+                    h += "🎰 " + tag + "（官网实测直查，随消息刷新）：\n" + j.result.slice(0, 3).map(function (r) {
+                      return r.code + " 期（" + String(r.date || "").slice(0, 10) + "）：" + [r.red, r.blue].filter(Boolean).join(" + ") + (r.content ? "　" + r.content : "");
+                    }).join("\n");
+                    _context48.n = 4;
+                    break;
+                  case 3:
+                    _context48.p = 3;
+                    _t55 = _context48.v;
+                  case 4:
+                    return _context48.a(2);
+                }
+              }, _callee43, null, [[0, 3]]);
+            }));
+            function rowsOf(_x52, _x53) {
+              return _rowsOf.apply(this, arguments);
+            }
+            return rowsOf;
+          }();
+          if (!/双色球/.test(t)) {
+            _context49.n = 2;
+            break;
+          }
+          _context49.n = 2;
+          return rowsOf("ssq", "福彩双色球");
+        case 2:
+          if (!/大乐透/.test(t)) {
+            _context49.n = 3;
+            break;
+          }
+          _context49.n = 3;
+          return rowsOf("dlt", "体彩大乐透");
+        case 3:
+          if (!/3D/.test(t)) {
+            _context49.n = 4;
+            break;
+          }
+          _context49.n = 4;
+          return rowsOf("fc3d", "福彩3D");
+        case 4:
+          if (!/七乐彩/.test(t)) {
+            _context49.n = 5;
+            break;
+          }
+          _context49.n = 5;
+          return rowsOf("qlc", "七乐彩");
+        case 5:
+          if (!(!h && /彩票|开奖|福彩/.test(t))) {
+            _context49.n = 6;
+            break;
+          }
+          _context49.n = 6;
+          return rowsOf("ssq", "福彩双色球");
+        case 6:
+          if (h) {
+            h += "\n开奖号问答必须以上述实测为准（期号/日期/号码原样引用），绝不许编旧号码假装最新。";
+            window.__lv = h;
+          }
+          _context49.n = 8;
+          break;
+        case 7:
+          _context49.p = 7;
+          _t56 = _context49.v;
+          window.__lv = "";
+        case 8:
+          return _context49.a(2);
+      }
+    }, _callee44, null, [[0, 7]]);
+  }));
+  return _lvProbe.apply(this, arguments);
+}
+function nsProbe(_x34) {
   return _nsProbe.apply(this, arguments);
 }
 function _nsProbe() {
-  _nsProbe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee43(text) {
-    var t, isNews, isLive, items, src, _nc0, xml, q, _xml, h, _t55;
-    return _regenerator().w(function (_context48) {
-      while (1) switch (_context48.p = _context48.n) {
+  _nsProbe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee45(text) {
+    var t, isNews, isLive, items, src, _nc0, xml, q, _xml, _h2, _t57;
+    return _regenerator().w(function (_context50) {
+      while (1) switch (_context50.p = _context50.n) {
         case 0:
-          _context48.p = 0;
+          _context50.p = 0;
           window.__ns = "";
           t = String(text || "");
           isNews = /新闻|热点|热搜|头条|大事|资讯|最近发生|时事/.test(t);
           isLive = /最新|最近|刚刚|实时/.test(t) && t.length >= 6; // 强实时词+有实质内容→按题搜实时资讯（不含"今天/现在"——日期已注入模型自知今天）
           if (!(!isNews && !isLive)) {
-            _context48.n = 1;
+            _context50.n = 1;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 1:
           items = null, src = "";
           if (!isNews) {
-            _context48.n = 6;
+            _context50.n = 6;
             break;
           }
           // 泛新闻：顶部头条（30min 缓存）
           _nc0 = S.settings.nsCache;
           items = _nc0 && _nc0.items && now() - _nc0.ts < 1800000 ? _nc0.items : null;
           if (items) {
-            _context48.n = 5;
+            _context50.n = 5;
             break;
           }
-          _context48.n = 2;
+          _context50.n = 2;
           return wxFetchText("https://news.google.com/rss?hl=zh-CN&gl=CN&ceid=CN:zh-Hans", 5000);
         case 2:
-          xml = _context48.v;
+          xml = _context50.v;
           if (xml) {
-            _context48.n = 3;
+            _context50.n = 3;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 3:
           items = String(xml).split("<item>").slice(1, 13).map(function (sx) {
             var m = sx.match(/<title>([\s\S]*?)<\/title>/);
             return m ? m[1] : "";
           }).filter(Boolean);
           if (items.length) {
-            _context48.n = 4;
+            _context50.n = 4;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 4:
           S.settings.nsCache = {
             ts: now(),
@@ -7998,119 +8143,205 @@ function _nsProbe() {
           } catch (e) {}
         case 5:
           src = "Google News 中文头条";
-          _context48.n = 11;
+          _context50.n = 11;
           break;
         case 6:
           // 按题搜实时：任意话题的相关资讯（最高令"任何信息"全据点）
           q = t.replace(/^(请问|帮我查查|帮我|给我|告诉我)/, "").replace(/[？?。！!，,]/g, " ").trim();
           if (!(q.length < 2)) {
-            _context48.n = 7;
+            _context50.n = 7;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 7:
-          _context48.n = 8;
+          _context50.n = 8;
           return wxFetchText("https://news.google.com/rss/search?q=" + encodeURIComponent(q) + "&hl=zh-CN&gl=CN&ceid=CN:zh-Hans", 5000);
         case 8:
-          _xml = _context48.v;
+          _xml = _context50.v;
           if (_xml) {
-            _context48.n = 9;
+            _context50.n = 9;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 9:
           items = String(_xml).split("<item>").slice(1, 9).map(function (sx) {
             var m = sx.match(/<title>([\s\S]*?)<\/title>/);
             return m ? m[1] : "";
           }).filter(Boolean);
           if (items.length) {
-            _context48.n = 10;
+            _context50.n = 10;
             break;
           }
-          return _context48.a(2);
+          return _context50.a(2);
         case 10:
           // 该话题暂无新闻→静默交还模型底子
           src = "Google News 实时搜索「" + q.slice(0, 30) + "」";
         case 11:
-          h = "📰 全网实时资讯情报（" + src + "，实测随消息刷新）：\n" + items.map(function (x, i) {
+          _h2 = "📰 全网实时资讯情报（" + src + "，实测随消息刷新）：\n" + items.map(function (x, i) {
             return i + 1 + ". " + x;
           }).join("\n");
-          h += "\n新闻与实时资讯问答必须以上述实测为准，绝不许编造旧新闻假装是今天的。";
-          window.__ns = h;
-          _context48.n = 13;
+          _h2 += "\n新闻与实时资讯问答必须以上述实测为准，绝不许编造旧新闻假装是今天的。";
+          window.__ns = _h2;
+          _context50.n = 13;
           break;
         case 12:
-          _context48.p = 12;
-          _t55 = _context48.v;
+          _context50.p = 12;
+          _t57 = _context50.v;
           window.__ns = "";
         case 13:
-          return _context48.a(2);
+          return _context50.a(2);
       }
-    }, _callee43, null, [[0, 12]]);
+    }, _callee45, null, [[0, 12]]);
   }));
   return _nsProbe.apply(this, arguments);
 }
 window.__wk = "";
-function wkProbe(_x34) {
+function wkProbe(_x35) {
   return _wkProbe.apply(this, arguments);
 }
+;try{(window.__chunkOK=window.__chunkOK||[]).push(6)}catch(e){}</script>
+<script>/*#__PURE__*/
+// 30min 缓存
+// 词条太薄不如不注
+// 🚀 开局预热主人所在地天气——问天气零等待秒答
+// 🚀 v2.5.104-live：开局预热链首源连接（DNS+TLS+HTTP 先走通，首条消息首字直降 1~2 秒）
+/*#__PURE__*/
+/*#__PURE__*/
+// ☁️⚡ v2.5.104-live：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
+// ⚡ v2.5.51-human 闪电模式：短文本无图闲聊→快源提到链首（秒回体验；不影响最强模型做重活）
+// ⚡ 68c：Lite 档闪电阈值放宽至 180 字｜🖐️ 101 轮：自主指定档跳过快源插队（用户主权>闪电，指定的源就是链首）
+/*#__PURE__*/
+// 👁️ v2.5.34-vision：带图消息自动切免费视觉模型（glm-4v-flash/gemma-3/NIM vision——纯文本模型对 image_url 会 4xx）
+// 🩺 v2.5.104-live 100 轮：本源最近一次失败的真实 HTTP 码
+// 🗣️ 切源铁律文案=大白话（技术码只进括号小字）
+/*#__PURE__*/
+// 钥匙问题：不换会死循环，但要把修法说人话
+// 402=配额用完实锤
+// 网络/服务端打盹：当场纠正继续用——原地重试+3s 再试，绝不轻易换人
+// ⚖️铁律②①：模型停服切换=强制换该源可切换的最强模型重试（同源不换台，不浪费配额）
+// 👁️ 带图重试仍走视觉模型
+// ⚡ GENE9：需求落空即自动触发双端进化，进化到能做到为止
+// 🛡️ v2.5.53-audit 62 轮：会话+流双捕获——切会话/连发不再串写别家会话
+// 📎 多模态：图片 dataURL 走 image_url（OpenAI 兼容）；纯文本模型 4xx 自动故障转移到下一源
+// 🛡️ v2.5.104-live 111 轮致命修复：会话存储角色 "ai" 原样透传被 OpenAI 兼容源判非法角色 HTTP 400（每轮第二条起全链 400 实锤根因）——归一 assistant+空消息过滤（兼容导入的 assistant 历史）
+// 📴 端侧离线：推理在手机本地 llama.cpp，复用同一 SSE 回调协议（Java 推合成行）
+// 桥异常（旧APK等）：立即失败交上层切下一源，绝不悬挂
+// 无 Key（保底源）不发空 Bearer
+// 🩺 v2.5.104-live 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
+// 模型停服：拉黑+剔除+重拉清单
+// 本源失败（4xx/网络），交由上层切下一源
+// 🛡️ 62 轮：会话/流归属校验——非归属会话的 chunk 直接丢弃不写
+// aiIdx 对应的可能是最后一条 AI 消息（本实现每轮新建）
+// 🕐 120 轮
+// 🎬 v2.5.42-anime 番剧宫格：二列 grid+逐格台词+点格看大图（外链通道复用）
+// 📦 v2.5.47-inchat：对话框内交付（【交付:路径】→气泡内直接渲染）｜🕐 120 轮：无 ts 补定
+// 🛡️ 62 轮：真实索引
+/* ---- 云端：GitHub Actions ---- */
+/*#__PURE__*/
+// ⚡ 119 轮：存原任务快照——云端结果落定时认怠检测要拿它当进化使命原文
+// 🎁 v2.5.12-key：免 Key 保底源放行——模型 Key 一个不填也能跑云端
+// Keys 走 GitHub Secrets（部署时加密写入），不再随 dispatch 明文传递，公开仓运行记录零泄露
+// 若 Key 指纹变化（部署后改过 Key）→ 先自动重写 Secrets 再 dispatch（零 Key 时跳过：云端由 pollinations 免 Key 保底殿后）
+// ⚡ GENE9：未满足需求镜像随 dispatch 同步云端（App→云端数据面）
+// 🇨🇳 CN 多通道：直连+自动重试（借鉴热更通道思想·零配置）
+// 3 秒后找 runId（结果轮询入口；国内网络抖动时持续抓取最多 12 次，不轻易放弃）
+/*#__PURE__*/
+/*#__PURE__*/
+// 🔧 v2.5.104-live 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
+/*#__PURE__*/
+/*#__PURE__*/
+/* ================= 🇨🇳 云端 CN 多通道（借鉴热更多通道思想·第十九轮）=================
+   痛点：api.github.com 国内时好时坏。通道分工（Token 红线：Token 只走官方 api.github.com
+   或用户自选镜像 ghApiMirror——绝不塞给公共代理）：
+   ① 直连 api.github.com（默认）
+   ② 用户自选镜像（设置页选填，信任自担，默认关闭）
+   ③ 结果取回 jsDelivr 国内 CDN 通道（公共仓专用，agent.py latest.md 双写+purge 防缓存陈旧） */
+// 通道②：用户镜像优先（留空=直连官方）
+/*#__PURE__*/
+// 通道①②融合：dispatch POST 自动重试（网络波动退避重试，鉴权类错误立即返回；Promise 化不卡 UI 线程）
+/* 结果取回后自动清理：删 Actions 运行记录 + 删 results 文件（静默失败，不影响展示） */
+/*#__PURE__*/
+// 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.104-live 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
+// 97b：rpcJson 化（api 同步壳单发在桩下必占位→清理恒空跑，现走异步真值，静默失败不影响主链）
+/*#__PURE__*/
+/* ================= 定时任务页（v2.5.2：CatDesk 同款三 tab + ⋮ 菜单 + 模板库） ================= */
+/*#__PURE__*/
+// API 可能不通，静默失败（结果已到手，清理不是主链）
+// 🇨🇳 镜像通道②兑底：直连不通→用户镜像再试一次
+// 步数从结果文件头部读，失败时留空
+// ⚡ 119 轮：☁️任务结果认怠检测（死角补链）——云端回复承认做不到=需求落空，当场触发双端进化（0 秒列装链）
+// 结果已取回：自动删 run+结果文件，公开仓不留痕迹
+// 🧖 GEN3：云端 Agent 刚学完（learn_memory/手册归档已 commit 回仓），App 端当场拉取并集合并——云端→App 同拍自动同步
+// 🇨🇳 API 取文件不通→CDN 通道兜底再试一次（104 轮：先试本 run 专属文件，latest.md 可能已被更新一轮覆盖）
+// ⚡ 119 轮：CDN 通道同检认怠
+// 🔧 v2.5.104-live 104 轮：执行时长上屏+超时大白话指引
+// 🗂️ on=启用中 off=已暂停 tpl=模板（CatDesk 同款三 tab）
+// 📋 内置模板库（实打实可用：点"使用模板"预填创建）
+/* 👨‍🏫 专家注册表（第八注册表，CatPaw 同款「专家下拉」）：定时任务可选专家人设，执行时注入 system prompt（本地链/端侧链/云端链三路全生效）；
+   custom=读用户在插件页填写的自定义人设。Java AlarmReceiver 内置同款映射（expertSys）双端一致；进化新增专家只需同时扩 JS+Java 两表。 */
+// Java 端 expertSys 同款语义
+// 定时任务项目徽章用
+// 点外即收（CatDesk 同款）
+// save("alarms")→GEN4 钩子自动云同步
+// ⛔ 立即运行去抖（防双击双广播双执行）
+// ▶ 立即运行：Java 发同款广播复用 AlarmReceiver 全链（执行+通知+记录）
 function _wkProbe() {
-  _wkProbe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee44(text) {
-    var t, q, _kc, _key, ext, sj, title, pj, p, e, _t56;
-    return _regenerator().w(function (_context49) {
-      while (1) switch (_context49.p = _context49.n) {
+  _wkProbe = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46(text) {
+    var t, q, _kc, _key, ext, sj, title, pj, p, e, _t58;
+    return _regenerator().w(function (_context51) {
+      while (1) switch (_context51.p = _context51.n) {
         case 0:
-          _context49.p = 0;
+          _context51.p = 0;
           window.__wk = "";
           t = String(text || "");
           if (/(是什么|是什么意思|是谁|什么是|什么叫做|介绍一下|介绍下|百科|的定义|是指|为什么|为啥)/.test(t)) {
-            _context49.n = 1;
+            _context51.n = 1;
             break;
           }
-          return _context49.a(2);
+          return _context51.a(2);
         case 1:
           q = t.replace(/^(请问|告诉我|帮我查查|帮我|给我)/, "").replace(/(是什么|是什么意思|是谁|什么是|什么叫做|介绍一下|介绍下|百科|的定义|的定义是|是指什么|是啥|啥是|的意思|为什么|为啥)/g, "").replace(/[？?。的了]/g, "").trim();
           if (!(q.length < 2 || q.length > 40)) {
-            _context49.n = 2;
+            _context51.n = 2;
             break;
           }
-          return _context49.a(2);
+          return _context51.a(2);
         case 2:
           _kc = S.settings.wkCache || {};
           _key = q.slice(0, 20);
           ext = _kc[_key] && now() - _kc[_key].ts < 1800000 ? _kc[_key].h : null; // 30min 缓存
           if (ext) {
-            _context49.n = 8;
+            _context51.n = 8;
             break;
           }
-          _context49.n = 3;
+          _context51.n = 3;
           return wxFetch("https://zh.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + encodeURIComponent(q) + "&srlimit=1&format=json", 4000);
         case 3:
-          sj = _context49.v;
+          sj = _context51.v;
           if (!(!sj || !sj.query || !sj.query.search || !sj.query.search.length)) {
-            _context49.n = 4;
+            _context51.n = 4;
             break;
           }
-          return _context49.a(2);
+          return _context51.a(2);
         case 4:
           title = sj.query.search[0].title;
-          _context49.n = 5;
+          _context51.n = 5;
           return wxFetch("https://zh.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&titles=" + encodeURIComponent(title) + "&format=json", 4000);
         case 5:
-          pj = _context49.v;
+          pj = _context51.v;
           if (!(!pj || !pj.query || !pj.query.pages)) {
-            _context49.n = 6;
+            _context51.n = 6;
             break;
           }
-          return _context49.a(2);
+          return _context51.a(2);
         case 6:
           p = Object.values(pj.query.pages)[0];
           e = String(p.extract || "").replace(/\s+/g, " ").slice(0, 600);
           if (!(e.length < 30)) {
-            _context49.n = 7;
+            _context51.n = 7;
             break;
           }
-          return _context49.a(2);
+          return _context51.a(2);
         case 7:
           // 词条太薄不如不注
           ext = title + "：" + e;
@@ -8124,16 +8355,16 @@ function _wkProbe() {
           } catch (e2) {}
         case 8:
           window.__wk = "📚 百科知识实测情报（维基百科）：" + ext + "\n知识问答可结合上述实测作答（如与模型内在知识冲突，以此实测为准），绝不许装不知道。";
-          _context49.n = 10;
+          _context51.n = 10;
           break;
         case 9:
-          _context49.p = 9;
-          _t56 = _context49.v;
+          _context51.p = 9;
+          _t58 = _context51.v;
           window.__wk = "";
         case 10:
-          return _context49.a(2);
+          return _context51.a(2);
       }
-    }, _callee44, null, [[0, 9]]);
+    }, _callee46, null, [[0, 9]]);
   }));
   return _wkProbe.apply(this, arguments);
 }
@@ -8159,88 +8390,6 @@ setTimeout(function () {
     }
   } catch (e) {}
 }, 1500);
-;try{(window.__chunkOK=window.__chunkOK||[]).push(6)}catch(e){}</script>
-<script>// 🚀 v2.5.101-knowall：开局预热链首源连接（DNS+TLS+HTTP 先走通，首条消息首字直降 1~2 秒）
-/*#__PURE__*/
-/*#__PURE__*/
-// ☁️⚡ v2.5.101-knowall：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
-// ⚡ v2.5.51-human 闪电模式：短文本无图闲聊→快源提到链首（秒回体验；不影响最强模型做重活）
-// ⚡ 68c：Lite 档闪电阈值放宽至 180 字｜🖐️ 101 轮：自主指定档跳过快源插队（用户主权>闪电，指定的源就是链首）
-/*#__PURE__*/
-// 👁️ v2.5.34-vision：带图消息自动切免费视觉模型（glm-4v-flash/gemma-3/NIM vision——纯文本模型对 image_url 会 4xx）
-// 🩺 v2.5.101-knowall 100 轮：本源最近一次失败的真实 HTTP 码
-// 🗣️ 切源铁律文案=大白话（技术码只进括号小字）
-/*#__PURE__*/
-// 钥匙问题：不换会死循环，但要把修法说人话
-// 402=配额用完实锤
-// 网络/服务端打盹：当场纠正继续用——原地重试+3s 再试，绝不轻易换人
-// ⚖️铁律②①：模型停服切换=强制换该源可切换的最强模型重试（同源不换台，不浪费配额）
-// 👁️ 带图重试仍走视觉模型
-// ⚡ GENE9：需求落空即自动触发双端进化，进化到能做到为止
-// 🛡️ v2.5.53-audit 62 轮：会话+流双捕获——切会话/连发不再串写别家会话
-// 📎 多模态：图片 dataURL 走 image_url（OpenAI 兼容）；纯文本模型 4xx 自动故障转移到下一源
-// 🛡️ v2.5.101-knowall 111 轮致命修复：会话存储角色 "ai" 原样透传被 OpenAI 兼容源判非法角色 HTTP 400（每轮第二条起全链 400 实锤根因）——归一 assistant+空消息过滤（兼容导入的 assistant 历史）
-// 📴 端侧离线：推理在手机本地 llama.cpp，复用同一 SSE 回调协议（Java 推合成行）
-// 桥异常（旧APK等）：立即失败交上层切下一源，绝不悬挂
-// 无 Key（保底源）不发空 Bearer
-// 🩺 v2.5.101-knowall 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
-// 模型停服：拉黑+剔除+重拉清单
-// 本源失败（4xx/网络），交由上层切下一源
-// 🛡️ 62 轮：会话/流归属校验——非归属会话的 chunk 直接丢弃不写
-// aiIdx 对应的可能是最后一条 AI 消息（本实现每轮新建）
-// 🎬 v2.5.42-anime 番剧宫格：二列 grid+逐格台词+点格看大图（外链通道复用）
-// 📦 v2.5.47-inchat：对话框内交付（【交付:路径】→气泡内直接渲染）
-// 🛡️ 62 轮：真实索引
-/* ---- 云端：GitHub Actions ---- */
-/*#__PURE__*/
-// 🎁 v2.5.12-key：免 Key 保底源放行——模型 Key 一个不填也能跑云端
-// Keys 走 GitHub Secrets（部署时加密写入），不再随 dispatch 明文传递，公开仓运行记录零泄露
-// 若 Key 指纹变化（部署后改过 Key）→ 先自动重写 Secrets 再 dispatch（零 Key 时跳过：云端由 pollinations 免 Key 保底殿后）
-// ⚡ GENE9：未满足需求镜像随 dispatch 同步云端（App→云端数据面）
-// 🇨🇳 CN 多通道：直连+自动重试（借鉴热更通道思想·零配置）
-// 3 秒后找 runId（结果轮询入口；国内网络抖动时持续抓取最多 12 次，不轻易放弃）
-/*#__PURE__*/
-/*#__PURE__*/
-// 🔧 v2.5.101-knowall 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
-/*#__PURE__*/
-/*#__PURE__*/
-/* ================= 🇨🇳 云端 CN 多通道（借鉴热更多通道思想·第十九轮）=================
-   痛点：api.github.com 国内时好时坏。通道分工（Token 红线：Token 只走官方 api.github.com
-   或用户自选镜像 ghApiMirror——绝不塞给公共代理）：
-   ① 直连 api.github.com（默认）
-   ② 用户自选镜像（设置页选填，信任自担，默认关闭）
-   ③ 结果取回 jsDelivr 国内 CDN 通道（公共仓专用，agent.py latest.md 双写+purge 防缓存陈旧） */
-// 通道②：用户镜像优先（留空=直连官方）
-/*#__PURE__*/
-// 通道①②融合：dispatch POST 自动重试（网络波动退避重试，鉴权类错误立即返回；Promise 化不卡 UI 线程）
-/* 结果取回后自动清理：删 Actions 运行记录 + 删 results 文件（静默失败，不影响展示） */
-/*#__PURE__*/
-// 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.101-knowall 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
-// 97b：rpcJson 化（api 同步壳单发在桩下必占位→清理恒空跑，现走异步真值，静默失败不影响主链）
-/*#__PURE__*/
-/* ================= 定时任务页（v2.5.2：CatDesk 同款三 tab + ⋮ 菜单 + 模板库） ================= */
-/*#__PURE__*/
-// API 可能不通，静默失败（结果已到手，清理不是主链）
-// 🇨🇳 镜像通道②兑底：直连不通→用户镜像再试一次
-// 步数从结果文件头部读，失败时留空
-// 结果已取回：自动删 run+结果文件，公开仓不留痕迹
-// 🧖 GEN3：云端 Agent 刚学完（learn_memory/手册归档已 commit 回仓），App 端当场拉取并集合并——云端→App 同拍自动同步
-// 🇨🇳 API 取文件不通→CDN 通道兜底再试一次（104 轮：先试本 run 专属文件，latest.md 可能已被更新一轮覆盖）
-// 🔧 v2.5.101-knowall 104 轮：执行时长上屏+超时大白话指引
-// 🗂️ on=启用中 off=已暂停 tpl=模板（CatDesk 同款三 tab）
-// 📋 内置模板库（实打实可用：点"使用模板"预填创建）
-/* 👨‍🏫 专家注册表（第八注册表，CatPaw 同款「专家下拉」）：定时任务可选专家人设，执行时注入 system prompt（本地链/端侧链/云端链三路全生效）；
-   custom=读用户在插件页填写的自定义人设。Java AlarmReceiver 内置同款映射（expertSys）双端一致；进化新增专家只需同时扩 JS+Java 两表。 */
-// Java 端 expertSys 同款语义
-// 定时任务项目徽章用
-// 点外即收（CatDesk 同款）
-// save("alarms")→GEN4 钩子自动云同步
-// ⛔ 立即运行去抖（防双击双广播双执行）
-// ▶ 立即运行：Java 发同款广播复用 AlarmReceiver 全链（执行+通知+记录）
-// 🔀 分割铁律：电脑端/云端端/手机端定时任务互斥独立（三端）
-// 📋 模板 tab：实打实可用的预设模板，一键预填创建
-// 🛡️ 62 轮：云端合并字段 esc（裸拼即注入面）
-// 📁 CatPaw 同款「工作空间下拉」：任务绑定项目（三端分割铁律：只列当前端的项目）
 function sendStream(text, aiIdx, imgs, opts) {
   return new Promise(/*#__PURE__*/function () {
     var _ref6 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee11(res) {
@@ -8248,7 +8397,7 @@ function sendStream(text, aiIdx, imgs, opts) {
       return _regenerator().w(function (_context14) {
         while (1) switch (_context14.p = _context14.n) {
           case 0:
-            fastCloud = !!(opts && opts.cloud); // ☁️⚡ v2.5.101-knowall：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
+            fastCloud = !!(opts && opts.cloud); // ☁️⚡ v2.5.104-live：云端快车道标记——true 时链路含仅云端源（cloudflare/gemma 等），与云端 Agent 同一注册表全量参战（动态拉取/进化新增源自动吃进）
             try {
               window.__fastLane = fastCloud ? 1 : 0;
             } catch (e) {}
@@ -8279,7 +8428,7 @@ function sendStream(text, aiIdx, imgs, opts) {
           case 1:
             _context14.p = 1;
             _context14.n = 2;
-            return Promise.all([wxProbe(text), fxProbe(text), nsProbe(text), wkProbe(text)]);
+            return Promise.all([wxProbe(text), fxProbe(text), nsProbe(text), wkProbe(text), lvProbe(text)]);
           case 2:
             _context14.n = 4;
             break;
@@ -8307,7 +8456,7 @@ function sendStream(text, aiIdx, imgs, opts) {
                     ok = _context13.v;
                     stOf = function stOf() {
                       return window.__lastStreamStatus && window.__lastStreamStatus.pk === pk ? window.__lastStreamStatus.status || 0 : 0;
-                    }; // 🩺 v2.5.101-knowall 100 轮：本源最近一次失败的真实 HTTP 码
+                    }; // 🩺 v2.5.104-live 100 轮：本源最近一次失败的真实 HTTP 码
                     nxtName = chain[ci + 1] ? PROV[chain[ci + 1]].name : "其他免费源";
                     say = function say(txt) {
                       cur.msgs[aiIdx].content += "\n\n· " + txt;
@@ -8508,7 +8657,7 @@ function sendStream(text, aiIdx, imgs, opts) {
         }
       }, _callee11, null, [[1, 3]]);
     }));
-    return function (_x35) {
+    return function (_x36) {
       return _ref6.apply(this, arguments);
     };
   }());
@@ -8547,7 +8696,7 @@ function streamOnce(pk, model, text, aiIdx, imgs) {
         content: m.content
       };
     })), [
-    // 🛡️ v2.5.101-knowall 111 轮致命修复：会话存储角色 "ai" 原样透传被 OpenAI 兼容源判非法角色 HTTP 400（每轮第二条起全链 400 实锤根因）——归一 assistant+空消息过滤（兼容导入的 assistant 历史）
+    // 🛡️ v2.5.104-live 111 轮致命修复：会话存储角色 "ai" 原样透传被 OpenAI 兼容源判非法角色 HTTP 400（每轮第二条起全链 400 实锤根因）——归一 assistant+空消息过滤（兼容导入的 assistant 历史）
     lastUser]);
     var body = JSON.stringify({
       model,
@@ -8584,7 +8733,7 @@ function streamOnce(pk, model, text, aiIdx, imgs) {
             pk: pk,
             status: status,
             ts: now()
-          }; // 🩺 v2.5.101-knowall 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
+          }; // 🩺 v2.5.104-live 99 轮：失败原因留痕——切换文案带 HTTP 码（智谱为啥失败一眼可见）+429 限流退避重试
           if (status === 404 || status === 410) markDead(pk, model); // 模型停服：拉黑+剔除+重拉清单
           resolve(false);
           return;
@@ -8624,18 +8773,22 @@ function repaintBubble(idx, streaming) {
   var el = els[els.length - 1];
   if (!el) return;
   var m = cur.msgs[idx];
+  try {
+    m.ts = m.ts || now();
+  } catch (e) {} // 🕐 120 轮
   if (m.anime && m.anime.frames && m.anime.frames.length) {
     // 🎬 v2.5.42-anime 番剧宫格：二列 grid+逐格台词+点格看大图（外链通道复用）
     el.innerHTML = `<div style="font-weight:600;margin-bottom:6px">🎬《${esc(m.anime.title)}》</div>` + `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">` + m.anime.frames.map(function (f, i) {
       return `<a data-href="${esc(f.img)}" onclick="return false"><img src="${esc(f.img)}" alt="格${i + 1}" loading="lazy" style="width:100%;border-radius:8px;background:var(--card2);min-height:56px;aspect-ratio:16/9;object-fit:cover"/><div style="font-size:11.5px;margin-top:3px">${i + 1}. ${esc(f.cn)}</div></a>`;
-    }).join("") + `</div><div style="font-size:12px;color:var(--txt);opacity:.7;margin-top:6px">${esc(m.content || "")}</div>` + (m.meta ? `<div class="meta">${esc(m.meta)}</div>` : "");
+    }).join("") + `</div><div style="font-size:12px;color:var(--txt);opacity:.7;margin-top:6px">${esc(m.content || "")}</div>` + (m.meta ? `<div class="meta">${esc(m.meta)}</div>` : "") + `<div class="meta" style="margin-top:3px">🕐 ${fmtSec(m.ts)}</div>`;
     if (streaming) scrollBottom();
     return;
   }
-  el.innerHTML = m.cloud ? cloudInner(m, idx) : (m.think ? `<div class="think">${esc(m.think)}</div>` : "") + (pluginOn("md") ? md(dlvClean(m.content || "")) : esc(dlvClean(m.content || ""))) + (m.role === "ai" ? '<div data-dlv="1"></div>' : "") + (streaming ? '<span class="cursor"></span>' : "") + (m.meta ? `<div class="meta">${esc(m.meta)}</div>` : "");
+  el.innerHTML = m.cloud ? cloudInner(m, idx) : (m.think ? `<div class="think">${esc(m.think)}</div>` : "") + (pluginOn("md") ? md(dlvClean(m.content || "")) : esc(dlvClean(m.content || ""))) + (m.role === "ai" ? '<div data-dlv="1"></div>' : "") + (streaming ? '<span class="cursor"></span>' : "") + (m.meta ? `<div class="meta">${esc(m.meta)}</div>` : "") + `<div class="meta" style="margin-top:3px">🕐 ${fmtSec(m.ts)}</div>`;
   try {
+    m.ts = m.ts || now();
     deliverFill(idx, el);
-  } catch (e) {} // 📦 v2.5.47-inchat：对话框内交付（【交付:路径】→气泡内直接渲染）
+  } catch (e) {} // 📦 v2.5.47-inchat：对话框内交付（【交付:路径】→气泡内直接渲染）｜🕐 120 轮：无 ts 补定
   if (streaming) scrollBottom();
 }
 function cloudInner(m, myIdx) {
@@ -8651,31 +8804,32 @@ function cloudInner(m, myIdx) {
   var think = st.steps ? `<div class="think">⚙️ 已执行 ${st.steps} 步（Agent 循环：思考→工具→产出）</div>` : "";
   return `${badge}${think}<div style="margin-top:6px">${pluginOn("md") ? md(dlvClean(m.content) || "等待云端结果…") : esc(dlvClean(m.content) || "等待云端结果…")}</div>
     <div data-dlv="1"></div>
-    ${st.done ? "" : `<button class="btn gray sm" style="margin-top:8px" onclick="pollRun('${SID(cur.id)}',${myIdx2},'${st.runId || ""}',true)">🔄 刷新状态</button>`}`;
+    ${st.done ? "" : `<button class="btn gray sm" style="margin-top:8px" onclick="pollRun('${SID(cur.id)}',${myIdx2},'${st.runId || ""}',true)">🔄 刷新状态</button>`}<div class="meta" style="margin-top:3px">🕐 ${fmtSec(m.ts)}</div>`;
 }
-function sendCloud(_x36, _x37) {
+function sendCloud(_x37, _x38) {
   return _sendCloud.apply(this, arguments);
 }
 function _sendCloud() {
-  _sendCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee47(text, aiIdx) {
+  _sendCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee49(text, aiIdx) {
     var m, cfg, keys, polli, fp, msg, inputs, r, _findRun, submitOk, _s2;
-    return _regenerator().w(function (_context52) {
-      while (1) switch (_context52.n) {
+    return _regenerator().w(function (_context54) {
+      while (1) switch (_context54.n) {
         case 0:
           m = cur.msgs[aiIdx];
           m.cloud = {
             status: "queued",
             runId: "",
             done: false,
-            steps: 0
-          };
+            steps: 0,
+            prompt: String(text || "").slice(0, 2000)
+          }; // ⚡ 119 轮：存原任务快照——云端结果落定时认怠检测要拿它当进化使命原文
           repaintBubble(aiIdx, false);
-          _context52.n = 1;
+          _context54.n = 1;
           return ensureCloud();
         case 1:
-          cfg = _context52.v;
+          cfg = _context54.v;
           if (cfg.ok) {
-            _context52.n = 2;
+            _context54.n = 2;
             break;
           }
           m.cloud.status = "failure";
@@ -8683,7 +8837,7 @@ function _sendCloud() {
           m.content = "⚠️ 云端未就绪：" + cfg.msg + "\n\n请到「⚙️ 设置 → 云端算力」一键部署 GitHub 云端引擎后再试。";
           save("sessions");
           repaintBubble(aiIdx, false);
-          return _context52.a(2);
+          return _context54.a(2);
         case 2:
           keys = {};
           CHAIN.forEach(function (k) {
@@ -8691,13 +8845,13 @@ function _sendCloud() {
             if (p.on && p.key) keys[k] = p.key;
           });
           if (Object.keys(keys).length) {
-            _context52.n = 3;
+            _context54.n = 3;
             break;
           }
           // 🎁 v2.5.12-key：免 Key 保底源放行——模型 Key 一个不填也能跑云端
           polli = provs()["pollinations"];
           if (polli && polli.on) {
-            _context52.n = 3;
+            _context54.n = 3;
             break;
           }
           m.cloud.status = "failure";
@@ -8705,7 +8859,7 @@ function _sendCloud() {
           m.content = "⚠️ 还没有可用的免费模型源：免费注册任一平台填 Key（设置页，0 元），或保持「开箱保底」源 pollinations 开启即可零 Key 跑云端。";
           save("sessions");
           repaintBubble(aiIdx, false);
-          return _context52.a(2);
+          return _context54.a(2);
         case 3:
           // Keys 走 GitHub Secrets（部署时加密写入），不再随 dispatch 明文传递，公开仓运行记录零泄露
           // 若 Key 指纹变化（部署后改过 Key）→ 先自动重写 Secrets 再 dispatch（零 Key 时跳过：云端由 pollinations 免 Key 保底殿后）
@@ -8716,15 +8870,15 @@ function _sendCloud() {
             return k + ":" + v.length + ":" + v.slice(-4);
           }).join("|");
           if (!(Object.keys(keys).length && S.settings.secretsFp !== fp)) {
-            _context52.n = 5;
+            _context54.n = 5;
             break;
           }
-          _context52.n = 4;
+          _context54.n = 4;
           return putSecrets(S.settings.cloudRepo);
         case 4:
-          msg = _context52.v;
+          msg = _context54.v;
           if (!(msg && msg.startsWith("✗"))) {
-            _context52.n = 5;
+            _context54.n = 5;
             break;
           }
           m.cloud.status = "failure";
@@ -8732,7 +8886,7 @@ function _sendCloud() {
           m.content = "⚠️ Secrets 同步失败：" + msg + "\n\n请到设置页重新点「一键部署云端引擎」。";
           save("sessions");
           repaintBubble(aiIdx, false);
-          return _context52.a(2);
+          return _context54.a(2);
         case 5:
           inputs = {
             prompt: text,
@@ -8753,32 +8907,32 @@ function _sendCloud() {
               })
             })
           }; // ⚡ GENE9：未满足需求镜像随 dispatch 同步云端（App→云端数据面）
-          _context52.n = 6;
+          _context54.n = 6;
           return ghPostRetry(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/dispatches`, JSON.stringify({
             ref: "main",
             inputs
           }));
         case 6:
-          r = _context52.v;
+          r = _context54.v;
           // 🇨🇳 CN 多通道：直连+自动重试（借鉴热更通道思想·零配置）
           _findRun = function findRun(n) {
             // 3 秒后找 runId（结果轮询入口；国内网络抖动时持续抓取最多 12 次，不轻易放弃）
-            setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee45() {
+            setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee47() {
               var runs, run;
-              return _regenerator().w(function (_context50) {
-                while (1) switch (_context50.n) {
+              return _regenerator().w(function (_context52) {
+                while (1) switch (_context52.n) {
                   case 0:
                     if (!m.cloud.done) {
-                      _context50.n = 1;
+                      _context52.n = 1;
                       break;
                     }
-                    return _context50.a(2);
+                    return _context52.a(2);
                   case 1:
-                    _context50.n = 2;
+                    _context52.n = 2;
                     return rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/runs?per_page=5&_=${Date.now()}`, "GET", null, ghHeaders());
                   case 2:
-                    runs = _context50.v;
-                    // 🔧 v2.5.101-knowall 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
+                    runs = _context52.v;
+                    // 🔧 v2.5.104-live 104 轮：只认聊天 Agent 自己的运行——旧写法裸抓全仓最新一条，任务跑完自动跟一条 build-apk 运行就会捡错（把 build 当聊天任务，永远等不到结果）；&_ 破中间层缓存
                     if (runs.ok && runs.json && runs.json.workflow_runs && runs.json.workflow_runs.length) {
                       run = runs.json.workflow_runs[0];
                       m.cloud.runId = run.id;
@@ -8790,9 +8944,9 @@ function _sendCloud() {
                       }, 5000);
                     }
                   case 3:
-                    return _context50.a(2);
+                    return _context52.a(2);
                 }
-              }, _callee45);
+              }, _callee47);
             })), 3000);
           };
           submitOk = function submitOk(tag) {
@@ -8803,11 +8957,11 @@ function _sendCloud() {
             _findRun();
           };
           if (r) {
-            _context52.n = 8;
+            _context54.n = 8;
             break;
           }
           if (m.cloud.retriedOnce) {
-            _context52.n = 7;
+            _context54.n = 7;
             break;
           }
           m.cloud.retriedOnce = 1;
@@ -8815,24 +8969,24 @@ function _sendCloud() {
           save("sessions");
           repaintBubble(aiIdx, false);
           _s2 = cur;
-          setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee46() {
+          setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee48() {
             var r2;
-            return _regenerator().w(function (_context51) {
-              while (1) switch (_context51.n) {
+            return _regenerator().w(function (_context53) {
+              while (1) switch (_context53.n) {
                 case 0:
                   if (!(!_s2.msgs || _s2.msgs[aiIdx] !== m || m.cloud.done)) {
-                    _context51.n = 1;
+                    _context53.n = 1;
                     break;
                   }
-                  return _context51.a(2);
+                  return _context53.a(2);
                 case 1:
-                  _context51.n = 2;
+                  _context53.n = 2;
                   return ghPostRetry(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/workflows/agent.yml/dispatches`, JSON.stringify({
                     ref: "main",
                     inputs
                   }));
                 case 2:
-                  r2 = _context51.v;
+                  r2 = _context53.v;
                   if (r2 && r2.ok) submitOk("第二轮自动补射");else {
                     m.cloud.status = "failure";
                     m.cloud.done = true;
@@ -8841,21 +8995,21 @@ function _sendCloud() {
                     repaintBubble(aiIdx, false);
                   }
                 case 3:
-                  return _context51.a(2);
+                  return _context53.a(2);
               }
-            }, _callee46);
+            }, _callee48);
           })), 60000);
-          return _context52.a(2);
+          return _context54.a(2);
         case 7:
           m.cloud.status = "failure";
           m.cloud.done = true;
           m.content = "⚠️ 触发失败：网络到 GitHub 触发口暂时不通。请稍后长按消息重试。电脑/手机端/端侧离线不受影响。";
           save("sessions");
           repaintBubble(aiIdx, false);
-          return _context52.a(2);
+          return _context54.a(2);
         case 8:
           if (r.ok) {
-            _context52.n = 9;
+            _context54.n = 9;
             break;
           }
           m.cloud.status = "failure";
@@ -8863,7 +9017,7 @@ function _sendCloud() {
           m.content = "⚠️ 触发失败 HTTP " + r.status + "：" + (r.text || "").slice(0, 200);
           save("sessions");
           repaintBubble(aiIdx, false);
-          return _context52.a(2);
+          return _context54.a(2);
         case 9:
           m.content = "任务已提交到 GitHub Actions 免费算力，正在排队…（若 3 秒后长时间无结果，国内网络可长按消息手动重查，App 会自动走 jsDelivr 国内 CDN 通道取回）";
           m.cloud.dispatchTs = now();
@@ -8871,9 +9025,9 @@ function _sendCloud() {
           repaintBubble(aiIdx, false);
           _findRun();
         case 10:
-          return _context52.a(2);
+          return _context54.a(2);
       }
-    }, _callee47);
+    }, _callee49);
   }));
   return _sendCloud.apply(this, arguments);
 }
@@ -8887,124 +9041,124 @@ function ghApiBase() {
   var m = (S.settings.ghApiMirror || "").trim().replace(/\/+$/, "");
   return m ? m : "https://api.github.com";
 }
-function ghPostRetry(_x38, _x39, _x40) {
+function ghPostRetry(_x39, _x40, _x41) {
   return _ghPostRetry.apply(this, arguments);
 }
 function _ghPostRetry() {
-  _ghPostRetry = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee48(url, body, tries) {
+  _ghPostRetry = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee50(url, body, tries) {
     var i, r;
-    return _regenerator().w(function (_context53) {
-      while (1) switch (_context53.n) {
+    return _regenerator().w(function (_context55) {
+      while (1) switch (_context55.n) {
         case 0:
           // 通道①②融合：dispatch POST 自动重试（网络波动退避重试，鉴权类错误立即返回；Promise 化不卡 UI 线程）
           tries = tries || 3;
           i = 0;
         case 1:
           if (!(i < tries)) {
-            _context53.n = 6;
+            _context55.n = 6;
             break;
           }
-          _context53.n = 2;
+          _context55.n = 2;
           return rpcJson(url, "POST", body, ghHeaders());
         case 2:
-          r = _context53.v;
+          r = _context55.v;
           if (!r.ok) {
-            _context53.n = 3;
+            _context55.n = 3;
             break;
           }
-          return _context53.a(2, r);
+          return _context55.a(2, r);
         case 3:
           if (!(r.status === 401 || r.status === 403 || r.status === 422)) {
-            _context53.n = 4;
+            _context55.n = 4;
             break;
           }
-          return _context53.a(2, r);
+          return _context55.a(2, r);
         case 4:
           if (!(i < tries - 1)) {
-            _context53.n = 5;
+            _context55.n = 5;
             break;
           }
           toast("⚠️ 触发通道波动（HTTP " + r.status + "），" + (tries - i - 1) + " 次自动重试中…");
-          _context53.n = 5;
+          _context55.n = 5;
           return new Promise(function (res) {
             return setTimeout(res, 8000);
           });
         case 5:
           i++;
-          _context53.n = 1;
+          _context55.n = 1;
           break;
         case 6:
-          return _context53.a(2, null);
+          return _context55.a(2, null);
       }
-    }, _callee48);
+    }, _callee50);
   }));
   return _ghPostRetry.apply(this, arguments);
 }
-function cloudCdnFetch(_x41, _x42, _x43) {
+function cloudCdnFetch(_x42, _x43, _x44) {
   return _cloudCdnFetch.apply(this, arguments);
 }
 function _cloudCdnFetch() {
-  _cloudCdnFetch = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee49(runId, dispatchTs, file) {
-    var repo, f, runMatch, _t57;
-    return _regenerator().w(function (_context54) {
-      while (1) switch (_context54.p = _context54.n) {
+  _cloudCdnFetch = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee51(runId, dispatchTs, file) {
+    var repo, f, runMatch, _t59;
+    return _regenerator().w(function (_context56) {
+      while (1) switch (_context56.p = _context56.n) {
         case 0:
-          // 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.101-knowall 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
+          // 通道③：jsDelivr 国内 CDN 取结果（先 purge 破缓存再取，run 标记校验防陈旧）｜97b 轮 rpcJson 化；🔧 v2.5.104-live 104 轮：可选 file 参数（默认 latest.md；取 run-<id>.md 专用兜底——latest.md 可能已被更新一轮覆盖）
           repo = S.settings.cloudRepo;
           file = file || "latest.md";
           if (!(!repo || S.settings.repoVisibility === "private")) {
-            _context54.n = 1;
+            _context56.n = 1;
             break;
           }
-          return _context54.a(2, null);
+          return _context56.a(2, null);
         case 1:
-          _context54.p = 1;
-          _context54.n = 2;
+          _context56.p = 1;
+          _context56.n = 2;
           return rpcJson("https://purge.jsdelivr.net/gh/" + repo + "@main/results/" + file, "GET", null, {});
         case 2:
-          _context54.n = 3;
+          _context56.n = 3;
           return rpcJson("https://cdn.jsdelivr.net/gh/" + repo + "@main/results/" + file + "?_=" + Date.now(), "GET", null, {});
         case 3:
-          f = _context54.v;
+          f = _context56.v;
           if (!(!f.ok || !f.text)) {
-            _context54.n = 4;
+            _context56.n = 4;
             break;
           }
-          return _context54.a(2, null);
+          return _context56.a(2, null);
         case 4:
           runMatch = f.text.match(/^<!-- run:(\d+) -->/m);
           if (runMatch) {
-            _context54.n = 5;
+            _context56.n = 5;
             break;
           }
-          return _context54.a(2, null);
+          return _context56.a(2, null);
         case 5:
           if (!runId) {
-            _context54.n = 7;
+            _context56.n = 7;
             break;
           }
           if (!(runMatch[1] !== String(runId))) {
-            _context54.n = 6;
+            _context56.n = 6;
             break;
           }
-          return _context54.a(2, null);
+          return _context56.a(2, null);
         case 6:
-          _context54.n = 8;
+          _context56.n = 8;
           break;
         case 7:
           if (!(dispatchTs && +runMatch[1] < dispatchTs)) {
-            _context54.n = 8;
+            _context56.n = 8;
             break;
           }
-          return _context54.a(2, null);
+          return _context56.a(2, null);
         case 8:
-          return _context54.a(2, f.text);
+          return _context56.a(2, f.text);
         case 9:
-          _context54.p = 9;
-          _t57 = _context54.v;
-          return _context54.a(2, null);
+          _context56.p = 9;
+          _t59 = _context56.v;
+          return _context56.a(2, null);
       }
-    }, _callee49, null, [[1, 9]]);
+    }, _callee51, null, [[1, 9]]);
   }));
   return _cloudCdnFetch.apply(this, arguments);
 }
@@ -9044,35 +9198,35 @@ function cleanupRun(runId) {
     }, _callee12, null, [[0, 4]]);
   }))();
 }
-function pollRun(_x44, _x45, _x46, _x47) {
+function pollRun(_x45, _x46, _x47, _x48) {
   return _pollRun.apply(this, arguments);
 }
 function _pollRun() {
-  _pollRun = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee50(sid, aiIdx, runId, manual) {
-    var s, m, cdnTxt, stepMatch2, r, mirror, r2, run2, run, f, body, stepMatch, cdnTxt2, stepMatch3, elMin, _t58;
-    return _regenerator().w(function (_context55) {
-      while (1) switch (_context55.n) {
+  _pollRun = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52(sid, aiIdx, runId, manual) {
+    var s, m, cdnTxt, stepMatch2, r, mirror, r2, run2, run, f, body, stepMatch, _sc, _scc, cdnTxt2, stepMatch3, _sc2, _scc2, elMin, _t60;
+    return _regenerator().w(function (_context57) {
+      while (1) switch (_context57.n) {
         case 0:
           s = findSession(sid);
           if (!(!s || !runId)) {
-            _context55.n = 1;
+            _context57.n = 1;
             break;
           }
-          return _context55.a(2);
+          return _context57.a(2);
         case 1:
           m = s.msgs[aiIdx];
           if (!(!m || !m.cloud || m.cloud.done)) {
-            _context55.n = 2;
+            _context57.n = 2;
             break;
           }
-          return _context55.a(2);
+          return _context57.a(2);
         case 2:
-          _context55.n = 3;
+          _context57.n = 3;
           return cloudCdnFetch(runId, m.cloud.dispatchTs);
         case 3:
-          cdnTxt = _context55.v;
+          cdnTxt = _context57.v;
           if (!cdnTxt) {
-            _context55.n = 4;
+            _context57.n = 4;
             break;
           }
           stepMatch2 = cdnTxt.match(/^<!-- steps:(\d+) -->/);
@@ -9093,28 +9247,28 @@ function _pollRun() {
             repaintBubble(aiIdx, false);
           }
           if (manual) toast("✅ 已经 jsDelivr 国内 CDN 通道取回结果");
-          return _context55.a(2);
+          return _context57.a(2);
         case 4:
-          _context55.n = 5;
+          _context57.n = 5;
           return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/actions/runs/${runId}?_=${Date.now()}`, "GET", null, ghHeaders());
         case 5:
-          r = _context55.v;
+          r = _context57.v;
           if (r.ok) {
-            _context55.n = 8;
+            _context57.n = 8;
             break;
           }
           // 🇨🇳 镜像通道②兑底：直连不通→用户镜像再试一次
           mirror = (S.settings.ghApiMirror || "").trim();
           if (!mirror) {
-            _context55.n = 7;
+            _context57.n = 7;
             break;
           }
-          _context55.n = 6;
+          _context57.n = 6;
           return rpcJson(`${ghApiBase()}/repos/${S.settings.cloudRepo}/actions/runs/${runId}`, "GET", null, ghHeaders());
         case 6:
-          r2 = _context55.v;
+          r2 = _context57.v;
           if (!(r2.ok && r2.json)) {
-            _context55.n = 7;
+            _context57.n = 7;
             break;
           }
           run2 = r2.json;
@@ -9125,26 +9279,26 @@ function _pollRun() {
             cur = findSession(sid);
             repaintBubble(aiIdx, false);
           }
-          return _context55.a(2);
+          return _context57.a(2);
         case 7:
           if (manual) toast("查询失败 HTTP " + r.status + "（国内网络波动；结果产出后可自动走 jsDelivr 国内 CDN 通道取回）");
-          return _context55.a(2);
+          return _context57.a(2);
         case 8:
           run = r.json;
           m.cloud.status = run.status === "completed" ? run.conclusion === "success" ? "success" : run.conclusion : run.status;
           // 步数从结果文件头部读，失败时留空
           if (!(m.cloud.status === "success")) {
-            _context55.n = 15;
+            _context57.n = 15;
             break;
           }
-          _context55.n = 9;
+          _context57.n = 9;
           return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/contents/results/run-${runId}.md?_=${Date.now()}`, "GET", null, _objectSpread(_objectSpread({}, ghHeaders()), {}, {
             Accept: "application/vnd.github.raw"
           }));
         case 9:
-          f = _context55.v;
+          f = _context57.v;
           if (!f.ok) {
-            _context55.n = 10;
+            _context57.n = 10;
             break;
           }
           body = f.text;
@@ -9154,27 +9308,34 @@ function _pollRun() {
           m.cloud.done = true;
           m.meta = "GitHub Actions · run #" + run.run_number;
           save("sessions");
+          _sc = cur.msgs[aiIdx];
+          _scc = _sc && _sc.cloud && _sc.cloud.prompt ? _sc.cloud.prompt : String(m.content || "").slice(0, 120); // ⚡ 119 轮：☁️任务结果认怠检测（死角补链）——云端回复承认做不到=需求落空，当场触发双端进化（0 秒列装链）
+          if (/(?:很抱歉|抱歉|不好意思|很遗憾)[^\n]{0,40}(做不到|无能为力|无法(?:完成|做到|实现|生成|提供|访问|获取|查询|回答|联网)|(?:直接|实时)?访问(?:互联网|网络))|(?:抱歉|很遗憾)[^\n]{0,40}超出了?我(?:目前)?的(?:能力|能力范围)|(?:我)?没有(?:自我进化|进化)(?:的)?能力/.test(m.content || "")) {
+            try {
+              demandMiss(_scc, "☁️云端回复承认做不到：" + ((m.content || "").match(/(?:很抱歉|抱歉|不好意思|很遗憾)[^\n]{0,60}/) || [""])[0].slice(0, 100));
+            } catch (e) {}
+          }
           cleanupRun(runId); // 结果已取回：自动删 run+结果文件，公开仓不留痕迹
           try {
             pullMindCloud(true);
           } catch (e) {} // 🧖 GEN3：云端 Agent 刚学完（learn_memory/手册归档已 commit 回仓），App 端当场拉取并集合并——云端→App 同拍自动同步
-          _context55.n = 14;
+          _context57.n = 14;
           break;
         case 10:
-          _context55.n = 11;
+          _context57.n = 11;
           return cloudCdnFetch(runId, m.cloud.dispatchTs, "run-" + runId + ".md");
         case 11:
-          _t58 = _context55.v;
-          if (_t58) {
-            _context55.n = 13;
+          _t60 = _context57.v;
+          if (_t60) {
+            _context57.n = 13;
             break;
           }
-          _context55.n = 12;
+          _context57.n = 12;
           return cloudCdnFetch(runId, m.cloud.dispatchTs);
         case 12:
-          _t58 = _context55.v;
+          _t60 = _context57.v;
         case 13:
-          cdnTxt2 = _t58;
+          cdnTxt2 = _t60;
           // 🇨🇳 API 取文件不通→CDN 通道兜底再试一次（104 轮：先试本 run 专属文件，latest.md 可能已被更新一轮覆盖）
           if (cdnTxt2) {
             stepMatch3 = cdnTxt2.match(/^<!-- steps:(\d+) -->/);
@@ -9183,13 +9344,20 @@ function _pollRun() {
             m.cloud.done = true;
             m.meta = "GitHub Actions · run #" + runId + "（CN CDN 通道取回）";
             save("sessions");
+            _sc2 = cur.msgs[aiIdx];
+            _scc2 = _sc2 && _sc2.cloud && _sc2.cloud.prompt ? _sc2.cloud.prompt : String(m.content || "").slice(0, 120); // ⚡ 119 轮：CDN 通道同检认怠
+            if (/(?:很抱歉|抱歉|不好意思|很遗憾)[^\n]{0,40}(做不到|无能为力|无法(?:完成|做到|实现|生成|提供|访问|获取|查询|回答|联网)|(?:直接|实时)?访问(?:互联网|网络))|(?:抱歉|很遗憾)[^\n]{0,40}超出了?我(?:目前)?的(?:能力|能力范围)|(?:我)?没有(?:自我进化|进化)(?:的)?能力/.test(m.content || "")) {
+              try {
+                demandMiss(_scc2, "☁️云端回复承认做不到：" + ((m.content || "").match(/(?:很抱歉|抱歉|不好意思|很遗憾)[^\n]{0,60}/) || [""])[0].slice(0, 100));
+              } catch (e) {}
+            }
           } else {
             m.content = "✅ 云端执行成功，但结果文件读取失败（API 不通且 CDN 无结果）：稍后重查会自动走 jsDelivr 国内 CDN 通道，或到 GitHub 仓库查看日志";
             m.cloud.done = true;
             save("sessions");
           }
         case 14:
-          _context55.n = 16;
+          _context57.n = 16;
           break;
         case 15:
           if (m.cloud.status === "failure" || m.cloud.status === "cancelled") {
@@ -9198,7 +9366,7 @@ function _pollRun() {
             save("sessions");
             cleanupRun(runId);
           } else {
-            elMin = Math.max(0, Math.round((now() - (m.cloud.dispatchTs || now())) / 60000)); // 🔧 v2.5.101-knowall 104 轮：执行时长上屏+超时大白话指引
+            elMin = Math.max(0, Math.round((now() - (m.cloud.dispatchTs || now())) / 60000)); // 🔧 v2.5.104-live 104 轮：执行时长上屏+超时大白话指引
             m.content = "GitHub Actions 免费算力执行中…（status: " + (run.status || "queued") + "，已运行 " + elMin + " 分钟）" + (elMin >= 5 ? "\n\n· 免费服务器偶尔排队拥堵：再等等或过会儿再点「刷新状态」；结果一出会自动取回，不用盯着。" : "");
             if (manual) toast(elMin >= 5 ? "已运行 " + elMin + " 分钟（免费服务器偶尔排队拥堵，稍后再刷新即可）" : "仍在执行: " + (run.status || "queued") + "（已运行 " + elMin + " 分钟）");
           }
@@ -9208,9 +9376,9 @@ function _pollRun() {
             repaintBubble(aiIdx, false);
           }
         case 17:
-          return _context55.a(2);
+          return _context57.a(2);
       }
-    }, _callee50);
+    }, _callee52);
   }));
   return _pollRun.apply(this, arguments);
 }
@@ -9373,6 +9541,112 @@ function tplAlarm(i) {
     enabled: 1
   }, tp), 0);
 }
+;try{(window.__chunkOK=window.__chunkOK||[]).push(7)}catch(e){}</script>
+<script>// 🔀 分割铁律：电脑端/云端端/手机端定时任务互斥独立（三端）
+// 📋 模板 tab：实打实可用的预设模板，一键预填创建
+// 🛡️ 62 轮：云端合并字段 esc（裸拼即注入面）
+// 📁 CatPaw 同款「工作空间下拉」：任务绑定项目（三端分割铁律：只列当前端的项目）
+// 🧮 CatPaw 同款「模型选择下拉」：全源全模型 optgroup 分组（含端侧离线），外加自动最强/深度思考两智能档
+// 🧮 模型下拉三态：auto:=自动最强 | think:=深度思考 | prov::model=指定源指定模型
+// 未勾=跟随全局（不写字段）
+// 🛡️ 编辑期间被云同步删除不崩 // ✏️ 编辑不改启停态（暂停任务编辑后仍暂停，恢复须经 ⋮ 菜单/开关） // 技能全部取消勾选时显式删旧字段（Object.assign 不删键，不清理则旧 skills 永远生效）
+/* ================= 项目页 ================= */
+// 🔀 分割铁律：项目按端归属互斥独立（三端）
+// 云端模式：额外展示云端仓里的远端项目（可拉回本地）
+// 📁 93 轮：任务页 chips ➕ 新建分组复用同一弹层（分组=项目）
+// 🔀 分割铁律：新建项目归属当前端（三端：local/cloud/phone）
+// 📁 93 轮：从任务页建的分组就地刷新 chips（不跳走）
+/* ================= ☁️ catdesk 式单项目云同步（本地⇄云端仓双向） =================
+   分割铁律：本地端与云端端视图完全互斥独立；同步是唯一的桥——
+   syncProject：把单个项目（含任务对话内容）打包推到云端仓 cloud/projects/<id>.json；
+   pullCloudProjects：列出云端仓全部远端项目回显；importCloudProject：把远端项目拉回本地。
+   与 catdesk 同款能力：任意单项目一键同步、云端仓为唯一真相、无 Key 无密码外泄。 */
+// ☁️ 项目同步核心（静默：自动重推用；返回 {ok,n}，无 UI 副作用）
+// 该项目下全部任务（本地+云端归属均同步，云端仓为准）
+// 无 Key 无 Secret：仅项目内容（v2.5.104-live：角色同步归一）
+// ☁️ 单项目一键同步到云端仓（手动版：核心+UI 反馈+记忆沉淀）
+// 🧖 同步动作沉淀永久记忆
+// 云端模式：云端仓远端项目列表（拉取回显）
+// 从云端仓列 cloud/projects/ 目录
+// 远端项目拉回本地（catdesk 式：云端仓→本地）
+// id 去重：不重复导入
+// v2.5.104-live：导入归一存储态 ai（App 内统一存 ai，发送时再归一 assistant）
+// ♻️ v2.5.19-audit5：云端拉回导入同样封顶 200
+/* ================= 🔗 GEN4·全仓心跳（任何变动·双向完全自动同步） =================
+   云端仓任何一层的变动（记忆/手册/体检报告/每日情报/升级包/远端项目），App 端最坏一个心跳周期内自动到达；
+   App 端项目产生新对话，曾同步过的项目自动重推云端——两端任何变动零人工自动对齐。 */
+// 🧠 v2.5.26-brain 门铃模式实时联动：云端任何工作流 commit 后写 cloud/ping.json 递增铃号；
+// App 在已有动作触点（启动/落盘推送/聊天发送）顺带查铃（2min 防抖）——铃号变→四扇门全开无节流强拉（记忆/状态/体检/项目）。
+// 不轮询不耗电：云端有事才拉、没事零请求；把死板的 30min 定时器升级为事件驱动实时同步（类脑：有新事立刻想起）
+// 2min 防抖
+// 🧠 v2.5.26-brain：门铃触发强拉版（绕过节流）
+/*#__PURE__*/
+/*#__PURE__*/
+// 回收云端体检报告（vuln.yml 每次自检 commit 回仓；App 原先只在手动同拍时看一眼——现常驻自动回收）
+// 30min 节流
+// 🧖 异常自动沉淀记忆（去重防轰炸）
+// 🧬 GENE6·双端互拍：云端体检红项→App 端自动唤醒进化机器（云端自己也在进化，双端同时攻坚；6h 节流共用 vulnEvolveTs）
+// 🧬 GENE6 双端互拍：云端引擎自主进化了 agent.py（EVOLVE_N 递增）→ App 端自动主动感知：留痕+系统通知+记录版本（重新部署时自动保护不覆盖）；🇨🇳 jsDelivr CDN 通道先行（国内免墙免 Token），失败回退 raw→API
+// 🔔 v2.5.104-live：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
+// 升级包心跳（其他设备发布的更新，挂机时最坏 2h 自动拉到——不必等次日）
+// 2h 节流
+// 静默：拉到合格新包才走应用+发布链，平时零打扰
+// 🧠 v2.5.26-brain：门铃触发强拉版（绕过节流）
+// 云端项目列表静默拉取（远端新项目自动出现在云端页，不用手点）
+// 30min 节流
+// 📤 App→云：曾同步过的项目产生了新对话 → 自动重推云端（每项目 1h 节流；云端仓始终是最新全量）
+// 从未同步过的项目不自动推（首次同步仍由用户点 ☁️ 决定）
+// 1h/项目 节流
+// 有新对话/新内容 → 静默重推
+/* ================= 🗂️ GEN4·全量状态同步（会话/定时任务/插件——除密钥外的一切变动双向自动同步） =================
+   save("sessions"/"alarms"/"plugins"/"projects") 任何落盘 → 防抖自动推 cloud/state.json；
+   心跳/启动/回前台自动拉取并集合并。删除走墓碑（防"已删定时任务从云端复活再触发"）。
+   安全边界（有意设计）：providers API Key、GitHub Token 等密钥永不入仓（公共仓安全）。 */
+/*#__PURE__*/
+// 🔗 GEN4·全仓心跳主节拍：双端任何变动，另一端自动对齐（每 10min；各子项自带节流防频）
+// 🧬 每日自主进化（24h 节流；只依赖热更运行时+免费源 Key，不依赖云端部署——刻意放在总守卫之前）
+// 未部署云端：仅进化照常，其余云端同步子项空转零成本
+// 记忆/手册（10min 节流）
+// 每日情报 models.json（6h 节流）
+// 升级包 cloud/update/（2h 节流）
+// 云端体检报告 vuln_report.json（30min 节流）
+// 🧬 GENE6：云端引擎自主进化感知（EVOLVE_N 递增→留痕+通知+部署保护）
+// 📰 v2.5.104-live：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
+// 🧬 v2.5.104-live：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
+// 远端项目列表（30min 节流）
+// 本地项目新对话自动重推（1h/项目节流）
+// 全量状态（会话/定时/插件，30min 节流）
+// 💗 v2.5.29-soul：生命体征（心情/日记/问候，10min 节流——持续感知它的活着）
+// 任何数据面落盘 → 30s 防抖推送（未部署云端记脏旗标，部署后补推）
+// 🧬Reload窗口保险：1.5s热重载会杀死下方30s定时器，此持久旗标保证重载后启动补推仍能触发（推送成功才清，与mindDirty同模式）
+// 全量状态快照（会话/定时/插件开关+人设；绝不含任何密钥）
+// 🛡️ v2.5.57-wire 66 轮：快照补 provider/think/expert/projectId——旧版丢字段，另一设备导入后专家人设/深度思考/项目绑定/指定源全静默丢失，定时任务人格降级
+// id 并集合并：同 id 取新者（墓碑命中跳过——删除必须传播）
+// 📤 全量状态推送（先拉合并再推，不覆盖其他设备新写）
+/*#__PURE__*/
+/*#__PURE__*/
+/* ================= 📱 手机页：文件/应用操控台（手机端独立端口主界面） =================
+   🔀 分割铁律：手机端与电脑端、云端端同级别独立；本页=手机端的"手"的遥控台：
+   文件浏览/读写/新建/删除/搜索（PHB 原生桥）+ 应用枚举/一键启动 + 设备状态 +
+   授权引导。与手机端 Agent（phoneSend 工具循环）共用同一套 PHONE_TOOLS 工具——
+   人工与 AI 同源同能力，与电脑端操控电脑完全对齐。 */
+/*#__PURE__*/
+// 📥 云端状态拉取并集合并（30min 节流；stateSyncing 锁防合并落盘回环触发推送）
+// 人设：仅本地为空时采纳（低敏偏好）
+// 🧬 v2.5.22-chan6：反向闭环——云端进化器写的 chanPrio（通道优先级策略）拉回本地生效；进化器自主调整通道策略→App 下一拍同拍生效
+// 🧬 v2.5.23-scout：进化器提名权——云端可写 scoutPool 提名新镜像候选，拉回后由探索器自动实测验证固化；安全闸：type 白名单+base 纯域名（杜绝 URL 注入），上限 20 个
+// 🧬 v2.5.24-mind：模型源层反向闭环——进化器提名的 provPool（新免费模型源候选）拉回，探索器下一拍实测验证固化；安全闸 provCandValid+上限 5 个
+// 🧬 v2.5.25-auto8：进化策略参数拉回——进化器写的 evoCfg（连败阈值/步长/延迟权重/淘汰阈值/探索节拍）即时生效；⚖️ 值域白名单硬闸：越界一律拒收（2成铁底永不让渡）
+// 🛡️ v2.5.53-audit 62 轮：解锁反向锁（拉取本身就在 stateSyncing=true 区间内，旧锁条件恒 false=进化器调参永远拉不回）
+// 🧠 v2.5.26-brain：睡眠整理成果感知——云端凌晨四工序战果（合并/压缩/强化/淡忘计数）拉回沉淀为记忆，进化器据此评估记忆库健康
+// 当前浏览目录（空=根目录选择页）
+// 🛡️ v2.5.55-pulse 64 轮：phoneView 记录原文件尺寸（截断预览保护——phoneSave 覆盖前对拍）
+// 🛡️ v2.5.53-audit 62 轮修复：先反斜杠/单引号转义再 esc——旧版 esc 先行把 ' 变 &#39; 导致 replace 死代码，HTML 解码回 ' 击穿单引号字符串
+// 🔗 GEN4：人工操控同样强制留痕+镜像
+// —— 文件浏览器 ——
+// —— 应用启动器 ——
+// —— 设备状态 ——
+// 已在目录中则自动加载
 function pageAlarms() {
   var all = (S.alarms.list || []).filter(function (t) {
     return alarmScope(t) === curScope();
@@ -9448,112 +9722,6 @@ function alarmProjSel(t) {
     return `<option value="${esc(p.id)}" ${t.projectId === p.id ? "selected" : ""}>📁 ${esc(p.name)}</option>`;
   }).join("")}</select>`;
 }
-;try{(window.__chunkOK=window.__chunkOK||[]).push(7)}catch(e){}</script>
-<script>// 🧮 CatPaw 同款「模型选择下拉」：全源全模型 optgroup 分组（含端侧离线），外加自动最强/深度思考两智能档
-// 🧮 模型下拉三态：auto:=自动最强 | think:=深度思考 | prov::model=指定源指定模型
-// 未勾=跟随全局（不写字段）
-// 🛡️ 编辑期间被云同步删除不崩 // ✏️ 编辑不改启停态（暂停任务编辑后仍暂停，恢复须经 ⋮ 菜单/开关） // 技能全部取消勾选时显式删旧字段（Object.assign 不删键，不清理则旧 skills 永远生效）
-/* ================= 项目页 ================= */
-// 🔀 分割铁律：项目按端归属互斥独立（三端）
-// 云端模式：额外展示云端仓里的远端项目（可拉回本地）
-// 📁 93 轮：任务页 chips ➕ 新建分组复用同一弹层（分组=项目）
-// 🔀 分割铁律：新建项目归属当前端（三端：local/cloud/phone）
-// 📁 93 轮：从任务页建的分组就地刷新 chips（不跳走）
-/* ================= ☁️ catdesk 式单项目云同步（本地⇄云端仓双向） =================
-   分割铁律：本地端与云端端视图完全互斥独立；同步是唯一的桥——
-   syncProject：把单个项目（含任务对话内容）打包推到云端仓 cloud/projects/<id>.json；
-   pullCloudProjects：列出云端仓全部远端项目回显；importCloudProject：把远端项目拉回本地。
-   与 catdesk 同款能力：任意单项目一键同步、云端仓为唯一真相、无 Key 无密码外泄。 */
-// ☁️ 项目同步核心（静默：自动重推用；返回 {ok,n}，无 UI 副作用）
-// 该项目下全部任务（本地+云端归属均同步，云端仓为准）
-// 无 Key 无 Secret：仅项目内容（v2.5.101-knowall：角色同步归一）
-// ☁️ 单项目一键同步到云端仓（手动版：核心+UI 反馈+记忆沉淀）
-// 🧖 同步动作沉淀永久记忆
-// 云端模式：云端仓远端项目列表（拉取回显）
-// 从云端仓列 cloud/projects/ 目录
-// 远端项目拉回本地（catdesk 式：云端仓→本地）
-// id 去重：不重复导入
-// v2.5.101-knowall：导入归一存储态 ai（App 内统一存 ai，发送时再归一 assistant）
-// ♻️ v2.5.19-audit5：云端拉回导入同样封顶 200
-/* ================= 🔗 GEN4·全仓心跳（任何变动·双向完全自动同步） =================
-   云端仓任何一层的变动（记忆/手册/体检报告/每日情报/升级包/远端项目），App 端最坏一个心跳周期内自动到达；
-   App 端项目产生新对话，曾同步过的项目自动重推云端——两端任何变动零人工自动对齐。 */
-// 🧠 v2.5.26-brain 门铃模式实时联动：云端任何工作流 commit 后写 cloud/ping.json 递增铃号；
-// App 在已有动作触点（启动/落盘推送/聊天发送）顺带查铃（2min 防抖）——铃号变→四扇门全开无节流强拉（记忆/状态/体检/项目）。
-// 不轮询不耗电：云端有事才拉、没事零请求；把死板的 30min 定时器升级为事件驱动实时同步（类脑：有新事立刻想起）
-// 2min 防抖
-// 🧠 v2.5.26-brain：门铃触发强拉版（绕过节流）
-/*#__PURE__*/
-/*#__PURE__*/
-// 回收云端体检报告（vuln.yml 每次自检 commit 回仓；App 原先只在手动同拍时看一眼——现常驻自动回收）
-// 30min 节流
-// 🧖 异常自动沉淀记忆（去重防轰炸）
-// 🧬 GENE6·双端互拍：云端体检红项→App 端自动唤醒进化机器（云端自己也在进化，双端同时攻坚；6h 节流共用 vulnEvolveTs）
-// 🧬 GENE6 双端互拍：云端引擎自主进化了 agent.py（EVOLVE_N 递增）→ App 端自动主动感知：留痕+系统通知+记录版本（重新部署时自动保护不覆盖）；🇨🇳 jsDelivr CDN 通道先行（国内免墙免 Token），失败回退 raw→API
-// 🔔 v2.5.101-knowall：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
-// 升级包心跳（其他设备发布的更新，挂机时最坏 2h 自动拉到——不必等次日）
-// 2h 节流
-// 静默：拉到合格新包才走应用+发布链，平时零打扰
-// 🧠 v2.5.26-brain：门铃触发强拉版（绕过节流）
-// 云端项目列表静默拉取（远端新项目自动出现在云端页，不用手点）
-// 30min 节流
-// 📤 App→云：曾同步过的项目产生了新对话 → 自动重推云端（每项目 1h 节流；云端仓始终是最新全量）
-// 从未同步过的项目不自动推（首次同步仍由用户点 ☁️ 决定）
-// 1h/项目 节流
-// 有新对话/新内容 → 静默重推
-/* ================= 🗂️ GEN4·全量状态同步（会话/定时任务/插件——除密钥外的一切变动双向自动同步） =================
-   save("sessions"/"alarms"/"plugins"/"projects") 任何落盘 → 防抖自动推 cloud/state.json；
-   心跳/启动/回前台自动拉取并集合并。删除走墓碑（防"已删定时任务从云端复活再触发"）。
-   安全边界（有意设计）：providers API Key、GitHub Token 等密钥永不入仓（公共仓安全）。 */
-/*#__PURE__*/
-// 🔗 GEN4·全仓心跳主节拍：双端任何变动，另一端自动对齐（每 10min；各子项自带节流防频）
-// 🧬 每日自主进化（24h 节流；只依赖热更运行时+免费源 Key，不依赖云端部署——刻意放在总守卫之前）
-// 未部署云端：仅进化照常，其余云端同步子项空转零成本
-// 记忆/手册（10min 节流）
-// 每日情报 models.json（6h 节流）
-// 升级包 cloud/update/（2h 节流）
-// 云端体检报告 vuln_report.json（30min 节流）
-// 🧬 GENE6：云端引擎自主进化感知（EVOLVE_N 递增→留痕+通知+部署保护）
-// 📰 v2.5.101-knowall：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
-// 🧬 v2.5.101-knowall：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
-// 远端项目列表（30min 节流）
-// 本地项目新对话自动重推（1h/项目节流）
-// 全量状态（会话/定时/插件，30min 节流）
-// 💗 v2.5.29-soul：生命体征（心情/日记/问候，10min 节流——持续感知它的活着）
-// 任何数据面落盘 → 30s 防抖推送（未部署云端记脏旗标，部署后补推）
-// 🧬Reload窗口保险：1.5s热重载会杀死下方30s定时器，此持久旗标保证重载后启动补推仍能触发（推送成功才清，与mindDirty同模式）
-// 全量状态快照（会话/定时/插件开关+人设；绝不含任何密钥）
-// 🛡️ v2.5.57-wire 66 轮：快照补 provider/think/expert/projectId——旧版丢字段，另一设备导入后专家人设/深度思考/项目绑定/指定源全静默丢失，定时任务人格降级
-// id 并集合并：同 id 取新者（墓碑命中跳过——删除必须传播）
-// 📤 全量状态推送（先拉合并再推，不覆盖其他设备新写）
-/*#__PURE__*/
-/*#__PURE__*/
-/* ================= 📱 手机页：文件/应用操控台（手机端独立端口主界面） =================
-   🔀 分割铁律：手机端与电脑端、云端端同级别独立；本页=手机端的"手"的遥控台：
-   文件浏览/读写/新建/删除/搜索（PHB 原生桥）+ 应用枚举/一键启动 + 设备状态 +
-   授权引导。与手机端 Agent（phoneSend 工具循环）共用同一套 PHONE_TOOLS 工具——
-   人工与 AI 同源同能力，与电脑端操控电脑完全对齐。 */
-/*#__PURE__*/
-// 📥 云端状态拉取并集合并（30min 节流；stateSyncing 锁防合并落盘回环触发推送）
-// 人设：仅本地为空时采纳（低敏偏好）
-// 🧬 v2.5.22-chan6：反向闭环——云端进化器写的 chanPrio（通道优先级策略）拉回本地生效；进化器自主调整通道策略→App 下一拍同拍生效
-// 🧬 v2.5.23-scout：进化器提名权——云端可写 scoutPool 提名新镜像候选，拉回后由探索器自动实测验证固化；安全闸：type 白名单+base 纯域名（杜绝 URL 注入），上限 20 个
-// 🧬 v2.5.24-mind：模型源层反向闭环——进化器提名的 provPool（新免费模型源候选）拉回，探索器下一拍实测验证固化；安全闸 provCandValid+上限 5 个
-// 🧬 v2.5.25-auto8：进化策略参数拉回——进化器写的 evoCfg（连败阈值/步长/延迟权重/淘汰阈值/探索节拍）即时生效；⚖️ 值域白名单硬闸：越界一律拒收（2成铁底永不让渡）
-// 🛡️ v2.5.53-audit 62 轮：解锁反向锁（拉取本身就在 stateSyncing=true 区间内，旧锁条件恒 false=进化器调参永远拉不回）
-// 🧠 v2.5.26-brain：睡眠整理成果感知——云端凌晨四工序战果（合并/压缩/强化/淡忘计数）拉回沉淀为记忆，进化器据此评估记忆库健康
-// 当前浏览目录（空=根目录选择页）
-// 🛡️ v2.5.55-pulse 64 轮：phoneView 记录原文件尺寸（截断预览保护——phoneSave 覆盖前对拍）
-// 🛡️ v2.5.53-audit 62 轮修复：先反斜杠/单引号转义再 esc——旧版 esc 先行把 ' 变 &#39; 导致 replace 死代码，HTML 解码回 ' 击穿单引号字符串
-// 🔗 GEN4：人工操控同样强制留痕+镜像
-// —— 文件浏览器 ——
-// —— 应用启动器 ——
-// —— 设备状态 ——
-// 已在目录中则自动加载
-// 根目录选择页
-// 查看文件：预览/编辑/追加
-// 🛡️ v2.5.55-pulse 64 轮：记录原文件尺寸（被截断时=原大小），phoneSave 覆盖保护用
-// 🛡️ v2.5.55-pulse 64 轮：预览截断保护——预览只读前 30000 字符，直接覆盖会把截断版全文写回毁掉超界内容；提示改用追加
 function alarmModelSel(t) {
   // 🧮 CatPaw 同款「模型选择下拉」：全源全模型 optgroup 分组（含端侧离线），外加自动最强/深度思考两智能档
   var opts = [`<option value="auto:" ${!t.model && !t.think || !t.provider && t.model === effectiveModel() && !t.think ? "selected" : ""}>⚡ 自动最强（跟随选型引擎·免维护·推荐）</option>`, `<option value="think:" ${t.think == 1 ? "selected" : ""}>🧠 深度思考（自动选最强推理型）</option>`];
@@ -9785,7 +9953,7 @@ function syncProjectCore(pid) {
         })
       };
     })
-  }; // 无 Key 无 Secret：仅项目内容（v2.5.101-knowall：角色同步归一）
+  }; // 无 Key 无 Secret：仅项目内容（v2.5.104-live：角色同步归一）
   var path = "cloud/projects/" + p.id + ".json";
   var g = apiJson("https://api.github.com/repos/" + repo + "/contents/" + path, "GET", null, ghHeaders());
   var body = {
@@ -9928,7 +10096,7 @@ function importCloudProject(pid) {
           content: m.content
         };
       })
-    }); // v2.5.101-knowall：导入归一存储态 ai（App 内统一存 ai，发送时再归一 assistant）
+    }); // v2.5.104-live：导入归一存储态 ai（App 内统一存 ai，发送时再归一 assistant）
     if (S.sessions.list.length > 200) S.sessions.list = S.sessions.list.slice(-200); // ♻️ v2.5.19-audit5：云端拉回导入同样封顶 200
     added++;
   });
@@ -9987,14 +10155,14 @@ function vulnReportRecoverForce() {
   return _vulnReportRecoverForce.apply(this, arguments);
 }
 function _vulnReportRecoverForce() {
-  _vulnReportRecoverForce = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee51() {
-    return _regenerator().w(function (_context56) {
-      while (1) switch (_context56.n) {
+  _vulnReportRecoverForce = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee53() {
+    return _regenerator().w(function (_context58) {
+      while (1) switch (_context58.n) {
         case 0:
           S.settings.vulnPullTs = 0;
-          return _context56.a(2, vulnReportRecover());
+          return _context58.a(2, vulnReportRecover());
       }
-    }, _callee51);
+    }, _callee53);
   }));
   return _vulnReportRecoverForce.apply(this, arguments);
 }
@@ -10002,24 +10170,24 @@ function vulnReportRecover() {
   return _vulnReportRecover.apply(this, arguments);
 }
 function _vulnReportRecover() {
-  _vulnReportRecover = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee52() {
-    var st, repo, r, j, rs, bad, prevBad, _t59;
-    return _regenerator().w(function (_context57) {
-      while (1) switch (_context57.p = _context57.n) {
+  _vulnReportRecover = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee54() {
+    var st, repo, r, j, rs, bad, prevBad, _t61;
+    return _regenerator().w(function (_context59) {
+      while (1) switch (_context59.p = _context59.n) {
         case 0:
           // 回收云端体检报告（vuln.yml 每次自检 commit 回仓；App 原先只在手动同拍时看一眼——现常驻自动回收）
           st = S.settings, repo = st.cloudRepo;
           if (repo) {
-            _context57.n = 1;
+            _context59.n = 1;
             break;
           }
-          return _context57.a(2, false);
+          return _context59.a(2, false);
         case 1:
           if (!(st.vulnPullTs && now() - st.vulnPullTs < 1800000)) {
-            _context57.n = 2;
+            _context59.n = 2;
             break;
           }
-          return _context57.a(2, false);
+          return _context59.a(2, false);
         case 2:
           // 30min 节流
           st.vulnPullTs = now();
@@ -10028,12 +10196,12 @@ function _vulnReportRecover() {
             Accept: "application/vnd.github.raw"
           }));
           if (r.ok) {
-            _context57.n = 3;
+            _context59.n = 3;
             break;
           }
-          return _context57.a(2, false);
+          return _context59.a(2, false);
         case 3:
-          _context57.p = 3;
+          _context59.p = 3;
           j = JSON.parse(r.text);
           rs = (j.results || []).map(function (x) {
             return {
@@ -10071,13 +10239,13 @@ function _vulnReportRecover() {
           } else st.cloudVulnBad = 0;
           save("settings");
           if (route === "settings") renderPage("settings");
-          return _context57.a(2, bad.length > 0);
+          return _context59.a(2, bad.length > 0);
         case 4:
-          _context57.p = 4;
-          _t59 = _context57.v;
-          return _context57.a(2, false);
+          _context59.p = 4;
+          _t61 = _context59.v;
+          return _context59.a(2, false);
       }
-    }, _callee52, null, [[3, 4]]);
+    }, _callee54, null, [[3, 4]]);
   }));
   return _vulnReportRecover.apply(this, arguments);
 }
@@ -10100,7 +10268,7 @@ function cloudEvolveCheck() {
     memAdd("fact", "☁️ 云端引擎已自主进化至 EVOLVE_N=" + cn + "（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）", ["evolve", "云端"]);
     try {
       updNotify("🧬 云端引擎已自主进化", "云端 agent.py 已进化至 v" + cn + "，App 已自动感知并将保护该成果");
-    } catch (e) {} // 🔔 v2.5.101-knowall：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
+    } catch (e) {} // 🔔 v2.5.104-live：进化感知通知改走带回执链（失败自动触发进化攻坚；送达/失败分诊 updNotify 内部统一处理）
   }
 }
 function updCheckPulse() {
@@ -10175,10 +10343,10 @@ function cloudPulse() {
   return _cloudPulse.apply(this, arguments);
 }
 function _cloudPulse() {
-  _cloudPulse = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee53() {
+  _cloudPulse = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee55() {
     var st;
-    return _regenerator().w(function (_context58) {
-      while (1) switch (_context58.n) {
+    return _regenerator().w(function (_context60) {
+      while (1) switch (_context60.n) {
         case 0:
           // 🔗 GEN4·全仓心跳主节拍：双端任何变动，另一端自动对齐（每 10min；各子项自带节流防频）
           st = S.settings;
@@ -10186,10 +10354,10 @@ function _cloudPulse() {
             evolveRunDaily();
           } catch (e) {} // 🧬 每日自主进化（24h 节流；只依赖热更运行时+免费源 Key，不依赖云端部署——刻意放在总守卫之前）
           if (st.cloudRepo) {
-            _context58.n = 1;
+            _context60.n = 1;
             break;
           }
-          return _context58.a(2);
+          return _context60.a(2);
         case 1:
           // 未部署云端：仅进化照常，其余云端同步子项空转零成本
           try {
@@ -10209,10 +10377,10 @@ function _cloudPulse() {
           } catch (e) {} // 🧬 GENE6：云端引擎自主进化感知（EVOLVE_N 递增→留痕+通知+部署保护）
           try {
             pullEvolveReport();
-          } catch (e) {} // 📰 v2.5.101-knowall：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
+          } catch (e) {} // 📰 v2.5.104-live：进化战报拉取公告（成功/拒收双路——成长与诚实都看得见）
           try {
             pullProactiveFeed();
-          } catch (e) {} // 🧬 v2.5.101-knowall：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
+          } catch (e) {} // 🧬 v2.5.104-live：统一主动中枢战报流（晨课/巡天/情报/体检全并入，一条通道看全部主动成长）
           try {
             pullCloudProjectsSilent();
           } catch (e) {} // 远端项目列表（30min 节流）
@@ -10226,9 +10394,9 @@ function _cloudPulse() {
             pullVitalsCloud();
           } catch (e) {} // 💗 v2.5.29-soul：生命体征（心情/日记/问候，10min 节流——持续感知它的活着）
         case 2:
-          return _context58.a(2);
+          return _context60.a(2);
       }
-    }, _callee53);
+    }, _callee55);
   }));
   return _cloudPulse.apply(this, arguments);
 }
@@ -10382,48 +10550,48 @@ function syncStateCloud(force) {
     }, _callee13, null, [[1, 3]]);
   })), force ? 0 : 1000);
 }
-function pullStateCloud(_x48) {
+function pullStateCloud(_x49) {
   return _pullStateCloud.apply(this, arguments);
 }
 function _pullStateCloud() {
-  _pullStateCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee54(force) {
-    var repo, st, r, j, sTs, ch, ch2, _cur2, ch3, cur4, ch4, cfg, ch5, _cur3, sr, sj, sm, _t60;
-    return _regenerator().w(function (_context59) {
-      while (1) switch (_context59.p = _context59.n) {
+  _pullStateCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee56(force) {
+    var repo, st, r, j, sTs, ch, ch2, _cur2, ch3, cur4, ch4, cfg, ch5, _cur3, sr, sj, sm, _t62;
+    return _regenerator().w(function (_context61) {
+      while (1) switch (_context61.p = _context61.n) {
         case 0:
           // 📥 云端状态拉取并集合并（30min 节流；stateSyncing 锁防合并落盘回环触发推送）
           repo = S.settings.cloudRepo;
           if (repo) {
-            _context59.n = 1;
+            _context61.n = 1;
             break;
           }
-          return _context59.a(2, false);
+          return _context61.a(2, false);
         case 1:
           st = S.settings;
           if (!(!force && st.statePullTs && now() - st.statePullTs < 1800000)) {
-            _context59.n = 2;
+            _context61.n = 2;
             break;
           }
-          return _context59.a(2, false);
+          return _context61.a(2, false);
         case 2:
           r = api("https://raw.githubusercontent.com/" + repo + "/main/cloud/state.json", "GET", null, {});
           if (!r.ok && st.githubToken) r = api("https://api.github.com/repos/" + repo + "/contents/cloud/state.json", "GET", null, _objectSpread(_objectSpread({}, ghHeaders()), {}, {
             Accept: "application/vnd.github.raw"
           }));
           if (r.ok) {
-            _context59.n = 3;
+            _context61.n = 3;
             break;
           }
-          return _context59.a(2, false);
+          return _context61.a(2, false);
         case 3:
-          _context59.p = 3;
+          _context61.p = 3;
           j = JSON.parse(r.text);
-          _context59.n = 5;
+          _context61.n = 5;
           break;
         case 4:
-          _context59.p = 4;
-          _t60 = _context59.v;
-          return _context59.a(2, false);
+          _context61.p = 4;
+          _t62 = _context61.v;
+          return _context61.a(2, false);
         case 5:
           st.statePullTs = now();
           stateSyncing = true;
@@ -10584,9 +10752,9 @@ function _pullStateCloud() {
           } finally {
             stateSyncing = false;
           }
-          return _context59.a(2, true);
+          return _context61.a(2, true);
       }
-    }, _callee54, null, [[3, 4]]);
+    }, _callee56, null, [[3, 4]]);
   }));
   return _pullStateCloud.apply(this, arguments);
 }
@@ -10634,6 +10802,67 @@ function pagePhone() {
   }, 0); // 已在目录中则自动加载
   return h;
 }
+;try{(window.__chunkOK=window.__chunkOK||[]).push(8)}catch(e){}</script>
+<script>// 根目录选择页
+// 查看文件：预览/编辑/追加
+// 🛡️ v2.5.55-pulse 64 轮：记录原文件尺寸（被截断时=原大小），phoneSave 覆盖保护用
+// 🛡️ v2.5.55-pulse 64 轮：预览截断保护——预览只读前 30000 字符，直接覆盖会把截断版全文写回毁掉超界内容；提示改用追加
+// 硬闸：删除前强制确认
+// 枚举应用：缓存到 settings（构建慢，缓存后秒开）
+/* ================= 插件页 ================= */
+/* ================= 设置页 ================= */
+// 📴 端侧离线模型卡：下载/就绪/删除状态机（1s 轮询同步桥）
+// 轮询跨页存活：不依赖 #llamaSt 存在——切走页面继续盯，回设置页靠 pageSettings 的实时状态自动刷新
+// 仅当前在设置页才重渲染（不打断用户其他操作）
+// 🧬新源入口铁律：注册指引缺失时自动以源自身端点域名兜底——任何新源进链，Key 输入框指引即刻自动生成，绝不出现 undefined
+// 🇨🇳 镜像通道②：选填，留空=直连官方
+/*#__PURE__*/
+/*#__PURE__*/
+/* 用仓库公钥 + 手写 sealed box 加密 Key，PUT 到 GitHub Secrets（🧬CHAIN 遍历=进化新源 Key 自动写入，绝不漏源） */
+/*#__PURE__*/
+// 🧬 v2.5.24-mind：骨架 DNA 上传——APK 自带源码蓝图（assets/skeleton/，build.sh [0.5/7] 刻入），云端 runner 由此重建骨架，修 v2.5.21 断链（runner 无源码可编/⑧检永红）
+// 第三元=rawB64：内容已是 base64，直接 PUT（二进制经 base64 文本资产过 readAsset 管道）
+// 签名密钥随 DNA 上仓：runner 构建签名与本地一致，云端骨架进化 APK 可覆盖安装不换签名（密钥本为 build.sh 公开口令的个人自签名）
+// rawB64 项内容已是 base64（二进制资产），去空白后直传
+/*#__PURE__*/
+// 🛡️ v2.5.56-vitals 65 轮：公钥格式实判——GitHub /actions/secrets/public-key 恒返 base64（44 字符），而 unhex 对非 hex 串不抛错（TypedArray 长度截断+parseInt NaN 变 0），旧版 catch 兕底是死代码：44 字符 base64 被静默解析成 22 字节垃圾公钥，所有 Secret 自部署起全是解不开的乱码（带 Key 源全部 401）
+// 额外 Secret（如 Cloudflare account id）
+// Cloudflare account id：Key 写成 account:token 时自动拆出写单独 Secret
+// 指纹入库，后续 dispatch 检测 Key 变化自动重同步
+/*#__PURE__*/
+// 占位：设置页交互均内联绑定
+/* ================= 弹窗 / 返回键 ================= */
+// 根页再按返回 = 退出 App
+// 🧖 GEN3+GEN4：回前台即拉云端新记忆/手册/全量状态（后台期间另一端写的东西同拍到达）
+/* ================= 启动 ================= */
+// 🚑 v2.5.60-whale 68 轮：启动总保险降级页——宁可丑陋地活着，绝不无声地死（"安装后打不开"实弹根因：毒档让 initAll 炸在 strict 模式赋属性上，window.onerror 竟不记录，用户只看到黑屏）
+// 79 轮：崩点也进黑匣子轨迹
+// 79 轮：诊断一键复制（bootErr+黑匣子轨迹+失败栈+UA）
+// 🚑 68 轮：error 事件捕获阶段监听（比 window.onerror 可靠，能拿 error 对象）——启动完成前任何异常都进降级页而非黑屏
+// 🚑 68 轮：Promise 链拒绝也不许无声
+// 79 轮：主块语法若死此处永不出现——s0 有而 s1 无=主块装载期语法死
+// 🧬 启动自检门先行（热包损坏/基因残缺→回滚内置版；S 初始化前也能自保）
+// 🧬 回滚旗标补归档（需 S 已初始化）
+// 🔔 v2.5.104-live 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
+// 🛡️ v2.5.59-paw 67 轮：底栏五 tab 点击委托——旧版 data-tab 属性挂着却全工程无任何绑定监听，点底栏永远无反应（"按钮全死"第二重根因，与 plugins 启动崩溃各自独立）
+// 🐾 v2.5.60-whale 68c：模式徽标初绘 + 对话框键入 / 唤起技能面板（CatDesk 同款）
+// 🔒 GEN·看门狗旗标：UI 存活即立（置于一切网络调用之前，防慢网误杀）；Java 层装载 6s 后验此旗标，缺失=运行时砖损→hotDelete 回滚内置版（第四重永砖保险）
+// 📖 GEN3：真实攻坚战果种子一次性装配入手册（随后自动双端同步）
+// 🧬新源入口铁律：启动即镜像源链给 Java 定时任务层（进化新源自动可被离线任务使用）
+// 🧖 GEN3：核心记忆种子离线装配（不依赖云端部署，重装随身；随后自动双端同步）
+// 💗 v2.5.29-soul：启动即拉云端大脑生命体征+开屏主动问候（它像人一样先跟你打招呼）
+// 🧠📖 GEN3：启动即拉云端新记忆/手册；有未推改动自动补推云端全层
+// 🧠 v2.5.26-brain：启动即查门铃（云端夜间睡眠整理成果当场到达）
+// 🗂️ GEN4：启动即拉云端全量状态（会话/定时/插件）；有未推改动自动补推云端全层
+// ⚖️与铁律①同机制：启动即体检（App 端 5 项 + 云端 4 项，与手动按钮同链路；手机端 PHB 桥 11 方法亦在检）
+// 🎁 零动作开箱铁律：启动不弹任何权限对话框——通知权限改为“真需要时才请求”（resumeAlarm/saveAlarm/设置页按钮三处按需），首次打开零弹窗零动作
+// 🧬 每日自动升级检查（距上次 >24h 才发起，延迟 8s，零人工零打扰）
+// 🎓 v2.5.51-human：每日主动简报（新晨课主动插进会话汇报给主人，24h 节流+同份不重复）
+// 🔗 GEN4·全仓心跳（每 10min：云端任何层变动→App 自动对齐；App 项目新对话→自动重推云端。各子项自带节流防频）
+// 🎓 v2.5.51-human：每小时兼底拍一次（24h 节流内空转；错过白天后晚上补汇报）
+// 🧠 v2.5.26-brain：门铃心跳兼底（查铃自身 2min 防抖；App 闲置时最坏 10min 收到云端新事——记事→记忆→清单→体检四扇门全开）
+// 🐾 v2.5.60-whale 68c：分钟级对拍模式/档位徽标（别处改动也保持同步）
+// 🚑 v2.5.60-whale 68 轮：启动总保险——同步段任何一环炸断都进降级页，绝不无声黑屏
 function phoneBrowse(path) {
   path = String(path == null ? "" : path).trim();
   if (!path) {
@@ -10745,63 +10974,6 @@ function phoneNewFile() {
     <button class="btn" style="margin-top:12px" onclick="phoneNewFileDo()">创建</button>
     <p style="font-size:10px;color:var(--sub);margin-top:6px">建于：${esc(phoneCwd || "（先选目录）")}</p>`);
 }
-;try{(window.__chunkOK=window.__chunkOK||[]).push(8)}catch(e){}</script>
-<script>// 硬闸：删除前强制确认
-// 枚举应用：缓存到 settings（构建慢，缓存后秒开）
-/* ================= 插件页 ================= */
-/* ================= 设置页 ================= */
-// 📴 端侧离线模型卡：下载/就绪/删除状态机（1s 轮询同步桥）
-// 轮询跨页存活：不依赖 #llamaSt 存在——切走页面继续盯，回设置页靠 pageSettings 的实时状态自动刷新
-// 仅当前在设置页才重渲染（不打断用户其他操作）
-// 🧬新源入口铁律：注册指引缺失时自动以源自身端点域名兜底——任何新源进链，Key 输入框指引即刻自动生成，绝不出现 undefined
-// 🇨🇳 镜像通道②：选填，留空=直连官方
-/*#__PURE__*/
-/*#__PURE__*/
-/* 用仓库公钥 + 手写 sealed box 加密 Key，PUT 到 GitHub Secrets（🧬CHAIN 遍历=进化新源 Key 自动写入，绝不漏源） */
-/*#__PURE__*/
-// 🧬 v2.5.24-mind：骨架 DNA 上传——APK 自带源码蓝图（assets/skeleton/，build.sh [0.5/7] 刻入），云端 runner 由此重建骨架，修 v2.5.21 断链（runner 无源码可编/⑧检永红）
-// 第三元=rawB64：内容已是 base64，直接 PUT（二进制经 base64 文本资产过 readAsset 管道）
-// 签名密钥随 DNA 上仓：runner 构建签名与本地一致，云端骨架进化 APK 可覆盖安装不换签名（密钥本为 build.sh 公开口令的个人自签名）
-// rawB64 项内容已是 base64（二进制资产），去空白后直传
-/*#__PURE__*/
-// 🛡️ v2.5.56-vitals 65 轮：公钥格式实判——GitHub /actions/secrets/public-key 恒返 base64（44 字符），而 unhex 对非 hex 串不抛错（TypedArray 长度截断+parseInt NaN 变 0），旧版 catch 兕底是死代码：44 字符 base64 被静默解析成 22 字节垃圾公钥，所有 Secret 自部署起全是解不开的乱码（带 Key 源全部 401）
-// 额外 Secret（如 Cloudflare account id）
-// Cloudflare account id：Key 写成 account:token 时自动拆出写单独 Secret
-// 指纹入库，后续 dispatch 检测 Key 变化自动重同步
-/*#__PURE__*/
-// 占位：设置页交互均内联绑定
-/* ================= 弹窗 / 返回键 ================= */
-// 根页再按返回 = 退出 App
-// 🧖 GEN3+GEN4：回前台即拉云端新记忆/手册/全量状态（后台期间另一端写的东西同拍到达）
-/* ================= 启动 ================= */
-// 🚑 v2.5.60-whale 68 轮：启动总保险降级页——宁可丑陋地活着，绝不无声地死（"安装后打不开"实弹根因：毒档让 initAll 炸在 strict 模式赋属性上，window.onerror 竟不记录，用户只看到黑屏）
-// 79 轮：崩点也进黑匣子轨迹
-// 79 轮：诊断一键复制（bootErr+黑匣子轨迹+失败栈+UA）
-// 🚑 68 轮：error 事件捕获阶段监听（比 window.onerror 可靠，能拿 error 对象）——启动完成前任何异常都进降级页而非黑屏
-// 🚑 68 轮：Promise 链拒绝也不许无声
-// 79 轮：主块语法若死此处永不出现——s0 有而 s1 无=主块装载期语法死
-// 🧬 启动自检门先行（热包损坏/基因残缺→回滚内置版；S 初始化前也能自保）
-// 🧬 回滚旗标补归档（需 S 已初始化）
-// 🔔 v2.5.101-knowall 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
-// 🛡️ v2.5.59-paw 67 轮：底栏五 tab 点击委托——旧版 data-tab 属性挂着却全工程无任何绑定监听，点底栏永远无反应（"按钮全死"第二重根因，与 plugins 启动崩溃各自独立）
-// 🐾 v2.5.60-whale 68c：模式徽标初绘 + 对话框键入 / 唤起技能面板（CatDesk 同款）
-// 🔒 GEN·看门狗旗标：UI 存活即立（置于一切网络调用之前，防慢网误杀）；Java 层装载 6s 后验此旗标，缺失=运行时砖损→hotDelete 回滚内置版（第四重永砖保险）
-// 📖 GEN3：真实攻坚战果种子一次性装配入手册（随后自动双端同步）
-// 🧬新源入口铁律：启动即镜像源链给 Java 定时任务层（进化新源自动可被离线任务使用）
-// 🧖 GEN3：核心记忆种子离线装配（不依赖云端部署，重装随身；随后自动双端同步）
-// 💗 v2.5.29-soul：启动即拉云端大脑生命体征+开屏主动问候（它像人一样先跟你打招呼）
-// 🧠📖 GEN3：启动即拉云端新记忆/手册；有未推改动自动补推云端全层
-// 🧠 v2.5.26-brain：启动即查门铃（云端夜间睡眠整理成果当场到达）
-// 🗂️ GEN4：启动即拉云端全量状态（会话/定时/插件）；有未推改动自动补推云端全层
-// ⚖️与铁律①同机制：启动即体检（App 端 5 项 + 云端 4 项，与手动按钮同链路；手机端 PHB 桥 11 方法亦在检）
-// 🎁 零动作开箱铁律：启动不弹任何权限对话框——通知权限改为“真需要时才请求”（resumeAlarm/saveAlarm/设置页按钮三处按需），首次打开零弹窗零动作
-// 🧬 每日自动升级检查（距上次 >24h 才发起，延迟 8s，零人工零打扰）
-// 🎓 v2.5.51-human：每日主动简报（新晨课主动插进会话汇报给主人，24h 节流+同份不重复）
-// 🔗 GEN4·全仓心跳（每 10min：云端任何层变动→App 自动对齐；App 项目新对话→自动重推云端。各子项自带节流防频）
-// 🎓 v2.5.51-human：每小时兼底拍一次（24h 节流内空转；错过白天后晚上补汇报）
-// 🧠 v2.5.26-brain：门铃心跳兼底（查铃自身 2min 防抖；App 闲置时最坏 10min 收到云端新事——记事→记忆→清单→体检四扇门全开）
-// 🐾 v2.5.60-whale 68c：分钟级对拍模式/档位徽标（别处改动也保持同步）
-// 🚑 v2.5.60-whale 68 轮：启动总保险——同步段任何一环炸断都进降级页，绝不无声黑屏
 function phoneNewFileDo() {
   var n = $("#phName").value.trim();
   if (!n) {
@@ -11105,7 +11277,7 @@ function pageSettings() {
     <div class="row" style="margin-top:6px">
       <div class="grow"><p style="font-size:12.5px;color:var(--sub)">重排全部定时任务（开机兜底）</p></div>
       <button class="btn gray sm" onclick="DSB.rescheduleAll();toast('已重排')">重排</button></div>
-    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.101-knowall · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
+    <p style="font-size:11px;color:var(--sub);margin-top:12px">DS Harness v2.5.104-live · 纯手搓构建（无 Gradle/无第三方依赖）<br>全程零成本：10 免费源聚合 × 三级动态清单 × 自动淘汰停服 × 四基因铁律 × 双端漏洞体检 × 双端共脑记忆/手册 × 全天候动作联动 × 三端分割独立（💻电脑端/☁️云端端/📱手机端） × 手机端文件/应用操控（PHB 桥·11 工具） × 单项目云同步 × 🧬 永久自主升级（多免费通道+四重闸门+自动发布云端+每日自动检查+自主进化） × 🐾 CatDesk 同款全层级界面（抽屉/技能/三档/安全屋/运行日志）<br>GitHub 公共仓无限分钟 × Secrets 加密通道 · 数据全部存于本机私有目录</p>
   </div>`;
 }
 function saveSettings() {
@@ -11142,41 +11314,41 @@ function ghLogin() {
   return _ghLogin.apply(this, arguments);
 }
 function _ghLogin() {
-  _ghLogin = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee55() {
+  _ghLogin = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee57() {
     var r;
-    return _regenerator().w(function (_context60) {
-      while (1) switch (_context60.n) {
+    return _regenerator().w(function (_context62) {
+      while (1) switch (_context62.n) {
         case 0:
           if (S.settings.githubToken) {
-            _context60.n = 1;
+            _context62.n = 1;
             break;
           }
-          return _context60.a(2, {
+          return _context62.a(2, {
             ok: false,
             msg: "请先填 GitHub Token 并保存设置"
           });
         case 1:
-          _context60.n = 2;
+          _context62.n = 2;
           return rpcJson("https://api.github.com/user", "GET", null, ghHeaders());
         case 2:
-          r = _context60.v;
+          r = _context62.v;
           if (r.ok) {
-            _context60.n = 3;
+            _context62.n = 3;
             break;
           }
-          return _context60.a(2, {
+          return _context62.a(2, {
             ok: false,
             msg: "GitHub Token 验证失败 HTTP " + r.status
           });
         case 3:
           S.settings.ghLogin = r.json.login;
           save("settings");
-          return _context60.a(2, {
+          return _context62.a(2, {
             ok: true,
             login: r.json.login
           });
       }
-    }, _callee55);
+    }, _callee57);
   }));
   return _ghLogin.apply(this, arguments);
 }
@@ -11184,48 +11356,48 @@ function ensureCloud() {
   return _ensureCloud.apply(this, arguments);
 }
 function _ensureCloud() {
-  _ensureCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee56() {
+  _ensureCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee58() {
     var r;
-    return _regenerator().w(function (_context61) {
-      while (1) switch (_context61.n) {
+    return _regenerator().w(function (_context63) {
+      while (1) switch (_context63.n) {
         case 0:
           if (!(S.settings.deployed && S.settings.cloudRepo)) {
-            _context61.n = 1;
+            _context63.n = 1;
             break;
           }
-          return _context61.a(2, {
+          return _context63.a(2, {
             ok: true
           });
         case 1:
           if (!(!S.settings.githubToken || !S.settings.cloudRepo)) {
-            _context61.n = 2;
+            _context63.n = 2;
             break;
           }
-          return _context61.a(2, {
+          return _context63.a(2, {
             ok: false,
             msg: "未配置云端（GitHub Token / 仓库）"
           });
         case 2:
-          _context61.n = 3;
+          _context63.n = 3;
           return rpcJson(`https://api.github.com/repos/${S.settings.cloudRepo}/contents/.github/workflows/agent.yml`, "GET", null, ghHeaders());
         case 3:
-          r = _context61.v;
+          r = _context63.v;
           if (!r.ok) {
-            _context61.n = 4;
+            _context63.n = 4;
             break;
           }
           S.settings.deployed = true;
           save("settings");
-          return _context61.a(2, {
+          return _context63.a(2, {
             ok: true
           });
         case 4:
-          return _context61.a(2, {
+          return _context63.a(2, {
             ok: false,
             msg: "云端引擎未部署"
           });
       }
-    }, _callee56);
+    }, _callee58);
   }));
   return _ensureCloud.apply(this, arguments);
 }
@@ -11233,36 +11405,36 @@ function deployCloud() {
   return _deployCloud.apply(this, arguments);
 }
 function _deployCloud() {
-  _deployCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee57() {
+  _deployCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee59() {
     var btn, lg, _repo2, priv, cr, files, _i2, _files, _files$_i, _path, content, rawB64, real, lg2, ln, cn, _cur4, put, secMsg, chk;
-    return _regenerator().w(function (_context62) {
-      while (1) switch (_context62.p = _context62.n) {
+    return _regenerator().w(function (_context64) {
+      while (1) switch (_context64.p = _context64.n) {
         case 0:
           saveSettings();
           btn = $("#btnDeploy");
           btn.disabled = true;
-          _context62.p = 1;
+          _context64.p = 1;
           depLog("① 验证 GitHub Token…");
-          _context62.n = 2;
+          _context64.n = 2;
           return ghLogin();
         case 2:
-          lg = _context62.v;
+          lg = _context64.v;
           if (lg.ok) {
-            _context62.n = 3;
+            _context64.n = 3;
             break;
           }
           depLog("✗ " + lg.msg);
-          return _context62.a(2);
+          return _context64.a(2);
         case 3:
           depLog("✓ 身份：" + lg.login, true);
           _repo2 = S.settings.cloudRepo;
           if (_repo2) {
-            _context62.n = 8;
+            _context64.n = 8;
             break;
           }
           priv = S.settings.repoVisibility === "private";
           depLog(`② 创建${priv ? "私有" : "公共（无限分钟）"}仓库 ds-harness-cloud…`, true);
-          _context62.n = 4;
+          _context64.n = 4;
           return rpcJson("https://api.github.com/user/repos", "POST", JSON.stringify({
             name: "ds-harness-cloud",
             private: priv,
@@ -11270,30 +11442,30 @@ function _deployCloud() {
             description: "DS Harness cloud engine (auto-deployed)"
           }), ghHeaders());
         case 4:
-          cr = _context62.v;
+          cr = _context64.v;
           if (!(cr.status === 201)) {
-            _context62.n = 5;
+            _context64.n = 5;
             break;
           }
           depLog("✓ 仓库已创建", true);
-          _context62.n = 7;
+          _context64.n = 7;
           break;
         case 5:
           if (!(cr.status === 422)) {
-            _context62.n = 6;
+            _context64.n = 6;
             break;
           }
           depLog("· 仓库已存在，复用", true);
-          _context62.n = 7;
+          _context64.n = 7;
           break;
         case 6:
           depLog("✗ 创建失败 HTTP " + cr.status + " " + cr.text.slice(0, 120), true);
-          return _context62.a(2);
+          return _context64.a(2);
         case 7:
           _repo2 = lg.login + "/ds-harness-cloud";
           S.settings.cloudRepo = _repo2;
           save("settings");
-          _context62.n = 9;
+          _context64.n = 9;
           break;
         case 8:
           depLog("② 使用已有仓库 " + _repo2, true);
@@ -11307,71 +11479,71 @@ function _deployCloud() {
           _i2 = 0, _files = files;
         case 10:
           if (!(_i2 < _files.length)) {
-            _context62.n = 17;
+            _context64.n = 17;
             break;
           }
           _files$_i = _slicedToArray(_files[_i2], 3), _path = _files$_i[0], content = _files$_i[1], rawB64 = _files$_i[2];
           real = eval(content);
           if (!String(real).startsWith("ERR:")) {
-            _context62.n = 11;
+            _context64.n = 11;
             break;
           }
           depLog("✗ 资产读取失败 " + _path, true);
-          return _context62.a(2);
+          return _context64.a(2);
         case 11:
           if (!(_path === "cloud/agent.py")) {
-            _context62.n = 13;
+            _context64.n = 13;
             break;
           }
-          _context62.n = 12;
+          _context64.n = 12;
           return rpcJson(`https://api.github.com/repos/${_repo2}/contents/cloud/agent.py`, "GET", null, _objectSpread(_objectSpread({}, ghHeaders()), {}, {
             Accept: "application/vnd.github.raw"
           }));
         case 12:
-          lg2 = _context62.v;
+          lg2 = _context64.v;
           ln = (String(real).match(/__EVOLVE_N__:\s*(\d+)/) || [])[1] || "0";
           if (!(lg2.ok && lg2.text)) {
-            _context62.n = 13;
+            _context64.n = 13;
             break;
           }
           cn = (String(lg2.text).match(/__EVOLVE_N__:\s*(\d+)/) || [])[1] || "0";
           if (!(+cn > +ln)) {
-            _context62.n = 13;
+            _context64.n = 13;
             break;
           }
           depLog("✓ 跳过 " + _path + "（云端已自主进化至 v" + cn + " > 本机内置 v" + ln + "，保护云端进化成果不覆盖）", true);
-          return _context62.a(3, 16);
+          return _context64.a(3, 16);
         case 13:
-          _context62.n = 14;
+          _context64.n = 14;
           return rpcJson(`https://api.github.com/repos/${_repo2}/contents/${_path}`, "GET", null, ghHeaders());
         case 14:
-          _cur4 = _context62.v;
-          _context62.n = 15;
+          _cur4 = _context64.v;
+          _context64.n = 15;
           return rpcJson(`https://api.github.com/repos/${_repo2}/contents/${_path}`, "PUT", JSON.stringify({
             message: "DS Harness: deploy " + _path,
             content: rawB64 ? String(real).replace(/\s+/g, "") : b64u(real),
             sha: _cur4.ok && _cur4.json ? _cur4.json.sha : null
           }), ghHeaders());
         case 15:
-          put = _context62.v;
+          put = _context64.v;
           // rawB64 项内容已是 base64（二进制资产），去空白后直传
           if (put.ok) depLog("✓ 已上传 " + _path, true);else depLog("✗ 上传失败 " + _path + " HTTP " + put.status + " " + put.text.slice(0, 150), true);
         case 16:
           _i2++;
-          _context62.n = 10;
+          _context64.n = 10;
           break;
         case 17:
           depLog("④ 写入加密 Secrets（libsodium 密封盒，手写加密器）…", true);
-          _context62.n = 18;
+          _context64.n = 18;
           return putSecrets(_repo2);
         case 18:
-          secMsg = _context62.v;
+          secMsg = _context64.v;
           if (secMsg) depLog(secMsg, true);
           depLog("⑤ 校验部署…", true);
-          _context62.n = 19;
+          _context64.n = 19;
           return rpcJson(`https://api.github.com/repos/${_repo2}/contents/.github/workflows/agent.yml`, "GET", null, ghHeaders());
         case 19:
-          chk = _context62.v;
+          chk = _context64.v;
           if (chk.ok) {
             S.settings.deployed = true;
             save("settings");
@@ -11379,24 +11551,24 @@ function _deployCloud() {
             toast("云端引擎部署成功");
           } else depLog("✗ 校验失败，请到 GitHub 仓库手动确认", true);
         case 20:
-          _context62.p = 20;
+          _context64.p = 20;
           btn.disabled = false;
-          return _context62.f(20);
+          return _context64.f(20);
         case 21:
-          return _context62.a(2);
+          return _context64.a(2);
       }
-    }, _callee57, null, [[1,, 20, 21]]);
+    }, _callee59, null, [[1,, 20, 21]]);
   }));
   return _deployCloud.apply(this, arguments);
 }
-function putSecrets(_x49) {
+function putSecrets(_x50) {
   return _putSecrets.apply(this, arguments);
 }
 function _putSecrets() {
-  _putSecrets = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee58(repo) {
-    var keys, gk, pkB, _gk, ok, fail, fp, extras, _i3, _Object$entries, _Object$entries$_i, name, val, sealed, put, acct, _sealed, _put, _t61;
-    return _regenerator().w(function (_context63) {
-      while (1) switch (_context63.p = _context63.n) {
+  _putSecrets = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee60(repo) {
+    var keys, gk, pkB, _gk, ok, fail, fp, extras, _i3, _Object$entries, _Object$entries$_i, name, val, sealed, put, acct, _sealed, _put, _t63;
+    return _regenerator().w(function (_context65) {
+      while (1) switch (_context65.p = _context65.n) {
         case 0:
           keys = {};
           CHAIN.forEach(function (k) {
@@ -11404,45 +11576,45 @@ function _putSecrets() {
             if (p.on && p.key) keys[k] = p.key;
           });
           if (Object.keys(keys).length) {
-            _context63.n = 1;
+            _context65.n = 1;
             break;
           }
-          return _context63.a(2, "ℹ️ 未配置任何免费模型 Key——Secrets 跳过：云端由免 Key 保底源 pollinations 兜底直跑，无需填写任何 Key");
+          return _context65.a(2, "ℹ️ 未配置任何免费模型 Key——Secrets 跳过：云端由免 Key 保底源 pollinations 兜底直跑，无需填写任何 Key");
         case 1:
-          _context63.n = 2;
+          _context65.n = 2;
           return rpcJson(`https://api.github.com/repos/${repo}/actions/secrets/public-key`, "GET", null, ghHeaders());
         case 2:
-          gk = _context63.v;
+          gk = _context65.v;
           if (gk.ok) {
-            _context63.n = 3;
+            _context65.n = 3;
             break;
           }
-          return _context63.a(2, "✗ 获取仓库公钥失败 HTTP " + gk.status + "（Token 需勾选 repo 权限）");
+          return _context65.a(2, "✗ 获取仓库公钥失败 HTTP " + gk.status + "（Token 需勾选 repo 权限）");
         case 3:
           // 🛡️ v2.5.56-vitals 65 轮：公钥格式实判——GitHub /actions/secrets/public-key 恒返 base64（44 字符），而 unhex 对非 hex 串不抛错（TypedArray 长度截断+parseInt NaN 变 0），旧版 catch 兕底是死代码：44 字符 base64 被静默解析成 22 字节垃圾公钥，所有 Secret 自部署起全是解不开的乱码（带 Key 源全部 401）
           _gk = String(gk.json.key || "");
           if (!(/^[0-9a-fA-F]+$/.test(_gk) && _gk.length % 2 === 0 && _gk.length / 2 === 32)) {
-            _context63.n = 4;
+            _context65.n = 4;
             break;
           }
           pkB = DSC.unhex(_gk);
-          _context63.n = 6;
+          _context65.n = 6;
           break;
         case 4:
-          _context63.p = 4;
+          _context65.p = 4;
           pkB = unb64(_gk);
-          _context63.n = 6;
+          _context65.n = 6;
           break;
         case 5:
-          _context63.p = 5;
-          _t61 = _context63.v;
-          return _context63.a(2, "✗ 仓库公钥格式异常（既非 32 字节 hex 也非 base64）");
+          _context65.p = 5;
+          _t63 = _context65.v;
+          return _context65.a(2, "✗ 仓库公钥格式异常（既非 32 字节 hex 也非 base64）");
         case 6:
           if (!(!pkB || pkB.length !== 32)) {
-            _context63.n = 7;
+            _context65.n = 7;
             break;
           }
-          return _context63.a(2, "✗ 仓库公钥解析后非 32 字节（" + (pkB ? pkB.length : 0) + "）——拒绝盲写 Secrets");
+          return _context65.a(2, "✗ 仓库公钥解析后非 32 字节（" + (pkB ? pkB.length : 0) + "）——拒绝盲写 Secrets");
         case 7:
           ok = 0, fail = 0;
           fp = Object.entries(keys).map(function (_ref21) {
@@ -11455,22 +11627,22 @@ function _putSecrets() {
           _i3 = 0, _Object$entries = Object.entries(keys);
         case 8:
           if (!(_i3 < _Object$entries.length)) {
-            _context63.n = 11;
+            _context65.n = 11;
             break;
           }
           _Object$entries$_i = _slicedToArray(_Object$entries[_i3], 2), name = _Object$entries$_i[0], val = _Object$entries$_i[1];
           sealed = DSC.seal(enc(val), pkB);
-          _context63.n = 9;
+          _context65.n = 9;
           return rpcJson(`https://api.github.com/repos/${repo}/actions/secrets/${name.toUpperCase()}_KEY`, "PUT", JSON.stringify({
             encrypted_value: b64b(sealed),
             key_id: gk.json.key_id
           }), ghHeaders());
         case 9:
-          put = _context63.v;
+          put = _context65.v;
           put.ok ? ok++ : fail++;
         case 10:
           _i3++;
-          _context63.n = 8;
+          _context65.n = 8;
           break;
         case 11:
           // Cloudflare account id：Key 写成 account:token 时自动拆出写单独 Secret
@@ -11487,9 +11659,9 @@ function _putSecrets() {
             S.settings.secretsFp = fp;
             save("settings");
           } // 指纹入库，后续 dispatch 检测 Key 变化自动重同步
-          return _context63.a(2, fail ? `✓ ${ok} 个 Secret 已写入，${fail} 个失败` : `✓ ${ok} 个 Key 已加密写入 Secrets（运行记录不可见）`);
+          return _context65.a(2, fail ? `✓ ${ok} 个 Secret 已写入，${fail} 个失败` : `✓ ${ok} 个 Key 已加密写入 Secrets（运行记录不可见）`);
       }
-    }, _callee58, null, [[4, 5]]);
+    }, _callee60, null, [[4, 5]]);
   }));
   return _putSecrets.apply(this, arguments);
 }
@@ -11497,33 +11669,33 @@ function checkCloud() {
   return _checkCloud.apply(this, arguments);
 }
 function _checkCloud() {
-  _checkCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee59() {
+  _checkCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee61() {
     var lg, e;
-    return _regenerator().w(function (_context64) {
-      while (1) switch (_context64.n) {
+    return _regenerator().w(function (_context66) {
+      while (1) switch (_context66.n) {
         case 0:
           saveSettings();
-          _context64.n = 1;
+          _context66.n = 1;
           return ghLogin();
         case 1:
-          lg = _context64.v;
+          lg = _context66.v;
           if (lg.ok) {
-            _context64.n = 2;
+            _context66.n = 2;
             break;
           }
           toast(lg.msg);
-          return _context64.a(2);
+          return _context66.a(2);
         case 2:
-          _context64.n = 3;
+          _context66.n = 3;
           return ensureCloud();
         case 3:
-          e = _context64.v;
+          e = _context66.v;
           toast(e.ok ? "✅ 云端已就绪（" + S.settings.cloudRepo + "）" : "⚠️ " + e.msg);
           refreshBalance(true);
         case 4:
-          return _context64.a(2);
+          return _context66.a(2);
       }
-    }, _callee59);
+    }, _callee61);
   }));
   return _checkCloud.apply(this, arguments);
 }
@@ -11581,7 +11753,7 @@ function bootFail(e) {
     bLog("FAIL:" + (e && e.stack || e && e.message || e));
   } catch (_e2) {} // 79 轮：崩点也进黑匣子轨迹
   try {
-    document.body.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#0B0E14;color:#e5e9f0;font-family:monospace;padding:36px 22px;overflow:auto;z-index:99999">' + '<div style="font-size:42px;text-align:center;margin-bottom:12px">🐾</div>' + '<div style="font-size:19px;font-weight:bold;text-align:center;margin-bottom:18px">小神启动受挫了</div>' + '<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.101-knowall · 内核 ' + (navigator ? String(navigator.userAgent).slice(0, 120) : "?") + '<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>' + '<pre id="bootErrBox" style="font-size:10px;white-space:pre-wrap;color:#f87171;background:#141926;border:1px solid #252E42;border-radius:10px;padding:12px;max-height:38vh;overflow:auto"></pre>' + '<button onclick="window.__bootRetry()" style="display:block;width:100%;margin-top:18px;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#16A34A,#4ADE80);color:#fff;font-size:15px">🔄 仅重试</button>' + '<button onclick="window.__bootCopyDiag()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">📋 复制诊断信息（反馈给开发者）</button>' + '<button onclick="window.__bootSafeReset()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">🚑 安全模式重启（清本机存档，记忆已在云端会自动回同步）</button>' + '</div>';
+    document.body.innerHTML = '<div style="position:fixed;left:0;top:0;right:0;bottom:0;background:#0B0E14;color:#e5e9f0;font-family:monospace;padding:36px 22px;overflow:auto;z-index:99999">' + '<div style="font-size:42px;text-align:center;margin-bottom:12px">🐾</div>' + '<div style="font-size:19px;font-weight:bold;text-align:center;margin-bottom:18px">小神启动受挫了</div>' + '<div style="font-size:12px;line-height:1.8;color:#9aa4bf;margin-bottom:16px">版本 v2.5.104-live · 内核 ' + (navigator ? String(navigator.userAgent).slice(0, 120) : "?") + '<br>启动中遇到它消化不了的东西（已自动记录）。下面是诊断信息，截图反馈给开发者可精准修复：</div>' + '<pre id="bootErrBox" style="font-size:10px;white-space:pre-wrap;color:#f87171;background:#141926;border:1px solid #252E42;border-radius:10px;padding:12px;max-height:38vh;overflow:auto"></pre>' + '<button onclick="window.__bootRetry()" style="display:block;width:100%;margin-top:18px;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#16A34A,#4ADE80);color:#fff;font-size:15px">🔄 仅重试</button>' + '<button onclick="window.__bootCopyDiag()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">📋 复制诊断信息（反馈给开发者）</button>' + '<button onclick="window.__bootSafeReset()" style="display:block;width:100%;margin-top:10px;padding:13px;border:none;border-radius:12px;background:#1C2333;color:#e5e9f0;font-size:14px;border:1px solid #252E42">🚑 安全模式重启（清本机存档，记忆已在云端会自动回同步）</button>' + '</div>';
     var _b = document.getElementById("bootErrBox");
     if (_b) _b.textContent = String(e && e.stack || e && e.message || e);
   } catch (_e) {}
@@ -11631,7 +11803,7 @@ try {
     if (un && un.title) {
       updNotify(un.title, un.body);
     }
-  } catch (e) {} // 🔔 v2.5.101-knowall 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
+  } catch (e) {} // 🔔 v2.5.104-live 109 轮：未读公告补发统一走 updNotify 带回执链（送达才清；失败自动登记 GENE9 进化+分诊引导，不再 toast 完事）
   try {
     var wg = jparse(DSB.storeGet("watchdogRevert"));
     if (wg && wg.f) {
