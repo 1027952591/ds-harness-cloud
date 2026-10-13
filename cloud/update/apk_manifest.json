@@ -1,9 +1,9 @@
 {
- "versionCode": 143,
- "size": 6606433,
- "md5": "03a8ef284b78f01292af106ff130228f",
- "minBundleVer": 113,
- "note": "vc143：纯JS MD5 根治热更死锁+Blob API 兜底+部署雪崩修复。下载走 GitHub Releases CDN（raw 域国内被墙）",
- "versionName": "2.5.125-md5fix",
- "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v143/DS-Harness-2.5.125-md5fix.apk"
+ "versionName": "2.5.126-proxy2",
+ "versionCode": 144,
+ "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v144/DS-Harness-2.5.126-proxy2.apk",
+ "size": 6610529,
+ "md5": "71101ec1b26c9808f72dfd77795f464e",
+ "minBundleVer": 114,
+ "note": "vc144：进化中转 PUT 补 sha（137g）。下载走 Releases CDN"
 }
