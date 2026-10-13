@@ -1,10 +1,8 @@
 {
- "versionName": "2.5.118-verify",
- "versionCode": 136,
- "md5": "b15b4d371533e177747e36e895db7f1b",
- "size": 5962609,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38371056735)",
- "builtAt": "2026-10-13T08:43:11Z"
+ "appVersion": "2.5.120-gate",
+ "versionCode": 138,
+ "md5": "4442747e14c835fb8031cce90478209d",
+ "size": 6594145,
+ "ts": 1791881315319,
+ "note": "136 轮：热更包体三道闸 500KB→20MB 极限+私有仓误导文案根治+资产快照缺文件 ◌ 降级提示"
 }
