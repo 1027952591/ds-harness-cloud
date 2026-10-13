@@ -34,5 +34,11 @@
   "title": "🩺 双端体检完成：36 项检查，全绿",
   "brief": "① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.json 情报新鲜（10.9h 前，5 源）且 audit 基因在位; ④ 双端共脑记忆/手册在位（memory.json+playbook.json）; ⑤ App 全天候镜像活跃（app_state.json 10.4h 前更新，最近动作=chat）; ⑥ 🧬 自主升级更新通道互拍（manifest+bundle @2.5.101-knowall）; ⑦ 🧬 GEN5 云端自主进化机器在位（selftest/evolve/锚锁/节流/版本标记）; ⑦ 🧬 云端引擎 --selftest 实弹通过; ⑧ 🧬 Jav",
   "ts": "2026-10-13T00:19:29.099705Z"
+ },
+ {
+  "kind": "vuln",
+  "title": "🩺 双端体检完成：36 项检查，全绿",
+  "brief": "① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.json 情报新鲜（11.0h 前，5 源）且 audit 基因在位; ④ 双端共脑记忆/手册在位（memory.json+playbook.json）; ⑤ App 全天候镜像活跃（app_state.json 10.6h 前更新，最近动作=chat）; ⑥ 🧬 自主升级更新通道互拍（manifest+bundle @2.5.101-knowall）; ⑦ 🧬 GEN5 云端自主进化机器在位（selftest/evolve/锚锁/节流/版本标记）; ⑦ 🧬 云端引擎 --selftest 实弹通过; ⑧ 🧬 Jav",
+  "ts": "2026-10-13T00:26:55.211400Z"
  }
 ]
