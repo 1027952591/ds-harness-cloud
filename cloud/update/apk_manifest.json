@@ -1,9 +1,9 @@
 {
- "versionName": "2.5.126-proxy2",
- "versionCode": 144,
- "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v144/DS-Harness-2.5.126-proxy2.apk",
+ "versionName": "2.5.127-cdnfix",
+ "versionCode": 145,
+ "apkUrl": "https://github.com/1027952591/ds-harness-cloud/releases/download/v145/DS-Harness-2.5.127-cdnfix.apk",
  "size": 6610529,
- "md5": "71101ec1b26c9808f72dfd77795f464e",
- "minBundleVer": 114,
- "note": "vc144：进化中转 PUT 补 sha（137g）。下载走 Releases CDN"
+ "md5": "4e1c9edd6706146e656f8eada4f3e5ac",
+ "minBundleVer": 115,
+ "note": "vc145：CDN 缓存幂等修复（137h）。下载走 Releases CDN"
 }
