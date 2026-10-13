@@ -1,7 +1,9 @@
-<!-- steps:3 -->
-<!-- provs:zhipu -->
-<!-- run:38328821810 -->
-已成功生成所需的两页演示文稿和两章微型小说。演示文稿已保存为 "output/G演示.pptx"，微型小说已保存为 "output/G小说.txt"。这些文件已通过系统自动盘点，并将在主人的对话框内直接交付。
+<!-- steps:8 -->
+<!-- provs:modelscope -->
+<!-- run:38402165278 -->
+(达到最大步数 8，最后一次模型回复如下)
+
+{"tool": "web_search", "input": {"q": "free video generation API no key required 2024 2025 instant text to video"}}}
 
 📦 交付物（已在对话框内直接渲染播放/预览，也可到仓库下载）：
 【交付:output/F文档.docx】
