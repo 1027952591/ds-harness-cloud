@@ -7,7 +7,7 @@
    "style": "zhipu",
    "ep": "https://open.bigmodel.cn/api/paas/v4/videos/generations",
    "note": "智谱 CogVideoX（基础源·免费）",
-   "fails": 1,
+   "fails": 2,
    "status": "candidate"
   },
   "siliconflow": {
@@ -48,7 +48,7 @@
    "style": "openai-video",
    "ep": "https://api.minimax.chat/v1/video_generation",
    "note": "海螺 H3（2026-08 权重开源 768P 开源评测第一；商业 API 付费——探免费窗口/托管迁移，61 轮真网情报）",
-   "fails": 1,
+   "fails": 2,
    "status": "candidate"
   },
   "aliyun": {
@@ -70,7 +70,7 @@
    "style": "openai-video",
    "ep": "https://deepart.io/api/v1/convert",
    "note": "注册后每月有100个免费转换额度",
-   "fails": 1
+   "fails": 2
   },
   "2": {
    "status": "candidate",
@@ -80,7 +80,7 @@
    "style": "openai-video",
    "ep": "https://api.artbreeder.com/v1/",
    "note": "注册后每月有50个免费生成请求",
-   "fails": 1
+   "fails": 2
   },
   "3": {
    "status": "candidate",
@@ -90,7 +90,7 @@
    "style": "openai-video",
    "ep": "https://deepdreamgenerator.com/api/v1/",
    "note": "注册后每月有100个免费生成请求",
-   "fails": 1
+   "fails": 2
   },
   "4": {
    "status": "candidate",
@@ -100,7 +100,7 @@
    "style": "openai-video",
    "ep": "https://runwayml.com/api/v1/",
    "note": "注册后每月有50个免费推理时间",
-   "fails": 1
+   "fails": 2
   },
   "5": {
    "status": "candidate",
@@ -110,11 +110,11 @@
    "style": "openai-video",
    "ep": "https://stylegan.io/api/v1/",
    "note": "开源权重托管免费推理",
-   "fails": 1
+   "fails": 2
   }
  },
- "updated": "2026-10-13T04:42:48.385786Z",
- "scan": "1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,1)",
+ "updated": "2026-10-14T04:55:35.871634Z",
+ "scan": "1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,2)",
  "verified_chain": [
   "zhipu",
   "siliconflow",
