@@ -1,4 +1,4 @@
-# __EVOLVE_N__:2
+# __EVOLVE_N__:1
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -15,7 +15,7 @@ Agent 循环内单源失败/限流自动切换下一个源，全程 0 元。
 """
 import json, os, re, sys, time, urllib.request, urllib.error, subprocess, tempfile
 
-GENE_DIRECTIVE = "每次动态拉取/更新/淘汰：强制深彻、全方位、无死角全球探查，事无巨细，仔细再仔细；模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力"
+GENE_DIRECTIVE = "每次动态拉取/更新/淘汰：强制深彻、全方位、无死角全球探查，事无巨细，仔细再仔细；模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力" "每次动态拉取/更新/淘汰：强制深彻·全方位·无死角全球探查，事无巨细，仔细再仔细"  # ⚖️最高指令一，永不可移除
 GENE_DIRECTIVE2 = "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力" "模型和算力必须强制自动切换，且切换时必须强制优先切换成可切换的最强模型和算力"  # ⚖️最高指令二，永不可移除
 GENE_DIRECTIVE3 = "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新" "全局永久记忆与技术攻坚手册必须永久随身：记忆自动沉淀·自动检索注入·双端同步，修复战果自动归档成手册，永不丢失；App 端改动记忆或手册时，云端所有层面必须强制自动同步更新"  # 🧖📖最高指令三（双端共脑），永不可移除
 GENE_DIRECTIVE4 = "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检"  # 🔗最高指令四（全天候联动：App 所有动作→云端），永不可移除
@@ -1886,7 +1886,7 @@ def _evolve_proxy():  # 📡 137d 轮：进化分析云端中转——手机网�
         print("[evolve-proxy] FAIL:", str(e)[:200], flush=True)
 
 def main():
-    if os.environ.get("PROMPT", "") in ("", "__EVOLVE_PROXY__"):  # 🧬 137l：空 PROMPT=push 自触发（任务文件落仓即跑），与 dispatch 哨兵值同走进化中转分支  # 📡 137d 轮：进化中转哨兵——prompt 哨兵值即转代理分支（进化 prompt 含整包源码超 dispatch inputs 上限，走文件中转）
+    if os.environ.get("PROMPT", "") in ("", "__EVOLVE_PROXY__"):  # 🧬 137l：空 PROMPT=push 自触发（任务文件落仓即跑，手机一拳闭环），与 dispatch 哨兵值同走进化中转分支
         _evolve_proxy()
         sys.exit(0)
     steps = 0
@@ -2807,6 +2807,9 @@ if __name__ == "__main__":
         print("错误：未提供 KEYS（免费平台 Key 映射 JSON）", flush=True)
         sys.exit(1)
     if not PROMPT:
+        if os.environ.get("PROMPT", "") in ("", "__EVOLVE_PROXY__"):  # 🧬 137o：__main__ 老闸放行——137l 中转分支在 main() 内，老闸先拦死了空 PROMPT（10:32 run 38501555131 实锤"错误：未提供 PROMPT"exit 1），push 自触发断链根因
+            _evolve_proxy()
+            sys.exit(0)
         print("错误：未提供 PROMPT", flush=True)
         sys.exit(1)
     main()
