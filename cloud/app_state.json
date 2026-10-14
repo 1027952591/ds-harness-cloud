@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-14T00:47:02.659Z",
+ "updated": "2026-10-14T01:28:06.212Z",
  "action": "state",
  "appVersion": "2.5.129-evoreclaim",
- "mode": "cloud",
+ "mode": "phone",
  "prefProv": "",
  "chainOn": [
   "modelscope",
@@ -11,27 +11,14 @@
  "phoneToolN": 0,
  "phoneToolLast": "",
  "phoneApps": 0,
- "selModels": {
-  "zhipu": "glm-5",
-  "nvidia": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-  "modelscope": "Qwen/Qwen3.5-397B-A17B",
-  "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
-  "openrouter": "dots-studio/dots-3-note-preview:free",
-  "gemma": "gemma-3-12b-it",
-  "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
-  "groq": "llama-3.3-70b-versatile",
-  "cerebras": "llama-3.3-70b",
-  "mistral": "mistral-small-latest",
-  "pollinations": "openai-fast",
-  "ondevice": "qwen2.5-0.5b"
- },
+ "selModels": {},
  "deadLogCount": 0,
  "probeOk": 1,
  "liveN": 4,
  "repoN": 5,
  "vulnOk": 8,
  "vulnN": 11,
- "memN": 25,
+ "memN": 26,
  "pbN": 41,
  "vulnBad": [
   "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
@@ -49,6 +36,6 @@
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
  "plugins": {
-  "think": 0
+  "think": 1
  }
 }
