@@ -1,10 +1,1 @@
-{
- "versionName": "2.5.128-evoslim",
- "versionCode": 146,
- "md5": "7cc1027600c901dff09d046c91c7521c",
- "size": 5958513,
- "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
- "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
- "reason": "evolve build (run 38492351510)",
- "builtAt": "2026-10-14T00:51:03Z"
-}
+{"versionName":"2.5.130-badgefix","versionCode":148,"apkMd5":"e9dca562c0c55715ae9c2831a6d5ff48","apkSize":6618721,"apkUrl":"https://github.com/1027952591/ds-harness-cloud/releases/download/v148/DS-Harness-2.5.130-badgefix.apk","minBundleVer":118,"ts":"2026-10-14T01:55:48Z"}
