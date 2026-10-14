@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14T04:10:22.904Z",
+ "updated": "2026-10-14T06:06:57.195Z",
  "action": "state",
  "appVersion": "2.5.129-evoreclaim",
  "mode": "phone",
@@ -31,7 +31,7 @@
  "repoN": 5,
  "vulnOk": 8,
  "vulnN": 11,
- "memN": 34,
+ "memN": 36,
  "pbN": 41,
  "vulnBad": [
   "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
