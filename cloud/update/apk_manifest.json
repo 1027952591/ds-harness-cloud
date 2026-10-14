@@ -1,1 +1,10 @@
-{"versionName":"2.5.131-selfix","versionCode":149,"apkMd5":"321cddf84baa2bf59a88c3a94a947ec4","apkSize":6618721,"apkUrl":"https://github.com/1027952591/ds-harness-cloud/releases/download/v149/DS-Harness-2.5.131-selfix.apk","minBundleVer":119,"ts":"2026-10-14T02:16:29Z"}
+{
+ "versionName": "2.5.128-evoslim",
+ "versionCode": 146,
+ "md5": "930da027f76f33f94d53b11ffa5121c5",
+ "size": 5958513,
+ "apkUrl": "https://raw.githubusercontent.com/1027952591/ds-harness-cloud/main/cloud/update/apk/DS-Harness.apk",
+ "cdnUrl": "https://cdn.jsdelivr.net/gh/1027952591/ds-harness-cloud@main/cloud/update/apk/DS-Harness.apk",
+ "reason": "evolve build (run 38500270701)",
+ "builtAt": "2026-10-14T02:19:06Z"
+}
