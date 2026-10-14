@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14T04:55:35.872493Z",
+ "updated": "2026-10-14T06:06:42.078Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -11,8 +11,8 @@
     "双端共脑",
     "seed"
    ],
-   "w": 3.0,
-   "hit": 0
+   "w": 2.3,
+   "hit": 26
   },
   {
    "id": "seed-m2",
@@ -24,8 +24,8 @@
     "基因",
     "seed"
    ],
-   "w": 1.1500000000000001,
-   "hit": 0
+   "w": 1.05,
+   "hit": 1
   },
   {
    "id": "seed-m3",
@@ -37,8 +37,8 @@
     "清单",
     "seed"
    ],
-   "w": 1.3,
-   "hit": 0
+   "w": 1.1,
+   "hit": 2
   },
   {
    "id": "seed-m4",
@@ -50,8 +50,8 @@
     "rest",
     "seed"
    ],
-   "w": 1.7500000000000002,
-   "hit": 0
+   "w": 1.2500000000000002,
+   "hit": 5
   },
   {
    "id": "seed-m5",
@@ -63,8 +63,8 @@
     "热更",
     "seed"
    ],
-   "w": 1.7500000000000002,
-   "hit": 0
+   "w": 1.2500000000000002,
+   "hit": 5
   },
   {
    "id": "seed-m6",
@@ -76,8 +76,8 @@
     "同步",
     "seed"
    ],
-   "w": 2.9500000000000006,
-   "hit": 0
+   "w": 1.6500000000000006,
+   "hit": 13
   },
   {
    "id": "mmv7bvlqx20b",
@@ -85,19 +85,6 @@
    "kind": "fact",
    "content": "🧬 进化补丁被闸门拒绝：实收是 HTML 网页而非更新包（通道挡板/劫持/镜像限流，非完整性事故——换通道或稍后再试）",
    "tags": []
-  },
-  {
-   "id": "mmv6mm5b73g4",
-   "ts": 1791899962633,
-   "kind": "fact",
-   "content": "☁️ 云端引擎已自主进化至 EVOLVE_N=1（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",
-   "tags": [
-    "evolve",
-    "云端"
-   ],
-   "w": 2.0,
-   "hit": 0,
-   "consolidated": 1
   },
   {
    "id": "mmv6mm5ba1pu",
@@ -108,19 +95,6 @@
     "evolve",
     "notifail"
    ]
-  },
-  {
-   "id": "mmv6n341ayk",
-   "ts": 1791935663283,
-   "kind": "fact",
-   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
-   "tags": [
-    "proactive",
-    "report"
-   ],
-   "w": 3.0,
-   "hit": 0,
-   "consolidated": 3
   },
   {
    "id": "mmv6n341m4vn",
@@ -141,8 +115,8 @@
     "daily",
     "情报"
    ],
-   "w": 1.3,
-   "hit": 0
+   "w": 1.1,
+   "hit": 2
   },
   {
    "id": "mmv6nwysa352",
@@ -155,6 +129,16 @@
    ]
   },
   {
+   "id": "mmv6oo1ma1ny",
+   "ts": 1791896092210,
+   "kind": "fact",
+   "content": "🧬 主动中枢战报：🧬 小神主动战报（1 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.j",
+   "tags": [
+    "proactive",
+    "report"
+   ]
+  },
+  {
    "id": "mmv6p133o3by",
    "ts": 1791896700660,
    "kind": "fact",
@@ -163,8 +147,8 @@
     "evolve",
     "demand"
    ],
-   "w": 1.3,
-   "hit": 0
+   "w": 1.1,
+   "hit": 2
   },
   {
    "id": "mmv6pt3k3tm",
@@ -177,19 +161,6 @@
    ]
   },
   {
-   "id": "c17918971154",
-   "ts": 1791938888115,
-   "kind": "run",
-   "content": "云端运行开始：任务=请用 python 调 _video(\"哎、本来希望你能给我生成图片和\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 3.0,
-   "hit": 0,
-   "consolidated": 3
-  },
-  {
    "id": "mmv6q5y5z21q",
    "ts": 1791898607159,
    "kind": "fact",
@@ -197,6 +168,26 @@
    "tags": [
     "evolve",
     "report"
+   ]
+  },
+  {
+   "id": "mmv6q5y6b2av",
+   "ts": 1791898607171,
+   "kind": "fact",
+   "content": "🧬 主动中枢战报：🧬 小神主动战报（2 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.j",
+   "tags": [
+    "proactive",
+    "report"
+   ]
+  },
+  {
+   "id": "mmv6qz0216mj",
+   "ts": 1791899962633,
+   "kind": "fact",
+   "content": "☁️ 云端引擎已自主进化至 EVOLVE_N=2（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",
+   "tags": [
+    "evolve",
+    "云端"
    ]
   },
   {
@@ -210,6 +201,16 @@
    ]
   },
   {
+   "id": "mmv7c86ur78v",
+   "ts": 1791935663283,
+   "kind": "fact",
+   "content": "🧬 主动中枢战报：🧬 小神主动战报（14 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
+   "tags": [
+    "proactive",
+    "report"
+   ]
+  },
+  {
    "id": "c179193612321",
    "ts": 1791936123410,
    "kind": "run",
@@ -218,8 +219,133 @@
     "run",
     "云端"
    ],
-   "w": 1.1500000000000001,
-   "hit": 0
+   "w": 1.05,
+   "hit": 1
+  },
+  {
+   "id": "c179193756822",
+   "ts": 1791937568388,
+   "kind": "run",
+   "content": "云端运行开始：任务=请用 python 调 _video(\"哎、本来希望你能给我生成图片和\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
+   "tags": [
+    "run",
+    "云端"
+   ]
+  },
+  {
+   "id": "c179193840024",
+   "ts": 1791938400249,
+   "kind": "run",
+   "content": "云端运行开始：任务=请用 python 调 _video(\"可以生成\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
+   "tags": [
+    "run",
+    "云端"
+   ]
+  },
+  {
+   "id": "c179193888825",
+   "ts": 1791938888115,
+   "kind": "run",
+   "content": "云端运行开始：任务=请用 python 调 _video(\"用大白话回复我、你现在具备生成\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
+   "tags": [
+    "run",
+    "云端"
+   ],
+   "w": 1.05,
+   "hit": 1
+  },
+  {
+   "id": "mmv7fog3c63d",
+   "ts": 1791941460600,
+   "kind": "fact",
+   "content": "手机端 Agent 执行了 1 步工具循环（app_launch 等）",
+   "tags": [
+    "phone",
+    "agent"
+   ],
+   "w": 1.1,
+   "hit": 2
+  },
+  {
+   "id": "mmv7fsdhf4my",
+   "ts": 1791941643843,
+   "kind": "fact",
+   "content": "手机端 Agent 执行了 2 步工具循环（fs_mkdir 等）",
+   "tags": [
+    "phone",
+    "agent"
+   ],
+   "w": 1.1,
+   "hit": 2
+  },
+  {
+   "id": "mmv7fw5w9e9",
+   "ts": 1791941820633,
+   "kind": "fact",
+   "content": "手机端 Agent 执行了 2 步工具循环（app_launch 等）",
+   "tags": [
+    "phone",
+    "agent"
+   ]
+  },
+  {
+   "id": "mmv7g1mxi48x",
+   "ts": 1791942075990,
+   "kind": "fact",
+   "content": "手机端 Agent 执行了 5 步工具循环（fs_write 等）",
+   "tags": [
+    "phone",
+    "agent"
+   ]
+  },
+  {
+   "id": "mmv7g2idh7jw",
+   "ts": 1791942116741,
+   "kind": "fact",
+   "content": "手机端 Agent 执行了 1 步工具循环（fs_read 等）",
+   "tags": [
+    "phone",
+    "agent"
+   ]
+  },
+  {
+   "id": "mmv6mm5b73g4",
+   "ts": 1791899962633,
+   "kind": "fact",
+   "content": "☁️ 云端引擎已自主进化至 EVOLVE_N=1（App 端自动感知留痕；重新部署时自动保护云端新版本不被覆盖）",
+   "tags": [
+    "evolve",
+    "云端"
+   ],
+   "w": 2,
+   "hit": 0,
+   "consolidated": 1
+  },
+  {
+   "id": "mmv6n341ayk",
+   "ts": 1791935663283,
+   "kind": "fact",
+   "content": "🧬 主动中枢战报：🧬 小神主动战报（11 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.",
+   "tags": [
+    "proactive",
+    "report"
+   ],
+   "w": 3,
+   "hit": 0,
+   "consolidated": 3
+  },
+  {
+   "id": "c17918971154",
+   "ts": 1791938888115,
+   "kind": "run",
+   "content": "云端运行开始：任务=请用 python 调 _video(\"哎、本来希望你能给我生成图片和\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
+   "tags": [
+    "run",
+    "云端"
+   ],
+   "w": 3,
+   "hit": 0,
+   "consolidated": 3
   },
   {
    "id": "mmv7fmtbr80",
@@ -230,7 +356,7 @@
     "agent",
     "phone"
    ],
-   "w": 3.0,
+   "w": 3,
    "hit": 0,
    "consolidated": 2
   },
@@ -259,16 +385,6 @@
    "w": 2.6,
    "hit": 0,
    "consolidated": 1
-  },
-  {
-   "id": "mmv7g1mxi48x",
-   "ts": 1791942075990,
-   "kind": "fact",
-   "content": "手机端 Agent 执行了 5 步工具循环（fs_write 等）",
-   "tags": [
-    "phone",
-    "agent"
-   ]
   },
   {
    "id": "c179195371523",
