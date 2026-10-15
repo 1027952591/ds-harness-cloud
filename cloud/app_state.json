@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15T04:56:01.178Z",
+ "updated": "2026-10-15T10:47:11.272Z",
  "action": "chat",
  "appVersion": "2.5.131-selfix",
  "mode": "cloud",
@@ -31,14 +31,21 @@
  "repoN": 0,
  "vulnOk": 6,
  "vulnN": 6,
- "memN": 6,
- "pbN": 17,
+ "memN": 35,
+ "pbN": 41,
  "vulnBad": [],
- "chanHealth": [],
+ "chanHealth": [
+  "raw.githubusercontent:ok0/p100",
+  "jsDelivr CDN:ok0/p100",
+  "GitHub API:ok0/p100"
+ ],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {}
+ "plugins": {
+  "think": true,
+  "code": true
+ }
 }
