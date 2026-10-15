@@ -7,8 +7,9 @@
    "style": "zhipu",
    "ep": "https://open.bigmodel.cn/api/paas/v4/videos/generations",
    "note": "智谱 CogVideoX（基础源·免费）",
-   "fails": 2,
-   "status": "candidate"
+   "fails": 3,
+   "status": "graveyard",
+   "retired_at": "2026-10-15T04:54:11.383813Z"
   },
   "siliconflow": {
    "models": [
@@ -48,8 +49,9 @@
    "style": "openai-video",
    "ep": "https://api.minimax.chat/v1/video_generation",
    "note": "海螺 H3（2026-08 权重开源 768P 开源评测第一；商业 API 付费——探免费窗口/托管迁移，61 轮真网情报）",
-   "fails": 2,
-   "status": "candidate"
+   "fails": 3,
+   "status": "graveyard",
+   "retired_at": "2026-10-15T04:54:08.653990Z"
   },
   "aliyun": {
    "models": [
@@ -63,58 +65,63 @@
    "status": "paused"
   },
   "1": {
-   "status": "candidate",
+   "status": "graveyard",
    "models": [
     "DeepArt"
    ],
    "style": "openai-video",
    "ep": "https://deepart.io/api/v1/convert",
    "note": "注册后每月有100个免费转换额度",
-   "fails": 2
+   "fails": 3,
+   "retired_at": "2026-10-15T04:54:06.078036Z"
   },
   "2": {
-   "status": "candidate",
+   "status": "graveyard",
    "models": [
     "Artbreeder API"
    ],
    "style": "openai-video",
    "ep": "https://api.artbreeder.com/v1/",
    "note": "注册后每月有50个免费生成请求",
-   "fails": 2
+   "fails": 3,
+   "retired_at": "2026-10-15T04:54:06.162625Z"
   },
   "3": {
-   "status": "candidate",
+   "status": "graveyard",
    "models": [
     "Deep Dream Generator"
    ],
    "style": "openai-video",
    "ep": "https://deepdreamgenerator.com/api/v1/",
    "note": "注册后每月有100个免费生成请求",
-   "fails": 2
+   "fails": 3,
+   "retired_at": "2026-10-15T04:54:06.416090Z"
   },
   "4": {
-   "status": "candidate",
+   "status": "graveyard",
    "models": [
     "RunwayML"
    ],
    "style": "openai-video",
    "ep": "https://runwayml.com/api/v1/",
    "note": "注册后每月有50个免费推理时间",
-   "fails": 2
+   "fails": 3,
+   "retired_at": "2026-10-15T04:54:06.499844Z"
   },
   "5": {
-   "status": "candidate",
+   "status": "graveyard",
    "models": [
     "StyleGAN API"
    ],
    "style": "openai-video",
    "ep": "https://stylegan.io/api/v1/",
    "note": "开源权重托管免费推理",
-   "fails": 2
+   "fails": 3,
+   "retired_at": "2026-10-15T04:54:06.667374Z"
   }
  },
- "updated": "2026-10-14T04:55:35.871634Z",
- "scan": "1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,2)",
+ "updated": "2026-10-15T04:54:11.384418Z",
+ "scan": "1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:graveyard(连败3退役)",
  "verified_chain": [
   "zhipu",
   "siliconflow",
