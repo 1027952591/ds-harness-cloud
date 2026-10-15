@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15T11:56:35.618Z",
+ "updated": "2026-10-15T22:43:00.352Z",
  "action": "state",
  "appVersion": "2.5.131-selfix",
  "mode": "cloud",
@@ -29,14 +29,14 @@
  "probeOk": 1,
  "liveN": 0,
  "repoN": 5,
- "vulnOk": 7,
+ "vulnOk": 8,
  "vulnN": 11,
  "memN": 38,
  "pbN": 41,
  "vulnBad": [
   "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
-  "fresh:云端无 models.json 且本地无缓存（每日体检从未成功） → 🔧远程触发失败 HTTP 0（未配 GitHub Token 时无法自动触发，可到 Ac",
-  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿"
+  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿",
+  "cloudvuln:云端同拍触发失败 HTTP 0（vuln.yml 缺失→重新部署可修）"
  ],
  "chanHealth": [
   "raw.githubusercontent:连败3/p110",
