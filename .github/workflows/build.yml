@@ -19,9 +19,9 @@ on:
 permissions:
   contents: write
 
-# 🚦 与 agent/models/vuln 共用排队锁（v2.5.20-audit6）：构建写回仓同样不互踢
+# 🚦 137p：独立分组分家——原与 agent 共用 dsh-cloud-engine，GitHub 并发组每组只留"一跑一排"，新排队者会挤掉旧排队者（cancel-in-progress:false 只护 running 不护 queued）→12:58 实弹：聊天任务排队中被 build-apk 挤成 cancelled（run 38684263918 无 job 即卒）。分家后聊天/构建并行，git 冲突由各自 merge -X ours+push 重试兜底
 concurrency:
-  group: dsh-cloud-engine
+  group: dsh-cloud-builder
   cancel-in-progress: false
 
 jobs:
