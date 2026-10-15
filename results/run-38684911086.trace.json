@@ -1,0 +1,22 @@
+{
+ "think": true,
+ "tools": {
+  "web": true,
+  "code": true
+ },
+ "steps": [
+  {
+   "step": 1,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "run_python\n{\"code\": \"_video('你之前不是给我生成html的代码、然后就是')\"}",
+   "tool": "run_python"
+  },
+  {
+   "step": 2,
+   "prov": "zhipu",
+   "model": "glm-4-flash",
+   "content": "很抱歉，由于在执行环境中没有找到 `_video` 函数的定义，我无法生成视频。请确保该函数已经正确定义并可用。如果您有其他请求或需要进一步的帮助，请告诉我。"
+  }
+ ]
+}
