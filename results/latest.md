@@ -1,11 +1,4 @@
 <!-- steps:2 -->
-<!-- provs:zhipu -->
-<!-- run:38722700342 -->
-很抱歉，似乎在尝试执行视频生成命令时出现了一个错误，因为 '_video' 函数没有定义。这可能是因为当前的环境或上下文中缺少必要的函数或模块。由于我无法直接生成视频，我建议稍后再试或尝试其他方法。如果您有其他请求或需要帮助，请告诉我。
-
-📦 交付物（已在对话框内直接渲染播放/预览，也可到仓库下载）：
-【交付:output/F文档.docx】
-【交付:output/F表格.xlsx】
-【交付:output/G小说.txt】
-【交付:output/G演示.pptx】
-【交付:output/验收表格.xlsx】
+<!-- provs:modelscope -->
+<!-- run:38818997214 -->
+{"tool": "run_python", "input": {"code": "import os, json, glob\n# 检查 cloud/ 目录结构\nfor f in glob.glob('cloud/*.py'):\n    print(f)\nprint('---')\n# 检查是否有 agent.py 定义了 _video\nfor f in glob.glob('cloud/*.py'):\n    with open(f) as fh:\n        content = fh.read()\    if '_video' in content:\n        print(f'Found _video in {f}')\n        # 打印相关行\n        for i, line in enumerate(content.split('\\n')):\n            if '_video' in line:\n                print(f'  L{i}: {line}')\n"}}}
