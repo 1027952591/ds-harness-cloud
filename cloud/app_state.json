@@ -1,22 +1,22 @@
 {
- "updated": "2026-10-14T08:23:34.561Z",
- "action": "state",
- "appVersion": "2.5.129-evoreclaim",
- "mode": "phone",
+ "updated": "2026-10-15T04:56:01.178Z",
+ "action": "chat",
+ "appVersion": "2.5.131-selfix",
+ "mode": "cloud",
  "prefProv": "",
  "chainOn": [
+  "zhipu",
   "modelscope",
   "pollinations"
  ],
- "phoneToolN": 26,
- "phoneToolLast": "fs_read",
+ "phoneToolN": 0,
+ "phoneToolLast": "",
  "phoneApps": 0,
  "selModels": {
-  "zhipu": "glm-5",
-  "nvidia": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
-  "modelscope": "Qwen/Qwen3.5-397B-A17B",
+  "zhipu": "glm-4-flash",
+  "nvidia": "deepseek-ai/deepseek-v4.1-flash",
+  "modelscope": "deepseek-ai/DeepSeek-V4.1-Flash",
   "siliconflow": "Qwen/Qwen2.5-7B-Instruct",
-  "openrouter": "dots-studio/dots-3-note-preview:free",
   "gemma": "gemma-3-12b-it",
   "cloudflare": "@cf/meta/llama-3.1-8b-instruct",
   "groq": "llama-3.3-70b-versatile",
@@ -27,28 +27,18 @@
  },
  "deadLogCount": 0,
  "probeOk": 1,
- "liveN": 4,
- "repoN": 5,
- "vulnOk": 8,
- "vulnN": 11,
- "memN": 36,
- "pbN": 41,
- "vulnBad": [
-  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
-  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿",
-  "cloudvuln:云端同拍触发失败 HTTP 0（vuln.yml 缺失→重新部署可修）"
- ],
- "chanHealth": [
-  "raw.githubusercontent:连败18/p260",
-  "jsDelivr CDN:连败18/p260",
-  "GitHub API:ok18/p100"
- ],
+ "liveN": 0,
+ "repoN": 0,
+ "vulnOk": 6,
+ "vulnN": 6,
+ "memN": 6,
+ "pbN": 17,
+ "vulnBad": [],
+ "chanHealth": [],
  "scoutOK": 0,
  "scoutPool": [],
  "provOK": 0,
  "provPool": [],
  "evoCfg": "failN:3;prioStep:10;msW:3;killN:3;scoutH:24;provH:24;winH:4",
- "plugins": {
-  "think": 1
- }
+ "plugins": {}
 }
