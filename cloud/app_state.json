@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-15T10:47:11.272Z",
- "action": "chat",
+ "updated": "2026-10-15T11:56:35.618Z",
+ "action": "state",
  "appVersion": "2.5.131-selfix",
  "mode": "cloud",
  "prefProv": "",
@@ -28,16 +28,20 @@
  "deadLogCount": 0,
  "probeOk": 1,
  "liveN": 0,
- "repoN": 0,
- "vulnOk": 6,
- "vulnN": 6,
- "memN": 35,
+ "repoN": 5,
+ "vulnOk": 7,
+ "vulnN": 11,
+ "memN": 38,
  "pbN": 41,
- "vulnBad": [],
+ "vulnBad": [
+  "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
+  "fresh:云端无 models.json 且本地无缓存（每日体检从未成功） → 🔧远程触发失败 HTTP 0（未配 GitHub Token 时无法自动触发，可到 Ac",
+  "mind:云端文件暂不可读（GitHub 缓存延迟中，几分钟内自动转绿） → 🔧推送已完成——GitHub 缓存延迟中，下次体检自动转绿"
+ ],
  "chanHealth": [
-  "raw.githubusercontent:ok0/p100",
-  "jsDelivr CDN:ok0/p100",
-  "GitHub API:ok0/p100"
+  "raw.githubusercontent:连败3/p110",
+  "jsDelivr CDN:连败3/p110",
+  "GitHub API:连败3/p110"
  ],
  "scoutOK": 0,
  "scoutPool": [],
