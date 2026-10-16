@@ -1,17 +1,17 @@
 {
- "ts": "2026-10-15T04:53:52.483484Z",
+ "ts": "2026-10-16T04:55:18.584776Z",
  "job": "sleep-consolidation",
  "stats": {
   "mem": {
-   "merged": 11,
+   "merged": 7,
    "compressed": 0,
-   "strengthened": 12,
+   "strengthened": 3,
    "faded": 0
   },
   "pb": {
    "merged": 17,
    "compressed": 0,
-   "strengthened": 5,
+   "strengthened": 2,
    "faded": 0
   }
  }
