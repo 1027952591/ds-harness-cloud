@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T00:22:37.988Z",
+ "updated": "2026-10-16T12:06:57.171Z",
  "action": "state",
  "appVersion": "2.5.131-selfix",
  "mode": "cloud",
@@ -31,7 +31,7 @@
  "repoN": 5,
  "vulnOk": 8,
  "vulnN": 11,
- "memN": 38,
+ "memN": 40,
  "pbN": 41,
  "vulnBad": [
   "runs:GitHub API 不可达 HTTP 0 → 🔧修复异常：TypeError: Cannot read property 'workflow_runs' o",
@@ -39,9 +39,12 @@
   "cloudvuln:云端同拍触发失败 HTTP 0（vuln.yml 缺失→重新部署可修）"
  ],
  "chanHealth": [
-  "raw.githubusercontent:连败3/p110",
-  "jsDelivr CDN:连败3/p110",
-  "GitHub API:连败3/p110"
+  "raw.githubusercontent:连败5/p130",
+  "jsDelivr CDN:连败5/p130",
+  "GitHub API:连败5/p130",
+  "scout:fastly.jsdelivr.net:ok0/p100",
+  "scout:gcore.jsdelivr.net:ok0/p100",
+  "scout:testingcf.jsdelivr.net:ok0/p100"
  ],
  "scoutOK": 0,
  "scoutPool": [],
