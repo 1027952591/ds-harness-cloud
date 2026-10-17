@@ -86,6 +86,7 @@
    "nvidia/nemotron-3-super-120b-a12b:free",
    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
    "google/gemma-4-31b-it:free",
+   "xingchen-agi/xing4.0-29b-a4b:free",
    "google/gemma-4-26b-a4b-it:free",
    "thinkingmachines/inkling:free",
    "thinkingmachines/inkling-small:free",
@@ -129,7 +130,7 @@
   },
   "openrouter": {
    "ok": 1,
-   "n": 18,
+   "n": 19,
    "status": 200
   },
   "groq": {
@@ -188,5 +189,5 @@
   "directive4": "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检",
   "strongest_first": true
  },
- "updated": "2026-10-16T12:06:34.842984Z"
+ "updated": "2026-10-17T03:44:48.903953Z"
 }
