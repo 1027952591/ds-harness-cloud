@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T12:06:42.143Z",
+ "updated": "2026-10-17T04:51:34.223516Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -66,8 +66,8 @@
     "同步",
     "seed"
    ],
-   "w": 1.05,
-   "hit": 1
+   "w": 1.1500000000000001,
+   "hit": 0
   },
   {
    "id": "mmv92ia1m4gr",
@@ -246,13 +246,16 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1792040051384,
+   "ts": 1792126534786,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
-    "vidscout",
-    "video"
-   ]
+    "video",
+    "vidscout"
+   ],
+   "w": 3.0,
+   "hit": 0,
+   "consolidated": 2
   },
   {
    "id": "mmv92kbeo6jp",
@@ -262,7 +265,10 @@
    "tags": [
     "proactive",
     "report"
-   ]
+   ],
+   "w": 3.0,
+   "hit": 0,
+   "consolidated": 1
   },
   {
    "id": "mmv92t76k1i0",
@@ -296,23 +302,16 @@
   },
   {
    "id": "c179204064628",
-   "ts": 1792040646107,
-   "kind": "run",
-   "content": "云端运行开始：任务=请用 python 调 _video(\"必须具备生成\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "c179204074729",
-   "ts": 1792040747107,
+   "ts": 1792061239515,
    "kind": "run",
    "content": "云端运行开始：任务=请用 python 调 _video(\"你之前不是给我生成html的代码、然后就是\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
    "tags": [
     "run",
     "云端"
-   ]
+   ],
+   "w": 3.0,
+   "hit": 0,
+   "consolidated": 3
   },
   {
    "id": "c179204080030",
@@ -330,9 +329,12 @@
    "kind": "fact",
    "content": "🧬 体检发现 4 处残余异常，已自动唤醒自主进化机器进行修复攻坚（GENE6·体检进化一体化）",
    "tags": [
-    "vuln",
-    "evolve"
-   ]
+    "evolve",
+    "vuln"
+   ],
+   "w": 3.0,
+   "hit": 0,
+   "consolidated": 1
   },
   {
    "id": "mmv9hg2qy5zb",
@@ -340,82 +342,10 @@
    "kind": "fact",
    "content": "💗 小神主动问候：晚上好！我是小神，现在夜晚（夜幕降临，总结今天），我😌平静",
    "tags": [
-    "soul",
-    "greet"
-   ]
-  },
-  {
-   "id": "c179206123931",
-   "ts": 1792061239515,
-   "kind": "run",
-   "content": "云端运行开始：任务=请用 python 调 _video(\"可以生成ai\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
-   "tags": [
-    "run",
-    "云端"
-   ]
-  },
-  {
-   "id": "mmv6nwysa352",
-   "ts": 1792061256311,
-   "kind": "fact",
-   "content": "🧬 体检发现 3 处残余异常，已自动唤醒自主进化机器进行修复攻坚（GENE6·体检进化一体化）",
-   "tags": [
-    "evolve",
-    "vuln"
-   ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "mmv6oo1ma1ny",
-   "ts": 1792040365248,
-   "kind": "fact",
-   "content": "🧬 主动中枢战报：🧬 小神主动战报（1 条）：\n· 🩺 双端体检完成：36 项检查，全绿\n  ① 基因九指令刻入云端全层（7 文件，含 GENE6 极致铁律+GENE7 实弹验证列装铁律+GENE8 自主进化极致收; ② 云端引擎可编译（agent.py+models_sync.py+watchdog.py）; ③ models.j",
-   "tags": [
-    "proactive",
-    "report"
-   ],
-   "w": 3,
-   "hit": 0,
-   "consolidated": 4
-  },
-  {
-   "id": "mmv6pt3k3tm",
-   "ts": 1792065361642,
-   "kind": "fact",
-   "content": "💗 小神主动问候：晚上好！我是小神，现在夜晚（夜幕降临，总结今天），我😰焦虑",
-   "tags": [
     "greet",
     "soul"
    ],
-   "w": 2,
-   "hit": 0,
-   "consolidated": 1
-  },
-  {
-   "id": "c179193756822",
-   "ts": 1792061239515,
-   "kind": "run",
-   "content": "云端运行开始：任务=请用 python 调 _video(\"你之前不是给我生成html的代码、然后就是\") 四源链拍真视频（智谱 CogVideoX-Flash→硅基流动 Wan2.2→ModelScope→Google Veo，异步提交→轮询→下载 MP4），出片后告知落盘路径",
-   "tags": [
-    "run",
-    "云端"
-   ],
-   "w": 3,
-   "hit": 0,
-   "consolidated": 6
-  },
-  {
-   "id": "c179195373524",
-   "ts": 1792040051384,
-   "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
-   "tags": [
-    "video",
-    "vidscout"
-   ],
-   "w": 2,
+   "w": 3.0,
    "hit": 0,
    "consolidated": 1
   },
@@ -430,8 +360,18 @@
    ]
   },
   {
-   "id": "c179212653432",
-   "ts": 1792126534786,
+   "id": "c179221268532",
+   "ts": 1792212685451,
+   "kind": "class",
+   "content": "晨课·工作流自动化新玩法：① 新知识一：通过集成人工智能和机器学习技术，工作流自动化可以实现更高级的决策和适应性，从而处理更加复杂和动态的工作流程。\n② 新知识二：云服务平台的兴起为工作流自动化提供了强大的计算和存储资源，使得跨地域、跨组织的协作和自动化变得更加容易实现。\n③ 新知识三：低代码或无代码平台降低了工作流自动化的门槛，使得非技术背景的用户也能参与到自动化流程的设计和实施中。\n\n行动建议：立即开始评估现有的工作流程，识别重复性高、容易标准化的任务，利用现有的工作流自动化工具或服务，将这些任务自动化，以减少人工工作量并提高效率。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179221269433",
+   "ts": 1792212694223,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
