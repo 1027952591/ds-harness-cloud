@@ -120,7 +120,7 @@
    "retired_at": "2026-10-15T04:54:06.667374Z"
   }
  },
- "updated": "2026-10-17T04:51:34.222830Z",
+ "updated": "2026-10-18T04:52:31.898704Z",
  "scan": "aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
  "verified_chain": [
   "zhipu",
