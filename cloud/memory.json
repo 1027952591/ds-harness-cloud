@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T04:57:35.900622Z",
+ "updated": "2026-10-20T04:55:04.338253Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -246,7 +246,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1792299151900,
+   "ts": 1792385855900,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -255,7 +255,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 4
+   "consolidated": 5
   },
   {
    "id": "mmv92kbeo6jp",
@@ -390,8 +390,18 @@
    ]
   },
   {
-   "id": "c179238585535",
-   "ts": 1792385855900,
+   "id": "c179247208635",
+   "ts": 1792472086198,
+   "kind": "class",
+   "content": "晨课·视频源雷达巡天复盘：读 cloud/vid_scout.json 战果，研究免费视频 API 生态（新平台限免公测/开源：① 新知识一：视频源雷达巡天复盘通过分析`cloud/vid_scout.json`文件，可以了解免费视频API生态的当前状态，包括新平台限免公测、开源权重托管免费推理以及新户赠额等信息。\n② 新知识二：深入研究免费视频API生态，可以发现新的文生视频API端点，这些端点可能提供独特的功能或更优的性能，适合集成到雷达情报站中。\n③ 新知识三：通过提名新的文生视频API端点到雷达情报站，可以提升雷达系统的信息处理能力，扩大数据源，增强情报系统的全面性和时效性。\n\n行动建议：定期更新`cloud/vid_scout.json`文件，密切关注免费视频API生态的动态，对于发现的新文生视频API端点，",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179247210436",
+   "ts": 1792472104338,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
