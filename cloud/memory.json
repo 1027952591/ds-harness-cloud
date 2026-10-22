@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T04:55:32.353076Z",
+ "updated": "2026-10-22T04:56:14.959126Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -246,7 +246,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1792472104338,
+   "ts": 1792558532353,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -255,7 +255,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 6
+   "consolidated": 7
   },
   {
    "id": "mmv92kbeo6jp",
@@ -410,10 +410,20 @@
    ]
   },
   {
-   "id": "c179255853237",
-   "ts": 1792558532353,
+   "id": "c179264496137",
+   "ts": 1792644961154,
+   "kind": "class",
+   "content": "晨课·全球免费 AI 生态新动态盘点：① 新知识一：全球免费 AI 生态正在快速发展，许多初创企业和大型科技公司纷纷推出基于云的免费 AI 服务，以吸引更多用户和开发者。\n② 新知识二：这些免费 AI 生态通常提供预训练模型和开发工具，降低开发门槛，推动 AI 技术的普及和创新。\n③ 新知识三：随着数据隐私和伦理问题的日益凸显，全球免费 AI 生态正逐步加强对用户数据的保护，并推动透明度和可解释性的提升。\n\n行动建议：关注行业动态，选择适合自己需求的免费 AI 服务，并学习使用相关的开发工具和预训练模型，以提升个人在 AI 领域的实践能力。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179264497438",
+   "ts": 1792644974959,
    "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
    "tags": [
     "vidscout",
     "video"
