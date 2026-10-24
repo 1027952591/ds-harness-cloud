@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T04:55:02.003180Z",
+ "updated": "2026-10-24T04:52:22.928108Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -246,7 +246,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1792644974959,
+   "ts": 1792731302003,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -255,7 +255,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 8
+   "consolidated": 9
   },
   {
    "id": "mmv92kbeo6jp",
@@ -430,13 +430,13 @@
    ]
   },
   {
-   "id": "c179273130239",
-   "ts": 1792731302003,
-   "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
+   "id": "c179281754239",
+   "ts": 1792817542928,
+   "kind": "class",
+   "content": "晨课·视频生成技术前沿进展：① 视频生成技术前沿进展中，基于深度学习的生成对抗网络（GAN）技术取得了显著突破，能够生成高质量的视频内容，接近真实场景。\n② 基于计算机视觉和自然语言处理技术的视频内容理解与分析正逐步成熟，为视频生成提供更丰富的数据驱动和语义指导。\n③ 多模态融合技术在视频生成中的应用越来越广泛，结合文本、图像等多种数据源，能够创造出更具创意和真实感的视频内容。 \n\n行动建议：学习并实践最新的视频生成模型，如CycleGAN、StyleGAN等，结合实际项目，尝试将多模态融合技术应用到自己的视频创作中。",
    "tags": [
-    "vidscout",
-    "video"
+    "class",
+    "learn"
    ]
   }
  ]
