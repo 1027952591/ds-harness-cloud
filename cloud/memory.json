@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T05:06:50.456825Z",
+ "updated": "2026-10-31T05:02:25.382023Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -246,7 +246,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1793250374967,
+   "ts": 1793336810456,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -255,7 +255,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 14
+   "consolidated": 15
   },
   {
    "id": "mmv92kbeo6jp",
@@ -500,10 +500,20 @@
    ]
   },
   {
-   "id": "c179333681046",
-   "ts": 1793336810456,
+   "id": "c179342293346",
+   "ts": 1793422933975,
+   "kind": "class",
+   "content": "晨课·工作流自动化新玩法：① 新知识一：通过集成AI技术，工作流自动化可以实现更智能的决策和预测，提高工作效率。\n② 新知识二：利用云服务，工作流自动化可以跨地域和设备无缝协作，实现更广泛的资源共享。\n③ 新知识三：结合区块链技术，工作流自动化可以确保数据的安全性和不可篡改性，增强业务透明度。\n\n行动建议：立即评估自身工作流程中可自动化的环节，优先选择使用成熟的自动化工具或平台，以减少重复性劳动，提升工作效率。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179342294547",
+   "ts": 1793422945382,
    "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
    "tags": [
     "vidscout",
     "video"
