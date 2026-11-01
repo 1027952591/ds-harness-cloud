@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T04:01:49.974115Z",
+ "updated": "2026-11-01T05:09:41.944722Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -108,15 +108,16 @@
   },
   {
    "id": "d1791893496513",
-   "ts": 1791893496513,
+   "ts": 1793505709974,
    "kind": "daily",
-   "content": "每日情报总结（2026-10-13）：探查 11 源，成功 5 源（modelscope,nvidia,openrouter,pollinations,zhipu），新增淘汰停服 0 个模型，清单全部按强度降序入库（最强在队首）",
+   "content": "每日情报总结（2026-11-01）：探查 11 源，成功 5 源（modelscope,nvidia,openrouter,pollinations,zhipu），新增淘汰停服 11 个模型，清单全部按强度降序入库（最强在队首）",
    "tags": [
     "daily",
     "情报"
    ],
-   "w": 1.3,
-   "hit": 0
+   "w": 2.3,
+   "hit": 0,
+   "consolidated": 1
   },
   {
    "id": "mmv6p133o3by",
@@ -246,7 +247,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1793336810456,
+   "ts": 1793422945382,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -255,7 +256,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 15
+   "consolidated": 16
   },
   {
    "id": "mmv92kbeo6jp",
@@ -510,23 +511,23 @@
    ]
   },
   {
-   "id": "c179342294547",
-   "ts": 1793422945382,
-   "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
+   "id": "c179350977047",
+   "ts": 1793509770011,
+   "kind": "class",
+   "content": "晨课·数字生命与陪伴设计：① 新知识一：数字生命与陪伴设计的关键在于创造出能够模拟人类情感互动的虚拟角色，这些角色需要具备情感认知、个性化反馈和适应用户行为的能力。\n② 新知识二：在陪伴设计中，通过人工智能技术分析用户行为和情绪模式，可以更精准地提供定制化的互动体验，从而增强用户的参与感和满意度。\n③ 新知识三：数字生命与陪伴设计的伦理考量至关重要，确保虚拟角色在提供陪伴的同时尊重用户隐私，避免潜在的道德风险和滥用。\n\n行动建议：开始实践使用情感分析工具来监测和调整自己设计的数字生命体在用户互动中的响应，以提高用户的情感共鸣和互动体验。",
    "tags": [
-    "vidscout",
-    "video"
+    "class",
+    "learn"
    ]
   },
   {
-   "id": "d1793505709974",
-   "ts": 1793505709974,
-   "kind": "daily",
-   "content": "每日情报总结（2026-11-01）：探查 11 源，成功 5 源（modelscope,nvidia,openrouter,pollinations,zhipu），新增淘汰停服 11 个模型，清单全部按强度降序入库（最强在队首）",
+   "id": "c179350978148",
+   "ts": 1793509781944,
+   "kind": "vidscout",
+   "content": "🎥 视频源雷达巡天：1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
    "tags": [
-    "daily",
-    "情报"
+    "vidscout",
+    "video"
    ]
   }
  ]
