@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T05:02:25.382023Z",
+ "updated": "2026-11-01T04:01:49.974115Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -517,6 +517,16 @@
    "tags": [
     "vidscout",
     "video"
+   ]
+  },
+  {
+   "id": "d1793505709974",
+   "ts": 1793505709974,
+   "kind": "daily",
+   "content": "每日情报总结（2026-11-01）：探查 11 源，成功 5 源（modelscope,nvidia,openrouter,pollinations,zhipu），新增淘汰停服 11 个模型，清单全部按强度降序入库（最强在队首）",
+   "tags": [
+    "daily",
+    "情报"
    ]
   }
  ]
