@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T05:21:28.163738Z",
+ "updated": "2026-11-05T05:21:17.406423Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -247,7 +247,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1793683020469,
+   "ts": 1793769688163,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -256,7 +256,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 18
+   "consolidated": 19
   },
   {
    "id": "mmv92kbeo6jp",
@@ -551,8 +551,18 @@
    ]
   },
   {
-   "id": "c179376968851",
-   "ts": 1793769688163,
+   "id": "c179385606751",
+   "ts": 1793856067615,
+   "kind": "class",
+   "content": "晨课·全球免费 AI 生态新动态盘点：① 新知识一：全球范围内，开源AI模型和框架的竞争日益激烈，如Hugging Face的Transformers和TensorFlow的TensorFlow Hub等平台，正推动AI生态的快速发展。\n② 新知识二：随着AI技术的发展，越来越多的国家和地区开始布局AI产业，并推出相应的政策扶持和资金投入，以促进AI生态的完善和繁荣。\n③ 新知识三：AI生态中的数据共享和合作逐渐成为趋势，各大企业和研究机构纷纷建立数据联盟，共同推动AI技术的发展和应用。\n\n行动建议：关注国内外AI生态的最新动态，积极参与开源项目，与业界同仁交流合作，提升自身在AI领域的竞争力。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179385607752",
+   "ts": 1793856077406,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
