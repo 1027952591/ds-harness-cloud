@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T05:13:18.666560Z",
+ "updated": "2026-11-09T05:27:34.239398Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -247,7 +247,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1794028319015,
+   "ts": 1794114798666,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -256,7 +256,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 22
+   "consolidated": 23
   },
   {
    "id": "mmv92kbeo6jp",
@@ -591,10 +591,20 @@
    ]
   },
   {
-   "id": "c179411479855",
-   "ts": 1794114798666,
+   "id": "c179420204455",
+   "ts": 1794202044509,
+   "kind": "class",
+   "content": "晨课·提示工程与思维链新技法：① 提示工程（Prompt Engineering）是一种通过优化提示文本来提升模型性能的技术，它通过精确控制输入信息，使模型更专注于特定任务，从而提高输出质量。\n\n② 思维链（Mind Chain）是一种利用中间推理步骤来增强模型推理能力的方法，它通过在模型内部构建一系列逻辑连接，使得模型能够在处理复杂问题时展现出更连贯的思考过程。\n\n③ 新技法中的“链式思维”通过将问题分解成一系列相互关联的小问题，使得每个小问题都变得易于解决，从而整体上提升了解决复杂问题的效率。\n\n行动建议：在日常工作中，尝试将复杂任务分解成多个小步骤，并为每个步骤设计一个清晰的提示，以此来训练自己的思维链，提高问题解决",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179420205456",
+   "ts": 1794202054239,
    "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
    "tags": [
     "vidscout",
     "video"
