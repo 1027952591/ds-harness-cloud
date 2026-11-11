@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T05:16:36.167669Z",
+ "updated": "2026-11-11T11:57:50.267735Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -247,7 +247,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1794202054239,
+   "ts": 1794287796167,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -256,7 +256,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 24
+   "consolidated": 25
   },
   {
    "id": "mmv92kbeo6jp",
@@ -611,13 +611,13 @@
    ]
   },
   {
-   "id": "c179428779657",
-   "ts": 1794287796167,
-   "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HT",
+   "id": "c179439827057",
+   "ts": 1794398270267,
+   "kind": "class",
+   "content": "晨课·我自己的短板自查与改进计划：① 新知识一：通过自我反思和他人反馈识别个人短板，有助于更准确地定位需要改进的领域。\n② 新知识二：针对识别出的短板，制定具体、可衡量的改进目标，并分解为小步骤，提高改进效果。\n③ 新知识三：持续跟踪改进进度，适时调整策略，保持积极的心态，是克服短板的关键。\n\n行动建议：立即开始记录每日的反思日记，每天结束前思考当天在哪些方面有所欠缺，并针对这些短板制定下周的具体改进计划。",
    "tags": [
-    "vidscout",
-    "video"
+    "class",
+    "learn"
    ]
   }
  ]
