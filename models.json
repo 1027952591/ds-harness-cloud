@@ -93,6 +93,7 @@
    "liquid/lfm-2.5-2.6b:free",
    "recursive/flint-v1.0:free",
    "liquid/lfm-3-1.7b:free",
+   "particle-ai/particle-1:free",
    "nvidia/nemotron-3.5-super-vl:free",
    "dots-studio/dots-3-note-preview:free",
    "nvidia/nemotron-3.5-lightning:free",
@@ -129,7 +130,7 @@
   },
   "openrouter": {
    "ok": 1,
-   "n": 16,
+   "n": 17,
    "status": 200
   },
   "groq": {
@@ -205,5 +206,5 @@
   "directive4": "App 端所有动作必须强制自动与云端全层全天候联动同步：双端漏洞体检一经 App 端触发，云端全层必须同步自动触发同拍自检",
   "strongest_first": true
  },
- "updated": "2026-11-12T11:17:37.463916Z"
+ "updated": "2026-11-13T11:02:45.198976Z"
 }
