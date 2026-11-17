@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T12:56:25.420763Z",
+ "updated": "2026-11-17T13:39:33.579981Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -675,6 +675,26 @@
    "ts": 1794833785420,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,1) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+   "tags": [
+    "vidscout",
+    "video"
+   ]
+  },
+  {
+   "id": "c179492275464",
+   "ts": 1794922754577,
+   "kind": "class",
+   "content": "晨课·视频源雷达巡天复盘：读 cloud/vid_scout.json 战果，研究免费视频 API 生态（新平台限免公测/开源：① 新知识一：视频源雷达巡天复盘通过读取cloud/vid_scout.json文件，可以了解免费视频API生态的现状，包括新平台限免公测、开源权重托管免费推理以及新户赠额等信息。\n② 新知识二：免费视频API生态中，文生视频API端点是一种重要的资源，能够提供文本到视频的转换服务，有助于提升视频内容创作的效率。\n③ 新知识三：将新发现的文生视频API端点提名进雷达情报站，可以丰富雷达系统的信息资源，提高视频内容推荐的准确性和多样性。\n\n行动建议：关注并测试最新的免费视频API，尤其是文生视频API，将符合条件的API端点纳入雷达情报站，为用户提供更多元化的视频内容推荐服务。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179492277365",
+   "ts": 1794922773579,
+   "kind": "vidscout",
+   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,2) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
     "vidscout",
     "video"
