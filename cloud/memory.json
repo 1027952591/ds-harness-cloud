@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T13:32:41.254148Z",
+ "updated": "2026-11-20T13:13:54.653777Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -718,6 +718,26 @@
    "ts": 1795095161254,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:fail(URLError,2) | 2:fail(URLError,2) | 3:fail(HTTP 404,2) | 4:fail(HTTP 308,2) | 5:fail(URLError,2) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,2) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,2)",
+   "tags": [
+    "vidscout",
+    "video"
+   ]
+  },
+  {
+   "id": "c179518042168",
+   "ts": 1795180421925,
+   "kind": "class",
+   "content": "晨课·开源推理模型能力对比新知：① 新知识一：开源推理模型在性能上存在显著差异，不同模型在特定任务上的表现各有优劣。\n② 新知识二：推理模型的效率与硬件平台和优化程度密切相关，选择合适的硬件和优化策略能显著提升模型性能。\n③ 新知识三：开源推理模型的易用性和社区支持是选择模型时不可忽视的因素，良好的文档和活跃的社区有助于快速部署和应用。\n\n行动建议：针对个人项目，优先选择在目标硬件上性能优异且社区活跃的开源推理模型，并关注模型的最新优化版本，以提高推理效率和用户体验。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179518043469",
+   "ts": 1795180434653,
+   "kind": "vidscout",
+   "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:graveyard(连败3退役)",
    "tags": [
     "vidscout",
     "video"
