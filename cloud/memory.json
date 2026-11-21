@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20T13:13:54.653777Z",
+ "updated": "2026-11-21T12:50:07.518245Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -247,7 +247,7 @@
   },
   {
    "id": "c179204005126",
-   "ts": 1795007611004,
+   "ts": 1795180434653,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | modelscope:verified(端点在（500 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu",
    "tags": [
@@ -256,7 +256,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 30
+   "consolidated": 31
   },
   {
    "id": "mmv92kbeo6jp",
@@ -734,10 +734,20 @@
    ]
   },
   {
-   "id": "c179518043469",
-   "ts": 1795180434653,
+   "id": "c179526539569",
+   "ts": 1795265395353,
+   "kind": "class",
+   "content": "晨课·视频生成技术前沿进展：① 视频生成技术已从传统的基于关键帧合成向基于深度学习的端到端生成模型发展，实现了更高质量和更灵活的视频内容生成。\n② 多模态融合技术逐渐成为视频生成领域的研究热点，通过结合文本、图像和音频等多模态信息，提升了视频生成的真实感和交互性。\n③ 视频生成领域正逐渐向可解释性和可控性发展，研究者们致力于构建可解释的生成模型，以便更好地理解生成过程，并实现对视频内容的精确控制。\n\n行动建议：关注多模态融合技术在视频生成领域的应用，尝试将文本、图像和音频等多模态信息融合到自己的项目中，提升视频生成效果。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179526540770",
+   "ts": 1795265407518,
    "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：1:graveyard(连败3退役) | 2:graveyard(连败3退役) | 3:graveyard(连败3退役) | 4:graveyard(连败3退役) | 5:graveyard(连败3退役) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:graveyard(连败3退役) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:graveyard(连败3退役)",
+   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
     "vidscout",
     "video"
