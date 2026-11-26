@@ -28,7 +28,7 @@
    "style": "openai-video",
    "ep": "https://api-inference.modelscope.cn/v1/videos/generations",
    "note": "魔搭开源托管（基础源·开源权重免费推理窗口多）",
-   "fails": 1,
+   "fails": 2,
    "status": "candidate",
    "retired_at": "2026-11-18T13:13:29.580406Z"
   },
@@ -121,8 +121,8 @@
    "retired_at": "2026-11-20T13:13:50.621670Z"
   }
  },
- "updated": "2026-11-25T14:39:11.118250Z",
- "scan": "aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,1) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+ "updated": "2026-11-26T14:02:29.011123Z",
+ "scan": "aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,2) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
  "verified_chain": [
   "zhipu",
   "siliconflow",
