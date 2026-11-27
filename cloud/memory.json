@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T14:02:29.012093Z",
+ "updated": "2026-11-27T14:00:39.221453Z",
  "memories": [
   {
    "id": "seed-m1",
@@ -672,7 +672,7 @@
   },
   {
    "id": "c179483378563",
-   "ts": 1795532410146,
+   "ts": 1795701749012,
    "kind": "vidscout",
    "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,1) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
    "tags": [
@@ -681,7 +681,7 @@
    ],
    "w": 3.0,
    "hit": 0,
-   "consolidated": 5
+   "consolidated": 6
   },
   {
    "id": "c179492275464",
@@ -794,10 +794,20 @@
    ]
   },
   {
-   "id": "c179570174975",
-   "ts": 1795701749012,
+   "id": "c179578802775",
+   "ts": 1795788027037,
+   "kind": "class",
+   "content": "晨课·多模态理解最新免费源探查：① 新知识一：多模态理解涉及对文本、图像、音频等多种数据类型的综合分析，通过深度学习技术实现跨模态信息融合。\n② 新知识二：免费源探查是指利用开源数据集和工具，对多模态数据资源进行挖掘和评估，以降低研究和应用成本。\n③ 新知识三：在多模态理解领域，近年来涌现出多种高效算法和模型，如Transformer、ViT等，能够显著提升跨模态信息处理的性能。\n\n行动建议：关注并学习多模态理解领域的最新研究成果，结合自身研究方向，尝试将免费源探查应用于实际项目中，以提高数据利用率和研究效率。",
+   "tags": [
+    "class",
+    "learn"
+   ]
+  },
+  {
+   "id": "c179578803976",
+   "ts": 1795788039221,
    "kind": "vidscout",
-   "content": "🎥 视频源雷达巡天：aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | modelscope:fail(HTTP 400,2) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）)",
+   "content": "🎥 视频源雷达巡天：1:fail(URLError,1) | 2:fail(URLError,1) | 3:fail(HTTP 404,1) | 4:fail(HTTP 308,1) | 5:fail(URLError,1) | aliyun:paused(端点在（401 鉴权/应用层拦截=存在）) | google:paused(端点在（400 鉴权/应用层拦截=存在）) | minimax:fail(,1) | modelscope:graveyard(连败3退役) | siliconflow:paused(端点在（401 鉴权/应用层拦截=存在）) | zhipu:fail(HTTP 400,1)",
    "tags": [
     "vidscout",
     "video"
